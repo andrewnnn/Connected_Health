@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:id="@+id/layoutContainer" android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.25">
+        <Button
+            android:text="INFORMATION"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffff1524">
+        </Button>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.25">
+        <Button
+            android:text="QUESTIONAIRE"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#fffeff22">
+        </Button>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.25">
+        <Button
+            android:text="PROFILE"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ff70ff11">
+        </Button>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.25">
+        <Button
+            android:text="MEASUREMENT"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ff1310ff">
+        </Button>
+    </RelativeLayout>
+</LinearLayout>
