@@ -46,7 +46,10 @@
             android:text="MEASUREMENT"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="#ff1310ff">
+            android:onClick="goToMeasurementView"
+            android:background="#ff44fffa">
+            <!--android:id="@+id/">-->
+            <!--android:id="@+id/">-->
         </Button>
     </RelativeLayout>
 </LinearLayout>

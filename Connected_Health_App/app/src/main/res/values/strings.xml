@@ -4,5 +4,6 @@
     <string name="app_name">Connected_Health_App</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_measurement_view">Measurement View</string>
 
 </resources>
