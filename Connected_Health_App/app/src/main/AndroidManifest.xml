@@ -24,6 +24,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="au.edu.adelaide.connected_health_app.MainActivity" />
         </activity>
+        <activity
+            android:name=".InformationViewActivity"
+            android:label="@string/title_activity_information_view"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="au.edu.adelaide.connected_health_app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".QuestionnaireViewActivity"
+            android:label="@string/title_activity_questionnaire_view"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="au.edu.adelaide.connected_health_app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ProfileViewActivity"
+            android:label="@string/title_activity_profile_view"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="au.edu.adelaide.connected_health_app.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
