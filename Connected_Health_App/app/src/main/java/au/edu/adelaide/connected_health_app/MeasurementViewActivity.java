@@ -4,16 +4,24 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 
 public class MeasurementViewActivity extends ActionBarActivity {
+
+    private final String graphPath = "file:///android_asset/Graph.html";
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurement_view);
-    }
 
+        webView = (WebView) findViewById(R.id.webviewGraphTest);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(graphPath);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
