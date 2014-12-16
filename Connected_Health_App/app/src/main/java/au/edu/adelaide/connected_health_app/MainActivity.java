@@ -12,7 +12,6 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("test");
         setContentView(R.layout.activity_main);
     }
 
@@ -37,6 +36,24 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /** Called when the user clicks the Information View button */
+    public void goToInformationView(View view) {
+        Intent intent = new Intent(this, InformationViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Questionnaire View button */
+    public void goToQuestionnaireView(View view) {
+        Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Profile View button */
+    public void goToProfileView(View view) {
+        Intent intent = new Intent(this, ProfileViewActivity.class);
+        startActivity(intent);
     }
 
     /** Called when the user clicks the Measurement View button */

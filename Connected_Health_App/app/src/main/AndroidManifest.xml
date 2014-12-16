@@ -6,10 +6,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"> <!-- needed for all activities to be run in landscape -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +20,35 @@
         <activity
             android:name=".MeasurementViewActivity"
             android:label="@string/title_activity_measurement_view"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="au.edu.adelaide.connected_health_app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".InformationViewActivity"
+            android:label="@string/title_activity_information_view"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="au.edu.adelaide.connected_health_app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".QuestionnaireViewActivity"
+            android:label="@string/title_activity_questionnaire_view"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="au.edu.adelaide.connected_health_app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ProfileViewActivity"
+            android:label="@string/title_activity_profile_view"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="au.edu.adelaide.connected_health_app.MainActivity" />

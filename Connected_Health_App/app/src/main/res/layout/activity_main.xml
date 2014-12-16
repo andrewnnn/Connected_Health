@@ -10,6 +10,7 @@
             android:text="INFORMATION"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:onClick="goToInformationView"
             android:background="#ffff1524">
         </Button>
     </RelativeLayout>
@@ -19,9 +20,10 @@
         android:layout_height="fill_parent"
         android:layout_weight="0.25">
         <Button
-            android:text="QUESTIONAIRE"
+            android:text="QUESTIONNAIRE"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:onClick="goToQuestionnaireView"
             android:background="#fffeff22">
         </Button>
     </RelativeLayout>
@@ -34,6 +36,7 @@
             android:text="PROFILE"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:onClick="goToProfileView"
             android:background="#ff70ff11">
         </Button>
     </RelativeLayout>
