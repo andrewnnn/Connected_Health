@@ -17,6 +17,7 @@ public class MeasurementViewActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurement_view);
 
+        // Graph webview
         webView = (WebView) findViewById(R.id.webviewGraphTest);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(graphPath);
