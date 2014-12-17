@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src=".jchartfx.com/jquery-1.7.1.js">
+		</script>
+		<script type="text/javascript" src="./jchartfx/js/jchartfx.system.js">
+		</script>
+		<script type="text/javascript" src="./jchartfx/js/jchartfx.coreVector.js">
+		</script>
+		<script type="text/javascript" src="./jchartfx/js/jchartfx.advanced.js">
+		</script>
+		<script type="text/javascript" src="./jchartfx/js/jchartfx.gauge.js">
+		</script>
+		<script type="text/javascript" src="./jchartfx/js/jchartfx.treemap.js">
+		</script>
+		<script type="text/javascript" src="./jchartfx/js/jchartfx.sparkline.js">
+		</script>
+		<script type="text/javascript" src="./jchartfx/motifs/jchartfx.motif.whitespace.js">
+		</script>
+		
+		
+		<script type="text/javascript">
+			var chart1, title;        
+			function loadChart()
+			{
+				chart1 = new cfx.Chart();
+				chart1.getData().setSeries(1);
+				chart1.getAxisY().setMin(min);
+				chart1.getAxisY().setMax(max);
+				var series1 = chart1.getSeries().getItem(0);
+				series1.setGallery(cfx.Gallery.Lines);
+				chart1.setDataSource(data);
+				var divHolder = document.getElementById('ChartDiv');
+				chart1.create(divHolder);
+				title = new cfx.TitleDockable();
+				title.setText(titleString);
+				chart1.getTitles().add(title);
+				
+			}
+			
+		</script>
+		
+		<script type="text/javascript" src="Graph.js">
+		</script>
+		<link rel="stylesheet" type="text/css" href="./jchartfx/styles/Attributes/jchartfx.attributes.whitespace.css" />
+		<link rel="stylesheet" type="text/css" href="./jchartfx/styles/Palettes/jchartfx.palette.whitespace.css" />
+	</head>
+	
+	
+	<body onload="loadChart()"> 
+		<div id="ChartDiv" style="width:100%;height:500px;display:inline-block"></div>
+	</body>
+	
+</html>
+	
