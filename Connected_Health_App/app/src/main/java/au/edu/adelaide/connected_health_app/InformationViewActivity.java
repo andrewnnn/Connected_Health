@@ -4,16 +4,46 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
 
 
 public class InformationViewActivity extends ActionBarActivity {
+
+    private final String vidUrl = "https://www.google.com";
+    private WebView browser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_view);
+
+        // Youtube webview
+        browser = (WebView)findViewById(R.id.webviewYoutubeVid);
+        browser.setWebViewClient(new MyBrowser());
+
+        browser.getSettings().setLoadsImagesAutomatically(true);
+        browser.getSettings().setJavaScriptEnabled(true);
+        browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//        browser.loadUrl(vidUrl);
+
+        //testing loading html instead of url
+        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"640\" height=\"385\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+        browser.loadData(embedVid,"text/html","utf-8");
     }
 
+    //embedded browser
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
