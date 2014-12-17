@@ -1,58 +1,134 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent" android:layout_height="fill_parent"
-    android:id="@+id/layoutContainer" android:orientation="horizontal">
+    android:orientation="horizontal">
 
+    <!--Info Panel-->
     <RelativeLayout
         android:layout_width="0dip"
         android:layout_height="fill_parent"
-        android:layout_weight="0.25">
+        android:layout_weight="0.25"
+        android:background="@android:color/holo_orange_dark">
+
+        <!--Panel label-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Information \nFor knowledge"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="46dp"
+            android:gravity="center_horizontal"
+            android:id="@+id/textView" />
+
+        <!--Info button-->
         <Button
-            android:text="INFORMATION"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:text="View information >"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
             android:onClick="goToInformationView"
-            android:background="#ffff1524">
+            android:background="@android:color/white"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignWithParentIfMissing="false"
+            android:id="@+id/button">
         </Button>
+
     </RelativeLayout>
 
+    <!--Questionnaire panel-->
     <RelativeLayout
         android:layout_width="0dip"
         android:layout_height="fill_parent"
-        android:layout_weight="0.25">
+        android:layout_weight="0.25"
+        android:background="@android:color/holo_blue_dark">
+
+        <!--Panel label-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Questionnaires \nDaily activities"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="46dp"
+            android:gravity="center_horizontal" />
+
+        <!--Question button -->
         <Button
-            android:text="QUESTIONNAIRE"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:text="Complete questions >"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
             android:onClick="goToQuestionnaireView"
-            android:background="#fffeff22">
+            android:background="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
         </Button>
     </RelativeLayout>
 
+    <!--Profile panel-->
     <RelativeLayout
         android:layout_width="0dip"
         android:layout_height="fill_parent"
-        android:layout_weight="0.25">
+        android:layout_weight="0.25"
+        android:background="@android:color/holo_red_light">
+
+        <!--Panel label-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Profile \nManage profile"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="46dp"
+            android:gravity="center_horizontal" />
+
+        <!--Profile button-->
         <Button
-            android:text="PROFILE"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:text="View/edit profile >"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
             android:onClick="goToProfileView"
-            android:background="#ff70ff11">
+            android:background="@android:color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
         </Button>
     </RelativeLayout>
 
+    <!--Measurements panel-->
     <RelativeLayout
         android:layout_width="0dip"
         android:layout_height="fill_parent"
-        android:layout_weight="0.25">
+        android:layout_weight="0.25"
+        android:background="@android:color/holo_green_light">
+
+        <!--Panel label-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Measurements \nTo manage"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="46dp"
+            android:gravity="center_horizontal" />
+
+        <!--Measurement button-->
         <Button
-            android:text="MEASUREMENT"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:text="View measurements >"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
             android:onClick="goToMeasurementView"
-            android:background="#ff44fffa">
-            <!--android:id="@+id/">-->
-            <!--android:id="@+id/">-->
+            android:background="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
         </Button>
     </RelativeLayout>
 </LinearLayout>
