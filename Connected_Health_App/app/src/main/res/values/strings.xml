@@ -9,4 +9,8 @@
     <string name="title_activity_questionnaire_view">Questionnaire View</string>
     <string name="title_activity_profile_view">Profile View</string>
 
+    <!--Info Panel Related-->
+    <string name="info_title">Information</string>
+    <string name="info_link"> <a href="https://www.mindainc.com.au/">Minda Website</a> </string>
+
 </resources>

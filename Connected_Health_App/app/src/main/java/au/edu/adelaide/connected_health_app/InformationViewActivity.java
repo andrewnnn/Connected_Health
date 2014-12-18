@@ -2,6 +2,7 @@ package au.edu.adelaide.connected_health_app;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
+import android.widget.TextView;
 
 
 public class InformationViewActivity extends ActionBarActivity {
@@ -21,6 +22,10 @@ public class InformationViewActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_view);
+
+        //Making the info link clickable
+        TextView link = (TextView) findViewById(R.id.infoLink);
+        link.setMovementMethod(LinkMovementMethod.getInstance());
 
         // Youtube webview
         browser = (WebView)findViewById(R.id.webviewYoutubeVid);
