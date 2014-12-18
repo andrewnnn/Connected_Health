@@ -10,16 +10,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Information"
-        android:id="@+id/infoHeading"
+        android:text="@string/info_title"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:autoText="false" />
+        android:autoText="false"
+        android:id="@+id/infoHeading"/>
+
+    <!--Resource links-->
+    <TextView
+        android:id="@+id/infoLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/infoHeading"
+        android:layout_marginTop="20dp"
+        android:text="@string/info_link"/>
 
     <WebView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/webviewYoutubeVid"
-        android:layout_below="@+id/infoHeading"
+        android:layout_below="@+id/infoLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
