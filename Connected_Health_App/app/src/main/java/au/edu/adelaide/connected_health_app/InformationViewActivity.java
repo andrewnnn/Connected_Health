@@ -33,11 +33,13 @@ public class InformationViewActivity extends ActionBarActivity {
 
         browser.getSettings().setLoadsImagesAutomatically(true);
         browser.getSettings().setJavaScriptEnabled(true);
-        browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//        browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 //        browser.loadUrl(vidUrl);
 
         //testing loading html instead of url
-        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"640\" height=\"385\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+//        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"640\" height=\"385\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+
         browser.loadData(embedVid,"text/html","utf-8");
     }
 
