@@ -12,28 +12,16 @@ import java.io.File;
 
 public class JSONParser extends Activity {
 
-    public static String getDataFromJson(String JsonInput, String Key, String KeyEnd, String Value, String ValueEnd) {
-        String cleanInput = JsonInput.substring(JsonInput.indexOf("[{"), JsonInput.indexOf("}]") + 2);
-        String[] splitInput = cleanInput.split("\\},\\{");
-        String result = "[";
-        for (int i = 0; i < splitInput.length; i++) {
-            String X = splitInput[i].substring(splitInput[i].indexOf(Key + "\":\"") + Key.length(), splitInput[i].indexOf("\",\"" + KeyEnd));
-            String Y = splitInput[i].substring(splitInput[i].indexOf(Value + "\":") + Value.length(), splitInput[i].indexOf(",\"" + ValueEnd));
-            result += ("{\"" + Key + "\":\"" + X + "\",\"" + Value + "\":" + Y + "}");
-            if (i < (splitInput.length - 1)) {
-                result += ",";
-            }
-        }
-        result += "]";
-        return result;
-    }
-
-
-    public static String DataParser(String DataInput, String Key, String Value) {
+    // return a string containing the variables for the javascript to draw the graph
+    // DataInput = JSON from Grails app
+    // XAxisKey = JSON key in DataInput that will be used as the x-axis values in the graph
+    // YAxisKey = JSON key in DataInput that will be used as the y-axis values in the graph
+    public static String DataParser(String DataInput, String XAxisKey, String YAxisKey) {
         String result = "[";
         System.out.println("DataInput: "+DataInput);
         int max, min;
         try {
+            // get activities array from JSON string
             JSONObject job = new JSONObject(DataInput);
             JSONObject body = (job.getJSONObject("body"));
             JSONArray act = body.getJSONArray("activities");
@@ -45,6 +33,7 @@ public class JSONParser extends Activity {
             String valueA = "";
             int valueB = 0;
 
+            // get each date and steps value
             for (int i = 0; i < act.length(); i++) {
                 valueA = act.getJSONObject(i).getString("date");
                 valueB = act.getJSONObject(i).getInt("steps");
@@ -57,7 +46,8 @@ public class JSONParser extends Activity {
                     min = valueB;
                 }
 
-                result += ("{\"" + Key + "\":\"" + valueA + "\",\"" + Value + "\":" + valueB + "}");
+                // combine date and steps values into an array
+                result += ("{\"" + XAxisKey + "\":\"" + valueA + "\",\"" + YAxisKey + "\":" + valueB + "}");
                 if (i < (act.length() - 1)) {
                     result += ",";
                 }
@@ -76,10 +66,10 @@ public class JSONParser extends Activity {
             if(min < 0){
                 min = 0;
             }
-            //output to Graph.js file
+            // store max, min and date/steps array as javascript variables
             result = "var max = " + max + ";\r\nvar min = " + min + ";\r\nvar data=" + result + ";\r\n";
 
-            if(act.length() == 1){
+            if(act.length() == 1){      // single reading, return "date,steps"
                 result = valueA + "," + valueB;
             }
         } catch (Exception e) {
@@ -90,6 +80,8 @@ public class JSONParser extends Activity {
         return result;
     }
 
+    // return the number of key-value pairs in a JSON string that contains one array
+    // input = JSON returned from Grails app
     public static int readingCount(String input){
         String[] jsonCounter = input.split("\\},\\{");
         return jsonCounter.length;
