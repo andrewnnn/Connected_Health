@@ -8,6 +8,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class ProfileViewActivity extends ActionBarActivity {
     //local profile values
@@ -40,6 +51,53 @@ public class ProfileViewActivity extends ActionBarActivity {
                                 "Address: " + address + "\n" +
                                 "Phone Number: " + number + "\n" +
                                 "Email: " + email);
+
+        // Variables for HTTP request
+        final String medicalNotesUrl = "http://localhost:9999/ConnectedHealth/medicalNote/notes?patientID=1";
+
+        // Instantiate the RequestQueue
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        // Request a string JSON response from the Grails app.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, medicalNotesUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // check if response is a valid JSON array
+                        JSONArray medicalNotesJson = null;
+                        try {
+                            medicalNotesJson = new JSONArray(response);
+                        } catch (JSONException je) {
+                            System.out.println("Response was not a valid JSON array.");
+                        }
+
+                        // Extract values from JSON array to display in the medical notes section of the profile view
+                        StringBuilder sb = null;
+                        try {
+                            JSONObject noteObject;
+                            sb = new StringBuilder();
+                            sb.append("Medical Notes\n");
+                            for (int i = 0; i < medicalNotesJson.length(); i++) {
+                                noteObject = medicalNotesJson.getJSONObject(i);
+                                sb.append(noteObject.getString("content") + "\n");
+                            }
+                        } catch (JSONException je) {
+                            System.out.println("Couldn't extract values from JSON array");
+                        }
+
+                        // Display values
+                        TextView medical_notes = (TextView)findViewById(R.id.medical_notes);
+                        medical_notes.setText(sb.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Volley HTTP request failed.");
+            }
+        });
+        // Add the request to the RequestQueue for asynchronous handling.
+        queue.add(stringRequest);
+
     }
 
     @Override
