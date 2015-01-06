@@ -10,10 +10,8 @@ class UrlMappings {
         "/"(view:"/index")
         "500"(view:'/error')
 
-        // get medical notes for the patient with given ID
-        "/patients/$patientID/notes"(
-                controller:"MedicalNote",
-                action:"notes"
-        )
-	}
+        //routing
+        "/patient/$patientID/notes"(controller:"MedicalNote",action:"notes")
+
+    }
 }
