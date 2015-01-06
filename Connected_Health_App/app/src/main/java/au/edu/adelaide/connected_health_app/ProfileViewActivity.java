@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 
 public class ProfileViewActivity extends ActionBarActivity {
     //local profile values
@@ -79,7 +81,8 @@ public class ProfileViewActivity extends ActionBarActivity {
                             sb.append("Medical Notes\n");
                             for (int i = 0; i < medicalNotesJson.length(); i++) {
                                 noteObject = medicalNotesJson.getJSONObject(i);
-                                sb.append(noteObject.toString() + "\n");
+                                sb.append("Date: " + (noteObject.get("created")).toString() + "\n");
+                                sb.append("Content: " + noteObject.getString("content") + "\n");
                             }
                         } catch (JSONException je) {
                             System.out.println("Couldn't extract values from JSON array");
