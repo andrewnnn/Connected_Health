@@ -11,7 +11,18 @@ class UrlMappings {
         "500"(view:'/error')
 
         //routing
+
+        //medical notes
         "/patient/$patientID/notes"(controller:"MedicalNote",action:"notes")
+
+        //journals
+        "/patient/$patientID/journal"(controller:"JournalEntry",action:"show")
+        "/patient/$patientID/journal/create"(controller:"JournalEntry",action:"create")
+        "/patient/$patientID/journal/$journalEntryID/update"(controller:"JournalEntry",action:"update")
+        "/patient/$patientID/journal/$journalEntryID/remove"(controller:"JournalEntry",action:"remove")
+
+        //questions
+        "/questionnaire/$IDorName"(controller:"Questionnaire",action:"get")
 
     }
 }
