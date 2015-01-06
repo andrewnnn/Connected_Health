@@ -28,6 +28,9 @@ public class ProfileViewActivity extends ActionBarActivity {
     private String number;
     private String email;
 
+    private final int patientID = 1;
+    private final String medicalNotesUrl = "http://129.127.210.243:9999/ConnectedHealth/patients/" + patientID + "/notes";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +54,6 @@ public class ProfileViewActivity extends ActionBarActivity {
                                 "Address: " + address + "\n" +
                                 "Phone Number: " + number + "\n" +
                                 "Email: " + email);
-
-        // Variables for HTTP request
-        final String medicalNotesUrl = "http://localhost:9999/ConnectedHealth/medicalNote/notes?patientID=1";
 
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -92,7 +92,7 @@ public class ProfileViewActivity extends ActionBarActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println("Volley HTTP request failed.");
+                System.out.println("Volley HTTP request for medical notes failed.");
             }
         });
         // Add the request to the RequestQueue for asynchronous handling.

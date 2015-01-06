@@ -33,8 +33,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/medical_notes"
         android:layout_below="@+id/profile_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="107dp" />
+        android:layout_marginTop="30dp" />
 
 </RelativeLayout>
 
