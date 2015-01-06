@@ -16,7 +16,7 @@ class UrlMappings {
         "/patient/$patientID/notes"(controller:"MedicalNote",action:"notes")
 
         //journals
-        "/patient/$patientID/journal"(controller:"JournalEntry",action:"show")
+        "/patient/$patientID/journal"(controller:"JournalEntry",action:"showEntry")
         "/patient/$patientID/journal/create"(controller:"JournalEntry",action:"create")
         "/patient/$patientID/journal/$journalEntryID/update"(controller:"JournalEntry",action:"update")
         "/patient/$patientID/journal/$journalEntryID/remove"(controller:"JournalEntry",action:"remove")
