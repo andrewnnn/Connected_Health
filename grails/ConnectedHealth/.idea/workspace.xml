@@ -92,8 +92,8 @@
       <file leaf-file-name="JournalEntryController.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/connectedhealth/JournalEntryController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58055556" vertical-offset="266" max-vertical-offset="779">
-              <caret line="25" column="76" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
+            <state vertical-scroll-proportion="0.84444445" vertical-offset="266" max-vertical-offset="779">
+              <caret line="30" column="70" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
               <folding>
                 <element signature="e#25#50#0" expanded="true" />
               </folding>
@@ -649,15 +649,15 @@
       <workItem from="1420498199281" duration="1257000" />
       <workItem from="1420505948512" duration="4825000" />
       <workItem from="1420512191130" duration="6224000" />
-      <workItem from="1420520039134" duration="2096000" />
+      <workItem from="1420520039134" duration="2384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28571000" />
+    <option name="totallyTimeSpent" value="28859000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="-5" width="1382" height="744" extended-state="0" />
+    <frame x="-5" y="-5" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1169,8 +1169,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/connectedhealth/JournalEntryController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58055556" vertical-offset="266" max-vertical-offset="779">
-          <caret line="25" column="76" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.84444445" vertical-offset="266" max-vertical-offset="779">
+          <caret line="30" column="70" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
           <folding>
             <element signature="e#25#50#0" expanded="true" />
           </folding>
