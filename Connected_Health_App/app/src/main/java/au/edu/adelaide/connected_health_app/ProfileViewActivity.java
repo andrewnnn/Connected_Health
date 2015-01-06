@@ -31,7 +31,8 @@ public class ProfileViewActivity extends ActionBarActivity {
     private String email;
 
     private final int patientID = 1;
-    private final String medicalNotesUrl = "http://129.127.210.243:9999/ConnectedHealth/patients/" + patientID + "/notes";
+    private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
+    private final String medicalNotesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/notes";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +102,47 @@ public class ProfileViewActivity extends ActionBarActivity {
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest);
 
+        // Request a string JSON response from the Grails app.
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, journalEntriesUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // check if response is a valid JSON array
+                        JSONArray journalEntriesJson = null;
+                        try {
+                            journalEntriesJson = new JSONArray(response);
+                        } catch (JSONException je) {
+                            System.out.println("Response was not a valid JSON array.");
+                        }
+
+                        // Extract values from JSON array to display in the medical notes section of the profile view
+                        StringBuilder sb = null;
+                        try {
+                            JSONObject entryObject;
+                            sb = new StringBuilder();
+                            sb.append("Journal Entries\n");
+                            for (int i = 0; i < journalEntriesJson.length(); i++) {
+                                entryObject = journalEntriesJson.getJSONObject(i);
+                                sb.append("Created: " + (entryObject.get("created")).toString() + "\n");
+                                sb.append("Updated: " + (entryObject.get("updated")).toString() + "\n");
+                                sb.append("Content: " + entryObject.getString("content") + "\n");
+                            }
+                        } catch (JSONException je) {
+                            System.out.println("Couldn't extract values from JSON array");
+                        }
+
+                        // Display values
+                        TextView journal_entries = (TextView)findViewById(R.id.journal_entries);
+                        journal_entries.setText(sb.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Volley HTTP request for journal entries failed.");
+            }
+        });
+        // Add the request to the RequestQueue for asynchronous handling.
+        queue.add(stringRequest2);
     }
 
     @Override

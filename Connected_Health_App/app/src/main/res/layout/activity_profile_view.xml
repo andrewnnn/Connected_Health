@@ -37,6 +37,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/journal_entries"
+        android:layout_above="@+id/profile_edit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
 
 
