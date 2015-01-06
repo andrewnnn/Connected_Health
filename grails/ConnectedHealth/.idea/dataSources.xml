@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="1234042919">
+    <data-source source="LOCAL" name="ConnectedHealth dev" uuid="b3895776-48e5-4cf6-9ae8-0b43e6db051f">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/ConnectedHealth</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>df9b</user-password>
+      <libraries>
+        <library>
+          <url>file://$PROJECT_DIR$/lib/postgresql-9.3-1102.jdbc41.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+
