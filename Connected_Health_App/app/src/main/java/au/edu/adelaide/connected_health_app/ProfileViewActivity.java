@@ -79,7 +79,7 @@ public class ProfileViewActivity extends ActionBarActivity {
                             sb.append("Medical Notes\n");
                             for (int i = 0; i < medicalNotesJson.length(); i++) {
                                 noteObject = medicalNotesJson.getJSONObject(i);
-                                sb.append(noteObject.getString("content") + "\n");
+                                sb.append(noteObject.toString() + "\n");
                             }
                         } catch (JSONException je) {
                             System.out.println("Couldn't extract values from JSON array");

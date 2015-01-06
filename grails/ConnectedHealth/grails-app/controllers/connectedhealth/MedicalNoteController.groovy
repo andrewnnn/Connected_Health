@@ -22,9 +22,11 @@ class MedicalNoteController {
 
         for (int i = 0; i < patientMedicalNotes.size(); i++) {
             JSONObject medicalNote = new JSONObject()
-            medicalNote.append("ID", patientMedicalNotes[i].getId())
-            medicalNote.append("created", patientMedicalNotes[i].getCreated())
-            medicalNote.append("content", patientMedicalNotes[i].getContent())
+            medicalNote.put("ID", patientMedicalNotes[i].getId())
+            System.out.println("ID VALUE: " + patientMedicalNotes[i].getId())
+            System.out.println(medicalNote.toString())
+            medicalNote.put("created", patientMedicalNotes[i].getCreated())
+            medicalNote.put("content", patientMedicalNotes[i].getContent())
             medicalNotesToSend.add(medicalNote)
         }
 
