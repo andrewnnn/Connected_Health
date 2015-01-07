@@ -56,6 +56,8 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
                                 JSONObject currentQuestion = questionsJson.getJSONObject(i);
                                 String questionContent = currentQuestion.getString("content");
                                 sb.append(questionContent + "\n");
+                                int answerFormat = currentQuestion.getInt("answerFormat");
+                                sb.append(answerFormat + "\n");
 
                                 // Get content of each choice (if any)
                                 JSONArray choicesJson = currentQuestion.getJSONArray("choices");
