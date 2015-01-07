@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class QuestionnaireViewActivity extends ActionBarActivity {
 
     int questionnaireId = 10;
-    String url = "http://129.127.210.69:9998/ConnectedHealth/questionnaire/get?IDorName=10";
+    String url = "http://129.127.210.69:9999/ConnectedHealth/questionnaire/get?IDorName=10";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

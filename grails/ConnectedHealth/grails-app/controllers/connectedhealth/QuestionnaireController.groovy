@@ -20,7 +20,7 @@ class QuestionnaireController {
         try {
             questionnaireId = Integer.parseInt(params.IDorName)
         } catch (NumberFormatException e) {
-            if ((questionnaireId = Questionnaire.findByName(params.IDorName)) == null) {
+            if ((Questionnaire.findByName(params.IDorName)) == null) {
                 render "Questionnaire ID not found."
                 return
             } else {
