@@ -8,7 +8,7 @@ class QuestionnaireController {
     def scaffold = Questionnaire
 
     // Respond with JSON object containing questionnaire name/id, questions and question choices (if applicable).
-    // {id: int, name: str, questions: [ {id: int, content: str, choices: [ {id: int, content: str}, {id: int, content: str}, ... ] } ] }
+    // {id: int, name: str, questions: [ {id: int, content: str, answerFormat: int, choices: [ {id: int, content: str}, {id: int, content: str}, ... ] } ] }
     def get() {
         if (params.IDorName == null) {
             render "Questionnaire id or name is required"
@@ -44,6 +44,7 @@ class QuestionnaireController {
 
             questionObject.put("id", questions[i].getId())
             questionObject.put("content", questions[i].getContent())
+            questionObject.put("answerFormat", questions[i].getAnswerFormat())
 
             // get all choices for the current question
             Choice[] choices = questions[i].getChoices()
