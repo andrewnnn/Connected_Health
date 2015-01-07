@@ -22,7 +22,7 @@ class UrlMappings {
         "/patient/$patientID/journal/$journalEntryID/remove"(controller:"JournalEntry",action:"remove")
 
         //questions
-        "/questionnaire/$IDorName"(controller:"Questionnaire",action:"get")
+//        "/questionnaire/$IDorName"(controller:"Questionnaire",action:"get")
 
     }
 }
