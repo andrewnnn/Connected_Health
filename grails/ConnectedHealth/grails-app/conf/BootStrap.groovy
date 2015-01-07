@@ -67,6 +67,64 @@ class BootStrap {
         b = new JournalEntry(3, "and many many many many dogs!!!", new Date(), new Date())
         b.save()
 
+        Questionnaire questionnaire1 = new Questionnaire(name: "StandardQuestionnaire")
+        questionnaire1.save()
+
+        Question q1 = new Question(content: "q1", answerFormat: 0, questionnaire: questionnaire1)
+        q1.save()
+        Question q2 = new Question(content: "q2", answerFormat: 1, questionnaire: questionnaire1)
+        q2.save()
+        Question q3 = new Question(content: "q3", answerFormat: 2, questionnaire: questionnaire1)
+        q3.save()
+
+        Choice q1c1 = new Choice(content: "choice1 for q1", question: q1)
+        q1c1.save()
+        Choice q1c2 = new Choice(content: "choice2 for q1", question: q1)
+        q1c2.save()
+        Choice q1c3 = new Choice(content: "choice3 for q1", question: q1)
+        q1c3.save()
+
+        Choice q2c1 = new Choice(content: "choice1 for q2", question: q2)
+        q2c1.save()
+        Choice q2c2 = new Choice(content: "choice2 for q2", question: q2)
+        q2c2.save()
+        Choice q2c3 = new Choice(content: "choice3 for q2", question: q2)
+        q2c3.save()
+
+        Questionnaire questionnaire2 = new Questionnaire(name: "AnotherQuestoinnaire")
+        questionnaire2.save()
+
+        Question q4 = new Question(content: "q4", answerFormat: 1, questionnaire: questionnaire2)
+        q4.save()
+
+        for (int i = 1; i <= 10; i++) {
+            Choice q4choice = new Choice(content: "choice" + i + " for q4", question: q4);
+            q4choice.save();
+        }
+
+        Question q5 = new Question(content: "q5", answerFormat: 0, questionnaire: questionnaire2)
+        q5.save()
+
+        for (int i = 1; i <= 5; i++) {
+            Choice q5choice = new Choice(content: "choice" + i + " for q5", question: q5);
+            q5choice.save();
+        }
+
+        Question q6 = new Question(content: "q6", answerFormat: 0, questionnaire: questionnaire2)
+        q6.save()
+
+        for (int i = 1; i <= 5; i++) {
+            Choice q6choice = new Choice(content: "choice" + i + " for q6", question: q6);
+            q6choice.save();
+        }
+
+        Question q7 = new Question(content: "q7", answerFormat: 0, questionnaire: questionnaire2)
+        q7.save()
+
+        for (int i = 1; i <= 5; i++) {
+            Choice q7choice = new Choice(content: "choice" + i + " for q7", question: q7);
+            q7choice.save();
+        }
 
     }
     def destroy = {
