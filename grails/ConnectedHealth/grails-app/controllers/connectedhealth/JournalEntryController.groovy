@@ -33,4 +33,25 @@ class JournalEntryController {
         render JournalEntryJson.toString()
     }
 
+    def newEntry(){
+        JournalEntry a = new JournalEntry(Integer.parseInt(params.patientID), params.content,new Date(), new Date());
+        a.save();
+        render "Journal Entry Created"
+    }
+
+    def updateEntry(){
+        JournalEntry patientJournalEntry = JournalEntry.findById(params.journalEntryID)
+        patientJournalEntry.setContent(params.content)
+        patientJournalEntry.setUpdated(new Date())
+        patientJournalEntry.save(flush: true)
+        render "Journal Entry Updated"
+    }
+
+    def removeEntry(){
+        JournalEntry patientJournalEntry = JournalEntry.findById(params.journalEntryID)
+        patientJournalEntry.delete(flush: true)
+        render "Journal Entry Deleted"
+    }
+
+
 }

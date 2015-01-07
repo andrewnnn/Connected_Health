@@ -1,3 +1,4 @@
+import connectedhealth.JournalEntry
 import connectedhealth.MedicalNote
 
 class BootStrap {
@@ -36,6 +37,36 @@ class BootStrap {
 
         a = new MedicalNote(3, "good boy", new Date(9999,9,9,9,9,9))
         a.save()
+
+
+        //journal entry
+        JournalEntry b = new JournalEntry(1, "This is my small Journal", new Date(), new Date())
+        b.save()
+
+        b = new JournalEntry(1, "Feeling GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOD today!!!", new Date(), new Date())
+        b.save()
+
+        b = new JournalEntry(1, "Feeling BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD today!!!", new Date(), new Date())
+        b.save()
+
+        b = new JournalEntry(2, "someone gonna kill me tomorrow, I will run away now!!!", new Date(), new Date())
+        b.save()
+
+        b = new JournalEntry(3, "I am a rich man, I have many houses", new Date(), new Date())
+        b.save()
+
+        b = new JournalEntry(3, "and many cars!!!", new Date(), new Date())
+        b.save()
+
+        b = new JournalEntry(3, "and many banks!!!",new Date(), new Date())
+        b.save()
+
+        b = new JournalEntry(3, "and many boats!!!", new Date(), new Date())
+        b.save()
+
+        b = new JournalEntry(3, "and many many many many dogs!!!", new Date(), new Date())
+        b.save()
+
 
     }
     def destroy = {

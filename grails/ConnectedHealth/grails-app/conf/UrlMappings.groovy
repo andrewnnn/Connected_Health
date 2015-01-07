@@ -13,13 +13,15 @@ class UrlMappings {
         //routing
 
         //medical notes
-        "/patient/$patientID/notes"(controller:"MedicalNote",action:"notes")
+        "/patients/$patientID/notes"(controller:"MedicalNote",action:"notes")
 
         //journals
-        "/patient/$patientID/journal"(controller:"JournalEntry",action:"entries")
-        "/patient/$patientID/journal/create"(controller:"JournalEntry",action:"create")
-        "/patient/$patientID/journal/$journalEntryID/update"(controller:"JournalEntry",action:"update")
-        "/patient/$patientID/journal/$journalEntryID/remove"(controller:"JournalEntry",action:"remove")
+        "/patients/$patientID/journal"(controller:"JournalEntry"){
+            action = [GET:"entries", POST:"newEntry"]
+        }
+        "/patients/$patientID/journal/$journalEntryID/update"(controller:"JournalEntry"){
+            action = [PUT:"updateEntry", DELETE:"removeEntry"]
+        }
 
         //questions
 //        "/questionnaire/$IDorName"(controller:"Questionnaire",action:"get")
