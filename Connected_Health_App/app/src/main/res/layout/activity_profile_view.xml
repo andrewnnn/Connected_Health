@@ -1,42 +1,57 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="au.edu.adelaide.connected_health_app.ProfileViewActivity">
+    tools:context="au.edu.adelaide.connected_health_app.ProfileViewActivity"
+    android:orientation="vertical">
 
     <include layout="@layout/quick_menu_bar"
         android:id="@+id/quickMenuBar"/>
 
-    <!--PROFILE VALUES
-    1. first name
-    2. last name
-    3. address
-    4. phone number
-    5. email -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_below="@+id/quickMenuBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:id="@+id/profile_content" />
+        <include layout="@layout/home_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/homeButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:id="@+id/medical_notes"
-        android:text="test"
-        android:layout_below="@+id/profile_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/abc_text_size_large_material"
+            android:id="@+id/medical_notes"
+            android:text="test"
+            android:layout_below="@+id/profile_content"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        android:id="@+id/profile_edit"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="goToProfileEdit" />
+        <!--PROFILE VALUES
+        1. first name
+        2. last name
+        3. address
+        4. phone number
+        5. email -->
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/abc_text_size_large_material"
+            android:id="@+id/profile_content" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:id="@+id/profile_edit"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="goToProfileEdit" />
+
+    </RelativeLayout>
+
+</LinearLayout>
 
 

@@ -61,4 +61,10 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, MeasurementViewActivity.class);
         startActivity(intent);
     }
+
+    /** Called when the user clicks the Home View button */
+    public void goToMainView(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

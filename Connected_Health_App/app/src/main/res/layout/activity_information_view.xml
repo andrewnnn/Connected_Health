@@ -3,37 +3,51 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context="au.edu.adelaide.connected_health_app.InformationViewActivity"
-    android:orientation="horizontal"
-    android:weightSum="4">
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-        <!--android:text="@string/info_title"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:autoText="false"-->
-        <!--android:id="@+id/infoHeading"/>-->
-
-    <!--&lt;!&ndash;Resource links&ndash;&gt;-->
-    <!--<TextView-->
-        <!--android:id="@+id/infoLink"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/infoHeading"-->
-        <!--android:layout_marginTop="20dp"-->
-        <!--android:text="@string/info_link"/>-->
-
-    <!--<WebView xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:id="@+id/webviewYoutubeVid"-->
-        <!--android:layout_below="@+id/infoLink"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--/>-->
+    android:orientation="vertical">
 
     <include layout="@layout/quick_menu_bar"
         android:id="@+id/quickMenuBar"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/home_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/homeButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/info_title"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:autoText="false"
+            android:id="@+id/infoHeading"/>
+
+        <!--Resource links-->
+        <TextView
+            android:id="@+id/infoLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/infoHeading"
+            android:layout_marginTop="20dp"
+            android:text="@string/info_link"/>
+
+        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/webviewYoutubeVid"
+            android:layout_below="@+id/infoLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </RelativeLayout>
+
 </LinearLayout>
+

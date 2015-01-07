@@ -98,4 +98,9 @@ public class InformationViewActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    /** Called when the user clicks the Home View button */
+    public void goToMainView(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

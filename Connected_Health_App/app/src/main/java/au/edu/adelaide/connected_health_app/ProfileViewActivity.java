@@ -145,4 +145,34 @@ public class ProfileViewActivity extends ActionBarActivity {
     public void setFirstName(String first_name) {
         this.first_name = first_name;
     }
+
+    /** Called when the user clicks the Information View button */
+    public void goToInformationView(View view) {
+        Intent intent = new Intent(this, InformationViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Questionnaire View button */
+    public void goToQuestionnaireView(View view) {
+        Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Profile View button */
+    public void goToProfileView(View view) {
+        Intent intent = new Intent(this, ProfileViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Measurement View button */
+    public void goToMeasurementView(View view) {
+        Intent intent = new Intent(this, MeasurementViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Home View button */
+    public void goToMainView(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
