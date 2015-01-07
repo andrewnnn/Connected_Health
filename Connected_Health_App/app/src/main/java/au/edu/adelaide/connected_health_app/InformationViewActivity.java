@@ -1,5 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -12,7 +13,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
-
 public class InformationViewActivity extends ActionBarActivity {
 
     private final String vidUrl = "https://www.google.com";
@@ -23,24 +23,24 @@ public class InformationViewActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_view);
 
-        //Making the info link clickable
-        TextView link = (TextView) findViewById(R.id.infoLink);
-        link.setMovementMethod(LinkMovementMethod.getInstance());
-
-        // Youtube webview
-        browser = (WebView)findViewById(R.id.webviewYoutubeVid);
-        browser.setWebViewClient(new MyBrowser());
-
-        browser.getSettings().setLoadsImagesAutomatically(true);
-        browser.getSettings().setJavaScriptEnabled(true);
-//        browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-//        browser.loadUrl(vidUrl);
-
-        //testing loading html instead of url
-//        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"640\" height=\"385\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
-        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
-
-        browser.loadData(embedVid,"text/html","utf-8");
+//        //Making the info link clickable
+//        TextView link = (TextView) findViewById(R.id.infoLink);
+//        link.setMovementMethod(LinkMovementMethod.getInstance());
+//
+//        // Youtube webview
+//        browser = (WebView)findViewById(R.id.webviewYoutubeVid);
+//        browser.setWebViewClient(new MyBrowser());
+//
+//        browser.getSettings().setLoadsImagesAutomatically(true);
+//        browser.getSettings().setJavaScriptEnabled(true);
+////        browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+////        browser.loadUrl(vidUrl);
+//
+//        //testing loading html instead of url
+////        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"640\" height=\"385\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+//        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+//
+//        browser.loadData(embedVid,"text/html","utf-8");
     }
 
     //embedded browser
@@ -73,4 +73,29 @@ public class InformationViewActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /** Called when the user clicks the Information View button */
+    public void goToInformationView(View view) {
+        Intent intent = new Intent(this, InformationViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Questionnaire View button */
+    public void goToQuestionnaireView(View view) {
+        Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Profile View button */
+    public void goToProfileView(View view) {
+        Intent intent = new Intent(this, ProfileViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Measurement View button */
+    public void goToMeasurementView(View view) {
+        Intent intent = new Intent(this, MeasurementViewActivity.class);
+        startActivity(intent);
+    }
+
 }
