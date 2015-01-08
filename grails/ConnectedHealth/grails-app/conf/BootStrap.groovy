@@ -1,5 +1,8 @@
+import connectedhealth.Choice
 import connectedhealth.JournalEntry
 import connectedhealth.MedicalNote
+import connectedhealth.Question
+import connectedhealth.Questionnaire
 
 class BootStrap {
 
