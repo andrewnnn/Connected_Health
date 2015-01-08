@@ -1,5 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -11,7 +12,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
-
 
 public class InformationViewActivity extends ActionBarActivity {
 
@@ -72,5 +72,36 @@ public class InformationViewActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /** Called when the user clicks the Information View button */
+    public void goToInformationView(View view) {
+        //disabled
+//        Intent intent = new Intent(this, InformationViewActivity.class);
+//        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Questionnaire View button */
+    public void goToQuestionnaireView(View view) {
+        Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Profile View button */
+    public void goToProfileView(View view) {
+        Intent intent = new Intent(this, ProfileViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Measurement View button */
+    public void goToMeasurementView(View view) {
+        Intent intent = new Intent(this, MeasurementViewActivity.class);
+        startActivity(intent);
+    }
+
+    /** Called when the user clicks the Home View button */
+    public void goToMainView(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

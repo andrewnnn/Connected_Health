@@ -1,0 +1,71 @@
+<FrameLayout
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context="au.edu.adelaide.connected_health_app.InformationViewActivity"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Information"
+            android:id="@+id/infoButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@android:color/holo_orange_dark"
+            android:onClick="goToInformationView"
+            android:clickable="true" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Questionnaires"
+            android:id="@+id/questionButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@android:color/holo_blue_dark"
+            android:onClick="goToQuestionnaireView"
+            android:clickable="true" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:id="@+id/profileButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@android:color/holo_red_light"
+            android:onClick="goToProfileView"
+            android:clickable="true" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Measurements"
+            android:id="@+id/measureButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@android:color/holo_green_dark"
+            android:onClick="goToMeasurementView"
+            android:clickable="true" />
+
+    </LinearLayout>
+</FrameLayout>
