@@ -130,6 +130,7 @@ class QuestionnaireControllerSpec extends Specification {
 
             JSONArray questions = questionnaire.getJSONArray("questions")
 
+            // parse each question as a JSON object, and parse their choices as JSON objects
             for (int i = 0; i < questions.length(); i++) {
                 JSONObject q = questions.get(i)
                 JSONArray choices = q.getJSONArray("choices")
@@ -151,6 +152,7 @@ class QuestionnaireControllerSpec extends Specification {
         response.status == 200
         response.text != "Questionnaire ID is required"
 
+        // set of questions that belong to this questionnaire
         HashSet<Question> questionSet = questionnaire1.getQuestions()
         HashSet<Integer> questionIdSet = new HashSet<Integer>()
         Iterator<Question> iq = questionSet.iterator()
@@ -163,12 +165,14 @@ class QuestionnaireControllerSpec extends Specification {
             JSONObject qq = new JSONObject(response.text)
             JSONArray questions = qq.getJSONArray("questions")
 
+            // set of question IDs that belong to the JSON version of this questionnaire
             HashSet<Integer> jsonQuestionIdSet = new HashSet<Integer>()
             for (int i = 0; i < questions.length(); i++) {
                 JSONObject question = questions.get(i)
                 jsonQuestionIdSet.add(new Integer(question.getInt("id")))
             }
 
+            // check that the question IDs are the same
             questionIdSet.contains(jsonQuestionIdSet)
             jsonQuestionIdSet.contains(questionIdSet)
         } catch (JSONException je) {
