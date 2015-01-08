@@ -11,6 +11,7 @@ class MedicalNoteController {
     // (required) patientID = ID of patient to get medical notes for
     def notes() {
         if (params.patientID == null) {
+            response.status = 404
             render "Patient ID is required"
             return
         }
