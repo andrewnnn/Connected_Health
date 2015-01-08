@@ -183,8 +183,9 @@ public class MeasurementViewActivity extends ActionBarActivity {
 
     /** Called when the user clicks the Measurement View button */
     public void goToMeasurementView(View view) {
-        Intent intent = new Intent(this, MeasurementViewActivity.class);
-        startActivity(intent);
+        //already on view disable
+//        Intent intent = new Intent(this, MeasurementViewActivity.class);
+//        startActivity(intent);
     }
 
     /** Called when the user clicks the Home View button */

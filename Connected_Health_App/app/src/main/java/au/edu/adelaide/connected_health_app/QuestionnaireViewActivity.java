@@ -47,8 +47,9 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
 
     /** Called when the user clicks the Questionnaire View button */
     public void goToQuestionnaireView(View view) {
-        Intent intent = new Intent(this, QuestionnaireViewActivity.class);
-        startActivity(intent);
+        //already on view disable
+//        Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+//        startActivity(intent);
     }
 
     /** Called when the user clicks the Profile View button */

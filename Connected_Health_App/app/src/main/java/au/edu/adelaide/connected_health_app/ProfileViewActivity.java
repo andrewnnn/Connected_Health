@@ -160,8 +160,9 @@ public class ProfileViewActivity extends ActionBarActivity {
 
     /** Called when the user clicks the Profile View button */
     public void goToProfileView(View view) {
-        Intent intent = new Intent(this, ProfileViewActivity.class);
-        startActivity(intent);
+        //already on view disable
+//        Intent intent = new Intent(this, ProfileViewActivity.class);
+//        startActivity(intent);
     }
 
     /** Called when the user clicks the Measurement View button */
