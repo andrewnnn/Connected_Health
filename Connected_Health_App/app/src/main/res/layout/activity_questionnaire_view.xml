@@ -166,5 +166,45 @@
             android:layout_below="@+id/questionnaire_title"
             android:layout_centerHorizontal="true" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="4. Do you have difficulty with any of the following activites?"
+            android:id="@+id/q4"
+            android:layout_below="@+id/q3a"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Running 100 metres"
+            android:id="@+id/q4a"
+            android:layout_below="@+id/q4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Walking on rough ground"
+            android:id="@+id/q4b"
+            android:checked="false"
+            android:layout_below="@+id/q4a"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turning your head rapidly"
+            android:id="@+id/q4c"
+            android:checked="false"
+            android:layout_below="@+id/q4b"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 </LinearLayout>

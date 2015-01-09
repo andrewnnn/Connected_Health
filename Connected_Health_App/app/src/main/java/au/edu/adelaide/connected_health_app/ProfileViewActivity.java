@@ -36,6 +36,7 @@ public class ProfileViewActivity extends ActionBarActivity {
     private final int patientID = 1;
     private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
     private final String medicalNotesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/notes";
+    static int viewId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,55 +148,54 @@ public class ProfileViewActivity extends ActionBarActivity {
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest2);
 
-        String[] textArray={"one","two","asdasasdf asdf dsdaa"};
-        int length=textArray.length;
-        RelativeLayout layout = new RelativeLayout(this);
-        RelativeLayout.LayoutParams relativeParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        for(int i=0;i<length;i++){
-            TextView tv=new TextView(getApplicationContext());
-            tv.setText(textArray[i]);
-            relativeParams.addRule(RelativeLayout.BELOW, tv.getId());
-            layout.addView(tv, relativeParams);
-        }
 
-        final String[] staticJournalEntries={"The first journal entry.\nWith two lines.","The second journal entry.","The third journal entry.","The fourth journal entry."};
+        final String[] staticJournalEntries = {"The first journal entry.\nWith two lines.", "The second journal entry.", "The third journal entry.", "The fourth journal entry."};
         final RelativeLayout staticJournalEntriesLayout=(RelativeLayout) findViewById(R.id.staticJournalEntryLayout);
         ArrayList<TextView> staticEntryTextViews = new ArrayList<TextView>();
         ArrayList<Button> staticEntryEditButtons = new ArrayList<Button>();
         ArrayList<Button> staticEntryDeleteButtons = new ArrayList<Button>();
 
+        // for each journal entry, display the entry content in a TextView, with edit and delete Buttons below it
+        // assign a unique ID to each TextView/Button, so they can be arranged in a RelativeLayout
+        Button recentEditButton = null;
         for (int i = 0; i < staticJournalEntries.length; i++) {
-            staticEntryTextViews.add(new TextView(this));
+            TextView currentTextView = new TextView(this);
+            staticEntryTextViews.add(currentTextView);
             RelativeLayout.LayoutParams textViewParams = new RelativeLayout.LayoutParams
                     ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-            textViewParams.leftMargin = 150;
-            textViewParams.topMargin = i*50;
-            staticEntryTextViews.get(i).setLayoutParams(textViewParams);
-            staticEntryTextViews.get(i).setPadding(10, 10, 10, 0);
-            staticEntryTextViews.get(i).setText(staticJournalEntries[i]);
-            staticEntryTextViews.get(i).setTextSize((float) 20);
-            staticJournalEntriesLayout.addView(staticEntryTextViews.get(i));
+            if (i > 0) {    // put entry below the buttons for the previous entry (excluding 1st question)
+                textViewParams.addRule(RelativeLayout.BELOW, recentEditButton.getId());
+            }
+            currentTextView.setId(++viewId);
+            currentTextView.setLayoutParams(textViewParams);
+            currentTextView.setPadding(10, 10, 10, 0);
+            currentTextView.setText(staticJournalEntries[i]);
+            currentTextView.setTextSize((float) 20);
+            staticJournalEntriesLayout.addView(currentTextView);
 
-            staticEntryEditButtons.add(new Button(this));
+            Button currentEditButton = new Button(this);
+            staticEntryEditButtons.add(currentEditButton);
             RelativeLayout.LayoutParams editButtonParams = new RelativeLayout.LayoutParams
                     ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-            editButtonParams.leftMargin = 10;
-            editButtonParams.topMargin = i*50;
-            staticEntryEditButtons.get(i).setLayoutParams(editButtonParams);
-            staticEntryEditButtons.get(i).setText("Edit");
-            staticEntryEditButtons.get(i).setTextSize((float) 20);
-            staticJournalEntriesLayout.addView(staticEntryEditButtons.get(i));
+            editButtonParams.addRule(RelativeLayout.BELOW, currentTextView.getId());
+            currentEditButton.setId(++viewId);
+            currentEditButton.setLayoutParams(editButtonParams);
+            currentEditButton.setText("Edit");
+            currentEditButton.setTextSize((float) 20);
+            staticJournalEntriesLayout.addView(currentEditButton);
+            recentEditButton = currentEditButton;
 
-            staticEntryDeleteButtons.add(new Button(this));
+            Button currentDeleteButton = new Button(this);
+            staticEntryDeleteButtons.add(currentDeleteButton);
             RelativeLayout.LayoutParams deleteButtonParams = new RelativeLayout.LayoutParams
                     ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-            deleteButtonParams.leftMargin = 70;
-            deleteButtonParams.topMargin = i*50;
-            staticEntryDeleteButtons.get(i).setLayoutParams(deleteButtonParams);
-            staticEntryDeleteButtons.get(i).setText("Delete");
-            staticEntryDeleteButtons.get(i).setTextSize((float) 20);
-            staticJournalEntriesLayout.addView(staticEntryDeleteButtons.get(i));
+            deleteButtonParams.addRule(RelativeLayout.BELOW, currentTextView.getId());
+            deleteButtonParams.addRule(RelativeLayout.RIGHT_OF, recentEditButton.getId());
+            currentDeleteButton.setId(++viewId);
+            currentDeleteButton.setLayoutParams(deleteButtonParams);
+            currentDeleteButton.setText("Delete");
+            currentDeleteButton.setTextSize((float) 20);
+            staticJournalEntriesLayout.addView(currentDeleteButton);
         }
 
     }
