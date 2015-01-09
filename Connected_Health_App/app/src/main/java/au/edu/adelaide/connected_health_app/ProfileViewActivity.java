@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -19,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -91,7 +94,7 @@ public class ProfileViewActivity extends ActionBarActivity {
 
                         // Display values
                         TextView medical_notes = (TextView)findViewById(R.id.medical_notes);
-                        medical_notes.setText(sb.toString());
+                        medical_notes.append("\n" + sb.toString());
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -133,7 +136,7 @@ public class ProfileViewActivity extends ActionBarActivity {
 
                         // Display values
                         TextView journal_entries = (TextView)findViewById(R.id.journal_entries);
-                        journal_entries.setText(sb.toString());
+                        journal_entries.append("\n" + sb.toString());
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -143,6 +146,58 @@ public class ProfileViewActivity extends ActionBarActivity {
         });
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest2);
+
+        String[] textArray={"one","two","asdasasdf asdf dsdaa"};
+        int length=textArray.length;
+        RelativeLayout layout = new RelativeLayout(this);
+        RelativeLayout.LayoutParams relativeParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        for(int i=0;i<length;i++){
+            TextView tv=new TextView(getApplicationContext());
+            tv.setText(textArray[i]);
+            relativeParams.addRule(RelativeLayout.BELOW, tv.getId());
+            layout.addView(tv, relativeParams);
+        }
+
+        final String[] staticJournalEntries={"The first journal entry.\nWith two lines.","The second journal entry.","The third journal entry.","The fourth journal entry."};
+        final RelativeLayout staticJournalEntriesLayout=(RelativeLayout) findViewById(R.id.staticJournalEntryLayout);
+        ArrayList<TextView> staticEntryTextViews = new ArrayList<TextView>();
+        ArrayList<Button> staticEntryEditButtons = new ArrayList<Button>();
+        ArrayList<Button> staticEntryDeleteButtons = new ArrayList<Button>();
+
+        for (int i = 0; i < staticJournalEntries.length; i++) {
+            staticEntryTextViews.add(new TextView(this));
+            RelativeLayout.LayoutParams textViewParams = new RelativeLayout.LayoutParams
+                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+            textViewParams.leftMargin = 150;
+            textViewParams.topMargin = i*50;
+            staticEntryTextViews.get(i).setLayoutParams(textViewParams);
+            staticEntryTextViews.get(i).setPadding(10, 10, 10, 0);
+            staticEntryTextViews.get(i).setText(staticJournalEntries[i]);
+            staticEntryTextViews.get(i).setTextSize((float) 20);
+            staticJournalEntriesLayout.addView(staticEntryTextViews.get(i));
+
+            staticEntryEditButtons.add(new Button(this));
+            RelativeLayout.LayoutParams editButtonParams = new RelativeLayout.LayoutParams
+                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+            editButtonParams.leftMargin = 10;
+            editButtonParams.topMargin = i*50;
+            staticEntryEditButtons.get(i).setLayoutParams(editButtonParams);
+            staticEntryEditButtons.get(i).setText("Edit");
+            staticEntryEditButtons.get(i).setTextSize((float) 20);
+            staticJournalEntriesLayout.addView(staticEntryEditButtons.get(i));
+
+            staticEntryDeleteButtons.add(new Button(this));
+            RelativeLayout.LayoutParams deleteButtonParams = new RelativeLayout.LayoutParams
+                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+            deleteButtonParams.leftMargin = 70;
+            deleteButtonParams.topMargin = i*50;
+            staticEntryDeleteButtons.get(i).setLayoutParams(deleteButtonParams);
+            staticEntryDeleteButtons.get(i).setText("Delete");
+            staticEntryDeleteButtons.get(i).setTextSize((float) 20);
+            staticJournalEntriesLayout.addView(staticEntryDeleteButtons.get(i));
+        }
+
     }
 
     @Override
