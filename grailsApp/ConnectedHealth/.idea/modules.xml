@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ConnectedHealth.iml" filepath="$PROJECT_DIR$/ConnectedHealth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConnectedHealth-grailsPlugins.iml" filepath="$PROJECT_DIR$/ConnectedHealth-grailsPlugins.iml" />
     </modules>
   </component>
 </project>
