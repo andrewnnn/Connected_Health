@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,6 +18,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class QuestionnaireViewActivity extends ActionBarActivity {
@@ -84,6 +88,11 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest);
 
+        final String[] staticJournalEntries={"The first journal entry.\nWith two lines.","The second journal entry.","The third journal entry.","The fourth journal entry."};
+        final RelativeLayout staticJournalEntriesLayout=(RelativeLayout) findViewById(R.id.staticJournalEntryLayout);
+        ArrayList<TextView> staticEntryTextViews = new ArrayList<TextView>();
+        ArrayList<Button> staticEntryEditButtons = new ArrayList<Button>();
+        ArrayList<Button> staticEntryDeleteButtons = new ArrayList<Button>();
     }
 
 

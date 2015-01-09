@@ -19,7 +19,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
-            android:id="@+id/textView" />
+            android:id="@+id/textView"
+            android:textIsSelectable="false"
+            android:textColor="#ffffffff" />
 
         <!--Info button-->
         <Button
@@ -55,7 +57,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="46dp"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:textColor="#ffffffff" />
 
         <!--Question button -->
         <Button
@@ -86,7 +89,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="46dp"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:textColor="#ffffffff" />
 
         <!--Profile button-->
         <Button
@@ -117,7 +121,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="46dp"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:textColor="#ffffffff" />
 
         <!--Measurement button-->
         <Button
