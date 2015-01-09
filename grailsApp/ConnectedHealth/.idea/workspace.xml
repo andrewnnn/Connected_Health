@@ -106,10 +106,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WithingsAPITest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="WithingsAPITest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/unit/connectedhealth/WithingsAPITest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="922" selection-end="922" vertical-scroll-proportion="0.57894737" vertical-offset="222" max-vertical-offset="1309">
+            <state line="32" column="0" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0" vertical-offset="222" max-vertical-offset="1309">
               <folding />
             </state>
           </provider>
@@ -133,10 +133,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MedicalNoteControllerSpec.groovy" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MedicalNoteControllerSpec.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/unit/connectedhealth/MedicalNoteControllerSpec.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="6" selection-start="394" selection-end="394" vertical-scroll-proportion="-5.173913" vertical-offset="34" max-vertical-offset="2601">
+            <state line="68" column="0" selection-start="1692" selection-end="1692" vertical-scroll-proportion="0.3313253" vertical-offset="961" max-vertical-offset="2567">
               <folding />
             </state>
           </provider>
@@ -193,8 +193,8 @@
         <option value="$PROJECT_DIR$/test/unit/connectedhealth/OAuthHelperTest.java" />
         <option value="$PROJECT_DIR$/test/unit/connectedhealth/WithingsAPITest.java" />
         <option value="$PROJECT_DIR$/test/unit/connectedhealth/JournalEntryControllerSpec.groovy" />
-        <option value="$PROJECT_DIR$/test/unit/connectedhealth/MedicalNoteControllerSpec.groovy" />
         <option value="$PROJECT_DIR$/test/unit/connectedhealth/QuestionnaireControllerSpec.groovy" />
+        <option value="$PROJECT_DIR$/test/unit/connectedhealth/MedicalNoteControllerSpec.groovy" />
       </list>
     </option>
   </component>
@@ -740,16 +740,16 @@
       <created>1420761527419</created>
       <updated>1420761527419</updated>
       <workItem from="1420761533879" duration="191000" />
-      <workItem from="1420761740273" duration="1132000" />
+      <workItem from="1420761740273" duration="1286000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1323000" />
+    <option name="totallyTimeSpent" value="1477000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -767,7 +767,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32861635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32861635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -986,13 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/connectedhealth/MedicalNoteControllerSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="6" selection-start="394" selection-end="394" vertical-scroll-proportion="-5.173913" vertical-offset="34" max-vertical-offset="2601">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/connectedhealth/OAuthHelperTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="9" selection-start="2719" selection-end="2720" vertical-scroll-proportion="-32.64" vertical-offset="272" max-vertical-offset="2839">
@@ -1016,7 +1009,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/connectedhealth/WithingsAPITest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="922" selection-end="922" vertical-scroll-proportion="0.57894737" vertical-offset="222" max-vertical-offset="1309">
+        <state line="32" column="0" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0" vertical-offset="222" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/unit/connectedhealth/MedicalNoteControllerSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="1692" selection-end="1692" vertical-scroll-proportion="0.3313253" vertical-offset="961" max-vertical-offset="2567">
           <folding />
         </state>
       </provider>

@@ -66,8 +66,6 @@ class MedicalNoteControllerSpec extends Specification {
         response.status == 200
         response.text != "Patient ID is required"
 
-        System.out.println(response.text)
-
         try {
             JSONArray a1 = new JSONArray(response.text)
             JSONArray a2 = new JSONArray(response.text)
