@@ -210,6 +210,12 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/q4c"
+                android:layout_toLeftOf="@+id/homeButton"
+                android:id="@+id/questionnaire_layout"></RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

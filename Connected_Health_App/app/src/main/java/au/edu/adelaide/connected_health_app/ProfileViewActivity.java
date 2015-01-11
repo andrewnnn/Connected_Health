@@ -36,7 +36,7 @@ public class ProfileViewActivity extends ActionBarActivity {
     private final int patientID = 1;
     private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
     private final String medicalNotesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/notes";
-    static int viewId = 1;
+    static int viewId = 1;      // get unique ID for views
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
