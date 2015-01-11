@@ -28,7 +28,7 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
     final int questionnaireId = 10;
     final String url = "http://129.127.210.69:9999/ConnectedHealth/questionnaire/get?IDorName=10";
     final String staticJsonQuestionnaire = "{\"id\":29,\"name\":\"AnotherQuestoinnaire\",\"questions\":[{\"content\":\"q7\",\"id\":53,\"choices\":[{\"content\":\"choice5 for q7\",\"id\":58},{\"content\":\"choice3 for q7\",\"id\":56},{\"content\":\"choice1 for q7\",\"id\":54},{\"content\":\"choice4 for q7\",\"id\":57},{\"content\":\"choice2 for q7\",\"id\":55}],\"answerFormat\":0},{\"content\":\"q4\",\"id\":30,\"choices\":[{\"content\":\"choice2 for q4\",\"id\":32},{\"content\":\"choice10 for q4\",\"id\":40},{\"content\":\"choice7 for q4\",\"id\":37},{\"content\":\"choice6 for q4\",\"id\":36},{\"content\":\"choice4 for q4\",\"id\":34},{\"content\":\"choice3 for q4\",\"id\":33},{\"content\":\"choice9 for q4\",\"id\":39},{\"content\":\"choice1 for q4\",\"id\":31},{\"content\":\"choice8 for q4\",\"id\":38},{\"content\":\"choice5 for q4\",\"id\":35}],\"answerFormat\":1},{\"content\":\"q6\",\"id\":47,\"choices\":[{\"content\":\"choice2 for q6\",\"id\":49},{\"content\":\"choice3 for q6\",\"id\":50},{\"content\":\"choice4 for q6\",\"id\":51},{\"content\":\"choice1 for q6\",\"id\":48},{\"content\":\"choice5 for q6\",\"id\":52}],\"answerFormat\":0},{\"content\":\"q5\",\"id\":41,\"choices\":[{\"content\":\"choice1 for q5\",\"id\":42},{\"content\":\"choice4 for q5\",\"id\":45},{\"content\":\"choice5 for q5\",\"id\":46},{\"content\":\"choice3 for q5\",\"id\":44},{\"content\":\"choice2 for q5\",\"id\":43}],\"answerFormat\":0}]}";
-    final int ANSWER_FORMAT_RADIO_BUTTON = 0;
+    final int ANSWER_FORMAT_RADIOBUTTON = 0;
     final int ANSWER_FORMAT_CHECKBOX = 1;
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;      // get unique ID for views
@@ -94,7 +94,11 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest);
 
-        generateQuestionnaire(staticJsonQuestionnaire);
+        try {
+            generateQuestionnaire(staticJsonQuestionnaire);
+        } catch (JSONException je) {
+            System.out.println("JSON parsing for questionnaire failed.");
+        }
     }
 
 
@@ -151,114 +155,109 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    private void generateQuestionnaire(String jsonString) {
-        try {
-            JSONObject questionnaireJson = new JSONObject(jsonString);
-            JSONArray questionsJson = questionnaireJson.getJSONArray("questions");
-            final RelativeLayout questionnaireLayout = (RelativeLayout) findViewById(R.id.questionnaire_layout);
+    private void generateQuestionnaire(String jsonString) throws JSONException {
+        JSONObject questionnaireJson = new JSONObject(jsonString);
+        JSONArray questionsJson = questionnaireJson.getJSONArray("questions");
+        final RelativeLayout questionnaireLayout = (RelativeLayout) findViewById(R.id.questionnaire_layout);
 
-            // for each journal entry, display the entry content in a TextView, with edit and delete Buttons below it
-            // assign a unique ID to each TextView/Button, so they can be arranged in a RelativeLayout
-            CheckBox recentCheckBox = null;
-            RadioButton recentRadioButton = null;
-            EditText recentEditText = null;
-            int recentAnswerFormat = -1;
-            for (int i = 0; i < questionsJson.length(); i++) {
-                TextView currentQuestion = new TextView(this);
-                JSONObject currentQuestionJson = questionsJson.getJSONObject(i);
-                RelativeLayout.LayoutParams questionTextViewParams = new RelativeLayout.LayoutParams
-                        ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-                if (i > 0) {    // put entry below the buttons for the previous entry (excluding 1st question)
-                    int idOfAboveView = -1;
-                    switch (recentAnswerFormat) {
-                        case ANSWER_FORMAT_CHECKBOX:
-                            idOfAboveView = recentCheckBox.getId();
-                            break;
-                        case ANSWER_FORMAT_RADIO_BUTTON:
-                            idOfAboveView = recentRadioButton.getId();
-                            break;
-                        case ANSWER_FORMAT_TEXT:
-                            idOfAboveView = recentEditText.getId();
-                            break;
-                    }
-                    questionTextViewParams.addRule(RelativeLayout.BELOW, idOfAboveView);
-                }
-                currentQuestion.setId(++viewId);
-                currentQuestion.setLayoutParams(questionTextViewParams);
-                currentQuestion.setPadding(10, 10, 10, 0);
-                currentQuestion.setText(currentQuestionJson.getString("content"));
-                currentQuestion.setTextSize((float) 30);
-                questionnaireLayout.addView(currentQuestion);
-
-                JSONArray choicesJson = currentQuestionJson.getJSONArray("choices");
-
-                switch (currentQuestionJson.getInt("answerFormat")) {
+        // for each journal entry, display the entry content in a TextView, with edit and delete Buttons below it
+        // assign a unique ID to each TextView/Button, so they can be arranged in a RelativeLayout
+        CheckBox recentCheckBox = null;
+        RadioButton recentRadioButton = null;
+        EditText recentEditText = null;
+        int recentAnswerFormat = -1;
+        for (int i = 0; i < questionsJson.length(); i++) {
+            TextView currentQuestion = new TextView(this);
+            JSONObject currentQuestionJson = questionsJson.getJSONObject(i);
+            RelativeLayout.LayoutParams questionTextViewParams = new RelativeLayout.LayoutParams
+                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+            if (i > 0) {    // put entry below the buttons for the previous entry (excluding 1st question)
+                int idOfAboveView = -1;
+                switch (recentAnswerFormat) {
                     case ANSWER_FORMAT_CHECKBOX:
-                        for (int j = 0; j < choicesJson.length(); j++) {
-                            JSONObject currentChoiceJson = choicesJson.getJSONObject(i);
-                            CheckBox currentCheckBox = new CheckBox(this);
-                            RelativeLayout.LayoutParams checkBoxParams = new RelativeLayout.LayoutParams
-                                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-                            if (j == 0) {       // put first option below question
-                                checkBoxParams.addRule(RelativeLayout.BELOW, currentQuestion.getId());
-                            } else {
-                                checkBoxParams.addRule(RelativeLayout.BELOW, recentCheckBox.getId());
-                            }
-                            currentCheckBox.setId(++viewId);
-                            currentCheckBox.setLayoutParams(checkBoxParams);
-                            currentCheckBox.setPadding(10, 10, 10, 0);
-                            currentCheckBox.setText(currentChoiceJson.getString("content"));
-                            currentCheckBox.setTextSize((float) 20);
-                            questionnaireLayout.addView(currentCheckBox);
-                            recentCheckBox = currentCheckBox;
-                        }
-
-                        recentAnswerFormat = ANSWER_FORMAT_CHECKBOX;
+                        idOfAboveView = recentCheckBox.getId();
                         break;
-
-                    case ANSWER_FORMAT_RADIO_BUTTON:
-                        for (int j = 0; j < choicesJson.length(); j++) {
-                            JSONObject currentChoiceJson = choicesJson.getJSONObject(i);
-                            RadioButton currentRadioButton = new RadioButton(this);
-                            RelativeLayout.LayoutParams radioButtonParams = new RelativeLayout.LayoutParams
-                                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-                            if (j == 0) {       // put first option below question
-                                radioButtonParams.addRule(RelativeLayout.BELOW, currentQuestion.getId());
-                            } else {
-                                radioButtonParams.addRule(RelativeLayout.BELOW, recentRadioButton.getId());
-                            }
-                            currentRadioButton.setId(++viewId);
-                            currentRadioButton.setLayoutParams(radioButtonParams);
-                            currentRadioButton.setPadding(10, 10, 10, 0);
-                            currentRadioButton.setText(currentChoiceJson.getString("content"));
-                            currentRadioButton.setTextSize((float) 20);
-                            questionnaireLayout.addView(currentRadioButton);
-                            recentRadioButton = currentRadioButton;
-                        }
-
-                        recentAnswerFormat = ANSWER_FORMAT_RADIO_BUTTON;
+                    case ANSWER_FORMAT_RADIOBUTTON:
+                        idOfAboveView = recentRadioButton.getId();
                         break;
-
                     case ANSWER_FORMAT_TEXT:
-                        EditText currentEditText = new EditText(this);
-                        RelativeLayout.LayoutParams editTextParams = new RelativeLayout.LayoutParams
-                                ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-                        editTextParams.addRule(RelativeLayout.BELOW, currentQuestion.getId());
-                        currentEditText.setId(++viewId);
-                        currentEditText.setLayoutParams(editTextParams);
-                        currentEditText.setPadding(10, 10, 10, 0);
-                        currentEditText.setTextSize((float) 20);
-                        questionnaireLayout.addView(currentEditText);
-                        recentEditText = currentEditText;
-
-                        recentAnswerFormat = ANSWER_FORMAT_TEXT;
+                        idOfAboveView = recentEditText.getId();
                         break;
                 }
+                questionTextViewParams.addRule(RelativeLayout.BELOW, idOfAboveView);
+            }
+            currentQuestion.setId(++viewId);
+            currentQuestion.setLayoutParams(questionTextViewParams);
+            currentQuestion.setPadding(10, 10, 10, 0);
+            currentQuestion.setText(currentQuestionJson.getString("content"));
+            currentQuestion.setTextSize((float) 30);
+            questionnaireLayout.addView(currentQuestion);
 
+            JSONArray choicesJson = currentQuestionJson.getJSONArray("choices");
+
+            switch (currentQuestionJson.getInt("answerFormat")) {
+                case ANSWER_FORMAT_CHECKBOX:
+                    for (int j = 0; j < choicesJson.length(); j++) {
+                        JSONObject currentChoiceJson = choicesJson.getJSONObject(i);
+                        CheckBox currentCheckBox = new CheckBox(this);
+                        RelativeLayout.LayoutParams checkBoxParams = new RelativeLayout.LayoutParams
+                                ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        if (j == 0) {       // put first option below question
+                            checkBoxParams.addRule(RelativeLayout.BELOW, currentQuestion.getId());
+                        } else {
+                            checkBoxParams.addRule(RelativeLayout.BELOW, recentCheckBox.getId());
+                        }
+                        currentCheckBox.setId(++viewId);
+                        currentCheckBox.setLayoutParams(checkBoxParams);
+                        currentCheckBox.setPadding(10, 10, 10, 0);
+                        currentCheckBox.setText(currentChoiceJson.getString("content"));
+                        currentCheckBox.setTextSize((float) 20);
+                        questionnaireLayout.addView(currentCheckBox);
+                        recentCheckBox = currentCheckBox;
+                    }
+
+                    recentAnswerFormat = ANSWER_FORMAT_CHECKBOX;
+                    break;
+
+                case ANSWER_FORMAT_RADIOBUTTON:
+                    for (int j = 0; j < choicesJson.length(); j++) {
+                        JSONObject currentChoiceJson = choicesJson.getJSONObject(i);
+                        RadioButton currentRadioButton = new RadioButton(this);
+                        RelativeLayout.LayoutParams radioButtonParams = new RelativeLayout.LayoutParams
+                                ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        if (j == 0) {       // put first option below question
+                            radioButtonParams.addRule(RelativeLayout.BELOW, currentQuestion.getId());
+                        } else {
+                            radioButtonParams.addRule(RelativeLayout.BELOW, recentRadioButton.getId());
+                        }
+                        currentRadioButton.setId(++viewId);
+                        currentRadioButton.setLayoutParams(radioButtonParams);
+                        currentRadioButton.setPadding(10, 10, 10, 0);
+                        currentRadioButton.setText(currentChoiceJson.getString("content"));
+                        currentRadioButton.setTextSize((float) 20);
+                        questionnaireLayout.addView(currentRadioButton);
+                        recentRadioButton = currentRadioButton;
+                    }
+
+                    recentAnswerFormat = ANSWER_FORMAT_RADIOBUTTON;
+                    break;
+
+                case ANSWER_FORMAT_TEXT:
+                    EditText currentEditText = new EditText(this);
+                    RelativeLayout.LayoutParams editTextParams = new RelativeLayout.LayoutParams
+                            ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    editTextParams.addRule(RelativeLayout.BELOW, currentQuestion.getId());
+                    currentEditText.setId(++viewId);
+                    currentEditText.setLayoutParams(editTextParams);
+                    currentEditText.setPadding(10, 10, 10, 0);
+                    currentEditText.setTextSize((float) 20);
+                    questionnaireLayout.addView(currentEditText);
+                    recentEditText = currentEditText;
+
+                    recentAnswerFormat = ANSWER_FORMAT_TEXT;
+                    break;
             }
 
-        } catch (JSONException je) {
-            System.out.println("JSON parse to Android form failed.");
         }
     }
 }
