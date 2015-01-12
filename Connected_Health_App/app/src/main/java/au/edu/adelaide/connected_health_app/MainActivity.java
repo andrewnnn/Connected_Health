@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Toast;
+
+import org.json.JSONException;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -13,6 +16,20 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Show value stored by private constructor
+        Toast.makeText(getApplicationContext(), PatientSingleton.getInstance().getString(), Toast.LENGTH_LONG).show();
+
+        //Change singleton value
+        PatientSingleton.getInstance().setString("SETTING A NEW STRING");
+
+        // Set static data in patient singleton
+        try {
+            PatientSingleton.getInstance().setJournalEntries("[{\"content\":\"I am a rich man, I have many houses\",\"updated\":\"2015-01-09 15:45:12.177\",\"created\":\"2015-01-09 15:45:12.177\",\"ID\":14},{\"content\":\"and many cars!!!\",\"updated\":\"2015-01-09 15:45:12.178\",\"created\":\"2015-01-09 15:45:12.178\",\"ID\":15},{\"content\":\"and many banks!!!\",\"updated\":\"2015-01-09 15:45:12.181\",\"created\":\"2015-01-09 15:45:12.181\",\"ID\":16},{\"content\":\"and many boats!!!\",\"updated\":\"2015-01-09 15:45:12.183\",\"created\":\"2015-01-09 15:45:12.183\",\"ID\":17},{\"content\":\"and many many many many dogs!!!\",\"updated\":\"2015-01-09 15:45:12.185\",\"created\":\"2015-01-09 15:45:12.185\",\"ID\":18}]");
+            PatientSingleton.getInstance().setMedicalNotes("[{\"content\":\"I am the third note\",\"created\":\"3966-05-03 09:04:05.0\",\"ID\":4},{\"content\":\"Please pay the medical fee\",\"created\":\"5036-01-02 03:35:05.0\",\"ID\":5},{\"content\":\"NO FEE NO LIFE\",\"created\":\"3134-02-12 03:04:05.0\",\"ID\":6},{\"content\":\"FEE! FEE! FEE! FEE! FEE! FEE!\",\"created\":\"9554-02-12 03:04:05.0\",\"ID\":7},{\"content\":\"If you don't pay the fee today, I will ask someone to kill you tomorrow\",\"created\":\"11899-02-12 03:04:05.0\",\"ID\":8},{\"content\":\"good boy\",\"created\":\"11899-10-09 09:09:09.0\",\"ID\":9}]");
+        } catch (JSONException je) {
+            Toast.makeText(getApplicationContext(), "Storing static JSON in patient singleton failed.", Toast.LENGTH_LONG).show();
+        }
     }
 
 

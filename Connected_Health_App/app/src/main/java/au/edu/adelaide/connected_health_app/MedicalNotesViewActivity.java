@@ -61,7 +61,7 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
                         }
 
                         // Display values
-                        TextView medical_notes = (TextView)findViewById(R.id.medical_notes_from_http);
+                        TextView medical_notes = (TextView)findViewById(R.id.textView6);
                         medical_notes.append("\n" + sb.toString());
                     }
                 }, new Response.ErrorListener() {

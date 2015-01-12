@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
 public class ProfilePanelsActivity extends ActionBarActivity {
@@ -14,6 +15,9 @@ public class ProfilePanelsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_panels);
+
+        //Show the string value defined by the private constructor
+        Toast.makeText(getApplicationContext(), PatientSingleton.getInstance().getString(), Toast.LENGTH_LONG).show();
     }
 
 
