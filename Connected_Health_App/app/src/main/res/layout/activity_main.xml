@@ -7,6 +7,7 @@
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="0.25"
+        android:onClick="goToInformationView"
         android:background="@android:color/holo_orange_dark">
 
         <!--Panel label-->
@@ -22,23 +23,6 @@
             android:id="@+id/textView"
             android:textIsSelectable="false"
             android:textColor="#ffffffff" />
-
-        <!--Info button-->
-        <Button
-            android:text="View information >"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:onClick="goToInformationView"
-            android:background="@android:color/white"
-            android:layout_alignParentRight="false"
-            android:layout_alignParentLeft="false"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_alignWithParentIfMissing="false"
-            android:id="@+id/button">
-        </Button>
-
     </RelativeLayout>
 
     <!--Questionnaire panel-->
@@ -46,6 +30,7 @@
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="0.25"
+        android:onClick="goToQuestionnaireView"
         android:background="@android:color/holo_blue_dark">
 
         <!--Panel label-->
@@ -59,18 +44,6 @@
             android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
             android:textColor="#ffffffff" />
-
-        <!--Question button -->
-        <Button
-            android:text="Complete questions >"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:onClick="goToQuestionnaireView"
-            android:background="@android:color/white"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
-        </Button>
     </RelativeLayout>
 
     <!--Profile panel-->
@@ -78,6 +51,7 @@
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="0.25"
+        android:onClick="goToProfileView"
         android:background="@android:color/holo_red_light">
 
         <!--Panel label-->
@@ -91,18 +65,6 @@
             android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
             android:textColor="#ffffffff" />
-
-        <!--Profile button-->
-        <Button
-            android:text="View/edit profile >"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:onClick="goToProfileView"
-            android:background="@android:color/white"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true">
-        </Button>
     </RelativeLayout>
 
     <!--Measurements panel-->
@@ -110,6 +72,7 @@
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="0.25"
+        android:onClick="goToMeasurementView"
         android:background="@android:color/holo_green_light">
 
         <!--Panel label-->
@@ -123,17 +86,5 @@
             android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
             android:textColor="#ffffffff" />
-
-        <!--Measurement button-->
-        <Button
-            android:text="View measurements >"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:onClick="goToMeasurementView"
-            android:background="@android:color/white"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
-        </Button>
     </RelativeLayout>
 </LinearLayout>
