@@ -7,6 +7,7 @@
     tools:context="au.edu.adelaide.connected_health_app.JournalViewActivity">
 
 
+<!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,5 +31,14 @@
         android:layout_marginRight="11dp"
         android:layout_marginEnd="11dp"
         android:id="@+id/staticJournalEntryLayout"></RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/staticJournalEntryLayout"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp"
+        android:id="@+id/journal_select"></LinearLayout>
+-->
+
 
 </RelativeLayout>

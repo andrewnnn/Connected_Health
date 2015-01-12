@@ -80,6 +80,10 @@
             android:name=".MedicalNotesViewActivity"
             android:label="@string/title_activity_medical_notes_view" >
         </activity>
+        <activity
+            android:name=".MedicalNoteSingleViewActivity"
+            android:label="@string/title_activity_medical_note_single_view" >
+        </activity>
     </application>
 
 </manifest>

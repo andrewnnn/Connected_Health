@@ -26,6 +26,7 @@ public class JournalViewActivity extends ActionBarActivity {
 
     private final int patientID = 1;
     private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
+    private final String staticJournalEntriesJson = "[{\"content\":\"I am a rich man, I have many houses\",\"updated\":\"2015-01-09 15:45:12.177\",\"created\":\"2015-01-09 15:45:12.177\",\"ID\":14},{\"content\":\"and many cars!!!\",\"updated\":\"2015-01-09 15:45:12.178\",\"created\":\"2015-01-09 15:45:12.178\",\"ID\":15},{\"content\":\"and many banks!!!\",\"updated\":\"2015-01-09 15:45:12.181\",\"created\":\"2015-01-09 15:45:12.181\",\"ID\":16},{\"content\":\"and many boats!!!\",\"updated\":\"2015-01-09 15:45:12.183\",\"created\":\"2015-01-09 15:45:12.183\",\"ID\":17},{\"content\":\"and many many many many dogs!!!\",\"updated\":\"2015-01-09 15:45:12.185\",\"created\":\"2015-01-09 15:45:12.185\",\"ID\":18}]";
     static int viewId = 1;      // get unique ID for views
 
     @Override
@@ -36,6 +37,7 @@ public class JournalViewActivity extends ActionBarActivity {
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
 
+        /*
         // Request a string JSON response from the Grails app.
         StringRequest stringRequest2 = new StringRequest(Request.Method.GET, journalEntriesUrl,
                 new Response.Listener<String>() {
@@ -128,6 +130,9 @@ public class JournalViewActivity extends ActionBarActivity {
             staticJournalEntriesLayout.addView(currentDeleteButton);
         }
 
+        */
+
+//        final RelativeLayout selectLayout = (RelativeLayout) findViewById(R.id.journal_select);
     }
 
 
