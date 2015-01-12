@@ -64,6 +64,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="au.edu.adelaide.connected_health_app.MainActivity" />
         </activity>
+        <activity
+            android:name=".ProfilePanelsActivity"
+            android:label="@string/title_activity_profile_panels" >
+        </activity>
+        <activity
+            android:name=".JournalEntriesActivity"
+            android:label="@string/title_activity_journal_entries" >
+        </activity>
+        <activity
+            android:name=".JournalViewActivity"
+            android:label="@string/title_activity_journal_view" >
+        </activity>
+        <activity
+            android:name=".MedicalNotesViewActivity"
+            android:label="@string/title_activity_medical_notes_view" >
+        </activity>
     </application>
 
 </manifest>
