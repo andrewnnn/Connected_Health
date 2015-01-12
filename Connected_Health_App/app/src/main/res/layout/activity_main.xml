@@ -73,7 +73,7 @@
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="0.25"
-        android:onClick="goToProfileView"
+        android:onClick="goToProfilePanels"
         android:background="@android:color/holo_red_light">
 
         <!--Panel label-->

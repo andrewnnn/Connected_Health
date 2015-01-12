@@ -42,42 +42,6 @@
             android:layout_below="@+id/profile_content"
             android:layout_toRightOf="@+id/profile_content"
             android:layout_toEndOf="@+id/profile_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/medical_notes"
-            android:layout_below="@+id/profile_edit"
-            android:text="Medical Notes"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/journal_entries"
-            android:layout_below="@+id/medical_notes"
-            android:text="Journal Entries"
-            android:textSize="20dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Entry"
-            android:id="@+id/journal_entry_new"
-            android:layout_below="@+id/journal_entries"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/journal_entry_new"
-            android:layout_alignRight="@+id/profile_edit"
-            android:layout_alignEnd="@+id/profile_edit"
-            android:layout_marginRight="11dp"
-            android:layout_marginEnd="11dp"
-            android:id="@+id/staticJournalEntryLayout"></RelativeLayout>
-
     </RelativeLayout>
 
 </LinearLayout>

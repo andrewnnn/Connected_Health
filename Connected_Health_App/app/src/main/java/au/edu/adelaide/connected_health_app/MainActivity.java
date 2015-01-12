@@ -50,9 +50,9 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    /** Called when the user clicks the Profile View button */
-    public void goToProfileView(View view) {
-        Intent intent = new Intent(this, ProfileViewActivity.class);
+    /** Called when the user clicks the Profile Panels button */
+    public void goToProfilePanels(View view) {
+        Intent intent = new Intent(this, ProfilePanelsActivity.class);
         startActivity(intent);
     }
 

@@ -14,11 +14,15 @@
     <string name="info_link"><a href="https://www.mindainc.com.au/">Minda Website</a></string>
 
     <!-- Profile Panel Related -->
-=    <string name="profile_first_name">John</string>
+=                    <string name="profile_first_name">John</string>
     <string name="profile_last_name">Smith</string>
     <string name="profile_address">123 Example St Fakeville</string>
     <string name="profile_number">63428756</string>
     <string name="profile_email">johnsmith@adelaide.com</string>
     <string name="title_activity_profile_edit">ProfileEditActivity</string>
+    <string name="title_activity_profile_panels">ProfilePanelsActivity</string>
+    <string name="title_activity_journal_entries">JournalEntriesActivity</string>
+    <string name="title_activity_journal_view">JournalViewActivity</string>
+    <string name="title_activity_medical_notes_view">MedicalNotesViewActivity</string>
 
 </resources>
