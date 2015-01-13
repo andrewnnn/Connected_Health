@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,7 +15,7 @@ public class SingleItemViewActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_item_view);
+        setContentView(R.layout.generic_single_object_view);
 
         RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
         TextView content = new TextView(this);

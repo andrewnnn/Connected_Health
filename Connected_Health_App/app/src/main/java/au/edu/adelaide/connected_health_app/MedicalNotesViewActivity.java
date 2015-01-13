@@ -34,7 +34,7 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medical_notes_view);
+        setContentView(R.layout.generic_preview_view);
 
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -94,7 +94,7 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
                 previewText.setText(sb.toString());
             }
         } catch (JSONException je) {
-            Toast.makeText(getApplicationContext(), "getting medical notes failed", Toast.LENGTH_LONG).show();
+            System.out.println("getting medical notes failed");
         }
     }
 
