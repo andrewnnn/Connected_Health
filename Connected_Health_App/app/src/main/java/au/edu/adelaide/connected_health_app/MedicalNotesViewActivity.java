@@ -4,7 +4,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,6 +18,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class MedicalNotesViewActivity extends ActionBarActivity {
@@ -61,7 +65,7 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
                         }
 
                         // Display values
-                        TextView medical_notes = (TextView)findViewById(R.id.textView6);
+                        TextView medical_notes = (TextView)findViewById(R.id.preview_text0);
                         medical_notes.append("\n" + sb.toString());
                     }
                 }, new Response.ErrorListener() {
@@ -72,6 +76,23 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         });
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest);
+
+        try {
+            ArrayList<JSONObject> medicalNotes = PatientSingleton.getInstance().getMedicalNotes(0,2);
+            for (int i = 0; i <= 2; i++){
+                JSONObject note = medicalNotes.get(i);
+                StringBuilder sb = new StringBuilder();
+                sb.append(note.getString("created") + "\n");
+                sb.append(note.getString("content"));
+
+                int resID = getResources().getIdentifier("preview_text" + i,
+                        "id", getPackageName());
+                TextView previewText = (TextView) findViewById(resID);
+                previewText.setText(sb.toString());
+            }
+        } catch (JSONException je) {
+            Toast.makeText(getApplicationContext(), "getting medical notes failed", Toast.LENGTH_LONG).show();
+        }
     }
 
 

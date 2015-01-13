@@ -13,9 +13,11 @@ public class PatientSingleton {
 
     private JSONArray jJournalEntries;
     private JSONArray jMedicalNotes;
+    private JSONArray jQuestionnaires;
 
     private PatientSingleton(){
         mString = "Private constructor string";
+        jQuestionnaires = new JSONArray();
     }
 
     public static PatientSingleton getInstance(){
@@ -32,6 +34,10 @@ public class PatientSingleton {
 
     public void setString(String value){
         mString = value;
+    }
+
+    public void addQuestionnaire(String questionnaire) throws JSONException {
+        jQuestionnaires.put(new JSONObject(questionnaire));
     }
 
     public void setJournalEntries(String journalEntries) throws JSONException {

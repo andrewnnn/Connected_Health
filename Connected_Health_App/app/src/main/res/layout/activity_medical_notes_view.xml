@@ -24,54 +24,61 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_red_light">
+                android:background="@android:color/holo_red_light"
+                android:id="@+id/preview0"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Large Text"
-                    android:id="@+id/textView6"
+                    android:id="@+id/preview_text0"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_red_dark">
+                android:background="@android:color/holo_red_light"
+                android:id="@+id/preview1"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Large Text"
-                    android:id="@+id/textView7"
+                    android:id="@+id/preview_text1"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_red_light">
+                android:background="@android:color/holo_red_light"
+                android:id="@+id/preview2"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Large Text"
-                    android:id="@+id/textView8"
+                    android:id="@+id/preview_text2"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp"
+                    android:autoText="false" />
             </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:weightSum="3"
+            android:weightSum="4"
             android:orientation="horizontal"
             android:layout_weight="0.2"
             android:layout_width="match_parent"
@@ -87,7 +94,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="New Button"
+                    android:text="Newer"
                     android:id="@+id/button"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -99,8 +106,19 @@
             <RelativeLayout
                 android:layout_weight="1"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"></RelativeLayout>
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Older"
+                    android:id="@+id/button7"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
