@@ -17,12 +17,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Show value stored by private constructor
-        Toast.makeText(getApplicationContext(), PatientSingleton.getInstance().getString(), Toast.LENGTH_LONG).show();
-
-        //Change singleton value
-        PatientSingleton.getInstance().setString("SETTING A NEW STRING");
-
         // Set static data in patient singleton
         try {
             PatientSingleton ps = PatientSingleton.getInstance();

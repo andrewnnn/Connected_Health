@@ -49,13 +49,13 @@ public class ProfilePanelsActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    /** TODO Called when the user clicks the Profile View button */
+    /** Called when the user clicks the Profile View button */
     public void goToJournalView(View view) {
         Intent intent = new Intent(this, JournalViewActivity.class);
         startActivity(intent);
     }
 
-    /** TODO Called when the user clicks the Profile View button */
+    /** Called when the user clicks the Profile View button */
     public void goToMedicalNotesView(View view) {
         Intent intent = new Intent(this, MedicalNotesViewActivity.class);
         startActivity(intent);

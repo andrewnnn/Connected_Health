@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@android:color/background_light">
+            android:background="@android:color/background_light"
+            android:id="@+id/main_layout">
 
         </RelativeLayout>
 

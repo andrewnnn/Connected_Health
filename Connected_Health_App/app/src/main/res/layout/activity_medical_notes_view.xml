@@ -21,6 +21,7 @@
             android:layout_gravity="center_horizontal">
 
             <RelativeLayout
+                android:onClick="goToSingleItemView"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,6 +40,7 @@
                     android:padding="5dp" />
             </RelativeLayout>
             <RelativeLayout
+                android:onClick="goToSingleItemView"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -57,6 +59,7 @@
                     android:padding="5dp" />
             </RelativeLayout>
             <RelativeLayout
+                android:onClick="goToSingleItemView"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

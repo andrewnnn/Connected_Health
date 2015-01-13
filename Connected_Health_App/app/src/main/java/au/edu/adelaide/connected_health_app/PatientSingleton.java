@@ -15,6 +15,8 @@ public class PatientSingleton {
     private JSONArray jMedicalNotes;
     private JSONArray jQuestionnaires;
 
+    private JSONObject jCurrentObject;
+
     private PatientSingleton(){
         mString = "Private constructor string";
         jQuestionnaires = new JSONArray();
@@ -70,5 +72,13 @@ public class PatientSingleton {
             medicalNotes.add(jMedicalNotes.getJSONObject(i));
         }
         return medicalNotes;
+    }
+
+    public void setCurrentObject(JSONObject object) {
+        jCurrentObject = object;
+    }
+
+    public JSONObject getCurrentObject() {
+        return jCurrentObject;
     }
 }

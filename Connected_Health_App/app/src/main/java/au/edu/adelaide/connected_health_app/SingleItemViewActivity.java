@@ -4,7 +4,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SingleItemViewActivity extends ActionBarActivity {
 
@@ -12,7 +17,26 @@ public class SingleItemViewActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_item_view);
-    }
+
+        RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
+        TextView content = new TextView(this);
+        try {
+            JSONObject object = PatientSingleton.getInstance().getCurrentObject();
+            StringBuilder sb = new StringBuilder();
+            sb.append(object.getString("created"));
+            sb.append("\n" + object.getString("content"));
+            content.setText(sb.toString());
+
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams
+                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+            content.setLayoutParams(params);
+            content.setPadding(10, 10, 10, 0);
+            content.setTextSize((float) 20);
+            main_layout.addView(content);
+        } catch (JSONException je) {
+            System.out.println("Couldn't get current JSON object to display in single item view.");
+        }
+   }
 
 
     @Override

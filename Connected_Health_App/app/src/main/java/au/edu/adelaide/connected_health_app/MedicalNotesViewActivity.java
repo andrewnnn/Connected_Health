@@ -1,9 +1,11 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 public class MedicalNotesViewActivity extends ActionBarActivity {
 
     private final int patientID = 1;
+    private ArrayList<JSONObject> medicalNotes;
 //    private final String medicalNotesUrl = "http://129.127.251.97:8080/ConnectedHealth/patient/" + patientID + "/notes";
     String medicalNotesUrl = "http://129.127.251.97:8080/ConnectedHealth/medicalNote/notes?patientID=1";
 
@@ -78,7 +81,7 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         queue.add(stringRequest);
 
         try {
-            ArrayList<JSONObject> medicalNotes = PatientSingleton.getInstance().getMedicalNotes(0,2);
+            medicalNotes = PatientSingleton.getInstance().getMedicalNotes(0,2);
             for (int i = 0; i <= 2; i++){
                 JSONObject note = medicalNotes.get(i);
                 StringBuilder sb = new StringBuilder();
@@ -116,5 +119,22 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToSingleItemView(View view) {
+        switch(view.getId()) {
+            case R.id.preview0:
+                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(0));
+                break;
+            case R.id.preview1:
+                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(1));
+                break;
+            case R.id.preview2:
+                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(2));
+                break;
+        }
+
+        Intent intent = new Intent(this, SingleItemViewActivity.class);
+        startActivity(intent);
     }
 }
