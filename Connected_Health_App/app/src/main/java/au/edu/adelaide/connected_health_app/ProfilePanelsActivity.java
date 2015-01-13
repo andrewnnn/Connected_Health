@@ -15,9 +15,6 @@ public class ProfilePanelsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_panels);
-
-        //Show the string value defined by the private constructor
-        Toast.makeText(getApplicationContext(), PatientSingleton.getInstance().getString(), Toast.LENGTH_LONG).show();
     }
 
 

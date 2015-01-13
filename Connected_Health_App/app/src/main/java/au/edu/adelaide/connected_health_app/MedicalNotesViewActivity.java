@@ -83,6 +83,9 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         try {
             medicalNotes = PatientSingleton.getInstance().getMedicalNotes(0,2);
             for (int i = 0; i <= 2; i++){
+                if (i >= medicalNotes.size()) {
+                    break;
+                }
                 JSONObject note = medicalNotes.get(i);
                 StringBuilder sb = new StringBuilder();
                 sb.append(note.getString("created") + "\n");

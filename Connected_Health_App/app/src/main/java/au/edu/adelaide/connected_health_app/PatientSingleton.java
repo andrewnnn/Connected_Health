@@ -42,6 +42,21 @@ public class PatientSingleton {
         jQuestionnaires.put(new JSONObject(questionnaire));
     }
 
+    public JSONArray getQuestionnaires() {
+        return jQuestionnaires;
+    }
+
+    public ArrayList<JSONObject> getQuestionnaires(int first, int last) throws JSONException {
+        ArrayList<JSONObject> questionnaires = new ArrayList<JSONObject>();
+        for (int i = 0; i <= last; i++) {
+            if (i >= jQuestionnaires.length()) {
+                break;
+            }
+            questionnaires.add(jQuestionnaires.getJSONObject(i));
+        }
+        return questionnaires;
+    }
+
     public void setJournalEntries(String journalEntries) throws JSONException {
         jJournalEntries = new JSONArray(journalEntries);
     }
@@ -57,6 +72,9 @@ public class PatientSingleton {
     public ArrayList<JSONObject> getJournalEntries(int first, int last) throws JSONException {
         ArrayList<JSONObject> journalEntries = new ArrayList<JSONObject>();
         for (int i = first; i <= last; i++) {
+            if (i >= jJournalEntries.length()) {
+                break;
+            }
             journalEntries.add(jJournalEntries.getJSONObject(i));
         }
         return journalEntries;
@@ -69,6 +87,9 @@ public class PatientSingleton {
     public ArrayList<JSONObject> getMedicalNotes(int first, int last) throws JSONException {
         ArrayList<JSONObject> medicalNotes = new ArrayList<JSONObject>();
         for (int i = first; i <= last; i++) {
+            if (i >= jMedicalNotes.length()) {
+                break;
+            }
             medicalNotes.add(jMedicalNotes.getJSONObject(i));
         }
         return medicalNotes;

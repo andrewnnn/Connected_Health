@@ -21,23 +21,59 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 
 
 public class QuestionnaireViewActivity extends ActionBarActivity {
 
     final int questionnaireId = 10;
     final String url = "http://129.127.210.69:9999/ConnectedHealth/questionnaire/get?IDorName=10";
-    final String staticJsonQuestionnaire = "{\"id\":29,\"name\":\"AnotherQuestoinnaire\",\"questions\":[{\"content\":\"q7\",\"id\":53,\"choices\":[{\"content\":\"choice5 for q7\",\"id\":58},{\"content\":\"choice3 for q7\",\"id\":56},{\"content\":\"choice1 for q7\",\"id\":54},{\"content\":\"choice4 for q7\",\"id\":57},{\"content\":\"choice2 for q7\",\"id\":55}],\"answerFormat\":0},{\"content\":\"q4\",\"id\":30,\"choices\":[{\"content\":\"choice2 for q4\",\"id\":32},{\"content\":\"choice10 for q4\",\"id\":40},{\"content\":\"choice7 for q4\",\"id\":37},{\"content\":\"choice6 for q4\",\"id\":36},{\"content\":\"choice4 for q4\",\"id\":34},{\"content\":\"choice3 for q4\",\"id\":33},{\"content\":\"choice9 for q4\",\"id\":39},{\"content\":\"choice1 for q4\",\"id\":31},{\"content\":\"choice8 for q4\",\"id\":38},{\"content\":\"choice5 for q4\",\"id\":35}],\"answerFormat\":1},{\"content\":\"q6\",\"id\":47,\"choices\":[{\"content\":\"choice2 for q6\",\"id\":49},{\"content\":\"choice3 for q6\",\"id\":50},{\"content\":\"choice4 for q6\",\"id\":51},{\"content\":\"choice1 for q6\",\"id\":48},{\"content\":\"choice5 for q6\",\"id\":52}],\"answerFormat\":0},{\"content\":\"q5\",\"id\":41,\"choices\":[{\"content\":\"choice1 for q5\",\"id\":42},{\"content\":\"choice4 for q5\",\"id\":45},{\"content\":\"choice5 for q5\",\"id\":46},{\"content\":\"choice3 for q5\",\"id\":44},{\"content\":\"choice2 for q5\",\"id\":43}],\"answerFormat\":0}]}";
+    final String staticJsonQuestionnaire = "{\"id\":29,\"name\":\"AnotherQuestionnaire\",\"questions\":[{\"content\":\"q7\",\"id\":53,\"choices\":[{\"content\":\"choice5 for q7\",\"id\":58},{\"content\":\"choice3 for q7\",\"id\":56},{\"content\":\"choice1 for q7\",\"id\":54},{\"content\":\"choice4 for q7\",\"id\":57},{\"content\":\"choice2 for q7\",\"id\":55}],\"answerFormat\":0},{\"content\":\"q4\",\"id\":30,\"choices\":[{\"content\":\"choice2 for q4\",\"id\":32},{\"content\":\"choice10 for q4\",\"id\":40},{\"content\":\"choice7 for q4\",\"id\":37},{\"content\":\"choice6 for q4\",\"id\":36},{\"content\":\"choice4 for q4\",\"id\":34},{\"content\":\"choice3 for q4\",\"id\":33},{\"content\":\"choice9 for q4\",\"id\":39},{\"content\":\"choice1 for q4\",\"id\":31},{\"content\":\"choice8 for q4\",\"id\":38},{\"content\":\"choice5 for q4\",\"id\":35}],\"answerFormat\":1},{\"content\":\"q6\",\"id\":47,\"choices\":[{\"content\":\"choice2 for q6\",\"id\":49},{\"content\":\"choice3 for q6\",\"id\":50},{\"content\":\"choice4 for q6\",\"id\":51},{\"content\":\"choice1 for q6\",\"id\":48},{\"content\":\"choice5 for q6\",\"id\":52}],\"answerFormat\":0},{\"content\":\"q5\",\"id\":41,\"choices\":[{\"content\":\"choice1 for q5\",\"id\":42},{\"content\":\"choice4 for q5\",\"id\":45},{\"content\":\"choice5 for q5\",\"id\":46},{\"content\":\"choice3 for q5\",\"id\":44},{\"content\":\"choice2 for q5\",\"id\":43}],\"answerFormat\":0}]}";
     final int ANSWER_FORMAT_RADIOBUTTON = 0;
     final int ANSWER_FORMAT_CHECKBOX = 1;
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;      // get unique ID for views
+    private ArrayList<JSONObject> questionnaires;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questionnaire_view);
+        setContentView(R.layout.generic_preview_view);
 
+        findViewById(R.id.preview0).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+        findViewById(R.id.preview1).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+        findViewById(R.id.preview2).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+
+        try {
+            questionnaires = PatientSingleton.getInstance().getQuestionnaires(0,2);
+            for (int i = 0; i <= 2; i++){
+                if (i >= questionnaires.size()) {
+                    break;
+                }
+                String name = questionnaires.get(i).getString("name");
+                StringBuilder sb = new StringBuilder();
+                sb.append(name);
+
+                int resID = getResources().getIdentifier("preview_text" + i,
+                        "id", getPackageName());
+                TextView previewText = (TextView) findViewById(resID);
+                previewText.setText(sb.toString());
+            }
+        } catch (JSONException je) {
+            System.out.println("getting questionnaires failed");
+        }
+
+/*
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_questionnaire_view);
+        try {
+            generateQuestionnaire(staticJsonQuestionnaire);
+        } catch (JSONException je) {
+            System.out.println("JSON parsing for questionnaire failed.");
+        }
+*/
+
+/*
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -93,12 +129,7 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
         });
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest);
-
-        try {
-            generateQuestionnaire(staticJsonQuestionnaire);
-        } catch (JSONException je) {
-            System.out.println("JSON parsing for questionnaire failed.");
-        }
+*/
     }
 
 
@@ -151,6 +182,11 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
 
     /** Called when the user clicks the Home View button */
     public void goToMainView(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSingleItemView(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

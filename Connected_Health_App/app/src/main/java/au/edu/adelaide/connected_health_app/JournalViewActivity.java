@@ -40,6 +40,9 @@ public class JournalViewActivity extends ActionBarActivity {
         try {
             journalEntries = PatientSingleton.getInstance().getJournalEntries(0,2);
             for (int i = 0; i <= 2; i++){
+                if (i >= journalEntries.size()) {
+                    break;
+                }
                 JSONObject note = journalEntries.get(i);
                 StringBuilder sb = new StringBuilder();
                 sb.append(note.getString("created") + "\n");
