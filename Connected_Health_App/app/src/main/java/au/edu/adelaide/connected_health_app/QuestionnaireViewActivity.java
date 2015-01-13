@@ -187,7 +187,20 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
     }
 
     public void goToSingleItemView(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        switch(view.getId()) {
+            case R.id.preview0:
+                PatientSingleton.getInstance().setCurrentObject(questionnaires.get(0));
+                break;
+            case R.id.preview1:
+                PatientSingleton.getInstance().setCurrentObject(questionnaires.get(1));
+                break;
+            case R.id.preview2:
+                PatientSingleton.getInstance().setCurrentObject(questionnaires.get(2));
+                break;
+        }
+
+        Intent intent = new Intent(this, QuestionViewActivity.class);
+        intent.putExtra("questionNumber",1);        // start at first question
         startActivity(intent);
     }
 
