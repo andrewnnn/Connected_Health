@@ -33,24 +33,20 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
     final int ANSWER_FORMAT_CHECKBOX = 1;
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;      // get unique ID for views
-    private ArrayList<JSONObject> questionnaires;
+    private ArrayList<JSONObject> questionnairesForPreviews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_preview_view);
 
-        findViewById(R.id.preview0).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-        findViewById(R.id.preview1).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-        findViewById(R.id.preview2).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-
         try {
-            questionnaires = PatientSingleton.getInstance().getQuestionnaires(0,2);
-            for (int i = 0; i <= 2; i++){
-                if (i >= questionnaires.size()) {
-                    break;
-                }
-                String name = questionnaires.get(i).getString("name");
+            questionnairesForPreviews = PatientSingleton.getInstance().getQuestionnaires(0,2);
+            int i;
+
+            // for each preview, set background colour to match home panel and set preview text
+            for (i = 0; i < questionnairesForPreviews.size(); i++){
+                String name = questionnairesForPreviews.get(i).getString("name");
                 StringBuilder sb = new StringBuilder();
                 sb.append(name);
 
@@ -58,6 +54,20 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
                         "id", getPackageName());
                 TextView previewText = (TextView) findViewById(resID);
                 previewText.setText(sb.toString());
+
+                resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+            }
+
+            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
+            for (i = i; i < 3; i++) {       // TODO store # preview panels somewhere
+                int resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setOnClickListener(null);
+                previewLayout.setBackgroundColor(0x00000000);       // transparent background
             }
         } catch (JSONException je) {
             System.out.println("getting questionnaires failed");
@@ -189,13 +199,13 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
     public void goToSingleItemView(View view) {
         switch(view.getId()) {
             case R.id.preview0:
-                PatientSingleton.getInstance().setCurrentObject(questionnaires.get(0));
+                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(0));
                 break;
             case R.id.preview1:
-                PatientSingleton.getInstance().setCurrentObject(questionnaires.get(1));
+                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(1));
                 break;
             case R.id.preview2:
-                PatientSingleton.getInstance().setCurrentObject(questionnaires.get(2));
+                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(2));
                 break;
         }
 
