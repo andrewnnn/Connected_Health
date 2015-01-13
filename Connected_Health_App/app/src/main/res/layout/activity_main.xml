@@ -15,23 +15,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Information \nFor knowledge"
+            android:text="Information"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
-            android:id="@+id/textView"
+            android:id="@+id/informationTitle"
+            android:textColor="#ffffffff"
+            android:textIsSelectable="false"
+            android:textSize="40dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="For knowledge"
+            android:layout_below="@id/informationTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
             android:textIsSelectable="false"
             android:textColor="#ffffffff" />
 
         <!--Panel icon-->
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:id="@+id/imageView"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/info_icon"
+            android:src="@drawable/info_icon_512"
             android:layout_alignParentRight="false"
             android:scaleType="fitXY" />
 
@@ -50,21 +62,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Questionnaires \nDaily activities"
+            android:text="Questionnaires"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
+            android:id="@+id/questionnaireTitle"
+            android:textColor="#ffffffff"
+            android:textIsSelectable="false"
+            android:textSize="40dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Daily activities"
+            android:layout_below="@id/questionnaireTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:textIsSelectable="false"
             android:textColor="#ffffffff" />
 
         <!--Panel icon-->
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:id="@+id/imageView2"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/questionnaire_icon"
+            android:src="@drawable/questionnaire_icon_512"
             android:scaleType="fitXY" />
     </RelativeLayout>
 
@@ -81,21 +107,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Profile \nManage profile"
+            android:text="Profile"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
+            android:id="@+id/profileTitle"
+            android:textColor="#ffffffff"
+            android:textIsSelectable="false"
+            android:textSize="40dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Manage profile"
+            android:layout_below="@id/profileTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:textIsSelectable="false"
             android:textColor="#ffffffff" />
 
         <!--Panel icon-->
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:id="@+id/imageView3"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/profile_icon"
+            android:src="@drawable/profile_icon_512"
             android:scaleType="fitXY" />
     </RelativeLayout>
 
@@ -112,21 +152,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Measurements \nTo manage"
+            android:text="Measurements"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
+            android:id="@+id/measurementsTitle"
+            android:textColor="#ffffffff"
+            android:textIsSelectable="false"
+            android:textSize="40dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="To manage"
+            android:layout_below="@id/measurementsTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:textIsSelectable="false"
             android:textColor="#ffffffff" />
 
         <!--Panel icon-->
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:id="@+id/imageView4"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/measurement_icon"
+            android:src="@drawable/measurement_icon_512"
             android:scaleType="fitXY" />
     </RelativeLayout>
 </LinearLayout>
