@@ -1,10 +1,14 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,17 +21,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class MedicalNotesViewActivity extends ActionBarActivity {
 
     private final int patientID = 1;
+    private ArrayList<JSONObject> medicalNotes;
 //    private final String medicalNotesUrl = "http://129.127.251.97:8080/ConnectedHealth/patient/" + patientID + "/notes";
     String medicalNotesUrl = "http://129.127.251.97:8080/ConnectedHealth/medicalNote/notes?patientID=1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medical_notes_view);
+        setContentView(R.layout.generic_preview_view);
 
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -61,7 +68,7 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
                         }
 
                         // Display values
-                        TextView medical_notes = (TextView)findViewById(R.id.medical_notes_from_http);
+                        TextView medical_notes = (TextView)findViewById(R.id.preview_text0);
                         medical_notes.append("\n" + sb.toString());
                     }
                 }, new Response.ErrorListener() {
@@ -72,6 +79,26 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         });
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest);
+
+        try {
+            medicalNotes = PatientSingleton.getInstance().getMedicalNotes(0,2);
+            for (int i = 0; i <= 2; i++){
+                if (i >= medicalNotes.size()) {
+                    break;
+                }
+                JSONObject note = medicalNotes.get(i);
+                StringBuilder sb = new StringBuilder();
+                sb.append(note.getString("created") + "\n");
+                sb.append(note.getString("content"));
+
+                int resID = getResources().getIdentifier("preview_text" + i,
+                        "id", getPackageName());
+                TextView previewText = (TextView) findViewById(resID);
+                previewText.setText(sb.toString());
+            }
+        } catch (JSONException je) {
+            System.out.println("getting medical notes failed");
+        }
     }
 
 
@@ -95,5 +122,22 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToSingleItemView(View view) {
+        switch(view.getId()) {
+            case R.id.preview0:
+                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(0));
+                break;
+            case R.id.preview1:
+                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(1));
+                break;
+            case R.id.preview2:
+                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(2));
+                break;
+        }
+
+        Intent intent = new Intent(this, SingleItemViewActivity.class);
+        startActivity(intent);
     }
 }

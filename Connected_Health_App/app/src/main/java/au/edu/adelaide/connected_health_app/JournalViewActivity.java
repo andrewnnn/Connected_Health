@@ -1,9 +1,11 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,14 +27,38 @@ import java.util.ArrayList;
 public class JournalViewActivity extends ActionBarActivity {
 
     private final int patientID = 1;
+    private ArrayList<JSONObject> journalEntries;
     private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
+    private final String staticJournalEntriesJson = "[{\"content\":\"I am a rich man, I have many houses\",\"updated\":\"2015-01-09 15:45:12.177\",\"created\":\"2015-01-09 15:45:12.177\",\"ID\":14},{\"content\":\"and many cars!!!\",\"updated\":\"2015-01-09 15:45:12.178\",\"created\":\"2015-01-09 15:45:12.178\",\"ID\":15},{\"content\":\"and many banks!!!\",\"updated\":\"2015-01-09 15:45:12.181\",\"created\":\"2015-01-09 15:45:12.181\",\"ID\":16},{\"content\":\"and many boats!!!\",\"updated\":\"2015-01-09 15:45:12.183\",\"created\":\"2015-01-09 15:45:12.183\",\"ID\":17},{\"content\":\"and many many many many dogs!!!\",\"updated\":\"2015-01-09 15:45:12.185\",\"created\":\"2015-01-09 15:45:12.185\",\"ID\":18}]";
     static int viewId = 1;      // get unique ID for views
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_journal_view);
+        setContentView(R.layout.generic_preview_view);
 
+        try {
+            journalEntries = PatientSingleton.getInstance().getJournalEntries(0,2);
+            for (int i = 0; i <= 2; i++){
+                if (i >= journalEntries.size()) {
+                    break;
+                }
+                JSONObject note = journalEntries.get(i);
+                StringBuilder sb = new StringBuilder();
+                sb.append(note.getString("created") + "\n");
+                sb.append(note.getString("content"));
+
+                int resID = getResources().getIdentifier("preview_text" + i,
+                        "id", getPackageName());
+                TextView previewText = (TextView) findViewById(resID);
+                previewText.setText(sb.toString());
+            }
+        } catch (JSONException je) {
+            System.out.println("getting medical notes failed");
+        }
+
+
+        /*
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -128,6 +154,9 @@ public class JournalViewActivity extends ActionBarActivity {
             staticJournalEntriesLayout.addView(currentDeleteButton);
         }
 
+        */
+
+//        final RelativeLayout selectLayout = (RelativeLayout) findViewById(R.id.journal_select);
     }
 
 
@@ -151,5 +180,22 @@ public class JournalViewActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToSingleItemView(View view) {
+        switch(view.getId()) {
+            case R.id.preview0:
+                PatientSingleton.getInstance().setCurrentObject(journalEntries.get(0));
+                break;
+            case R.id.preview1:
+                PatientSingleton.getInstance().setCurrentObject(journalEntries.get(1));
+                break;
+            case R.id.preview2:
+                PatientSingleton.getInstance().setCurrentObject(journalEntries.get(2));
+                break;
+        }
+
+        Intent intent = new Intent(this, SingleItemViewActivity.class);
+        startActivity(intent);
     }
 }
