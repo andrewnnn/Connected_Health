@@ -200,7 +200,7 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
         }
 
         Intent intent = new Intent(this, QuestionViewActivity.class);
-        intent.putExtra("questionNumber",1);        // start at first question
+        intent.putExtra("questionIndex",0);        // start at first question
         startActivity(intent);
     }
 

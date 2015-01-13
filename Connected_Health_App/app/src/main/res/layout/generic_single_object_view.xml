@@ -39,6 +39,7 @@
                 android:background="#eeeeee" >
 
                 <Button
+                    android:onClick="goToPreviousItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Previous"
@@ -63,6 +64,7 @@
                 android:layout_height="match_parent" >
 
                 <Button
+                    android:onClick="goToNextItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Next"

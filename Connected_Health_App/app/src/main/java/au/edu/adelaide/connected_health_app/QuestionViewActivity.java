@@ -1,9 +1,11 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -21,22 +23,24 @@ public class QuestionViewActivity extends ActionBarActivity {
     final int ANSWER_FORMAT_CHECKBOX = 1;
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;
+    int questionIndex;
+    JSONArray questionsJson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_single_object_view);
 
-        int questionNumber = getIntent().getExtras().getInt("questionNumber");
+        questionIndex = getIntent().getExtras().getInt("questionIndex");
         RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
         TextView questionText = new TextView(this);
 
         try {
             JSONObject questionnaire = PatientSingleton.getInstance().getCurrentObject();
-            JSONArray questions = questionnaire.getJSONArray("questions");
-            JSONObject currentQuestionJson = questions.getJSONObject(questionNumber);
+            questionsJson = questionnaire.getJSONArray("questions");
+            JSONObject currentQuestionJson = questionsJson.getJSONObject(questionIndex);
 
-            if (questionNumber == questions.length() - 1) {
+            if (questionIndex == questionsJson.length() - 1) {
                 // TODO last question, submit answers
             }
 
@@ -136,5 +140,23 @@ public class QuestionViewActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToNextItem(View view) {
+        if (questionIndex == questionsJson.length() - 1) {
+            // TODO submit
+        } else if (questionIndex < questionsJson.length() - 1) {
+            Intent intent = new Intent(this, QuestionViewActivity.class);
+            intent.putExtra("questionIndex", questionIndex + 1);        // get previous question
+            startActivity(intent);
+        }
+    }
+
+    public void goToPreviousItem(View view) {
+        if (questionIndex > 0) {
+            Intent intent = new Intent(this, QuestionViewActivity.class);
+            intent.putExtra("questionIndex", questionIndex - 1);        // get previous question
+            startActivity(intent);
+        }
     }
 }
