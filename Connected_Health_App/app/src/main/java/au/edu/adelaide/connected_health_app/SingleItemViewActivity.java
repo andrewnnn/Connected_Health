@@ -67,7 +67,6 @@ public class SingleItemViewActivity extends ActionBarActivity {
     }
 
     public void goToNextItem(View view) throws JSONException {
-        System.out.println("CURRENT INDEX " + itemIndex);
         PatientSingleton ps = PatientSingleton.getInstance();
         JSONArray currentArray = ps.getCurrentArray();
         if (itemIndex < currentArray.length() - 1) {

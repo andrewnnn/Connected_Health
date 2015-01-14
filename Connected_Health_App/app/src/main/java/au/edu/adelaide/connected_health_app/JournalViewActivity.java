@@ -30,6 +30,8 @@ public class JournalViewActivity extends ActionBarActivity {
     private ArrayList<JSONObject> journalEntriesForPreviews;
     private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
     private final String staticJournalEntriesJson = "[{\"content\":\"I am a rich man, I have many houses\",\"updated\":\"2015-01-09 15:45:12.177\",\"created\":\"2015-01-09 15:45:12.177\",\"ID\":14},{\"content\":\"and many cars!!!\",\"updated\":\"2015-01-09 15:45:12.178\",\"created\":\"2015-01-09 15:45:12.178\",\"ID\":15},{\"content\":\"and many banks!!!\",\"updated\":\"2015-01-09 15:45:12.181\",\"created\":\"2015-01-09 15:45:12.181\",\"ID\":16},{\"content\":\"and many boats!!!\",\"updated\":\"2015-01-09 15:45:12.183\",\"created\":\"2015-01-09 15:45:12.183\",\"ID\":17},{\"content\":\"and many many many many dogs!!!\",\"updated\":\"2015-01-09 15:45:12.185\",\"created\":\"2015-01-09 15:45:12.185\",\"ID\":18}]";
+    private int pageNumber = -1;
+    private final int textPreviewsPerPage = HelperSingleton.getInstance().getTextPreviewsPerPage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,28 +39,29 @@ public class JournalViewActivity extends ActionBarActivity {
         setContentView(R.layout.generic_preview_view);
 
         try {
-            journalEntriesForPreviews = PatientSingleton.getInstance().getJournalEntries(0,2);
+            if (getIntent().hasExtra("pageNumber")) {
+                pageNumber = getIntent().getExtras().getInt("pageNumber");
+                journalEntriesForPreviews = PatientSingleton.getInstance().getJournalEntries(pageNumber*textPreviewsPerPage,pageNumber*textPreviewsPerPage + 2);
+            } else {
+                journalEntriesForPreviews = PatientSingleton.getInstance().getJournalEntries(0,2);
+                pageNumber = 0;
+            }
             int i;
 
             // for each preview, set background colour to match home panel and set preview text
             for (i = 0; i < journalEntriesForPreviews.size(); i++){
                 String created = journalEntriesForPreviews.get(i).getString("created");
                 String content = journalEntriesForPreviews.get(i).getString("content");
-                StringBuilder sb = new StringBuilder();
-                sb.append(created + "\n\n" + content);
+                String preview = created + "\n\n" + content;
 
                 int resID = getResources().getIdentifier("preview_text" + i,
                         "id", getPackageName());
                 TextView previewText = (TextView) findViewById(resID);
-                previewText.setText(sb.toString());
-
-                resID = getResources().getIdentifier("preview" + i,
-                        "id", getPackageName());
-                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewText.setText(preview);
             }
 
             // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
-            for (i = i; i < 3; i++) {       // TODO store # preview panels somewhere
+            for (; i < textPreviewsPerPage; i++) {
                 int resID = getResources().getIdentifier("preview" + i,
                         "id", getPackageName());
                 RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
@@ -66,7 +69,7 @@ public class JournalViewActivity extends ActionBarActivity {
                 previewLayout.setBackgroundColor(0x00000000);       // transparent background
             }
         } catch (JSONException je) {
-            System.out.println("getting journal entrues failed");
+            System.out.println("getting journal entries failed");
         }
 
         /*
@@ -211,8 +214,26 @@ public class JournalViewActivity extends ActionBarActivity {
         }
 
         Intent intent = new Intent(this, SingleItemViewActivity.class);
-        intent.putExtra("itemIndex",0 + itemPageOffset);     // TODO use page instead of 0
+        intent.putExtra("itemIndex",pageNumber*textPreviewsPerPage + itemPageOffset);
+        System.out.println("PAGENUMBER: " + pageNumber);
+        System.out.println("ITEMPAGEOFFSET: " + itemPageOffset);
         startActivity(intent);
+    }
+
+    public void goToPreviousPage(View view) {
+        if (pageNumber > 0) {
+            Intent intent = new Intent(this, JournalViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber - 1);
+            startActivity(intent);
+        }
+    }
+
+    public void goToNextPage(View view) {
+        if ((pageNumber+1)*textPreviewsPerPage <= PatientSingleton.getInstance().getJournalEntries().length() - 1) {
+            Intent intent = new Intent(this, JournalViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber + 1);
+            startActivity(intent);
+        }
     }
 
 }

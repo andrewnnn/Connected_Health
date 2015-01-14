@@ -97,6 +97,7 @@
                 android:background="#eeeeee">
 
                 <Button
+                    android:onClick="goToPreviousPage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Newer"
@@ -118,6 +119,7 @@
                 android:layout_height="match_parent">
 
                 <Button
+                    android:onClick="goToNextPage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Older"
