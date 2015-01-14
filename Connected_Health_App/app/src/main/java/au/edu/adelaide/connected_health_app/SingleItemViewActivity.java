@@ -9,15 +9,19 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SingleItemViewActivity extends ActionBarActivity {
 
+    int itemIndex = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_single_object_view);
+        itemIndex = getIntent().getExtras().getInt("itemIndex");
 
         RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
         TextView content = new TextView(this);
@@ -61,4 +65,27 @@ public class SingleItemViewActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void goToNextItem(View view) throws JSONException {
+        PatientSingleton ps = PatientSingleton.getInstance();
+        JSONArray currentArray = ps.getCurrentArray();
+        if (itemIndex < currentArray.length() - 1) {
+            Intent intent = new Intent(this, SingleItemViewActivity.class);
+            intent.putExtra("itemIndex", itemIndex + 1);
+            ps.setCurrentObject(currentArray.getJSONObject(itemIndex));
+            startActivity(intent);
+        }
+    }
+
+    public void goToPreviousItem(View view) throws JSONException {
+        PatientSingleton ps = PatientSingleton.getInstance();
+        JSONArray currentArray = ps.getCurrentArray();
+        if (itemIndex > 0) {
+            Intent intent = new Intent(this, SingleItemViewActivity.class);
+            intent.putExtra("itemIndex", itemIndex - 1);
+            ps.setCurrentObject(currentArray.getJSONObject(itemIndex));
+            startActivity(intent);
+        }
+    }
+
 }

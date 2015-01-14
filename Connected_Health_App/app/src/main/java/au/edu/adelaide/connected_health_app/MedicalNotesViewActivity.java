@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class MedicalNotesViewActivity extends ActionBarActivity {
 
     private final int patientID = 1;
-    private ArrayList<JSONObject> medicalNotes;
+    private ArrayList<JSONObject> medicalNotesForPreviews;
 //    private final String medicalNotesUrl = "http://129.127.251.97:8080/ConnectedHealth/patient/" + patientID + "/notes";
     String medicalNotesUrl = "http://129.127.251.97:8080/ConnectedHealth/medicalNote/notes?patientID=1";
 
@@ -81,21 +81,38 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         queue.add(stringRequest);
 
         try {
-            medicalNotes = PatientSingleton.getInstance().getMedicalNotes(0,2);
-            for (int i = 0; i <= medicalNotes.size(); i++){
-                JSONObject note = medicalNotes.get(i);
+            medicalNotesForPreviews = PatientSingleton.getInstance().getMedicalNotes(0,2);
+            int i;
+
+            // for each preview, set background colour to match home panel and set preview text
+            for (i = 0; i < medicalNotesForPreviews.size(); i++){
+                String created = medicalNotesForPreviews.get(i).getString("created");
+                String content = medicalNotesForPreviews.get(i).getString("content");
                 StringBuilder sb = new StringBuilder();
-                sb.append(note.getString("created") + "\n");
-                sb.append(note.getString("content"));
+                sb.append(created + "\n\n" + content);
 
                 int resID = getResources().getIdentifier("preview_text" + i,
                         "id", getPackageName());
                 TextView previewText = (TextView) findViewById(resID);
                 previewText.setText(sb.toString());
+
+                resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+            }
+
+            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
+            for (i = i; i < 3; i++) {       // TODO store # preview panels somewhere
+                int resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setOnClickListener(null);
+                previewLayout.setBackgroundColor(0x00000000);       // transparent background
             }
         } catch (JSONException je) {
             System.out.println("getting medical notes failed");
         }
+
     }
 
 
@@ -122,19 +139,24 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
     }
 
     public void goToSingleItemView(View view) {
+        int itemIndex = -1;
         switch(view.getId()) {
             case R.id.preview0:
-                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(0));
+                PatientSingleton.getInstance().setCurrentObject(medicalNotesForPreviews.get(0));
+                itemIndex = 0;
                 break;
             case R.id.preview1:
-                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(1));
+                PatientSingleton.getInstance().setCurrentObject(medicalNotesForPreviews.get(1));
+                itemIndex = 1;
                 break;
             case R.id.preview2:
-                PatientSingleton.getInstance().setCurrentObject(medicalNotes.get(2));
+                PatientSingleton.getInstance().setCurrentObject(medicalNotesForPreviews.get(2));
+                itemIndex = 2;
                 break;
         }
 
         Intent intent = new Intent(this, SingleItemViewActivity.class);
+        intent.putExtra("itemIndex",0 + itemIndex);     // TODO use page instead of 0
         startActivity(intent);
     }
 }
