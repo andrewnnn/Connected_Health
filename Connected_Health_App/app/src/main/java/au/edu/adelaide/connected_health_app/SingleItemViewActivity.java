@@ -67,11 +67,13 @@ public class SingleItemViewActivity extends ActionBarActivity {
     }
 
     public void goToNextItem(View view) throws JSONException {
+        System.out.println("CURRENT INDEX " + itemIndex);
         PatientSingleton ps = PatientSingleton.getInstance();
         JSONArray currentArray = ps.getCurrentArray();
         if (itemIndex < currentArray.length() - 1) {
             Intent intent = new Intent(this, SingleItemViewActivity.class);
-            intent.putExtra("itemIndex", itemIndex + 1);
+            itemIndex++;
+            intent.putExtra("itemIndex", itemIndex);
             ps.setCurrentObject(currentArray.getJSONObject(itemIndex));
             startActivity(intent);
         }
@@ -82,7 +84,8 @@ public class SingleItemViewActivity extends ActionBarActivity {
         JSONArray currentArray = ps.getCurrentArray();
         if (itemIndex > 0) {
             Intent intent = new Intent(this, SingleItemViewActivity.class);
-            intent.putExtra("itemIndex", itemIndex - 1);
+            itemIndex--;
+            intent.putExtra("itemIndex", itemIndex);
             ps.setCurrentObject(currentArray.getJSONObject(itemIndex));
             startActivity(intent);
         }
