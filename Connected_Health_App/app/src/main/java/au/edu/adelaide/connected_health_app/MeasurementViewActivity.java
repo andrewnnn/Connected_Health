@@ -107,14 +107,14 @@ public class MeasurementViewActivity extends ActionBarActivity {
                 break;
         }
 
-        Intent intent = new Intent(this, MeasurementStepsViewActivity.class);       // TODO make this variable based on jCurrentObject... map each name to a class in HelperSingleton?
+        Intent intent = new Intent(this, HelperSingleton.getInstance().getMeasurementTypeClass());
         intent.putExtra("itemIndex",pageNumber*textPreviewsPerPage + itemPageOffset);
         startActivity(intent);
     }
 
     public void goToPreviousPage(View view) {
         if (pageNumber > 0) {
-            Intent intent = new Intent(this, JournalViewActivity.class);
+            Intent intent = new Intent(this, MeasurementViewActivity.class);
             intent.putExtra("pageNumber", pageNumber - 1);
             startActivity(intent);
         }
@@ -122,7 +122,7 @@ public class MeasurementViewActivity extends ActionBarActivity {
 
     public void goToNextPage(View view) {
         if ((pageNumber+1)*textPreviewsPerPage <= PatientSingleton.getInstance().getJournalEntries().length() - 1) {
-            Intent intent = new Intent(this, JournalViewActivity.class);
+            Intent intent = new Intent(this, MeasurementViewActivity.class);
             intent.putExtra("pageNumber", pageNumber + 1);
             startActivity(intent);
         }

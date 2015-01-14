@@ -10,6 +10,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class PatientSingleton {
     private static PatientSingleton mInstance = null;
 
+    private ItemType mItemType;
     private String mString;
 
     private JSONArray jJournalEntries;
@@ -21,8 +22,8 @@ public class PatientSingleton {
     private JSONObject jCurrentObject;
 
     private PatientSingleton(){
-        mString = "Private constructor string";
         jQuestionnaires = new JSONArray();
+        mItemType = ItemType.defaultItemType;
     }
 
     public static PatientSingleton getInstance(){
@@ -33,12 +34,12 @@ public class PatientSingleton {
         return mInstance;
     }
 
-    public String getString(){
-        return this.mString;
-    }
-
-    public void setString(String value){
-        mString = value;
+    public enum ItemType {
+        defaultItemType,
+        journalEntry,
+        measurement,
+        medicalNote,
+        questionnaire
     }
 
     public void addQuestionnaire(String questionnaire) throws JSONException {
@@ -128,6 +129,14 @@ public class PatientSingleton {
 
     public JSONObject getCurrentObject() {
         return jCurrentObject;
+    }
+
+    public void setCurrentItemType(ItemType type) {
+        mItemType = type;
+    }
+
+    public ItemType getCurrentItemType() {
+        return mItemType;
     }
 
     public JSONArray getCurrentArray() {
