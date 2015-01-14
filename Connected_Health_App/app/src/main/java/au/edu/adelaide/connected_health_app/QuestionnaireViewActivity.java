@@ -11,12 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,26 +29,32 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;      // get unique ID for views
     private ArrayList<JSONObject> questionnairesForPreviews;
+    private int pageNumber = -1;
+    private final int textPreviewsPerPage = HelperSingleton.getInstance().getTextPreviewsPerPage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.generic_preview_view);
+        setContentView(R.layout.generic_text_preview_view);
 
         try {
-            questionnairesForPreviews = PatientSingleton.getInstance().getQuestionnaires(0,2);
+            if (getIntent().hasExtra("pageNumber")) {
+                pageNumber = getIntent().getExtras().getInt("pageNumber");
+                questionnairesForPreviews = PatientSingleton.getInstance().getQuestionnaires(pageNumber * textPreviewsPerPage, pageNumber * textPreviewsPerPage + 2);
+            } else {
+                questionnairesForPreviews = PatientSingleton.getInstance().getQuestionnaires(0,2);
+                pageNumber = 0;
+            }
             int i;
 
             // for each preview, set background colour to match home panel and set preview text
             for (i = 0; i < questionnairesForPreviews.size(); i++){
                 String name = questionnairesForPreviews.get(i).getString("name");
-                StringBuilder sb = new StringBuilder();
-                sb.append(name);
 
                 int resID = getResources().getIdentifier("preview_text" + i,
                         "id", getPackageName());
                 TextView previewText = (TextView) findViewById(resID);
-                previewText.setText(sb.toString());
+                previewText.setText(name);
 
                 resID = getResources().getIdentifier("preview" + i,
                         "id", getPackageName());
@@ -62,7 +63,7 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
             }
 
             // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
-            for (i = i; i < 3; i++) {       // TODO store # preview panels somewhere
+            for (; i < textPreviewsPerPage; i++) {
                 int resID = getResources().getIdentifier("preview" + i,
                         "id", getPackageName());
                 RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
@@ -210,8 +211,24 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
         }
 
         Intent intent = new Intent(this, QuestionViewActivity.class);
-        intent.putExtra("questionIndex",0);        // start at first question
+        intent.putExtra("questionIndex",0);
         startActivity(intent);
+    }
+
+    public void goToPreviousPage(View view) {
+        if (pageNumber > 0) {
+            Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber - 1);
+            startActivity(intent);
+        }
+    }
+
+    public void goToNextPage(View view) {
+        if ((pageNumber+1)*textPreviewsPerPage <= PatientSingleton.getInstance().getQuestionnaires().length() - 1) {
+            Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber + 1);
+            startActivity(intent);
+        }
     }
 
     private void generateQuestionnaire(String jsonString) throws JSONException {

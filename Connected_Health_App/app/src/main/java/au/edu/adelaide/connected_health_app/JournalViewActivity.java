@@ -6,18 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,7 +27,7 @@ public class JournalViewActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.generic_preview_view);
+        setContentView(R.layout.generic_text_preview_view);
 
         try {
             if (getIntent().hasExtra("pageNumber")) {
@@ -215,8 +206,6 @@ public class JournalViewActivity extends ActionBarActivity {
 
         Intent intent = new Intent(this, SingleItemViewActivity.class);
         intent.putExtra("itemIndex",pageNumber*textPreviewsPerPage + itemPageOffset);
-        System.out.println("PAGENUMBER: " + pageNumber);
-        System.out.println("ITEMPAGEOFFSET: " + itemPageOffset);
         startActivity(intent);
     }
 

@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,11 +29,13 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
     private ArrayList<JSONObject> medicalNotesForPreviews;
 //    private final String medicalNotesUrl = "http://129.127.251.97:8080/ConnectedHealth/patient/" + patientID + "/notes";
     String medicalNotesUrl = "http://129.127.251.97:8080/ConnectedHealth/medicalNote/notes?patientID=1";
+    private int pageNumber = -1;
+    private final int textPreviewsPerPage = HelperSingleton.getInstance().getTextPreviewsPerPage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.generic_preview_view);
+        setContentView(R.layout.generic_text_preview_view);
 
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -81,28 +82,29 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         queue.add(stringRequest);
 
         try {
-            medicalNotesForPreviews = PatientSingleton.getInstance().getMedicalNotes(0,2);
+            if (getIntent().hasExtra("pageNumber")) {
+                pageNumber = getIntent().getExtras().getInt("pageNumber");
+                medicalNotesForPreviews = PatientSingleton.getInstance().getMedicalNotes(pageNumber * textPreviewsPerPage, pageNumber * textPreviewsPerPage + 2);
+            } else {
+                medicalNotesForPreviews = PatientSingleton.getInstance().getMedicalNotes(0, 2);
+                pageNumber = 0;
+            }
             int i;
 
             // for each preview, set background colour to match home panel and set preview text
             for (i = 0; i < medicalNotesForPreviews.size(); i++){
                 String created = medicalNotesForPreviews.get(i).getString("created");
                 String content = medicalNotesForPreviews.get(i).getString("content");
-                StringBuilder sb = new StringBuilder();
-                sb.append(created + "\n\n" + content);
+                String preview = created + "\n\n" + content;
 
                 int resID = getResources().getIdentifier("preview_text" + i,
                         "id", getPackageName());
                 TextView previewText = (TextView) findViewById(resID);
-                previewText.setText(sb.toString());
-
-                resID = getResources().getIdentifier("preview" + i,
-                        "id", getPackageName());
-                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewText.setText(preview);
             }
 
             // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
-            for (i = i; i < 3; i++) {       // TODO store # preview panels somewhere
+            for (; i < textPreviewsPerPage; i++) {
                 int resID = getResources().getIdentifier("preview" + i,
                         "id", getPackageName());
                 RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
@@ -110,7 +112,7 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
                 previewLayout.setBackgroundColor(0x00000000);       // transparent background
             }
         } catch (JSONException je) {
-            System.out.println("getting medical notes failed");
+            System.out.println("getting med notes failed");
         }
 
     }
@@ -156,7 +158,23 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
         }
 
         Intent intent = new Intent(this, SingleItemViewActivity.class);
-        intent.putExtra("itemIndex",0 + itemPageOffset);     // TODO use page instead of 0
+        intent.putExtra("itemIndex",pageNumber*textPreviewsPerPage + itemPageOffset);
         startActivity(intent);
+    }
+
+    public void goToPreviousPage(View view) {
+        if (pageNumber > 0) {
+            Intent intent = new Intent(this, MedicalNotesViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber - 1);
+            startActivity(intent);
+        }
+    }
+
+    public void goToNextPage(View view) {
+        if ((pageNumber+1)*textPreviewsPerPage <= PatientSingleton.getInstance().getMedicalNotes().length() - 1) {
+            Intent intent = new Intent(this, MedicalNotesViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber + 1);
+            startActivity(intent);
+        }
     }
 }
