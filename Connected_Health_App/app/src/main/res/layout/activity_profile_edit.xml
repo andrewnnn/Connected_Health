@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="au.edu.adelaide.connected_health_app.ProfileEditActivity"
-    android:background="#fff2bbff">
+    android:background="@android:color/holo_red_light">
 
     <!--PROFILE VALUES
     1. first name
@@ -14,29 +14,109 @@
     4. phone number
     5. email -->
 
+    <!--Title-->
     <TextView android:text="Profile Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/abc_text_size_large_material"
-        android:id="@+id/textView2" />
+        android:id="@+id/title" />
 
+    <!--First Name edit-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="First Name: "
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/title"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView3" />
-
+        android:id="@+id/text_first_name" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_first_name"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/text_first_name"
+        android:layout_below="@id/title"
+        android:background="#ffffffff"
+        android:clickable="true"
+        android:editable="true" />
+
+    <!--Last Name edit-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Last Name: "
+        android:layout_below="@+id/text_first_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/text_last_name" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_last_name"
+        android:layout_toRightOf="@+id/text_last_name"
+        android:layout_below="@id/text_first_name"
+        android:background="#ffffffff"
+        android:clickable="true"
+        android:editable="true" />
+
+    <!--Address edit-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Address: "
+        android:layout_below="@+id/text_last_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/text_address" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_address"
+        android:layout_toRightOf="@+id/text_address"
+        android:layout_below="@id/text_last_name"
+        android:background="#ffffffff"
+        android:clickable="true"
+        android:editable="true" />
+
+    <!--Phone edit-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Phone: "
+        android:layout_below="@+id/text_address"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/text_phone" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_phone"
+        android:layout_toRightOf="@+id/text_phone"
+        android:layout_below="@id/text_address"
+        android:background="#ffffffff"
+        android:clickable="true"
+        android:editable="true" />
+
+    <!--Email edit-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Email: "
+        android:layout_below="@+id/text_phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/text_email" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_email"
+        android:layout_toRightOf="@+id/text_email"
+        android:layout_below="@id/text_phone"
         android:background="#ffffffff"
         android:clickable="true"
         android:editable="true" />
@@ -50,6 +130,5 @@
         android:layout_centerHorizontal="true"
         android:nestedScrollingEnabled="false"
         android:onClick="editProfile" />
-
 
 </RelativeLayout>

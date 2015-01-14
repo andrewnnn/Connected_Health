@@ -30,8 +30,9 @@ public class ProfileViewActivity extends ActionBarActivity {
     private String first_name;
     private String last_name;
     private String address;
-    private String number;
+    private String phone;
     private String email;
+    private boolean profileSetUp = false;
 
     private final int patientID = 1;
     private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
@@ -42,14 +43,30 @@ public class ProfileViewActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_view);
-
         setProfileDummy();
 
         //check if updated profile values
         try {
             String newFirstName = getIntent().getExtras().getString("newFirstName");
-            if (newFirstName != null) {
+            String newLastName = getIntent().getExtras().getString("newLastName");
+            String newAddress = getIntent().getExtras().getString("newAddress");
+            String newPhone = getIntent().getExtras().getString("newPhone");
+            String newEmail = getIntent().getExtras().getString("newEmail");
+
+            if (newFirstName != null && !newFirstName.isEmpty()) {
                 setFirstName(newFirstName);
+            }
+            if (newLastName != null && !newLastName.isEmpty()) {
+                setLastName(newLastName);
+            }
+            if (newAddress != null && !newAddress.isEmpty()) {
+                setAddress(newAddress);
+            }
+            if (newPhone != null && !newPhone.isEmpty()) {
+                setPhone(newPhone);
+            }
+            if (newEmail != null && !newEmail.isEmpty()) {
+                setEmail(newEmail);
             }
         } catch (Exception e) {System.out.println("updated profile value error");}
 
@@ -59,7 +76,7 @@ public class ProfileViewActivity extends ActionBarActivity {
                                 "First Name: " + first_name + "\n" +
                                 "Last Name: " + last_name + "\n" +
                                 "Address: " + address + "\n" +
-                                "Phone Number: " + number + "\n" +
+                                "Phone Number: " + phone + "\n" +
                                 "Email: " + email);
     }
 
@@ -98,12 +115,24 @@ public class ProfileViewActivity extends ActionBarActivity {
         first_name = "John";
         last_name = "Smith";
         address = "123 Example St Fakeville";
-        number = "63428756";
+        phone = "63428756";
         email = "johnsmith@adelaide.com";
     }
 
     public void setFirstName(String first_name) {
         this.first_name = first_name;
+    }
+    public void setLastName(String last_name) {
+        this.last_name = last_name;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /** Called when the user clicks the Information View button */
