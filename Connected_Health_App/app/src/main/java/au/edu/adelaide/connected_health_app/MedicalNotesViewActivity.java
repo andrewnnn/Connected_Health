@@ -139,24 +139,24 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
     }
 
     public void goToSingleItemView(View view) {
-        int itemIndex = -1;
+        int itemPageOffset = -1;
         switch(view.getId()) {
             case R.id.preview0:
                 PatientSingleton.getInstance().setCurrentObject(medicalNotesForPreviews.get(0));
-                itemIndex = 0;
+                itemPageOffset = 0;
                 break;
             case R.id.preview1:
                 PatientSingleton.getInstance().setCurrentObject(medicalNotesForPreviews.get(1));
-                itemIndex = 1;
+                itemPageOffset = 1;
                 break;
             case R.id.preview2:
                 PatientSingleton.getInstance().setCurrentObject(medicalNotesForPreviews.get(2));
-                itemIndex = 2;
+                itemPageOffset = 2;
                 break;
         }
 
         Intent intent = new Intent(this, SingleItemViewActivity.class);
-        intent.putExtra("itemIndex",0 + itemIndex);     // TODO use page instead of 0
+        intent.putExtra("itemIndex",0 + itemPageOffset);     // TODO use page instead of 0
         startActivity(intent);
     }
 }

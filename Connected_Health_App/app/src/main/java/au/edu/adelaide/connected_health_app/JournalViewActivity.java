@@ -27,10 +27,9 @@ import java.util.ArrayList;
 public class JournalViewActivity extends ActionBarActivity {
 
     private final int patientID = 1;
-    private ArrayList<JSONObject> journalEntries;
+    private ArrayList<JSONObject> journalEntriesForPreviews;
     private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
     private final String staticJournalEntriesJson = "[{\"content\":\"I am a rich man, I have many houses\",\"updated\":\"2015-01-09 15:45:12.177\",\"created\":\"2015-01-09 15:45:12.177\",\"ID\":14},{\"content\":\"and many cars!!!\",\"updated\":\"2015-01-09 15:45:12.178\",\"created\":\"2015-01-09 15:45:12.178\",\"ID\":15},{\"content\":\"and many banks!!!\",\"updated\":\"2015-01-09 15:45:12.181\",\"created\":\"2015-01-09 15:45:12.181\",\"ID\":16},{\"content\":\"and many boats!!!\",\"updated\":\"2015-01-09 15:45:12.183\",\"created\":\"2015-01-09 15:45:12.183\",\"ID\":17},{\"content\":\"and many many many many dogs!!!\",\"updated\":\"2015-01-09 15:45:12.185\",\"created\":\"2015-01-09 15:45:12.185\",\"ID\":18}]";
-    static int viewId = 1;      // get unique ID for views
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,25 +37,37 @@ public class JournalViewActivity extends ActionBarActivity {
         setContentView(R.layout.generic_preview_view);
 
         try {
-            journalEntries = PatientSingleton.getInstance().getJournalEntries(0,2);
-            for (int i = 0; i <= 2; i++){
-                if (i >= journalEntries.size()) {
-                    break;
-                }
-                JSONObject note = journalEntries.get(i);
+            journalEntriesForPreviews = PatientSingleton.getInstance().getJournalEntries(0,2);
+            int i;
+
+            // for each preview, set background colour to match home panel and set preview text
+            for (i = 0; i < journalEntriesForPreviews.size(); i++){
+                String created = journalEntriesForPreviews.get(i).getString("created");
+                String content = journalEntriesForPreviews.get(i).getString("content");
                 StringBuilder sb = new StringBuilder();
-                sb.append(note.getString("created") + "\n");
-                sb.append(note.getString("content"));
+                sb.append(created + "\n\n" + content);
 
                 int resID = getResources().getIdentifier("preview_text" + i,
                         "id", getPackageName());
                 TextView previewText = (TextView) findViewById(resID);
                 previewText.setText(sb.toString());
+
+                resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+            }
+
+            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
+            for (i = i; i < 3; i++) {       // TODO store # preview panels somewhere
+                int resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setOnClickListener(null);
+                previewLayout.setBackgroundColor(0x00000000);       // transparent background
             }
         } catch (JSONException je) {
-            System.out.println("getting medical notes failed");
+            System.out.println("getting journal entrues failed");
         }
-
 
         /*
         // Instantiate the RequestQueue
@@ -183,19 +194,25 @@ public class JournalViewActivity extends ActionBarActivity {
     }
 
     public void goToSingleItemView(View view) {
+        int itemPageOffset = -1;
         switch(view.getId()) {
             case R.id.preview0:
-                PatientSingleton.getInstance().setCurrentObject(journalEntries.get(0));
+                PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(0));
+                itemPageOffset = 0;
                 break;
             case R.id.preview1:
-                PatientSingleton.getInstance().setCurrentObject(journalEntries.get(1));
+                PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(1));
+                itemPageOffset = 1;
                 break;
             case R.id.preview2:
-                PatientSingleton.getInstance().setCurrentObject(journalEntries.get(2));
+                PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(2));
+                itemPageOffset = 2;
                 break;
         }
 
         Intent intent = new Intent(this, SingleItemViewActivity.class);
+        intent.putExtra("itemIndex",0 + itemPageOffset);     // TODO use page instead of 0
         startActivity(intent);
     }
+
 }
