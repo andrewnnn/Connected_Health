@@ -88,6 +88,10 @@
             android:name=".SingleItemViewActivity"
             android:label="@string/title_activity_single_item_view" >
         </activity>
+        <activity
+            android:name=".QuestionViewActivity"
+            android:label="@string/title_activity_question_view" >
+        </activity>
     </application>
 
 </manifest>

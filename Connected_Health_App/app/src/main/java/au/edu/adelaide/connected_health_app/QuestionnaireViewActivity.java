@@ -11,12 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,31 +28,47 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
     final int ANSWER_FORMAT_CHECKBOX = 1;
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;      // get unique ID for views
-    private ArrayList<JSONObject> questionnaires;
+    private ArrayList<JSONObject> questionnairesForPreviews;
+    private int pageNumber = -1;
+    private final int textPreviewsPerPage = HelperSingleton.getInstance().getTextPreviewsPerPage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.generic_preview_view);
-
-        findViewById(R.id.preview0).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-        findViewById(R.id.preview1).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-        findViewById(R.id.preview2).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+        setContentView(R.layout.generic_text_preview_view);
 
         try {
-            questionnaires = PatientSingleton.getInstance().getQuestionnaires(0,2);
-            for (int i = 0; i <= 2; i++){
-                if (i >= questionnaires.size()) {
-                    break;
-                }
-                String name = questionnaires.get(i).getString("name");
-                StringBuilder sb = new StringBuilder();
-                sb.append(name);
+            if (getIntent().hasExtra("pageNumber")) {
+                pageNumber = getIntent().getExtras().getInt("pageNumber");
+                questionnairesForPreviews = PatientSingleton.getInstance().getQuestionnaires(pageNumber * textPreviewsPerPage, pageNumber * textPreviewsPerPage + 2);
+            } else {
+                questionnairesForPreviews = PatientSingleton.getInstance().getQuestionnaires(0,2);
+                pageNumber = 0;
+            }
+            int i;
+
+            // for each preview, set background colour to match home panel and set preview text
+            for (i = 0; i < questionnairesForPreviews.size(); i++){
+                String name = questionnairesForPreviews.get(i).getString("name");
 
                 int resID = getResources().getIdentifier("preview_text" + i,
                         "id", getPackageName());
                 TextView previewText = (TextView) findViewById(resID);
-                previewText.setText(sb.toString());
+                previewText.setText(name);
+
+                resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+            }
+
+            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
+            for (; i < textPreviewsPerPage; i++) {
+                int resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setOnClickListener(null);
+                previewLayout.setBackgroundColor(0x00000000);       // transparent background
             }
         } catch (JSONException je) {
             System.out.println("getting questionnaires failed");
@@ -187,8 +198,37 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
     }
 
     public void goToSingleItemView(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        switch(view.getId()) {
+            case R.id.preview0:
+                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(0));
+                break;
+            case R.id.preview1:
+                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(1));
+                break;
+            case R.id.preview2:
+                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(2));
+                break;
+        }
+
+        Intent intent = new Intent(this, QuestionViewActivity.class);
+        intent.putExtra("questionIndex",0);
         startActivity(intent);
+    }
+
+    public void goToPreviousPage(View view) {
+        if (pageNumber > 0) {
+            Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber - 1);
+            startActivity(intent);
+        }
+    }
+
+    public void goToNextPage(View view) {
+        if ((pageNumber+1)*textPreviewsPerPage <= PatientSingleton.getInstance().getQuestionnaires().length() - 1) {
+            Intent intent = new Intent(this, QuestionnaireViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber + 1);
+            startActivity(intent);
+        }
     }
 
     private void generateQuestionnaire(String jsonString) throws JSONException {
