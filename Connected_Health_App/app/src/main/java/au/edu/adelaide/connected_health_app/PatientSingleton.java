@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class PatientSingleton {
     private static PatientSingleton mInstance = null;
@@ -13,6 +14,7 @@ public class PatientSingleton {
 
     private JSONArray jJournalEntries;
     private JSONArray jMedicalNotes;
+    private JSONArray jMeasurementTypes;
     private JSONArray jQuestionnaires;
 
     private JSONArray jCurrentArray;
@@ -49,7 +51,7 @@ public class PatientSingleton {
 
     public ArrayList<JSONObject> getQuestionnaires(int first, int last) throws JSONException {
         ArrayList<JSONObject> questionnaires = new ArrayList<JSONObject>();
-        for (int i = 0; i <= last; i++) {
+        for (int i = first; i <= last; i++) {
             if (i >= jQuestionnaires.length()) {
                 break;
             }
@@ -81,6 +83,26 @@ public class PatientSingleton {
             journalEntries.add(jJournalEntries.getJSONObject(i));
         }
         return journalEntries;
+    }
+
+    public void setMeasurementTypes(String measurementTypes) throws JSONException {
+        jMeasurementTypes = new JSONArray(measurementTypes);
+    }
+
+    public JSONArray getMeasurementTypes() {
+        return jMeasurementTypes;
+    }
+
+    public ArrayList<JSONObject> getMeasurementTypes(int first, int last) throws JSONException {
+        jCurrentArray = jMeasurementTypes;
+        ArrayList<JSONObject> measurementTypes = new ArrayList<JSONObject>();
+        for (int i = first; i <= last; i++) {
+            if (i >= jMeasurementTypes.length()) {
+                break;
+            }
+            measurementTypes.add(jMeasurementTypes.getJSONObject(i));
+        }
+        return measurementTypes;
     }
 
     public JSONArray getMedicalNotes() {

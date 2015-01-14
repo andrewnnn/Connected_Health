@@ -1,150 +1,77 @@
 package au.edu.adelaide.connected_health_app;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 
 public class MeasurementViewActivity extends ActionBarActivity {
 
-    private final String url = "http://www.adelaide.edu.au"; // constant local URL
-//    private final String url = "http://10.201.6.250:8080/ConnectedHealth/withingsApi/activitymeasurements?startdate=2014-01-01&enddate=2014-12-25"; // constant local URL
-    private WebView webView;
-    String json = "";
-
-    String constantStepsJson = "{\"status\":0,\"body\":{\"activities\":[{\"date\":\"2014-12-11\",\"steps\":66,\"distance\":94.99,\"calories\":4.03,\"elevation\":0,\"soft\":120,\"moderate\":0,\"intense\":0,\"timezone\":\"Australia\\/Adelaide\"},{\"date\":\"2014-12-12\",\"steps\":136,\"distance\":94.99,\"calories\":4.03,\"elevation\":0,\"soft\":120,\"moderate\":0,\"intense\":0,\"timezone\":\"Australia\\/Adelaide\"},{\"date\":\"2014-12-13\",\"steps\":2012,\"distance\":94.99,\"calories\":4.03,\"elevation\":0,\"soft\":120,\"moderate\":0,\"intense\":0,\"timezone\":\"Australia\\/Adelaide\"},{\"date\":\"2014-12-14\",\"steps\":799,\"distance\":94.99,\"calories\":4.03,\"elevation\":0,\"soft\":120,\"moderate\":0,\"intense\":0,\"timezone\":\"Australia\\/Adelaide\"},{\"date\":\"2014-12-15\",\"steps\":0,\"distance\":94.99,\"calories\":4.03,\"elevation\":0,\"soft\":120,\"moderate\":0,\"intense\":0,\"timezone\":\"Australia\\/Adelaide\"}]}}";
-
-    String firstPart = "<!DOCTYPE html>\n" +
-            "<html>\n" +
-            "\t<head>\n" +
-            "\t\t<script type=\"text/javascript\" src=\"http://www.jchartfx.com/libs/jQuery/jquery-1.7.1.js\">\n" +
-            "\t    </script>\n" +
-            "\t    <script type=\"text/javascript\" src=\"http://www.jchartfx.com/libs/v7/current/js/jchartfx.system.js\">\n" +
-            "\t    </script>\n" +
-            "\t    <script type=\"text/javascript\" src=\"http://www.jchartfx.com/libs/v7/current/js/jchartfx.coreVector.js\">\n" +
-            "\t    </script>\n" +
-            "\t    <script type=\"text/javascript\" src=\"http://www.jchartfx.com/libs/v7/current/js/jchartfx.advanced.js\">\n" +
-            "\t    </script>\n" +
-            "\t    <script type=\"text/javascript\" src=\"http://www.jchartfx.com/libs/v7/current/js/jchartfx.gauge.js\">\n" +
-            "\t    </script>\n" +
-            "\t    <script type=\"text/javascript\" src=\"http://www.jchartfx.com/libs/v7/current/js/jchartfx.treemap.js\">\n" +
-            "\t    </script>\n" +
-            "\t    <script type=\"text/javascript\" src=\"http://www.jchartfx.com/libs/v7/current/js/jchartfx.sparkline.js\">\n" +
-            "\t    </script>\n" +
-            "\t    <script type=\"text/javascript\" src=\"http://www.jchartfx.com/libs/v7/current/motifs/jchartfx.motif.whitespace.js\">\n" +
-            "\t    </script>\n" +
-            "\t\t\n" +
-            "\t\t\n" +
-            "\t\t<script type=\"text/javascript\">\n" +
-            "\t\t\tvar chart1;        \n" +
-            "\t\t\tfunction loadChart()\n" +
-            "\t\t\t{\n" +
-            "\t\t\t\tchart1 = new cfx.Chart();\n" +
-            "\t\t\t\tchart1.getData().setSeries(1);\n" +
-            "\t\t\t\tchart1.getAxisY().setMin(min);\n" +
-            "\t\t\t\tchart1.getAxisY().setMax(max);\n" +
-            "\t\t\t\tvar series1 = chart1.getSeries().getItem(0);\n" +
-            "\t\t\t\tseries1.setGallery(cfx.Gallery.Lines);\n" +
-            "\t\t\t\tchart1.setDataSource(data);\n" +
-            "\t\t\t\tvar divHolder = document.getElementById('ChartDiv');\n" +
-            "\t\t\t\tchart1.create(divHolder);\n" +
-            "\t\t\t\tchart1.setTitle(null);\t\n" +
-            "\t\t\t}";
-
-    String secondPart = "</script>\n" +
-            "\t\t\n" +
-            "\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.jchartfx.com/libs/v7/current/styles/Attributes/jchartfx.attributes.whitespace.css\" />\n" +
-            "    \t<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.jchartfx.com/libs/v7/current/styles/Palettes/jchartfx.palette.whitespace.css\" />\n" +
-            "   \t</head>\n" +
-            "\t\n" +
-            "\t\n" +
-            "\t<body onload=\"loadChart()\"> \n" +
-            "\t\t<div id=\"ChartDiv\" style=\"width:100%;height:500px;top:-50px;display:inline-block;position:absolute\"></div>\n" +
-            "\t</body>\n" +
-            "\t\n" +
-            "</html>";
-
-    String constantStepsData = "var max = 81;\n" +
-            "var min = 51;\n" +
-            "var data=[{\"date\":\"2014-12-11\",\"steps\":66},{\"date\":\"2014-12-12\",\"steps\":66}];";
-
-    String singleReadingPageA = "<!DOCTYPE html>\n" +
-            "<html>\n" +
-            "\t<body> \n" +
-            "\t\t<h1>";
-
-    String singleReadingPageC = "\n" +
-            "\t\t</h1>\n" +
-            "\t</body>\n" +
-            "\t\n" +
-            "</html>";
-
+    private final int patientID = 1;
+    private ArrayList<JSONObject> measurementTypesForPreviews;
+    private int pageNumber = -1;
+    private final int textPreviewsPerPage = HelperSingleton.getInstance().getTextPreviewsPerPage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_measurement_view);
+        setContentView(R.layout.generic_text_preview_view);
 
-        webView = (WebView) findViewById(R.id.webviewGraphTest);        // graph of steps
-        webView.getSettings().setJavaScriptEnabled(true);
-
-        // Instantiate the RequestQueue
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        // Request a string JSON response from the Grails app.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // use constantStepsData for constant API data (draws graph for more than 1 value)
-                        json = JSONParser.DataParser(constantStepsJson, "date", "steps");
-//                        json = JSONParser.DataParser(response, "date", "steps");
-
-                        if(JSONParser.readingCount(json) == 1){     // only one steps value
-                            String[] jsonSingleData = json.split(",");      // get date value and steps value
-                            String date = jsonSingleData[0];
-                            String steps = jsonSingleData[1];
-
-                            String singleReadingPageB = "Only One Value<br/>Date: " + date + " Steps: " + steps ;   // print single steps value as HTML
-                            webView.loadData(singleReadingPageA + singleReadingPageB + singleReadingPageC, "text/html", "UTF-8");
-                        }else{      // multiple steps values
-                            webView.loadData(firstPart + json + secondPart, "text/html", "UTF-8");
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                System.out.println("Volley HTTP request failed.");
+        try {
+            if (getIntent().hasExtra("pageNumber")) {
+                pageNumber = getIntent().getExtras().getInt("pageNumber");
+                measurementTypesForPreviews = PatientSingleton.getInstance().getMeasurementTypes(pageNumber*textPreviewsPerPage,pageNumber*textPreviewsPerPage + 2);
+            } else {
+                measurementTypesForPreviews = PatientSingleton.getInstance().getMeasurementTypes(0,2);
+                pageNumber = 0;
             }
-        });
-        // Add the request to the RequestQueue for asynchronous handling.
-        queue.add(stringRequest);
+            int i;
 
+            // for each preview, set background colour to match home panel and set preview text
+            for (i = 0; i < measurementTypesForPreviews.size(); i++){
+                String name = measurementTypesForPreviews.get(i).getString("name");
+                String description = measurementTypesForPreviews.get(i).getString("description");
+                String preview = name + "\n\n" + description;
+
+                int resID = getResources().getIdentifier("preview_text" + i,
+                        "id", getPackageName());
+                TextView previewText = (TextView) findViewById(resID);
+                previewText.setText(preview);
+
+                resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+            }
+
+            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
+            for (; i < textPreviewsPerPage; i++) {
+                int resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setOnClickListener(null);
+                previewLayout.setBackgroundColor(0x00000000);       // transparent background
+            }
+        } catch (JSONException je) {
+            System.out.println("getting measurement types failed");
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_measurement_view, menu);
+        getMenuInflater().inflate(R.menu.menu_journal_view, menu);
         return true;
     }
 
@@ -163,34 +90,42 @@ public class MeasurementViewActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Called when the user clicks the Information View button */
-    public void goToInformationView(View view) {
-        Intent intent = new Intent(this, InformationViewActivity.class);
+    public void goToSingleItemView(View view) {
+        int itemPageOffset = -1;
+        switch(view.getId()) {
+            case R.id.preview0:
+                PatientSingleton.getInstance().setCurrentObject(measurementTypesForPreviews.get(0));
+                itemPageOffset = 0;
+                break;
+            case R.id.preview1:
+                PatientSingleton.getInstance().setCurrentObject(measurementTypesForPreviews.get(1));
+                itemPageOffset = 1;
+                break;
+            case R.id.preview2:
+                PatientSingleton.getInstance().setCurrentObject(measurementTypesForPreviews.get(2));
+                itemPageOffset = 2;
+                break;
+        }
+
+        Intent intent = new Intent(this, MeasurementStepsViewActivity.class);       // TODO make this variable based on jCurrentObject... map each name to a class in HelperSingleton?
+        intent.putExtra("itemIndex",pageNumber*textPreviewsPerPage + itemPageOffset);
         startActivity(intent);
     }
 
-    /** Called when the user clicks the Questionnaire View button */
-    public void goToQuestionnaireView(View view) {
-        Intent intent = new Intent(this, QuestionnaireViewActivity.class);
-        startActivity(intent);
+    public void goToPreviousPage(View view) {
+        if (pageNumber > 0) {
+            Intent intent = new Intent(this, JournalViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber - 1);
+            startActivity(intent);
+        }
     }
 
-    /** Called when the user clicks the Profile View button */
-    public void goToProfileView(View view) {
-        Intent intent = new Intent(this, ProfileViewActivity.class);
-        startActivity(intent);
+    public void goToNextPage(View view) {
+        if ((pageNumber+1)*textPreviewsPerPage <= PatientSingleton.getInstance().getJournalEntries().length() - 1) {
+            Intent intent = new Intent(this, JournalViewActivity.class);
+            intent.putExtra("pageNumber", pageNumber + 1);
+            startActivity(intent);
+        }
     }
 
-    /** Called when the user clicks the Measurement View button */
-    public void goToMeasurementView(View view) {
-        //already on view disable
-//        Intent intent = new Intent(this, MeasurementViewActivity.class);
-//        startActivity(intent);
-    }
-
-    /** Called when the user clicks the Home View button */
-    public void goToMainView(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 }
