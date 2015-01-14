@@ -11,12 +11,20 @@ import android.widget.EditText;
 
 public class ProfileEditActivity extends ActionBarActivity {
     private EditText editFirstNameInput;
+    private EditText editLastNameInput;
+    private EditText editAddressInput;
+    private EditText editPhoneInput;
+    private EditText editEmailInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
         editFirstNameInput = (EditText)findViewById(R.id.edit_first_name);
+        editLastNameInput = (EditText)findViewById(R.id.edit_last_name);
+        editAddressInput = (EditText)findViewById(R.id.edit_address);
+        editPhoneInput = (EditText)findViewById(R.id.edit_phone);
+        editEmailInput = (EditText)findViewById(R.id.edit_email);
     }
 
     @Override
@@ -44,8 +52,17 @@ public class ProfileEditActivity extends ActionBarActivity {
     /** Edit profile values from input */
     public void editProfile(View view) {
         String newFirstName = editFirstNameInput.getText().toString();
+        String newLastName = editLastNameInput.getText().toString();
+        String newAddress = editAddressInput.getText().toString();
+        String newPhone = editPhoneInput.getText().toString();
+        String newEmail = editEmailInput.getText().toString();
+
         Intent intent = new Intent(this, ProfileViewActivity.class);
         intent.putExtra("newFirstName", newFirstName);
+        intent.putExtra("newLastName", newLastName);
+        intent.putExtra("newAddress", newAddress);
+        intent.putExtra("newPhone", newPhone);
+        intent.putExtra("newEmail", newEmail);
         startActivity(intent);
     }
 }
