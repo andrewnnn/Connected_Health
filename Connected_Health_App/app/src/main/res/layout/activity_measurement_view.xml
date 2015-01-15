@@ -4,66 +4,86 @@
     android:layout_height="match_parent"
     tools:context="au.edu.adelaide.connected_health_app.MeasurementViewActivity"
     android:orientation="vertical"
-    android:background="@android:color/holo_green_light">
+    android:background="@android:color/darker_gray">
 
     <include layout="@layout/quick_menu_bar"
         android:id="@+id/quickMenuBar"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <!--Title-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Measurement: Steps"
-            android:id="@+id/measurementHeading"
-            android:autoText="false"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <!--Home Button-->
-        <include layout="@layout/home_button"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/homeButton"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_margin="15dp"
+        >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Title-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Measurement: Steps"
+                android:id="@+id/measurementHeading"
+                android:autoText="false"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="20dp"
+                android:textSize="25pt"
+                android:textColor="#006600"/>
+
+            <!--Home Button-->
+            <include layout="@layout/home_button"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/homeButton"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:weightSum="1"
+            >
         <!--Measurement Info -->
-        <TextView
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Measurement date: 7 Mar, 17:13\n\nYour blood pressure is outside the limits that were set for you by your doctor.\nImportant:\n\nBetween 1pm and 8pm Monday - Friday the blood pressure readings will be monitored by a registered nurse who will phone you with instructions.If you have entered the blood pressure reading outside of these times, please review the information guide."
-            android:id="@+id/textView4"
-            android:textColor="@android:color/primary_text_dark"
-            android:background="@android:color/holo_blue_light"
-            android:layout_margin="20dp" />
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Measurement date: 7 Mar, 17:13\n\nYour blood pressure is outside the limits that were set for you by your doctor.\nImportant:\n\nBetween 1pm and 8pm Monday - Friday the blood pressure readings will be monitored by a registered nurse who will phone you with instructions.If you have entered the blood pressure reading outside of these times, please review the information guide."
+                android:id="@+id/textView4"
+                android:textColor="#0000BB"
+                android:background="#BBEEFF"
+                android:layout_margin="10dp"
+                android:textSize="13pt"
+                />
 
-        <!--Measurement Graph-->
-        <WebView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/webviewGraphTest"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="20dp" />
+            <!--Measurement Graph-->
+            <WebView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/webviewGraphTest"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="0.6" />
 
+        </LinearLayout>
 
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
 
 
