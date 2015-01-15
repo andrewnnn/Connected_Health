@@ -12,16 +12,23 @@ import grails.test.mixin.Mock
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(JournalEntryController)
-@Mock([JournalEntry])
+@Mock([JournalEntry, Patient])
 class JournalEntryControllerSpec extends Specification {
+
+    private static Patient p1;
+    private static int PATIENT1_ID;
 
     def setup() {
         Date currentDate = new Date()
 
-        JournalEntry b = new JournalEntry(15536, "This is my small Journal", currentDate, currentDate)
+        p1 = new Patient(firstName: "John", lastName: "Smith", homeAddress: "123 Example St Fakeville", phone: "12340987", contactEmail: "john@smith.ru")
+        p1.save()
+        PATIENT1_ID = p1.getId()
+
+        JournalEntry b = new JournalEntry(patient: p1, content: "This is my small Journal", created: currentDate, updated: currentDate)
         b.save()
 
-        b = new JournalEntry(15536, "A second Journal", currentDate, currentDate)
+        b = new JournalEntry(patient: p1, content: "A second Journal", created: currentDate, updated: currentDate)
         b.save()
     }
 
@@ -38,20 +45,20 @@ class JournalEntryControllerSpec extends Specification {
         response.text == "Patient ID is required"
     }
 
-    void "entries invalid patient ID test"() {
+    void "entries patient ID doesn't exist test"() {
         when:
-        params.patientID = "100"
+        params.patientID = PATIENT1_ID + 100       // patient with this id doesn't exist
         controller.entries()
 
         then:
-        response.status == 200
-        response.text == "[]"
-        response.text != "Patient ID is required"
+        response.status == 404
+        response.text != "[]"
+        response.text == "Patient with this ID does not exist"
     }
 
     void "entries valid patient ID test"() {
         when:
-        params.patientID = "15536"
+        params.patientID = PATIENT1_ID
         controller.entries()
 
         then:
@@ -60,9 +67,9 @@ class JournalEntryControllerSpec extends Specification {
         response.text != "Patient ID is required"
     }
 
-    void "entries response format must be JASONArray"() {
+    void "entries response format must be JSONArray"() {
         when:
-        params.patientID = "15536"
+        params.patientID = PATIENT1_ID
         controller.entries()
 
         then:
@@ -70,14 +77,14 @@ class JournalEntryControllerSpec extends Specification {
         try{
             JSONArray journalList = new JSONArray(response.text)
         }catch (JSONException ex){
-            fail("Could not parse the response string to JASONArray")
+            fail("Could not parse the response string to JSONArray")
         }
     }
 
 
     void "entries response content correctly"() {
         when:
-        params.patientID = "15536"
+        params.patientID = p1.getId()
         controller.entries()
 
         then:
@@ -110,7 +117,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "new entries no content test"() {
         when:
-        params.patientID = "123456"
+        params.patientID = p1.getId()
         controller.newEntry()
 
         then:
@@ -120,7 +127,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "new entries valid input and content"() {
         when:
-        params.patientID = "123456"
+        params.patientID = p1.getId()
         params.content = "testing used new journal entry content"
         controller.newEntry()
 
@@ -131,14 +138,22 @@ class JournalEntryControllerSpec extends Specification {
 
     void "new entries validate the created new entry"() {
         when:
-        params.patientID = "123456"
+        params.patientID = p1.getId()
         params.content = "testing used new journal entry content"
         controller.newEntry()
 
         then:
         response.status == 200
-        JournalEntry jn = JournalEntry.findByPatientID("123456")
-        jn.getContent() == "testing used new journal entry content"
+        JournalEntry[] jn = JournalEntry.findAllByPatient(p1)
+        boolean found = false;
+        for (int i = 0; i < jn.size(); i++) {
+            if (jn[i].getContent() == params.content) {
+                found = true
+            }
+        }
+        if (!found) {
+            fail("new journal entry not created")
+        }
     }
 
     //update a journal entry
@@ -153,7 +168,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "update entries no Journal ID test"() {
         when:
-        params.patientID = "15536"
+        params.patientID = p1.getId()
         params.content = "update test content here"
         controller.updateEntry()
 
@@ -164,7 +179,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "update entries no content test"() {
         when:
-        params.patientID = "15536"
+        params.patientID = p1.getId()
         params.journalEntryID = "1"
         controller.updateEntry()
 
@@ -175,7 +190,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "update entries valid request test"() {
         when:
-        params.patientID = "15536"
+        params.patientID = p1.getId()
         params.journalEntryID = "1"
         params.content = "update test content here"
         controller.updateEntry()
@@ -187,7 +202,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "update entries correct updated test"() {
         when:
-        params.patientID = "15536"
+        params.patientID = p1.getId()
         params.journalEntryID = "1"
         params.content = "update test content here"
         controller.updateEntry()
@@ -210,7 +225,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "remove entries no Journal ID test"() {
         when:
-        params.patientID = "15536"
+        params.patientID = p1.getId()
         controller.removeEntry()
 
         then:
@@ -220,7 +235,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "remove entries with valid request"() {
         when:
-        params.patientID = "15536"
+        params.patientID = p1.getId()
         params.journalEntryID = "1"
         controller.removeEntry()
 
@@ -231,7 +246,7 @@ class JournalEntryControllerSpec extends Specification {
 
     void "remove entries remove journal correctly"() {
         when:
-        params.patientID = "15536"
+        params.patientID = p1.getId()
         params.journalEntryID = "1"
         controller.removeEntry()
 

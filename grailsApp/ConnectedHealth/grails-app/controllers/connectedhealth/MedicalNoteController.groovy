@@ -15,8 +15,19 @@ class MedicalNoteController {
             render "Patient ID is required"
             return
         }
+        Patient p = Patient.findById(params.patientID)
+        if (p == null) {
+            response.status = 404
+            render "Patient with this ID does not exist"
+            return
+        }
 
-        MedicalNote[] patientMedicalNotes = MedicalNote.findAllByPatientID(params.patientID)   // get all notes for this patient
+        MedicalNote[] patientMedicalNotes = p.getMedicalNotes()   // get all notes for this patient
+
+        if (patientMedicalNotes == null) {
+            render '[]'
+            return
+        }
 
         // return notes in JSON format, with patient ID removed
         ArrayList<JSONObject> medicalNotesToSend = new ArrayList<JSONObject>()

@@ -16,17 +16,29 @@ class JournalEntryController {
             return
         }
 
-        JournalEntry[] patientJournalEntry = JournalEntry.findAllByPatientID(params.patientID)  // get all notes for this patient
+        Patient p = Patient.findById(params.patientID)
+        if (p == null) {
+            response.status = 404
+            render "Patient with this ID does not exist"
+            return
+        }
+
+        JournalEntry[] patientJournalEntries = p.getJournalEntries()  // get all journal entries for this patient
+
+        if (patientJournalEntries == null) {
+            render '[]'
+            return
+        }
 
         // return notes in JSON format, with patient ID removed
         ArrayList<JSONObject> JournalEntriesToSend = new ArrayList<JSONObject>()
 
-        for (int i = 0; i < patientJournalEntry.size(); i++) {
+        for (int i = 0; i < patientJournalEntries.size(); i++) {
             JSONObject journalEntry = new JSONObject()
-            journalEntry.put("ID", patientJournalEntry[i].getId())
-            journalEntry.put("content", patientJournalEntry[i].getContent())
-            journalEntry.put("created", patientJournalEntry[i].getCreated())
-            journalEntry.put("updated", patientJournalEntry[i].getUpdated())
+            journalEntry.put("ID", patientJournalEntries[i].getId())
+            journalEntry.put("content", patientJournalEntries[i].getContent())
+            journalEntry.put("created", patientJournalEntries[i].getCreated())
+            journalEntry.put("updated", patientJournalEntries[i].getUpdated())
             JournalEntriesToSend.add(journalEntry)
         }
 
@@ -45,7 +57,14 @@ class JournalEntryController {
             render "Content is required"
             return
         }
-        JournalEntry a = new JournalEntry(Integer.parseInt(params.patientID), params.content,new Date(), new Date());
+        Patient p = Patient.findById(params.patientID)
+        if (p == null) {
+            response.status = 404
+            render "Patient with this ID does not exist"
+            return
+        }
+
+        JournalEntry a = new JournalEntry(patient: p, content: params.content, created: new Date(), updated: new Date());
         a.save();
         render "Journal Entry Created"
     }
@@ -54,6 +73,12 @@ class JournalEntryController {
         if (params.patientID == null) {
             response.status = 404
             render "Patient ID is required"
+            return
+        }
+        Patient p = Patient.findById(params.patientID)
+        if (p == null) {
+            response.status = 404
+            render "Patient with this ID does not exist"
             return
         }
         if (params.journalEntryID == null) {
@@ -77,6 +102,12 @@ class JournalEntryController {
         if (params.patientID == null) {
             response.status = 404
             render "Patient ID is required"
+            return
+        }
+        Patient p = Patient.findById(params.patientID)
+        if (p == null) {
+            response.status = 404
+            render "Patient with this ID does not exist"
             return
         }
         if (params.journalEntryID == null) {
