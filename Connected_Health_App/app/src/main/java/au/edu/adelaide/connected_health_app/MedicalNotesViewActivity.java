@@ -157,6 +157,7 @@ public class MedicalNotesViewActivity extends ActionBarActivity {
                 break;
         }
 
+        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.medicalNote);
         Intent intent = new Intent(this, SingleItemViewActivity.class);
         intent.putExtra("itemIndex",pageNumber*textPreviewsPerPage + itemPageOffset);
         startActivity(intent);

@@ -20,17 +20,18 @@ public class SingleItemViewActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.generic_single_object_view);
+        if (PatientSingleton.getInstance().getCurrentItemType() == PatientSingleton.ItemType.journalEntry) {
+            setContentView(R.layout.generic_single_object_4buttons_view);
+        } else {
+            setContentView(R.layout.generic_single_object_view);
+        }
         itemIndex = getIntent().getExtras().getInt("itemIndex");
 
         RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
         TextView content = new TextView(this);
         try {
             JSONObject object = PatientSingleton.getInstance().getCurrentObject();
-            StringBuilder sb = new StringBuilder();
-            sb.append(object.getString("created"));
-            sb.append("\n" + object.getString("content"));
-            content.setText(sb.toString());
+            content.setText(object.getString("created") + "\n" + object.getString("content"));
 
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams
                     ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);

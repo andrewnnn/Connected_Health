@@ -204,6 +204,7 @@ public class JournalViewActivity extends ActionBarActivity {
                 break;
         }
 
+        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.journalEntry);
         Intent intent = new Intent(this, SingleItemViewActivity.class);
         intent.putExtra("itemIndex",pageNumber*textPreviewsPerPage + itemPageOffset);
         startActivity(intent);

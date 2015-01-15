@@ -92,6 +92,10 @@
             android:name=".QuestionViewActivity"
             android:label="@string/title_activity_question_view" >
         </activity>
+        <activity
+            android:name=".MeasurementStepsViewActivity"
+            android:label="@string/title_activity_measurement_steps_view" >
+        </activity>
     </application>
 
 </manifest>

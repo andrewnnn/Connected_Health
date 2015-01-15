@@ -24,4 +24,22 @@ public class HelperSingleton {
     public int getTextPreviewsPerPage() {
         return textPreviewsPerPage;
     }
+
+    public Class getMeasurementTypeClass() {
+        String measurementName = null;
+        try {
+            measurementName = PatientSingleton.getInstance().getCurrentObject().getString("name");
+        } catch (JSONException je) {
+            System.out.println("Couldn't get measurement name.");
+            return null;
+        }
+
+        if (measurementName == "Steps") {
+            return MeasurementStepsViewActivity.class;
+        } else if (measurementName == "Weight") {
+            return MeasurementStepsViewActivity.class;  //TODO
+        } else {
+            return null;
+        }
+    }
 }

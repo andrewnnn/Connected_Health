@@ -210,6 +210,7 @@ public class QuestionnaireViewActivity extends ActionBarActivity {
                 break;
         }
 
+        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.questionnaire);
         Intent intent = new Intent(this, QuestionViewActivity.class);
         intent.putExtra("questionIndex",0);
         startActivity(intent);

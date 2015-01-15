@@ -5,22 +5,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class PatientSingleton {
     private static PatientSingleton mInstance = null;
 
+    private ItemType mItemType;
     private String mString;
 
     private JSONArray jJournalEntries;
     private JSONArray jMedicalNotes;
+    private JSONArray jMeasurementTypes;
     private JSONArray jQuestionnaires;
 
     private JSONArray jCurrentArray;
     private JSONObject jCurrentObject;
 
     private PatientSingleton(){
-        mString = "Private constructor string";
         jQuestionnaires = new JSONArray();
+        mItemType = ItemType.defaultItemType;
     }
 
     public static PatientSingleton getInstance(){
@@ -31,12 +34,12 @@ public class PatientSingleton {
         return mInstance;
     }
 
-    public String getString(){
-        return this.mString;
-    }
-
-    public void setString(String value){
-        mString = value;
+    public enum ItemType {
+        defaultItemType,
+        journalEntry,
+        measurement,
+        medicalNote,
+        questionnaire
     }
 
     public void addQuestionnaire(String questionnaire) throws JSONException {
@@ -49,7 +52,7 @@ public class PatientSingleton {
 
     public ArrayList<JSONObject> getQuestionnaires(int first, int last) throws JSONException {
         ArrayList<JSONObject> questionnaires = new ArrayList<JSONObject>();
-        for (int i = 0; i <= last; i++) {
+        for (int i = first; i <= last; i++) {
             if (i >= jQuestionnaires.length()) {
                 break;
             }
@@ -83,6 +86,26 @@ public class PatientSingleton {
         return journalEntries;
     }
 
+    public void setMeasurementTypes(String measurementTypes) throws JSONException {
+        jMeasurementTypes = new JSONArray(measurementTypes);
+    }
+
+    public JSONArray getMeasurementTypes() {
+        return jMeasurementTypes;
+    }
+
+    public ArrayList<JSONObject> getMeasurementTypes(int first, int last) throws JSONException {
+        jCurrentArray = jMeasurementTypes;
+        ArrayList<JSONObject> measurementTypes = new ArrayList<JSONObject>();
+        for (int i = first; i <= last; i++) {
+            if (i >= jMeasurementTypes.length()) {
+                break;
+            }
+            measurementTypes.add(jMeasurementTypes.getJSONObject(i));
+        }
+        return measurementTypes;
+    }
+
     public JSONArray getMedicalNotes() {
         jCurrentArray = jMedicalNotes;
         return jMedicalNotes;
@@ -106,6 +129,14 @@ public class PatientSingleton {
 
     public JSONObject getCurrentObject() {
         return jCurrentObject;
+    }
+
+    public void setCurrentItemType(ItemType type) {
+        mItemType = type;
+    }
+
+    public ItemType getCurrentItemType() {
+        return mItemType;
     }
 
     public JSONArray getCurrentArray() {
