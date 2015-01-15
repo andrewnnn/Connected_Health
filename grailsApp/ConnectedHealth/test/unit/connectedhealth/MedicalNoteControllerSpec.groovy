@@ -11,22 +11,24 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(MedicalNoteController)
-@Mock([MedicalNote])
+@Mock([MedicalNote, Patient])
 class MedicalNoteControllerSpec extends Specification {
 
+    private static Patient p2;
     private static final CONTENT = "note contents text text text text text text"
     private static final DATE = new Date()
-    private static final PATIENTID = 2
+    private static PATIENT2_ID;
 
     def setup() {
-        MedicalNote mn = new MedicalNote(content: CONTENT, created: DATE, patientID: PATIENTID)
+        p2 = new Patient(firstName: "John2", lastName: "Smith2", homeAddress: "123 Example St Fakeville2", phone: "12340987", contactEmail: "john2@smith.ru")
+        p2.save()
+        PATIENT2_ID = p2.getId()
+        MedicalNote mn = new MedicalNote(content: CONTENT, created: DATE, patient: p2)
         mn.save()
     }
 
     def cleanup() {
     }
-
-    //TODO patient doesnt exist, need patient model
 
     void "missing patientID"() {
         when:
@@ -39,7 +41,7 @@ class MedicalNoteControllerSpec extends Specification {
 
     void "valid patientID"() {
         when:
-        controller.params.patientID = 3
+        controller.params.patientID = PATIENT2_ID
         controller.notes()
 
         then:
@@ -49,7 +51,9 @@ class MedicalNoteControllerSpec extends Specification {
 
     void "valid patientID with no entries"() {
         when:
-        controller.params.patientID = 9999
+        Patient p5 = new Patient(firstName: "John5", lastName: "Smith5", homeAddress: "123 Example St Fakeville5", phone: "12340987", contactEmail: "john5@smith.ru")
+        p5.save()
+        controller.params.patientID = p5.getId()     // patient with this id has no medical notes
         controller.notes()
 
         then:
@@ -59,7 +63,7 @@ class MedicalNoteControllerSpec extends Specification {
 
     void "multiple requests for medical notes, parse as JSON array"() {
         when:
-        controller.params.patientID = PATIENTID
+        controller.params.patientID = PATIENT2_ID
         controller.notes()
 
         then:
@@ -77,7 +81,7 @@ class MedicalNoteControllerSpec extends Specification {
 
     void "get MedicalNote object as JSON, parse and extract values"() {
         when:
-        controller.params.patientID = PATIENTID
+        controller.params.patientID = PATIENT2_ID
         controller.notes()
 
         then:
@@ -111,20 +115,21 @@ class MedicalNoteControllerSpec extends Specification {
 
     void "multiple notes for same patient"() {
         // note for patient with id = 1
+        Patient p1 = new Patient(firstName: "John", lastName: "Smith", homeAddress: "123 Example St Fakeville", phone: "12340987", contactEmail: "john@smith.ru")
+        p1.save()
         String m1CONTENT = "content of note m1"
         Date m1DATE = new Date(1,1,1,1,1,1)
-        int m1PATIENTID = 1
-        MedicalNote m1 = new MedicalNote(content: m1CONTENT, created: m1DATE, patientID: m1PATIENTID)
+        MedicalNote m1 = new MedicalNote(content: m1CONTENT, created: m1DATE, patient: p1)
         m1.save()
 
-        // note for patient with id = PATIENTID
+        // note for patient with id = PATIENT2_ID
         String m2CONTENT = "The string content of note m2."
         Date m2DATE = new Date(2,2,2,2,2,2)
-        MedicalNote m2 = new MedicalNote(content: m1CONTENT, created: m1DATE, patientID: PATIENTID)
+        MedicalNote m2 = new MedicalNote(content: m1CONTENT, created: m1DATE, patient: p2)
         m2.save()
 
         when:
-        controller.params.patientID = PATIENTID
+        controller.params.patientID = PATIENT2_ID
         controller.notes()
 
         then:
