@@ -13,7 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
-public class InformationViewActivity extends ActionBarActivity {
+public class InformationViewActivity extends QuickMenu {
 
     private final String vidUrl = "https://www.google.com";
     private WebView browser;

@@ -16,7 +16,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
-public class MeasurementStepsViewActivity extends ActionBarActivity {
+public class MeasurementStepsViewActivity extends QuickMenu {
 
     private final String url = "http://www.adelaide.edu.au"; // constant local URL
     //    private final String url = "http://10.201.6.250:8080/ConnectedHealth/withingsApi/activitymeasurements?startdate=2014-01-01&enddate=2014-12-25"; // constant local URL

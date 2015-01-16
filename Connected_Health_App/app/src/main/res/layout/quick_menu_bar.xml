@@ -1,71 +1,83 @@
 <FrameLayout
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:nestedScrollingEnabled="false"
+    android:onClick="goToMainView">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:context="au.edu.adelaide.connected_health_app.InformationViewActivity"
         android:orientation="horizontal"
         android:weightSum="4">
 
-        <Button
-            android:layout_width="0dp"
+        <RelativeLayout
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:text="Information"
-            android:id="@+id/infoButton"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_weight="1"
-            android:textAllCaps="false"
-            android:background="@android:color/holo_orange_dark"
-            android:onClick="goToInformationView"
-            android:clickable="true" />
+            android:background="@android:color/holo_orange_dark">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Questionnaires"
-            android:id="@+id/questionButton"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:background="@android:color/holo_blue_dark"
-            android:onClick="goToQuestionnaireView"
-            android:clickable="true" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top"
+                android:src="@drawable/info_icon"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Profile"
-            android:id="@+id/profileButton"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:background="@android:color/holo_red_light"
-            android:onClick="goToProfileView"
-            android:clickable="true" />
+        </RelativeLayout>
 
-        <Button
-            android:layout_width="0dp"
+        <RelativeLayout
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:text="Measurements"
-            android:id="@+id/measureButton"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_weight="1"
-            android:textAllCaps="false"
-            android:background="@android:color/holo_green_dark"
-            android:onClick="goToMeasurementView"
-            android:clickable="true" />
+            android:background="@android:color/holo_blue_dark">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top"
+                android:src="@drawable/questionnaire_icon"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_light">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top"
+                android:src="@drawable/profile_icon"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_green_dark">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top"
+                android:src="@drawable/measurement_icon"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/measurement_icon" />
+
+        </RelativeLayout>
 
     </LinearLayout>
+
 </FrameLayout>
