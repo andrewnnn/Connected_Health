@@ -19,7 +19,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class QuestionnaireViewActivity extends ActionBarActivity {
+public class QuestionnaireViewActivity extends QuickMenu {
 
     final int questionnaireId = 10;
     final String url = "http://129.127.210.69:9999/ConnectedHealth/questionnaire/get?IDorName=10";

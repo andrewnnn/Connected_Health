@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class JournalViewActivity extends ActionBarActivity {
+public class JournalViewActivity extends QuickMenu {
 
     private final int patientID = 1;
     private ArrayList<JSONObject> journalEntriesForPreviews;

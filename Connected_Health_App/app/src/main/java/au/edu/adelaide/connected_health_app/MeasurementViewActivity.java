@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class MeasurementViewActivity extends ActionBarActivity {
+public class MeasurementViewActivity extends QuickMenu {
 
     private final int patientID = 1;
     private ArrayList<JSONObject> measurementTypesForPreviews;

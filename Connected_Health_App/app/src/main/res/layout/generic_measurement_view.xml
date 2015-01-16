@@ -41,26 +41,17 @@
                 android:textSize="25pt"
                 android:textColor="#006600"/>
 
-            <!--Home Button-->
-            <include layout="@layout/home_button"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/homeButton"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:weightSum="1"
             >
         <!--Measurement Info -->
             <TextView
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="0.4"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Measurement date: 7 Mar, 17:13\n\nYour blood pressure is outside the limits that were set for you by your doctor.\nImportant:\n\nBetween 1pm and 8pm Monday - Friday the blood pressure readings will be monitored by a registered nurse who will phone you with instructions.If you have entered the blood pressure reading outside of these times, please review the information guide."
@@ -76,7 +67,7 @@
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/webviewGraphTest"
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="0.6" />
 

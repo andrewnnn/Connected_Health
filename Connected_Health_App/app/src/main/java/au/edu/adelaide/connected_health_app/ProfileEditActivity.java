@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 
 
-public class ProfileEditActivity extends ActionBarActivity {
+public class ProfileEditActivity extends QuickMenu {
     private EditText editFirstNameInput;
     private EditText editLastNameInput;
     private EditText editAddressInput;

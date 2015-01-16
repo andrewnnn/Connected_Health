@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-public class ProfilePanelsActivity extends ActionBarActivity {
+public class ProfilePanelsActivity extends QuickMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

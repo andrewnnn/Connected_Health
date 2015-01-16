@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class ProfileViewActivity extends ActionBarActivity {
+public class ProfileViewActivity extends QuickMenu {
     //local profile values
     private String first_name;
     private String last_name;

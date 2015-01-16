@@ -8,10 +8,13 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
+
+        <include layout="@layout/quick_menu_bar"
+            android:id="@+id/quickMenuBar"/>
 
         <RelativeLayout
             android:weightSum="3"

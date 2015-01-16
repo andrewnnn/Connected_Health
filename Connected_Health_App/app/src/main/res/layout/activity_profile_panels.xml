@@ -1,74 +1,99 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:weightSum="3"
-    tools:context="au.edu.adelaide.connected_health_app.ProfilePanelsActivity">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="au.edu.adelaide.connected_health_app.ProfilePanelsActivity"
+    android:orientation="vertical">
 
-    <!--Patient Information Panel-->
+    <!--Quick Menu Bar-->
+    <include layout="@layout/quick_menu_bar"
+        android:id="@+id/quickMenuBar"/>
+
+    <!--Padding-->
     <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:onClick="goToProfileView"
-        android:background="@android:color/holo_red_light">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:background="@android:color/darker_gray">
 
-        <!--Panel label-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="My Information"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="46dp"
-            android:gravity="center_horizontal"
-            android:id="@+id/textView"
-            android:textIsSelectable="false"
-            android:textColor="#ffffffff" />
-    </RelativeLayout>
+        <!--Content-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3"
+            android:orientation="horizontal">
 
-    <!--Journal Entries panel-->
-    <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:onClick="goToJournalView"
-        android:background="@android:color/holo_red_dark">
+            <!--Patient Information Panel-->
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="goToProfileView"
+                android:background="@android:color/holo_red_light">
 
-        <!--Panel label-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="My Journal"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="46dp"
-            android:gravity="center_horizontal"
-            android:textColor="#ffffffff" />
-    </RelativeLayout>
+                <!--Panel label-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="My Information"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="46dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/textView"
+                    android:textIsSelectable="false"
+                    android:textColor="#ffffffff" />
+            </RelativeLayout>
 
-    <!--Medical Notes panel-->
-    <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:onClick="goToMedicalNotesView"
-        android:background="@android:color/holo_red_light">
+            <!--Journal Entries panel-->
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="goToJournalView"
+                android:background="@android:color/holo_red_dark">
 
-        <!--Panel label-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="My Medical Notes"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="46dp"
-            android:gravity="center_horizontal"
-            android:textColor="#ffffffff" />
+                <!--Panel label-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="My Journal"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="46dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffffff" />
+            </RelativeLayout>
+
+            <!--Medical Notes panel-->
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="goToMedicalNotesView"
+                android:background="@android:color/holo_red_light">
+
+                <!--Panel label-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="My Medical Notes"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="46dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffffff" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--End of Content-->
+
     </RelativeLayout>
 </LinearLayout>

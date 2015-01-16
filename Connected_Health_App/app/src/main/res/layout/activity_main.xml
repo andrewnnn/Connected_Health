@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="horizontal">
 
     <!--Info Panel-->
     <RelativeLayout
         android:layout_width="0dip"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:onClick="goToInformationView"
         android:background="@android:color/holo_orange_dark">
@@ -52,7 +52,7 @@
     <!--Questionnaire panel-->
     <RelativeLayout
         android:layout_width="0dip"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:onClick="goToQuestionnaireView"
         android:background="@android:color/holo_blue_dark">
@@ -97,10 +97,10 @@
     <!--Profile panel-->
     <RelativeLayout
         android:layout_width="0dip"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:onClick="goToProfilePanels"
-        android:background="@drawable/measurement_icon">
+        android:background="@android:color/holo_red_light">
 
         <!--Panel label-->
         <TextView
@@ -142,7 +142,7 @@
     <!--Measurements panel-->
     <RelativeLayout
         android:layout_width="0dip"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:onClick="goToMeasurementView"
         android:background="@android:color/holo_green_light">

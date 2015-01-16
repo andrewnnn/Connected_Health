@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class QuestionViewActivity extends ActionBarActivity {
+public class QuestionViewActivity extends QuickMenu {
 
     final int ANSWER_FORMAT_RADIOBUTTON = 0;
     final int ANSWER_FORMAT_CHECKBOX = 1;

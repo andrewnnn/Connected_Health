@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SingleItemViewActivity extends ActionBarActivity {
+public class SingleItemViewActivity extends QuickMenu {
 
     int itemIndex = -1;
 

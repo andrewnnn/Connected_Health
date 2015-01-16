@@ -7,6 +7,9 @@
     tools:context="au.edu.adelaide.connected_health_app.ProfileEditActivity"
     android:background="@android:color/holo_red_light">
 
+    <include layout="@layout/quick_menu_bar"
+        android:id="@+id/quickMenuBar"/>
+
     <!--PROFILE VALUES
     1. first name
     2. last name

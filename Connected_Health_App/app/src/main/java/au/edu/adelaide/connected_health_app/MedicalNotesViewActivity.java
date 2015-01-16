@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class MedicalNotesViewActivity extends ActionBarActivity {
+public class MedicalNotesViewActivity extends QuickMenu {
 
     private final int patientID = 1;
     private ArrayList<JSONObject> medicalNotesForPreviews;
