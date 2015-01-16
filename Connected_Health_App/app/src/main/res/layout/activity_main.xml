@@ -100,7 +100,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="0.25"
         android:onClick="goToProfilePanels"
-        android:background="@android:color/holo_red_light">
+        android:background="@drawable/measurement_icon">
 
         <!--Panel label-->
         <TextView
