@@ -43,4 +43,9 @@ class MedicalNoteController {
         JSONArray medicalNotesJson = new JSONArray(medicalNotesToSend)
         render medicalNotesJson.toString()
     }
+
+
+    def notesView(){
+        render (view:"/NotesView")
+    }
 }
