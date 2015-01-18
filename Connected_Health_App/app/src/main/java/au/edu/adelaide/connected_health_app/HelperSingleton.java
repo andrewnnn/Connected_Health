@@ -34,9 +34,9 @@ public class HelperSingleton {
             return null;
         }
 
-        if (measurementName == "Steps") {
+        if (measurementName.equals("Steps")) {
             return MeasurementStepsViewActivity.class;
-        } else if (measurementName == "Weight") {
+        } else if (measurementName.equals("Weight")) {
             return MeasurementStepsViewActivity.class;  //TODO
         } else {
             return null;

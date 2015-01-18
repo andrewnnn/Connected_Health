@@ -35,9 +35,9 @@ public class MeasurementViewActivity extends QuickMenu {
                 measurementTypesForPreviews = PatientSingleton.getInstance().getMeasurementTypes(0,2);
                 pageNumber = 0;
             }
-            int i;
 
             // for each preview, set background colour to match home panel and set preview text
+            int i;
             for (i = 0; i < measurementTypesForPreviews.size(); i++){
                 String name = measurementTypesForPreviews.get(i).getString("name");
                 String description = measurementTypesForPreviews.get(i).getString("description");
