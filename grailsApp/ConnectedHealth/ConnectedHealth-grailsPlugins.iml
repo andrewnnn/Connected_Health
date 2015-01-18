@@ -92,6 +92,7 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.55/tomcat-embed-jasper-7.0.55.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ant/7.0.55/tomcat-catalina-ant-7.0.55.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/postgresql/postgresql/9.3-1102-jdbc41/postgresql-9.3-1102-jdbc41.jar!/" />
+          <root url="jar://D:/grails-2.4.4/lib/commons-codec/commons-codec/jars/commons-codec-1.6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

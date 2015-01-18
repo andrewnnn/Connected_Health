@@ -31,6 +31,9 @@ class UrlMappings {
             action = [PUT:"updateEntryView", DELETE:"removeEntryView"]
         }
 
+        "/patients/$patientID"(controller:"Patient"){
+            action = [GET:"showView"]
+        }
         //questions
 //        "/questionnaire/$IDorName"(controller:"Questionnaire",action:"get")
 
