@@ -10,6 +10,8 @@ public class HelperSingleton {
     private static HelperSingleton mInstance = null;
 
     private final int textPreviewsPerPage = 3;
+    private String ipAddress;
+    private String port;
 
     private HelperSingleton() {}
 
@@ -19,6 +21,18 @@ public class HelperSingleton {
             mInstance = new HelperSingleton();
         }
         return mInstance;
+    }
+
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+    public String getConstantUrl() {
+        return "http://" + ipAddress + ":" + port + "/ConnectedHealth/";
     }
 
     public int getTextPreviewsPerPage() {
@@ -34,9 +48,9 @@ public class HelperSingleton {
             return null;
         }
 
-        if (measurementName == "Steps") {
+        if (measurementName.equals("Steps")) {
             return MeasurementStepsViewActivity.class;
-        } else if (measurementName == "Weight") {
+        } else if (measurementName.equals("Weight")) {
             return MeasurementStepsViewActivity.class;  //TODO
         } else {
             return null;
