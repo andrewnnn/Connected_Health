@@ -12,4 +12,9 @@ class Patient {
 
     static constraints = {
     }
+
+    static mapping = {
+        journalEntries sort:'created', order:'desc'
+        medicalNotes sort:'created', order:'desc'
+    }
 }
