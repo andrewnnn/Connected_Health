@@ -28,6 +28,11 @@ public class MainActivity extends ActionBarActivity {
         } catch (JSONException je) {
             Toast.makeText(getApplicationContext(), "Storing static JSON in patient singleton failed.", Toast.LENGTH_LONG).show();
         }
+
+        // Set Grails IP address and port
+        HelperSingleton hs = HelperSingleton.getInstance();
+        hs.setIpAddress("IP HERE");
+        hs.setPort("PORT HERE");
     }
 
 
