@@ -2,7 +2,9 @@ package connectedhealth
 
 class WithingsApiController {
 
-    def index() { }
+    def indexView() {}
+
+    def stepsView() {}
 
     def activitymeasurements() {
         WithingsAPI oauth = new WithingsAPI("3ee15d490209fc40b0163102cfcb34f7451382d27c686b8b24489bdcb66f",

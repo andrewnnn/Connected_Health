@@ -7,6 +7,31 @@ class MedicalNoteController {
 
     def scaffold = MedicalNote      // basic RESTful views
 
+    def indexView() {
+
+    }
+
+    def showView() {
+        Patient patient = Patient.findById(params.patientID)
+    }
+
+    def newView() {
+
+    }
+
+    def createMedicalNote() {
+
+    }
+
+    def editView() {}
+
+    def updateMedicalNote() {
+
+    }
+
+    def deleteMedicalNote() {}
+
+
     // get medical notes for a single patient
     // (required) patientID = ID of patient to get medical notes for
     def notes() {

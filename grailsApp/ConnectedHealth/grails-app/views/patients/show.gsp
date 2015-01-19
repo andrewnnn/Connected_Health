@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="mainModified"/>
+    <meta name="layout" content="main"/>
     <title>${patient.firstName + " " + patient.lastName}</title>
 </head>
 

@@ -7,6 +7,10 @@ class JournalEntryController {
 
     def scaffold = JournalEntry
 
+    def indexView() {}
+
+    def showView() {}
+
     // get journal entries for a single patient
     // (required) patientID = ID of patient to get journal entries for
     def entries() {

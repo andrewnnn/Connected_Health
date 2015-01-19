@@ -4,6 +4,10 @@ class PatientController {
 
     def scaffold = Patient
 
+    def indexView() {
+
+    }
+
     def showView() {
         Patient patient = Patient.findById(params.patientID)
         Set<JournalEntry> recentJournalEntries = patient.journalEntries
@@ -25,4 +29,21 @@ class PatientController {
                         PREVIEW_CHARS: PREVIEW_CHARS,
                         PREVIEW_COUNT: PREVIEW_COUNT])
     }
+
+    def newView() {
+
+    }
+
+    def createPatient() {
+
+    }
+
+    def editView() {}
+
+    def updatePatient() {
+
+    }
+
+    def deletePatient() {}
+
 }

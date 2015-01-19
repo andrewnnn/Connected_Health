@@ -7,6 +7,22 @@ class QuestionnaireController {
 
     def scaffold = Questionnaire
 
+    def indexView() {}
+
+    def showView() {}
+
+    def newQuestionnaire() {}
+
+    def createQuestionnaire() {
+    }
+
+    def editView() {}
+
+    def updateQuestionnaire() {}
+
+    def deleteQuestionnaire() {
+    }
+
     // Respond with JSON object containing questionnaire name/id, questions and question choices (if applicable).
     // {id: int, name: str, questions: [ {id: int, content: str, answerFormat: int, choices: [ {id: int, content: str}, {id: int, content: str}, ... ] } ] }
     def get() {
