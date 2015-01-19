@@ -12,4 +12,8 @@ class Question {
 //        content != null
 //        answerFormat == 0 || answerFormat == 1 || answerFormat == 2
     }
+
+    static mapping = {
+        choices sort:'content', order:'asc'
+    }
 }
