@@ -47,7 +47,7 @@ class UrlMappings {
         "/patients/$patientID/medicalnotes/$medicalnoteID/edit"(controller:"MedicalNote",action:"editView")
 
         "/patients/$patientID/medicalnotes/$medicalnoteID"(controller:"MedicalNote"){
-            action = [PUT:"updateMedicalNote", DELETE:"removeMedicalNote"]
+            action = [PUT:"updateMedicalNote", DELETE:"deleteMedicalNote"]
         }
 
         "/patients/$patientID/medicalnotes/json"(controller:"MedicalNote",action:"notes")
@@ -63,7 +63,7 @@ class UrlMappings {
         "/questionnaires/$questionnaireID/edit"(controller:"Questionnaire",action:"editView")
 
         "/questionnaires/$questionnaireID"(controller:"Questionnaire"){
-            action = [PUT:"updateQuestionnaire", DELETE:"removeQuestionnaire"]
+            action = [PUT:"updateQuestionnaire", DELETE:"deleteQuestionnaire"]
         }
 
         //Question
