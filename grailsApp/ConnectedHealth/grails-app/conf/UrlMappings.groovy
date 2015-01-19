@@ -14,9 +14,9 @@ class UrlMappings {
 
         //Patient
         "/patients/"(controller:"Patient",action: "indexView")
-        "/patients/$patientID"(controller:"Patient",action: "showView")
+        "/patients/$patientID/show"(controller:"Patient",action: "showView")
 
-        "/patients/$patientID/create"(controller:"Patient"){
+        "/patients/create"(controller:"Patient"){
             action = [GET:"newView", POST:"createPatient"]
         }
 
@@ -56,7 +56,7 @@ class UrlMappings {
         "/questionnaires/"(controller:"Questionnaire",action:"indexView")
         "/questionnaires/$questionnaireID"(controller:"Questionnaire",action:"showView")
 
-        "/questionnaires/$questionnaireID/create"(controller:"Questionnaire"){
+        "/questionnaires/create"(controller:"Questionnaire"){
             action = [GET:"newQuestionnaire", POST:"createQuestionnaire"]
         }
 
@@ -69,7 +69,7 @@ class UrlMappings {
         //Question
         "/questionnaires/$questionnaireID/questions/$questionID"(controller:"Question",action:"showView")
 
-        "/questionnaires/$questionnaireID/questions/$questionID/create"(controller:"Question"){
+        "/questionnaires/$questionnaireID/questions/create"(controller:"Question"){
             action = [GET:"newQuestion", POST:"createQuestion"]
         }
 
