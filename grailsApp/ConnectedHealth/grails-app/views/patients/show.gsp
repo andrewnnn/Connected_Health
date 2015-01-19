@@ -56,7 +56,7 @@
         </tbody>
     </table>
     <% if (journalEntriesCount > PREVIEW_COUNT) { %>
-        <g:link controller="${"JournalEntry"}" action="index" params="[patient: patient]">
+        <g:link controller="${"JournalEntry"}" action="indexView" params="[patientID: patient.id]">
             View all journal entries (<%= journalEntriesCount %>)
         </g:link>
     <% } %>
@@ -77,7 +77,9 @@
         </tbody>
     </table>
     <% if (medicalNotesCount > PREVIEW_COUNT) { %>
-        View all medical notes (<%= medicalNotesCount %>)
+        <g:link controller="${"MedicalNote"}" action="indexView" params="[patientID: patient.id]">
+            View all medical notes (<%= medicalNotesCount %>)
+        </g:link>
     <% } %>
 </div>
 
