@@ -5,7 +5,9 @@ class PatientController {
     def scaffold = Patient
 
     def indexView() {
-
+        Set<Patient> patients = Patient.list(sort:'lastName')
+        render(view: "/patients/index", model:
+                [patients: patients])
     }
 
     def showView() {
@@ -38,7 +40,9 @@ class PatientController {
 
     }
 
-    def editView() {}
+    def editView() {
+        render (view: "/patients/form")
+    }
 
     def updatePatient() {
 
