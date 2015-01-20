@@ -50,7 +50,7 @@
                 </td>
                 <td>
                     <span class="property-value">
-                        <a href="/ConnectedHealth/patients/${patient.id}/journal/${it.id}/show">${it.content}</a>
+                        <a href="/ConnectedHealth/patients/${patient.id}/journal/${it.id}">${it.content}</a>
                     </span>
                 </td>
             </tr>

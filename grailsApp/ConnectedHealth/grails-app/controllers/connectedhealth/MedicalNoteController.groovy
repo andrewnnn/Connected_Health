@@ -46,7 +46,7 @@ class MedicalNoteController {
         Patient patient = Patient.findById(params.patientID)
         MedicalNote medicalNote = MedicalNote.findById(params.medicalnoteID)
         medicalNote.content = params.content
-        medicalNote.save(true)
+        medicalNote.save(true)      // update medical note immediately
         render(view: "/medicalNotes/show", model: [medicalNote: medicalNote, patient: patient])
     }
 
