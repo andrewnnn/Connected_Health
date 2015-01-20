@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="views.ViewHelpers" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -13,7 +14,7 @@
         </fieldset>
     </g:form>
 
-<div class="content scaffold-list" role="main">
+<div class="content scaffold-list">
     <h1>Patient</h1>
     <table>
         <tbody>
@@ -46,11 +47,13 @@
         <g:each in="${recentJournalEntries}">
             <tr>
                 <td>
-                    ${it.created.toString().substring(0,DATE_CHARS)}
+                    ${ViewHelpers.formatDate(it.created)}
                 </td>
                 <td>
                     <span class="property-value">
-                        <a href="/ConnectedHealth/patients/${patient.id}/journal/${it.id}">${it.content}</a>
+                        <a href="/ConnectedHealth/patients/${patient.id}/journal/${it.id}">
+                            ${ViewHelpers.previewString(it.content)}
+                        </a>
                     </span>
                 </td>
             </tr>
@@ -69,11 +72,13 @@
         <g:each in="${recentMedicalNotes}">
             <tr>
                 <td>
-                    ${it.created.toString().substring(0,DATE_CHARS)}
+                    ${ViewHelpers.formatDate(it.created)}
                 </td>
                 <td>
                     <span class="property-value">
-                        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}/show">${it.content}</a>
+                        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}">
+                            ${ViewHelpers.previewString(it.content)}
+                        </a>
                     </span>
                 </td>
             </tr>
@@ -86,11 +91,11 @@
         </g:link>
         <br /><br />
     <% } %>
-    <div class="nav" role="navigation">
+    <div class="nav">
         <ul>
             <li>
                 <span class="property-value">
-                    <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create">Add new medical note</a>
+                    <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add new medical note</a>
                 </span>
             </li>
         </ul>

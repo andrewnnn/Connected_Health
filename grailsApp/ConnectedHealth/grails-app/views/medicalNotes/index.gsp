@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="views.ViewHelpers" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -30,7 +30,7 @@
                     <span class="property-value"><a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}/show">${it.content}</a></span>
                 </td>
                 <td>
-                    ${it.created}
+                    ${ViewHelpers.formatDate(it.created)}
                 </td>
             </tr>
         </g:each>

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="views.ViewHelpers" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -24,7 +24,7 @@
 
         <li class="fieldcontain">
             <span id="created-label" class="property-label">Created</span>
-            <span class="property-value" aria-labelledby="created-label">${medicalNote.created}</span>
+            ${ViewHelpers.formatDate(medicalNote.created)}
         </li>
 
         <li class="fieldcontain">
