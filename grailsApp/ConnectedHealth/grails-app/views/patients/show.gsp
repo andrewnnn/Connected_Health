@@ -49,7 +49,9 @@
                     ${it.created.toString().substring(0,DATE_CHARS)}
                 </td>
                 <td>
-                    <span class="property-value"><g:link controller="${"JournalEntry"}" action="show" id="${it.id}">${it.content}</g:link></span>
+                    <span class="property-value">
+                        <a href="/ConnectedHealth/patients/${patient.id}/journal/${it.id}">${it.content}</a>
+                    </span>
                 </td>
             </tr>
         </g:each>
@@ -70,7 +72,9 @@
                     ${it.created.toString().substring(0,DATE_CHARS)}
                 </td>
                 <td>
-                    <span class="property-value"><g:link controller="${"MedicalNote"}" action="show" id="${it.id}">${it.content}</g:link></span>
+                    <span class="property-value">
+                        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}/show">${it.content}</a>
+                    </span>
                 </td>
             </tr>
         </g:each>
@@ -85,9 +89,9 @@
     <div class="nav" role="navigation">
         <ul>
             <li>
-                <g:link controller="${"MedicalNote"}" action="newView" params="[patientID: patient.id]" class="create">
-                    Add new medical note
-                </g:link>
+                <span class="property-value">
+                    <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create">Add new medical note</a>
+                </span>
             </li>
         </ul>
     </div>

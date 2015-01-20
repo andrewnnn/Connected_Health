@@ -17,14 +17,16 @@ class MedicalNoteController {
 
     def showView() {
         Patient patient = Patient.findById(params.patientID)
+        MedicalNote medicalNote = MedicalNote.findById(params.medicalnoteID)
+        render(view: "/medicalNotes/show", model:
+                [medicalNote: medicalNote,
+                        patient: patient])
     }
 
     def newView() {
         Patient patient = Patient.findById(params.patientID)
-        MedicalNote medicalNote = new MedicalNote()
-        render(view: "/medicalNotes/form", model:
-                [medicalNote: medicalNote,
-                patient: patient])
+        render(view: "/medicalNotes/new", model:
+                [patient: patient])
     }
 
     def createMedicalNote() {
@@ -34,10 +36,18 @@ class MedicalNoteController {
         render(view: "/medicalNotes/show", model: [medicalNote: medicalNote, patient: patient])
     }
 
-    def editView() {}
+    def editView() {
+        Patient patient = Patient.findById(params.patientID)
+        MedicalNote medicalNote = MedicalNote.findById(params.medicalnoteID)
+        render(view: "/medicalNotes/edit", model: [medicalNote: medicalNote, patient: patient])
+    }
 
     def updateMedicalNote() {
-
+        Patient patient = Patient.findById(params.patientID)
+        MedicalNote medicalNote = MedicalNote.findById(params.medicalnoteID)
+        medicalNote.content = params.content
+        medicalNote.save(true)      // update medical note immediately
+        render(view: "/medicalNotes/show", model: [medicalNote: medicalNote, patient: patient])
     }
 
     def deleteMedicalNote() {}
