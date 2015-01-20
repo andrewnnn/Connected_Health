@@ -7,9 +7,21 @@ class JournalEntryController {
 
     def scaffold = JournalEntry
 
-    def indexView() {}
+    def indexView() {
+        Patient patient = Patient.findById(params.patientID)
+        Set<JournalEntry> JournalEntries = patient.journalEntries
+        int journalEntriesCount = JournalEntries.size()
 
-    def showView() {}
+        render(view: "/journalEntry/indexView", model:[patient: patient,JournalEntries: JournalEntries, journalEntriesCount: journalEntriesCount])
+    }
+
+    def showView() {
+        Patient patient = Patient.findById(params.patientID)
+
+        JournalEntry journalentry = JournalEntry.findById(params.journalEntryID)
+
+        render(view: "/journalEntry/showView", model:[patient: patient,journalentry: journalentry])
+    }
 
     // get journal entries for a single patient
     // (required) patientID = ID of patient to get journal entries for
