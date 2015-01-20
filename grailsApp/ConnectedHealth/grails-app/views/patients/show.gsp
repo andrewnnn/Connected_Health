@@ -84,9 +84,11 @@
     <% } %>
     <div class="nav" role="navigation">
         <ul>
-            <g:link controller="${"MedicalNote"}" action="newView" params="[patientID: patient.id]" class="create">
-                Add new medical note
-            </g:link>
+            <li>
+                <g:link controller="${"MedicalNote"}" action="newView" params="[patientID: patient.id]" class="create">
+                    Add new medical note
+                </g:link>
+            </li>
         </ul>
     </div>
 

@@ -16,11 +16,18 @@ class MedicalNoteController {
     }
 
     def newView() {
-
+        Patient patient = Patient.findById(params.patientID)
+        MedicalNote medicalNote = new MedicalNote()
+        render(view: "/medicalNotes/form", model:
+                [medicalNote: medicalNote,
+                patient: patient])
     }
 
     def createMedicalNote() {
-
+        Patient patient = Patient.findById(params.patientID)
+        MedicalNote medicalNote = new MedicalNote(created: new Date(), content: params.content, patient: patient)
+        medicalNote.save()
+        render(view: "/medicalNotes/show", model: [medicalNote: medicalNote, patient: patient])
     }
 
     def editView() {}
