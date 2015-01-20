@@ -9,7 +9,7 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="/ConnectedHealth/">Home</a></li>
-        <li><a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/" class="create">Add medical note</a></li>
+        <li><a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add medical note</a></li>
     </ul>
 </div>
 <div id="list-medicalNotes" class="content scaffold-list" role="main">
@@ -18,10 +18,8 @@
     <table>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th>Note</th>
+            <th>Date created</th>
         </tr>
         </thead>
         <tbody>
@@ -29,22 +27,20 @@
         <g:each in="${medicalNotes}">
             <tr>
                 <td>
-                    <span class="property-value"><g:link controller="Patient" action="showView" params="[patientID: it.id]">${it.lastName + ", " + it.firstName}</g:link></span>
+                    <span class="property-value"><a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}/show">${it.content}</a></span>
                 </td>
                 <td>
-                    ${it.id}
-                </td>
-                <td>
-                    ${it.id}
-                </td>
-                <td>
-                    ${it.id}
+                    ${it.created}
                 </td>
             </tr>
         </g:each>
 
         </tbody>
     </table>
+
+    <fieldset class="buttons">
+        <a href="/ConnectedHealth/patients/${patient.id}/show">Back to patient profile</a>
+    </fieldset>
 </div>
 </body>
 </html>

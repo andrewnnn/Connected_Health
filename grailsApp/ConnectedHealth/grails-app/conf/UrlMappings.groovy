@@ -40,6 +40,8 @@ class UrlMappings {
         //Medical Note
         "/patients/$patientID/medicalnotes/"(controller:"MedicalNote",action:"indexView")
 
+        "/patients/$patientID/medicalnotes/$medicalnoteID/show"(controller:"MedicalNote",action:"showView")
+
         "/patients/$patientID/medicalnotes/create"(controller:"MedicalNote"){
             action = [GET:"newView", POST:"createMedicalNote"]
         }

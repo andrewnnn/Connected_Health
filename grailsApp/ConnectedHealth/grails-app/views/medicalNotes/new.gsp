@@ -16,23 +16,7 @@
 <div id="create-medicalNote" class="content scaffold-create" role="main">
     <h1>Add medical note for ${patient.firstName + " " + patient.lastName}</h1>
 
-    <g:form url="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" method="POST">
-
-    <fieldset class="form">
-        <div class="fieldcontain  required">
-            <label for="content">
-                Content
-                <span class="required-indicator">*</span>
-            </label>
-            <g:textArea name="content" value="" id="content" rows="5" cols="40"/>
-        </div>
-        <g:hiddenField name="patientID" value="${patient.id}" />
-    </fieldset>
-
-    <fieldset class="buttons">
-        <input type="submit" name="create" class="save" value="Create" id="create">
-    </fieldset>
-    </g:form>
+    <g:render template="/medicalNotes/form" locals="${[patient: patient]}" />
 </div>
 
 </body>
