@@ -7,9 +7,17 @@ class QuestionnaireController {
 
     def scaffold = Questionnaire
 
-    def indexView() {}
+    def indexView() {
+        Set<Questionnaire> questionnaires = Questionnaire.list(sort:'name')
+        render(view: "/questionnaire/indexView", model:
+                [questionnaires: questionnaires])
+    }
 
-    def showView() {}
+    def showView() {
+        Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
+        render(view: "/questionnaire/showView", model:
+                [questionnaire: questionnaire])
+    }
 
     def newQuestionnaire() {}
 

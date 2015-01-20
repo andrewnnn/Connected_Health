@@ -18,7 +18,7 @@ class QuestionnaireControllerSpec extends Specification {
     static Questionnaire questionnaire2
 
     def setup() {
-        questionnaire1 = new Questionnaire(name: "FirstQuestionnaire")
+        questionnaire1 = new Questionnaire(name: "FirstQuestionnaire", description: "qq1desc")
         questionnaire1.save()
 
         Question q1 = new Question(content: "q1", answerFormat: 0, questionnaire: questionnaire1)
@@ -42,7 +42,7 @@ class QuestionnaireControllerSpec extends Specification {
         Choice q2c3 = new Choice(content: "choice3 for q2", question: q2)
         q2c3.save()
 
-        questionnaire2 = new Questionnaire(name: "SecondQuestoinnaire")
+        questionnaire2 = new Questionnaire(name: "SecondQuestoinnaire", description: "qq2desc")
         questionnaire2.save()
 
         Question q4 = new Question(content: "q4", answerFormat: 1, questionnaire: questionnaire2)

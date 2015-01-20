@@ -8,8 +8,8 @@
 <body>
     <g:form url="[resource:patient, action:'delete']" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${patient}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-            <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this patient account?')}');" />
+            <g:link class="edit" action="edit" resource="${patient}"><g:message code="default.button.edit.label.useDefault" default="Edit patient profile" /></g:link>
+            <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label.useDefault', default: 'Delete patient profile')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this patient profile?')}');" />
         </fieldset>
     </g:form>
 
@@ -56,7 +56,7 @@
         </tbody>
     </table>
     <% if (journalEntriesCount > PREVIEW_COUNT) { %>
-        <g:link controller="${"JournalEntry"}" action="index" params="[patient: patient]">
+        <g:link controller="${"JournalEntry"}" action="indexView" params="[patientID: patient.id]">
             View all journal entries (<%= journalEntriesCount %>)
         </g:link>
     <% } %>
@@ -77,8 +77,21 @@
         </tbody>
     </table>
     <% if (medicalNotesCount > PREVIEW_COUNT) { %>
-        View all medical notes (<%= medicalNotesCount %>)
+        <g:link controller="${"MedicalNote"}" action="indexView" params="[patientID: patient.id]">
+            View all medical notes (<%= medicalNotesCount %>)
+        </g:link>
+        <br /><br />
     <% } %>
+    <div class="nav" role="navigation">
+        <ul>
+            <li>
+                <g:link controller="${"MedicalNote"}" action="newView" params="[patientID: patient.id]" class="create">
+                    Add new medical note
+                </g:link>
+            </li>
+        </ul>
+    </div>
+
 </div>
 
 </body>

@@ -8,7 +8,11 @@ class MedicalNoteController {
     def scaffold = MedicalNote      // basic RESTful views
 
     def indexView() {
-
+        Patient patient = Patient.findById(params.patientID)
+        Set<MedicalNote> medicalNotes = patient.medicalNotes
+        render(view: "/medicalNotes/index", model:
+                [medicalNotes: medicalNotes,
+                        patient: patient])
     }
 
     def showView() {
@@ -16,11 +20,18 @@ class MedicalNoteController {
     }
 
     def newView() {
-
+        Patient patient = Patient.findById(params.patientID)
+        MedicalNote medicalNote = new MedicalNote()
+        render(view: "/medicalNotes/form", model:
+                [medicalNote: medicalNote,
+                patient: patient])
     }
 
     def createMedicalNote() {
-
+        Patient patient = Patient.findById(params.patientID)
+        MedicalNote medicalNote = new MedicalNote(created: new Date(), content: params.content, patient: patient)
+        medicalNote.save()
+        render(view: "/medicalNotes/show", model: [medicalNote: medicalNote, patient: patient])
     }
 
     def editView() {}

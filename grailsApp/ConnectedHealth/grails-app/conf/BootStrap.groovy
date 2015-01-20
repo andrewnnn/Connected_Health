@@ -78,7 +78,7 @@ class BootStrap {
         b = new JournalEntry(patient: p3, content: "and many many many many dogs!!!", created: new Date(), updated: new Date())
         b.save()
 
-        Questionnaire questionnaire1 = new Questionnaire(name: "StandardQuestionnaire")
+        Questionnaire questionnaire1 = new Questionnaire(name: "StandardQuestionnaire", description: "General questions for no specific condition.")
         questionnaire1.save()
 
         Question q1 = new Question(content: "q1", answerFormat: 0, questionnaire: questionnaire1)
@@ -102,7 +102,7 @@ class BootStrap {
         Choice q2c3 = new Choice(content: "choice3 for q2", question: q2)
         q2c3.save()
 
-        Questionnaire questionnaire2 = new Questionnaire(name: "AnotherQuestionnaire")
+        Questionnaire questionnaire2 = new Questionnaire(name: "Physical Activity Questionnaire", description: "Questions about recent physical activity.")
         questionnaire2.save()
 
         Question q4 = new Question(content: "q4", answerFormat: 1, questionnaire: questionnaire2)
