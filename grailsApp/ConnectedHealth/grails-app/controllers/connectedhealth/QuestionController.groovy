@@ -18,7 +18,8 @@ class QuestionController {
     def createQuestion() {
         Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
         Question question = new Question(content: params.content, answerFormat: params.answerFormat, questionnaire: questionnaire)
-        render(view: "/questions/show", model: [questionnaire: questionnaire, question: question])
+        question.save()
+        redirect(uri: "/questionnaires/${questionnaire.id}/questions/${question.id}/show")
     }
 
     def editView() {
@@ -31,12 +32,12 @@ class QuestionController {
         Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
         Question question = Question.findById(params.questionID)
         question.content = params.content
-        question.answerFormat = params.answerFormat
-        if (params.answerFormat == 2) {
+        question.answerFormat = params.int('answerFormat')
+        if (question.answerFormat == 2) {
             question.choices.clear()
         }
         question.save(true)      // update question immediately
-        render(view: "/question/show", model: [questionnaire: questionnaire, question: question])
+        redirect(uri: "/questionnaires/${questionnaire.id}/questions/${question.id}/show", model: [answerFormat: params.answerFormat])
     }
 
     def removeQuestion() {

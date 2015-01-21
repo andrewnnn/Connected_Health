@@ -12,6 +12,7 @@
         <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label.useDefault', default: 'Delete question')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this question?')}');" />
     </fieldset>
 </g:form>
+<h1>${answerFormat}</h1>
 
 <div id="show-question" class="content scaffold-show" role="main">
     <h1>${question.content}</h1>
@@ -31,7 +32,7 @@
                     </span>
                 </g:each>
                 <br />
-                <span id="choices-label" class="property-label">
+                <span aria-labelledby="choices-label" class="property-value">
                     <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/choices/create" class="create">Add&nbsp;choice</a>
                 </span>
             </li>
