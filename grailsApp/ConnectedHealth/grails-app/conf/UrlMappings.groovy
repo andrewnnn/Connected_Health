@@ -69,7 +69,7 @@ class UrlMappings {
         }
 
         //Question
-        "/questionnaires/$questionnaireID/questions/$questionID"(controller:"Question",action:"showView")
+        "/questionnaires/$questionnaireID/questions/$questionID/show"(controller:"Question",action:"showView")
 
         "/questionnaires/$questionnaireID/questions/create"(controller:"Question"){
             action = [GET:"newQuestion", POST:"createQuestion"]

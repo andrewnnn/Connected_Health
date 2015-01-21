@@ -42,16 +42,24 @@
         <g:each in="${questionnaire.questions}">
             <tr>
                 <td>
-                    <span class="property-value"><g:link controller="${"Question"}" action="showView" params="[questionID: it.id]">${it.content}</g:link></span>
+                    <span class="property-value">
+                        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}" class="show">${it.content}</a>
+                    </span>
+                    <br />
+                    edit&nbsp;&nbsp;delete
                 </td>
                 <td>
                     <% if (it.choices.size() == 0) { %>
                         N/A
                     <% } else { %>
                         <ol>
+                        <% questionId = it.id %>
                         <g:each in="${it.choices}">
                             <li>
-                                <span class="property-value"><g:link controller="${"Choice"}" action="showView" params="[choiceID: it.id]">${it.content}</g:link></span>
+                                <span class="property-value">
+                                    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}" class="show">${it.content}</a>
+                                </span>
+                                &nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;delete
                             </li>
                         </g:each>
                         </ol>
