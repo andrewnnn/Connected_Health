@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="views.ViewHelpers" %>
+<%@ page import="views.ViewHelpers" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -9,7 +8,7 @@
 <body>
     <g:form url="[resource:patient, action:'delete']" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${patient}"><g:message code="default.button.edit.label.useDefault" default="Edit patient profile" /></g:link>
+            <a href="/ConnectedHealth/patients/${patient.id}/edit" class="edit">Edit patient profile</a>
             <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label.useDefault', default: 'Delete patient profile')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this patient profile?')}');" />
         </fieldset>
     </g:form>
@@ -76,7 +75,7 @@
                     </td>
                     <td>
                         <span class="property-value">
-                            <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}">
+                            <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}/show">
                                 ${ViewHelpers.previewString(it.content)}
                             </a>
                         </span>
@@ -96,6 +95,11 @@
                 <li>
                     <span class="property-value">
                         <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add new medical note</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="property-value">
+                        <a href="/ConnectedHealth/patients">View patient list</a>
                     </span>
                 </li>
             </ul>

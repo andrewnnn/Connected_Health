@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="views.ViewHelpers" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -13,7 +13,7 @@
     <table>
         <tbody>
         <tr>
-            <th>content</th>
+            <th>Content</th>
             <td>${journalentry.content}</td>
         </tr>
         <tr>
@@ -22,11 +22,11 @@
         </tr>
         <tr>
             <th>Created At</th>
-            <td>${journalentry.created.toString().substring(0,12)}</td>
+            <td>${ViewHelpers.formatDate(journalentry.created)}</td>
         </tr>
         <tr>
             <th>Last Modified At</th>
-            <td>${journalentry.updated.toString().substring(0,12)}</td>
+            <td>${ViewHelpers.formatDate(journalentry.updated)}</td>
         </tr>
         </tbody>
     </table>

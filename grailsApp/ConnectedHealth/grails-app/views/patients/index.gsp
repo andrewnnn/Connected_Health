@@ -29,7 +29,9 @@
         <g:each in="${patients}">
             <tr>
                 <td>
-                    <span class="property-value"><g:link controller="Patient" action="showView" params="[patientID: it.id]">${it.lastName + ", " + it.firstName}</g:link></span>
+                    <span class="property-value">
+                        <g:link controller="Patient" action="showView" params="[patientID: it.id]">${it.lastName + ", " + it.firstName}</g:link>
+                    </span>
                 </td>
                 <td>
                     ${it.homeAddress}
