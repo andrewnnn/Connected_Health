@@ -17,6 +17,17 @@ class BootStrap {
         p2.save()
         p3.save()
 
+        MeasurementType mt1 = new MeasurementType(name: "Blood Pressure", description: "From some device.")
+        mt1.save()
+        MeasurementType mt2 = new MeasurementType(name: "Steps", description: "Number of steps taken.")
+        mt2.save()
+        MeasurementType mt3 = new MeasurementType(name: "Weight", description: "From Withings scale.")
+        mt3.save()
+
+        p1.addToMeasurementTypes(mt1).addToMeasurementTypes(mt2).addToMeasurementTypes(mt3).save()
+        p2.addToMeasurementTypes(mt1).addToMeasurementTypes(mt2).addToMeasurementTypes(mt3).save()
+        p3.addToMeasurementTypes(mt1).addToMeasurementTypes(mt2).addToMeasurementTypes(mt3).save()
+
         //create database seed
         MedicalNote a = new MedicalNote(patient: p1, content: "Begin seven day trial of meloxicam 15mg PO daily. Patient given instruction sheet on back exercises to stretch " +
                 "injured muscles and advised to continue work and normal activity as tolerated. Patient advised to keep a pillow between her legs" +
