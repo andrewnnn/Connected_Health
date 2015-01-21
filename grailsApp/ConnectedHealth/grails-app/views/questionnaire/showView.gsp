@@ -30,7 +30,10 @@
         </tbody>
     </table>
 
-    <table>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/create" class="create">Add question</a>
+    <br /><br />
+
+    <table style="table-layout: fixed">
         <thead>
         <tr>
             <th>Question</th>
@@ -41,14 +44,22 @@
 
         <g:each in="${questionnaire.questions}">
             <tr>
-                <td>
+                <td style="width: 10%">
                     <span class="property-value">
                         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/show" class="show">${it.content}</a>
                     </span>
                     <br />
-                    edit&nbsp;&nbsp;delete
+                    <g:form url="[resource:it, action:'delete']" method="DELETE">
+                        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/edit" class="edit">Edit</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label.useDefault', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this question?')}');" />
+                        <% if (it.answerFormat == 0 || it.answerFormat == 1) { %>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/choices/create" class="create">Add&nbsp;choice</a>
+                        <% } %>
+                    </g:form>
                 </td>
-                <td>
+                <td style="width: 90%">
                     <% if (it.choices.size() == 0) { %>
                         N/A
                     <% } else { %>
@@ -59,7 +70,7 @@
                                 <span class="property-value">
                                     <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}" class="show">${it.content}</a>
                                 </span>
-                                &nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;delete
+                                &nbsp;&nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;&nbsp;Delete
                             </li>
                         </g:each>
                         </ol>

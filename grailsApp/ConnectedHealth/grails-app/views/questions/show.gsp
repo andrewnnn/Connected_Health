@@ -30,6 +30,10 @@
                         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/choices/${it.id}/show">${it.content}</a>
                     </span>
                 </g:each>
+                <br />
+                <span id="choices-label" class="property-label">
+                    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/choices/create" class="create">Add&nbsp;choice</a>
+                </span>
             </li>
         <% } %>
     </ol>

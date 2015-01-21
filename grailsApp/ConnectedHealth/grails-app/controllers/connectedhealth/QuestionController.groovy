@@ -10,9 +10,15 @@ class QuestionController {
         render(view: "/questions/show", model: [questionnaire: questionnaire, question: question])
     }
 
-    def newQuestion() {}
+    def newView() {
+        Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
+        render(view: "/questions/new", model: [questionnaire: questionnaire])
+    }
 
     def createQuestion() {
+        Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
+        Question question = new Question(content: params.content, answerFormat: params.answerFormat, questionnaire: questionnaire)
+        render(view: "/questions/show", model: [questionnaire: questionnaire, question: question])
     }
 
     def editView() {
