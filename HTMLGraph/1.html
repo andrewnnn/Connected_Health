@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://www.jchartfx.com/libs/jQuery/jquery-1.7.1.js">
+    </script>
+    <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.system.js">
+    </script>
+    <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.coreVector.js">
+    </script>
+    <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.advanced.js">
+    </script>
+    <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.gauge.js">
+    </script>
+    <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.treemap.js">
+    </script>
+    <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.sparkline.js">
+    </script>
+    <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/motifs/jchartfx.motif.whitespace.js">
+    </script>
+    <title>Steps Graph</title>
+
+    <script type="text/javascript">
+        var chart1;
+        function loadChart()
+        {
+            var max = 81;
+            var min = 51;
+            var data= '[{"date":"2014-12-11","steps":66},{"date":"2014-12-12","steps":66}]'
+
+            chart1 = new cfx.Chart();
+            chart1.getData().setSeries(1);
+            chart1.getAxisY().setMin(min);
+            chart1.getAxisY().setMax(max);
+            var series1 = chart1.getSeries().getItem(0);
+            series1.setGallery(cfx.Gallery.Lines);
+            chart1.setDataSource(data);
+            var divHolder = document.getElementById('ChartDiv');
+            chart1.create(divHolder);
+            chart1.setTitle(null);
+
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="http://www.jchartfx.com/libs/v7/current/styles/Attributes/jchartfx.attributes.whitespace.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.jchartfx.com/libs/v7/current/styles/Palettes/jchartfx.palette.whitespace.css" />
+</head>
+
+<body onload="loadChart()">
+<div id="ChartDiv" style="width:100%;height:500px;top:-50px;display:inline-block;position:absolute"></div>
+</body>
+</html>

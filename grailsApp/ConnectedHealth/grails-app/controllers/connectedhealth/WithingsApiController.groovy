@@ -1,10 +1,23 @@
 package connectedhealth
 
+import javax.xml.ws.soap.MTOM
+
 class WithingsApiController {
 
-    def indexView() {}
+    def indexView() {
+        Patient patient = Patient.findById(params.patientID)
+        Set<MeasurementType> measurementTypes = MeasurementType.findAllById(params.patientID)
 
-    def stepsView() {}
+        render(view: "/withingsApi/indexView", model:
+                [patient: patient,
+                 measurementTypes: measurementTypes])
+
+    }
+
+    def stepsView() {
+
+        render(view: "/withingsApi/stepsView")
+    }
 
     def activitymeasurements() {
         WithingsAPI oauth = new WithingsAPI("3ee15d490209fc40b0163102cfcb34f7451382d27c686b8b24489bdcb66f",
