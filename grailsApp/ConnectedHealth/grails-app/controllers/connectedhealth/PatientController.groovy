@@ -11,7 +11,6 @@ class PatientController {
     }
 
     def showView() {
-        final int DATE_CHARS = 16
         final int PREVIEW_CHARS = 100
         final int PREVIEW_COUNT = 3
 
@@ -27,7 +26,6 @@ class PatientController {
                         recentJournalEntries: recentJournalEntries,
                         journalEntriesCount: journalEntriesCount,
                         medicalNotesCount: medicalNotesCount,
-                        DATE_CHARS: DATE_CHARS,
                         PREVIEW_CHARS: PREVIEW_CHARS,
                         PREVIEW_COUNT: PREVIEW_COUNT])
     }

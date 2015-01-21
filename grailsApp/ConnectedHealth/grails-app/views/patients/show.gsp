@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="views.ViewHelpers" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -13,90 +14,94 @@
         </fieldset>
     </g:form>
 
-<div class="content scaffold-list" role="main">
-    <h1>Patient</h1>
-    <table>
-        <tbody>
-        <tr>
-            <th>Name</th>
-            <td>${patient.firstName + " " + patient.lastName}</td>
-        </tr>
-        <tr>
-            <th>Patient ID</th>
-            <td>${patient.id}</td>
-        </tr>
-        <tr>
-            <th>Address</th>
-            <td>${patient.homeAddress}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>${patient.contactEmail}</td>
-        </tr>
-        <tr>
-            <th>Phone</th>
-            <td>${patient.phone}</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <h1>Recent journal entries</h1>
-    <table>
-        <tbody>
-        <g:each in="${recentJournalEntries}">
+    <div class="content scaffold-list">
+        <h1>Patient</h1>
+        <table>
+            <tbody>
             <tr>
-                <td>
-                    ${it.created.toString().substring(0,DATE_CHARS)}
-                </td>
-                <td>
-                    <span class="property-value">
-                        <a href="/ConnectedHealth/patients/${patient.id}/journal/${it.id}">${it.content}</a>
-                    </span>
-                </td>
+                <th>Name</th>
+                <td>${patient.firstName + " " + patient.lastName}</td>
             </tr>
-        </g:each>
-        </tbody>
-    </table>
-    <% if (journalEntriesCount > PREVIEW_COUNT) { %>
-        <g:link controller="${"JournalEntry"}" action="indexView" params="[patientID: patient.id]">
-            View all journal entries (<%= journalEntriesCount %>)
-        </g:link>
-    <% } %>
-
-    <h1>Recent medical notes</h1>
-    <table>
-        <tbody>
-        <g:each in="${recentMedicalNotes}">
             <tr>
-                <td>
-                    ${it.created.toString().substring(0,DATE_CHARS)}
-                </td>
-                <td>
-                    <span class="property-value">
-                        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}/show">${it.content}</a>
-                    </span>
-                </td>
+                <th>Patient ID</th>
+                <td>${patient.id}</td>
             </tr>
-        </g:each>
-        </tbody>
-    </table>
-    <% if (medicalNotesCount > PREVIEW_COUNT) { %>
-        <g:link controller="${"MedicalNote"}" action="indexView" params="[patientID: patient.id]">
-            View all medical notes (<%= medicalNotesCount %>)
-        </g:link>
-        <br /><br />
-    <% } %>
-    <div class="nav" role="navigation">
-        <ul>
-            <li>
-                <span class="property-value">
-                    <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create">Add new medical note</a>
-                </span>
-            </li>
-        </ul>
+            <tr>
+                <th>Address</th>
+                <td>${patient.homeAddress}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>${patient.contactEmail}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>${patient.phone}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h1>Recent journal entries</h1>
+        <table>
+            <tbody>
+            <g:each in="${recentJournalEntries}">
+                <tr>
+                    <td>
+                        ${ViewHelpers.formatDate(it.created)}
+                    </td>
+                    <td>
+                        <span class="property-value">
+                            <a href="/ConnectedHealth/patients/${patient.id}/journal/${it.id}">
+                                ${ViewHelpers.previewString(it.content)}
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            </g:each>
+            </tbody>
+        </table>
+        <% if (journalEntriesCount > PREVIEW_COUNT) { %>
+            <g:link controller="${"JournalEntry"}" action="indexView" params="[patientID: patient.id]">
+                View all journal entries (<%= journalEntriesCount %>)
+            </g:link>
+        <% } %>
+
+        <h1>Recent medical notes</h1>
+        <table>
+            <tbody>
+            <g:each in="${recentMedicalNotes}">
+                <tr>
+                    <td>
+                        ${ViewHelpers.formatDate(it.created)}
+                    </td>
+                    <td>
+                        <span class="property-value">
+                            <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}">
+                                ${ViewHelpers.previewString(it.content)}
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            </g:each>
+            </tbody>
+        </table>
+        <% if (medicalNotesCount > PREVIEW_COUNT) { %>
+            <g:link controller="${"MedicalNote"}" action="indexView" params="[patientID: patient.id]">
+                View all medical notes (<%= medicalNotesCount %>)
+            </g:link>
+            <br /><br />
+        <% } %>
+        <div class="nav">
+            <ul>
+                <li>
+                    <span class="property-value">
+                        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add new medical note</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
     </div>
-
-</div>
 
 </body>
 </html>
