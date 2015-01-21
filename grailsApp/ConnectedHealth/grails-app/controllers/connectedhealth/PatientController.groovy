@@ -33,21 +33,37 @@ class PatientController {
     }
 
     def newView() {
-
+        render(view: "/patients/newView")
     }
 
     def createPatient() {
-
+        Patient patient = new Patient(firstName: params.firstName, lastName: params.lastName, contactEmail: params.contactEmail, homeAddress: params.homeAddress, phone: params.phone)
+        patient.save(true)
+        redirect(uri: "/patients/${patient.id}/show")
     }
 
     def editView() {
-        render (view: "/patients/form")
+        Patient patient = Patient.findById(params.patientID)
+
+        render (view: "/patients/editView", model:[patient: patient] )
     }
 
     def updatePatient() {
+        Patient patient = Patient.findById(params.patientID)
+        patient.contactEmail = params.firstName
+        patient.lastName = params.lastName
+        patient.firstName = params.firstName
+        patient.homeAddress = params.homeAddress
+        patient.phone = params.phone
 
+        patient.save(true)
+        redirect(uri: "/patients/${patient.id}/show")
     }
 
-    def deletePatient() {}
+    def deletePatient() {
+        Patient patient = Patient.findById(params.patientID)
+        patient.delete(flush: true)
+        redirect(uri: "/patients/")
+    }
 
 }
