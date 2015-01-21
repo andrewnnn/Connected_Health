@@ -1,5 +1,6 @@
 import connectedhealth.Choice
 import connectedhealth.JournalEntry
+import connectedhealth.MeasurementType
 import connectedhealth.MedicalNote
 import connectedhealth.Patient
 import connectedhealth.Question
@@ -136,6 +137,9 @@ class BootStrap {
             Choice q7choice = new Choice(content: "choice" + i + " for q7", question: q7);
             q7choice.save();
         }
+
+
+
 
     }
     def destroy = {

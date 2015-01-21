@@ -97,8 +97,8 @@ class UrlMappings {
 
 
         //WithingApi
-        "/patient/$patientID/measurements"(controller:"MeasurementType", action:"indexView")
-        "/patient/$patientID/measurements/steps"(controller:"MeasurementType", action:"stepsView")
+        "/patients/$patientID/measurements"(controller:"WithingsApi", action:"indexView")
+        "/patients/$patientID/measurements/steps"(controller:"WithingsApi", action:"stepsView")
 
     }
 }
