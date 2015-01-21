@@ -83,7 +83,7 @@ class UrlMappings {
 
         //Choice
         "/questionnaires/$questionnaireID/questions/$questionID/choices"(controller:"Choice",action:"indexView")
-        "/questionnaires/$questionnaireID/questions/$questionID/choices/$choiceID"(controller:"Choice",action:"showView")
+        "/questionnaires/$questionnaireID/questions/$questionID/choices/$choiceID/show"(controller:"Choice",action:"showView")
 
         "/questionnaires/$questionnaireID/questions/$questionID/choices/create"(controller:"Choice"){
             action = [GET:"newChoice", POST:"createChoice"]

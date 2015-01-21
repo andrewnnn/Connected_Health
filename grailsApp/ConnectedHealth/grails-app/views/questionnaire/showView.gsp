@@ -68,7 +68,7 @@
                         <g:each in="${it.choices}">
                             <li>
                                 <span class="property-value">
-                                    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}" class="show">${it.content}</a>
+                                    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/show" class="show">${it.content}</a>
                                 </span>
                                 &nbsp;&nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;&nbsp;Delete
                             </li>
