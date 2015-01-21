@@ -43,7 +43,7 @@
             <tr>
                 <td>
                     <span class="property-value">
-                        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}" class="show">${it.content}</a>
+                        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/show" class="show">${it.content}</a>
                     </span>
                     <br />
                     edit&nbsp;&nbsp;delete

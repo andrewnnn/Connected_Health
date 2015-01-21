@@ -13,19 +13,25 @@
     </fieldset>
 </g:form>
 
-<div id="show-medicalNote" class="content scaffold-show" role="main">
-    <h1>Question</h1>
+<div id="show-question" class="content scaffold-show" role="main">
+    <h1>${question.content}</h1>
 
-    <ol class="property-list medicalNote">
+    <ol class="property-list question">
         <li class="fieldcontain">
-            <span id="content-label" class="property-label">Content</span>
-            <span class="property-value" aria-labelledby="content-label">${question.content}</span>
+            <span id="answerFormat-label" class="property-label">Answer Format</span>
+            <span class="property-value" aria-labelledby="answerFormat-label">${ViewHelpers.answerFormatString(question.answerFormat)}</span>
         </li>
 
-        <li class="fieldcontain">
-            <span id="patient-label" class="property-label">Answer Format</span>
-            <span class="property-value" aria-labelledby="patient-label">${question.answerFormat}</span>
-        </li>
+        <% if (question.answerFormat == 0 || question.answerFormat == 1) { %>
+            <li class="fieldcontain">
+                <span id="choices-label" class="property-label">Choices</span>
+                <g:each in="${question.choices}">
+                    <span class="property-value" aria-labelledby="choices-label">
+                        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/choices/${it.id}/show">${it.content}</a>
+                    </span>
+                </g:each>
+            </li>
+        <% } %>
     </ol>
 
     <fieldset class="buttons">
