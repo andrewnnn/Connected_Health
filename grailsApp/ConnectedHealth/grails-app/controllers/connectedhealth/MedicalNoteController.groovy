@@ -50,7 +50,10 @@ class MedicalNoteController {
         render(view: "/medicalNotes/show", model: [medicalNote: medicalNote, patient: patient])
     }
 
-    def deleteMedicalNote() {}
+    def deleteMedicalNote() {
+        MedicalNote.findById(params.medicalnoteID).delete(flush: true)
+        redirect(uri: "/patients/${params.patientID}/medicalnotes")
+    }
 
 
     // get medical notes for a single patient
