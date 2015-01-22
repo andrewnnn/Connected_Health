@@ -11,12 +11,12 @@ public class PatientSingleton {
     private static PatientSingleton mInstance = null;
 
     private ItemType mItemType;
-    private String mString;
 
     private JSONArray jJournalEntries;
     private JSONArray jMedicalNotes;
     private JSONArray jMeasurementTypes;
     private JSONArray jQuestionnaires;
+    private JSONObject jPatient;
 
     private JSONArray jCurrentArray;
     private JSONObject jCurrentObject;
@@ -48,6 +48,10 @@ public class PatientSingleton {
 
     public JSONArray getQuestionnaires() {
         return jQuestionnaires;
+    }
+
+    public void setQuestionnaires(String questionnaires) throws JSONException {
+        jQuestionnaires = new JSONArray(questionnaires);
     }
 
     public ArrayList<JSONObject> getQuestionnaires(int first, int last) throws JSONException {
@@ -121,6 +125,14 @@ public class PatientSingleton {
             medicalNotes.add(jMedicalNotes.getJSONObject(i));
         }
         return medicalNotes;
+    }
+
+    public void setPatient(String patient) throws JSONException {
+        jPatient = new JSONObject(patient);
+    }
+
+    public JSONObject getPatient() {
+        return jPatient;
     }
 
     public void setCurrentObject(JSONObject object) {
