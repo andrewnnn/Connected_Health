@@ -36,6 +36,8 @@ public class MainActivity extends ActionBarActivity {
         hs.setPatientId(3);
 
         hs.updateJournalEntries(this);
+        hs.updateMedicalNotes(this);
+        hs.updateQuestionnaires(this);
     }
 
 
