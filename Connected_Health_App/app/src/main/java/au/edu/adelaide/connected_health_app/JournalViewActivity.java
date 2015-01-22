@@ -29,6 +29,8 @@ public class JournalViewActivity extends QuickMenu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
 
+        HelperSingleton.getInstance().updateJournalEntries(this);
+
         try {
             if (getIntent().hasExtra("pageNumber")) {
                 pageNumber = getIntent().getExtras().getInt("pageNumber");
