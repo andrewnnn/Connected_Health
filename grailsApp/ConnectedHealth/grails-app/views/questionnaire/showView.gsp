@@ -37,6 +37,7 @@
         <thead>
         <tr>
             <th>Question</th>
+            <th>Answer Format</th>
             <th>Choices</th>
         </tr>
         </thead>
@@ -59,6 +60,9 @@
                         <% } %>
                     </g:form>
                 </td>
+                <td>
+                    ${views.ViewHelpers.answerFormatString(it.answerFormat)}
+                </td>
                 <td style="width: 90%">
                     <% if (it.choices.size() == 0) { %>
                         N/A
@@ -70,7 +74,10 @@
                                 <span class="property-value">
                                     <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/show" class="show">${it.content}</a>
                                 </span>
-                                &nbsp;&nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;&nbsp;Delete
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/edit" class="edit">Edit</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                Delete
                             </li>
                         </g:each>
                         </ol>

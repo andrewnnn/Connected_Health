@@ -41,6 +41,13 @@ class QuestionController {
     }
 
     def removeQuestion() {
+        println("--------------------------")
+        println("--------------------------remQues")
+        println("--------------------------")
+        Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
+        Question question = Question.findById(params.questionID)
+        question.delete(flush: true)
+        redirect(uri: "/questionnaires/${questionnaire.id}/show", model: [questionnaire: questionnaire, question: question])
     }
 
 }
