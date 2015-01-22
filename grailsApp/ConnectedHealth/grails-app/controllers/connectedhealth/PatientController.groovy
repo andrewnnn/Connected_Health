@@ -48,7 +48,7 @@ class PatientController {
 
     def updatePatient() {
         Patient patient = Patient.findById(params.patientID)
-        patient.contactEmail = params.firstName
+        patient.contactEmail = params.contactEmail
         patient.lastName = params.lastName
         patient.firstName = params.firstName
         patient.homeAddress = params.homeAddress

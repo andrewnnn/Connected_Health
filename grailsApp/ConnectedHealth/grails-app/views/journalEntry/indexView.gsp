@@ -24,6 +24,9 @@
         </tbody>
     </table>
 
+    <fieldset class="buttons">
+        <a href="/ConnectedHealth/patients/${patient.id}/show">Back to patient profile</a>
+    </fieldset>
 </div>
 </body>
 </html>

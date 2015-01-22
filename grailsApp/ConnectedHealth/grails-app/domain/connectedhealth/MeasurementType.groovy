@@ -3,9 +3,9 @@ package connectedhealth
 
 class MeasurementType {
     String name
-    String Description
+    String description
 
-    static hasMany = [patient: Patient]
+    static hasMany = [patients: Patient]
     static belongsTo = Patient
 
     static constraints = {

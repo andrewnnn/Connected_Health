@@ -24,7 +24,7 @@
 
         <li class="fieldcontain">
             <span id="created-label" class="property-label">Created</span>
-            ${ViewHelpers.formatDate(medicalNote.created)}
+            <span class="property-value" aria-labelledby="content-label">${ViewHelpers.formatDate(medicalNote.created)}</span>
         </li>
 
         <li class="fieldcontain">
@@ -34,8 +34,7 @@
     </ol>
 
     <fieldset class="buttons">
-        <a href="/ConnectedHealth/patients/${patient.id}/show">Back to patient profile</a>
-        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes">View all notes for ${patient.firstName + " " + patient.lastName}</a>
+        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes">View all notes</a>
     </fieldset>
 </div>
 

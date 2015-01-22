@@ -1,12 +1,10 @@
 package connectedhealth
 
-import javax.xml.ws.soap.MTOM
-
 class WithingsApiController {
 
     def indexView() {
         Patient patient = Patient.findById(params.patientID)
-        Set<MeasurementType> measurementTypes = MeasurementType.findAllById(params.patientID)
+        Set<MeasurementType> measurementTypes = MeasurementType.list(sort: 'name')  // all measurement types
 
         render(view: "/withingsApi/indexView", model:
                 [patient: patient,

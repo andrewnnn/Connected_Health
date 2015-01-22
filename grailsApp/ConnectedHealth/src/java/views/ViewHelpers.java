@@ -20,6 +20,11 @@ public class ViewHelpers {
         }
     }
 
+    public static String formatDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd/MM/yyyy HH:mm");
+        return sdf.format(date);
+    }
+
     public static String formatDate(Timestamp timestamp) {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd/MM/yyyy HH:mm");
         return sdf.format( new Date(timestamp.getTime()) );
