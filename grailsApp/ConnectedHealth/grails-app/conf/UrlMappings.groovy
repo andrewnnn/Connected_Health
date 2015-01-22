@@ -68,6 +68,8 @@ class UrlMappings {
             action = [PUT:"updateQuestionnaire", DELETE:"deleteQuestionnaire"]
         }
 
+        "/patients/$patientID/questionnaires/json"(controller:"Questionnaire",action:"get")
+
         //Question
         "/questionnaires/$questionnaireID/questions/$questionID/show"(controller:"Question",action:"showView")
 
