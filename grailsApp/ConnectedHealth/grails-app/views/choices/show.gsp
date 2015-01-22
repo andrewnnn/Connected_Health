@@ -14,18 +14,18 @@
 <h1>${answerFormat}</h1>
 
 <div id="show-question" class="content scaffold-show" role="main">
-    <h1>${choice.content}</h1>
+<h1>${choice.content}</h1>
 
-    <ol class="property-list question">
-        <li class="fieldcontain">
-            <span id="question-label" class="property-label">Question</span>
-            <span class="property-value" aria-labelledby="question-label">${question.content}</span>
-        </li>
-    </ol>
+<ol class="property-list question">
+    <li class="fieldcontain">
+        <span id="question-label" class="property-label">Question</span>
+        <span class="property-value" aria-labelledby="question-label"><a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/show"}">${question.content}</a></span>
+    </li>
+</ol>
 
-    <fieldset class="buttons">
-        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show">Back to ${questionnaire.name}</a>
-    </fieldset>
+<fieldset class="buttons">
+    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show">Back to ${questionnaire.name}</a>
+</fieldset>
 </div>
 
 </body>

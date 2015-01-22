@@ -16,6 +16,7 @@ public class PatientSingleton {
     private JSONArray jMedicalNotes;
     private JSONArray jMeasurementTypes;
     private JSONArray jQuestionnaires;
+    private JSONObject jPatient;
 
     private JSONArray jCurrentArray;
     private JSONObject jCurrentObject;
@@ -124,6 +125,14 @@ public class PatientSingleton {
             medicalNotes.add(jMedicalNotes.getJSONObject(i));
         }
         return medicalNotes;
+    }
+
+    public void setPatient(String patient) throws JSONException {
+        jPatient = new JSONObject(patient);
+    }
+
+    public JSONObject getPatient() {
+        return jPatient;
     }
 
     public void setCurrentObject(JSONObject object) {

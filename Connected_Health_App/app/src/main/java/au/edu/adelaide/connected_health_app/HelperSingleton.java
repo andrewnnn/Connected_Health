@@ -59,10 +59,8 @@ public class HelperSingleton {
 
         if (measurementName.equals("Steps")) {
             return MeasurementStepsViewActivity.class;
-        } else if (measurementName.equals("Weight")) {
-            return MeasurementStepsViewActivity.class;  //TODO
         } else {
-            return null;
+            return MeasurementStepsViewActivity.class;  //TODO
         }
     }
 
@@ -179,6 +177,60 @@ public class HelperSingleton {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.println("Volley for updateQuestionnaires failed.");
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void updatePatient(Context context) {
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String path = "patients/" + getPatientId() + "/json";
+        String url = getConstantUrl() + path;
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            PatientSingleton.getInstance().setPatient(response);
+                        } catch (JSONException je) {
+                            System.out.println(je);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Volley for updatePatient failed.");
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void updateMeasurementTypes(Context context) {
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String path = "patient/" + getPatientId() + "/measurements/json";
+        String url = getConstantUrl() + path;
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            PatientSingleton.getInstance().setMeasurementTypes(response);
+                        } catch (JSONException je) {
+                            System.out.println(je);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Volley for updateMeasurementTypes failed.");
             }
         });
         // Add the request to the RequestQueue.

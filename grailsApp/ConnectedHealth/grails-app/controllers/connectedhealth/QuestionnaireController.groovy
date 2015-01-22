@@ -19,14 +19,29 @@ class QuestionnaireController {
                 [questionnaire: questionnaire])
     }
 
-    def newQuestionnaire() {}
-
-    def createQuestionnaire() {
+    def newQuestionnaire() {
+        render(view: "/questionnaire/newView")
     }
 
-    def editView() {}
+    def createQuestionnaire() {
+        Questionnaire questionnaire = new Questionnaire(name: params.name, description: params.description)
+        questionnaire.save()
+        redirect(uri:"/questionnaires/${questionnaire.id}/show")
+    }
 
-    def updateQuestionnaire() {}
+    def editView() {
+        Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
+        render(view: "/questionnaire/editView", model:
+                [questionnaire: questionnaire])
+    }
+
+    def updateQuestionnaire() {
+        Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
+        questionnaire.name = params.name
+        questionnaire.description = params.description
+        questionnaire.save(true)
+        redirect(uri:"/questionnaires/${questionnaire.id}/show")
+    }
 
     def deleteQuestionnaire() {
     }

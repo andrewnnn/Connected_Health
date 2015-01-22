@@ -6,12 +6,13 @@
 </head>
 
 <body>
-<g:form url="[resource:question, action:'delete']" method="DELETE">
+<g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}" method="DELETE">
     <fieldset class="buttons">
         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/edit" class="edit">Edit question</a>
-        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label.useDefault', default: 'Delete question')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this question?')}');" />
+        <input type="submit" value="Delete question" class="delete" onclick="return confirm('${message(code: 'useDefault', default: 'Are you sure you want to delete this question?')}');"/>
     </fieldset>
 </g:form>
+
 <h1>${answerFormat}</h1>
 
 <div id="show-question" class="content scaffold-show" role="main">

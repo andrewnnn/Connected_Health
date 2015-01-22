@@ -8,7 +8,7 @@
 <body>
 <fieldset class="buttons">
     <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show">Back to ${questionnaire.name}</a>
-    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}">Back to ${question.content}</a>
+    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}">View question</a>
 </fieldset>
 
 <div id="create-question" class="content scaffold-create" role="main">

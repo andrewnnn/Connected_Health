@@ -25,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
             ps.setJournalEntries("[{\"content\":\"Today was a good day, I reached a new weekly record for steps taken.\",\"updated\":\"2015-01-09 15:45:12.177\",\"created\":\"2015-01-09 15:45:12.177\",\"ID\":14},{\"content\":\"I can already see the difference in weight from striving to one up my previous steps from the day before.\",\"updated\":\"2015-01-09 15:45:12.178\",\"created\":\"2015-01-09 15:45:12.178\",\"ID\":15},{\"content\":\"After a few weeks, I am really getting the hang of this system and my carers are also seeing improvements. I am really happy!\",\"updated\":\"2015-01-09 15:45:12.181\",\"created\":\"2015-01-09 15:45:12.181\",\"ID\":16},{\"content\":\"My mood has been better in recent weeks. I think this can be attributed to the clean diet and daily exercise, which I'm really enjoying.\",\"updated\":\"2015-01-09 15:45:12.183\",\"created\":\"2015-01-09 15:45:12.183\",\"ID\":17},{\"content\":\"Yesterday I received my first remote check up from a nurse. It was nice to have an expert be able to check up and discuss about my current health.\",\"updated\":\"2015-01-09 15:45:12.185\",\"created\":\"2015-01-09 15:45:12.185\",\"ID\":18}]");
             ps.setMedicalNotes("[{\"content\":\"Please sleep earlier.\",\"created\":\"3966-05-03 09:04:05.0\",\"ID\":4},{\"content\":\"Advise you to stick to 3-4 small meals a day to keep weight levels stable.\",\"created\":\"5036-01-02 03:35:05.0\",\"ID\":5},{\"content\":\"Remember to take medicine in the morning, afternoon and at night. After meals are recommended.\",\"created\":\"3134-02-12 03:04:05.0\",\"ID\":6},{\"content\":\"Advise you to fit in a minimum of 30 mins of physical exercise per day.\",\"created\":\"9554-02-12 03:04:05.0\",\"ID\":7},{\"content\":\"Make sure you have a decent stretch before commencing physical exercise.\",\"created\":\"11899-02-12 03:04:05.0\",\"ID\":8},{\"content\":\"Your weight has seen an increase in recent weeks, please stick to the diet prescribed or come into the clinic for more consultation.\",\"created\":\"11899-10-09 09:09:09.0\",\"ID\":9}]");
             ps.setMeasurementTypes("[{\"name\":\"Steps\",\"description\":\"The number of steps taken in the last 7 days.\"},{\"name\":\"Weight\",\"description\":\"Measurements from your weighing scale from the last 7 days.\"}]\n");
+            ps.setPatient("{\"lastName\":\"Smith\",\"phone\":\"64644646\",\"contactEmail\":\"john3@smith.com\",\"homeAddress\":\"99 Example St Faketown\",\"firstName\":\"John\"}");
         } catch (JSONException je) {
             Toast.makeText(getApplicationContext(), "Storing static JSON in patient singleton failed.", Toast.LENGTH_LONG).show();
         }
@@ -38,6 +39,8 @@ public class MainActivity extends ActionBarActivity {
         hs.updateJournalEntries(this);
         hs.updateMedicalNotes(this);
         hs.updateQuestionnaires(this);
+        hs.updatePatient(this);
+        hs.updateMeasurementTypes(this);
     }
 
 

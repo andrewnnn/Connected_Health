@@ -25,6 +25,8 @@ class UrlMappings {
             action = [PUT:"updatePatient", DELETE:"deletePatient"]
         }
 
+        "/patients/$patientID/json"(controller:"Patient",action: "get")
+
         //Journal Entry
         "/patients/$patientID/journal"(controller:"JournalEntry", action:"indexView")
         "/patients/$patientID/journal/$journalEntryID"(controller:"JournalEntry", action:"showView")
@@ -97,6 +99,8 @@ class UrlMappings {
             action = [PUT:"updateChoice", DELETE:"removeChoice"]
         }
 
+        //MeasurementType
+        "/patients/$patientID/measurements/json"(controller:"MeasurementType", action:"types")
 
         //WithingApi
         "/patients/$patientID/measurements"(controller:"WithingsApi", action:"indexView")

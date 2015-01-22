@@ -1,5 +1,8 @@
 package connectedhealth
 
+import org.json.JSONArray
+import org.json.JSONObject
+
 class PatientController {
 
     def scaffold = Patient
@@ -62,6 +65,17 @@ class PatientController {
         Patient patient = Patient.findById(params.patientID)
         patient.delete(flush: true)
         redirect(uri: "/patients/")
+    }
+
+    def get() {
+        Patient patient = Patient.findById(params.patientID)
+        JSONObject object = new JSONObject()
+        object.put("contactEmail", patient.contactEmail)
+        object.put("firstName", patient.firstName)
+        object.put("homeAddress", patient.homeAddress)
+        object.put("lastName", patient.lastName)
+        object.put("phone", patient.phone)
+        render object.toString()
     }
 
 }
