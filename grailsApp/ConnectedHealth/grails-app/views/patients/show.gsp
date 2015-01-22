@@ -6,10 +6,10 @@
 </head>
 
 <body>
-    <g:form url="[resource:patient, action:'delete']" method="DELETE">
+    <g:form url="/ConnectedHealth/patients/${patient.id}" method="DELETE">
         <fieldset class="buttons">
             <a href="/ConnectedHealth/patients/${patient.id}/edit" class="edit">Edit patient profile</a>
-            <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label.useDefault', default: 'Delete patient profile')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this patient profile?')}');" />
+            <input type="submit" value="Delete patient profile" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this patient profile?')}');"/>
         </fieldset>
     </g:form>
 
