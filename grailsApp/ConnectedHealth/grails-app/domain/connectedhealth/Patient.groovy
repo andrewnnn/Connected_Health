@@ -15,6 +15,7 @@ class Patient {
 
     static mapping = {
         journalEntries sort:'created', order:'desc'
+        measurementTypes sort:'name'
         medicalNotes sort:'created', order:'desc'
     }
 }
