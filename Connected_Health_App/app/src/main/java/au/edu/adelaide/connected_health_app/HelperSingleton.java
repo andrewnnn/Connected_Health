@@ -158,11 +158,10 @@ public class HelperSingleton {
         queue.add(stringRequest);
     }
 
-	//TODO
     public void updateQuestionnaires(Context context) {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(context);
-        String path = "patients/" + getPatientId() + "/medicalnotes/json";
+        String path = "questionnaire/questionnaires";
         String url = getConstantUrl() + path;
 
         // Request a string response from the provided URL.
@@ -171,7 +170,7 @@ public class HelperSingleton {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            PatientSingleton.getInstance().setMedicalNotes(response);
+                            PatientSingleton.getInstance().setQuestionnaires(response);
                         } catch (JSONException je) {
                             System.out.println(je);
                         }
@@ -179,7 +178,7 @@ public class HelperSingleton {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println("Volley for updateJournalEntries failed.");
+                System.out.println("Volley for updateQuestionnaires failed.");
             }
         });
         // Add the request to the RequestQueue.

@@ -11,7 +11,6 @@ public class PatientSingleton {
     private static PatientSingleton mInstance = null;
 
     private ItemType mItemType;
-    private String mString;
 
     private JSONArray jJournalEntries;
     private JSONArray jMedicalNotes;
@@ -48,6 +47,10 @@ public class PatientSingleton {
 
     public JSONArray getQuestionnaires() {
         return jQuestionnaires;
+    }
+
+    public void setQuestionnaires(String questionnaires) throws JSONException {
+        jQuestionnaires = new JSONArray(questionnaires);
     }
 
     public ArrayList<JSONObject> getQuestionnaires(int first, int last) throws JSONException {
