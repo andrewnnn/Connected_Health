@@ -12,35 +12,37 @@
             <input type="submit" value="Delete patient profile" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this patient profile?')}');"/>
         </fieldset>
     </g:form>
+<div class="content scaffold-list">
+    <h1>Patient</h1>
+     <ol class="property-list medicalNote">
+        <li class="fieldcontain">
+            <span class="property-label">Name</span>
+            <span class="property-value" aria-labelledby="content-label">${patient.firstName + " " + patient.lastName}</span>
+        </li>
 
-    <div class="content scaffold-list">
-        <h1>Patient</h1>
-        <table>
-            <tbody>
-            <tr>
-                <th>Name</th>
-                <td>${patient.firstName + " " + patient.lastName}</td>
-            </tr>
-            <tr>
-                <th>Patient ID</th>
-                <td>${patient.id}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>${patient.homeAddress}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>${patient.contactEmail}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>${patient.phone}</td>
-            </tr>
-            </tbody>
-        </table>
+        <li class="fieldcontain">
+            <span class="property-label">Patient ID</span>
+            <span class="property-value" aria-labelledby="content-label">${patient.id}</span>
+        </li>
 
-        <h1>Recent journal entries</h1>
+        <li class="fieldcontain">
+            <span  class="property-label">Address</span>
+            <span class="property-value" aria-labelledby="patient-label">${patient.homeAddress}</span>
+        </li>
+
+        <li class="fieldcontain">
+            <span  class="property-label">Email</span>
+            <span class="property-value" aria-labelledby="patient-label">${patient.contactEmail}</span>
+        </li>
+
+
+        <li class="fieldcontain">
+            <span  class="property-label">Phone</span>
+            <span class="property-value" aria-labelledby="patient-label">${patient.phone}</span>
+        </li>
+    </ol>
+
+    <h1>Recent journal entries</h1>
         <table>
             <tbody>
             <g:each in="${recentJournalEntries}">

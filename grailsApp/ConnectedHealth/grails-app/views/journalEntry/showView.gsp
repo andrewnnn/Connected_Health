@@ -10,26 +10,24 @@
 
 <div class="content scaffold-list" role="main">
     <h1>Journal ID ${journalentry.id}</h1>
-    <table>
-        <tbody>
-        <tr>
-            <th>Content</th>
-            <td>${journalentry.content}</td>
-        </tr>
-        <tr>
-            <th>Belongs to Patient Name</th>
-            <td><span class="property-value"><g:link controller="${"Patient"}" action="showView" params="[patientID: patient.id]">${patient.firstName + " " + patient.lastName}</g:link></span></td>
-        </tr>
-        <tr>
-            <th>Created At</th>
-            <td>${ViewHelpers.formatDate(journalentry.created)}</td>
-        </tr>
-        <tr>
-            <th>Last Modified At</th>
-            <td>${ViewHelpers.formatDate(journalentry.updated)}</td>
-        </tr>
-        </tbody>
-    </table>
+    <ol>
+        <li>
+            <span>Content</span>
+            <span>${journalentry.content}</span>
+        </li>
+        <li>
+            <span>Belongs to Patient Name</span>
+            <span><span class="property-value"><g:link controller="${"Patient"}" action="showView" params="[patientID: patient.id]">${patient.firstName + " " + patient.lastName}</g:link></span></span>
+        </li>
+        <li>
+            <span>Created At</span>
+            <span>${ViewHelpers.formatDate(journalentry.created)}</span>
+        </li>
+        <li>
+            <span>Last Modified At</span>
+            <span>${ViewHelpers.formatDate(journalentry.updated)}</span>
+        </li>
+    </ol>
 
 </div>
 

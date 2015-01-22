@@ -37,6 +37,8 @@ public class QuestionnaireViewActivity extends QuickMenu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
 
+        HelperSingleton.getInstance().updateQuestionnaires(this);
+
         try {
             if (getIntent().hasExtra("pageNumber")) {
                 pageNumber = getIntent().getExtras().getInt("pageNumber");

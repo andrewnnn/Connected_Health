@@ -37,6 +37,8 @@ public class MedicalNotesViewActivity extends QuickMenu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
 
+        HelperSingleton.getInstance().updateMedicalNotes(this);
+
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
 
