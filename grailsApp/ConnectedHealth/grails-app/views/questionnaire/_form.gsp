@@ -15,10 +15,10 @@
                 <span class="required-indicator">*</span>
             </label>
             <g:if test="${questionnaire != null}">
-                <g:textField name="content" id="content" value="${questionnaire.name}"/>
+                <g:textField name="name" id="content" value="${questionnaire.name}"/>
             </g:if>
             <g:else>
-                <g:textField name="content" id="content"/>
+                <g:textField name="name" id="content"/>
             </g:else>
 
             <br />

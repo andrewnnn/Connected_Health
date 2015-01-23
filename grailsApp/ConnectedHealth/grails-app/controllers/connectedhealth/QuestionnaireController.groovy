@@ -25,7 +25,7 @@ class QuestionnaireController {
 
     def createQuestionnaire() {
         Questionnaire questionnaire = new Questionnaire(name: params.name, description: params.description)
-        questionnaire.save()
+        questionnaire.save(true)
         redirect(uri:"/questionnaires/${questionnaire.id}/show")
     }
 
@@ -44,6 +44,9 @@ class QuestionnaireController {
     }
 
     def deleteQuestionnaire() {
+        Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
+        questionnaire.delete(flush: true)
+        redirect(uri: "/questionnaires/")
     }
 
     // TODO make a private Questionnaire -> JSON function

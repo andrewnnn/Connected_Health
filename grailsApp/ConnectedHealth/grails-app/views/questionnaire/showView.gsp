@@ -46,10 +46,10 @@
                         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/show" class="show">${it.content}</a>
                     </span>
                     <br />
-                    <g:form url="[resource:it, action:'delete']" method="DELETE">
+                    <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/" method="DELETE">
                         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/edit" class="edit">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label.useDefault', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this question?')}');" />
+                        <input type="submit" value="Delete" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this question?')}');"/>
                         <% if (it.answerFormat == 0 || it.answerFormat == 1) { %>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/choices/create" class="create">Add&nbsp;choice</a>
@@ -70,10 +70,13 @@
                                 <span class="property-value">
                                     <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/show" class="show">${it.content}</a>
                                 </span>
+
+                                <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/" method="DELETE">
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/edit" class="edit">Edit</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                Delete
+                                <input type="submit" value="Delete" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this choice?')}');"/>
+                                </g:form>
                             </li>
                         </g:each>
                         </ol>

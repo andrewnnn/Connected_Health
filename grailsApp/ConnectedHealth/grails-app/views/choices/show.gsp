@@ -5,10 +5,10 @@
 </head>
 
 <body>
-<g:form url="[resource:question, action:'delete']" method="DELETE">
+<g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/choices/${choice.id}/" method="DELETE">
     <fieldset class="buttons">
-        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/edit" class="edit">Edit question</a>
-        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label.useDefault', default: 'Delete question')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message.patient', default: 'Are you sure you want to delete this question?')}');" />
+        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/choices/${choice.id}/edit" class="edit">Edit choice</a>
+        <input type="submit" value="Delete choice" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this patient profile?')}');"/>
     </fieldset>
 </g:form>
 <h1>${answerFormat}</h1>
@@ -24,7 +24,7 @@
 </ol>
 
 <fieldset class="buttons">
-    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show">Back to ${questionnaire.name}</a>
+    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/show">Back to Question View</a>
 </fieldset>
 </div>
 

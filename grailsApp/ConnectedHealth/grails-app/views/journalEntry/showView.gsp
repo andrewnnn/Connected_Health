@@ -10,22 +10,22 @@
 
 <div class="content scaffold-list" role="main">
     <h1>Journal ID ${journalentry.id}</h1>
-    <ol>
-        <li>
-            <span>Content</span>
-            <span>${journalentry.content}</span>
+    <ol class="property-list">
+        <li class="fieldcontain">
+            <span class="property-label">Content</span>
+            <span class="property-value">${journalentry.content}</span>
         </li>
-        <li>
-            <span>Belongs to Patient Name</span>
-            <span><span class="property-value"><g:link controller="${"Patient"}" action="showView" params="[patientID: patient.id]">${patient.firstName + " " + patient.lastName}</g:link></span></span>
+        <li class="fieldcontain">
+            <span class="property-label">Belongs to Patient Name</span>
+            <span class="property-value"><g:link controller="${"Patient"}" action="showView" params="[patientID: patient.id]">${patient.firstName + " " + patient.lastName}</g:link></span>
         </li>
-        <li>
-            <span>Created At</span>
-            <span>${ViewHelpers.formatDate(journalentry.created)}</span>
+        <li class="fieldcontain">
+            <span class="property-label">Created At</span>
+            <span class="property-value">${ViewHelpers.formatDate(journalentry.created)}</span>
         </li>
-        <li>
-            <span>Last Modified At</span>
-            <span>${ViewHelpers.formatDate(journalentry.updated)}</span>
+        <li class="fieldcontain">
+            <span class="property-label">Last Modified At</span>
+            <span class="property-value">${ViewHelpers.formatDate(journalentry.updated)}</span>
         </li>
     </ol>
 
