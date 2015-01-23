@@ -1,34 +1,38 @@
 package au.edu.adelaide.connected_health_app;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 public class InformationViewActivity extends QuickMenu {
 
-    private final String vidUrl = "https://www.google.com";
     private WebView browser;
+    private final String mimeType = "text/html";
+    private final String encoding = "utf-8";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_view);
 
-        //Making the info link clickable
-        TextView link = (TextView) findViewById(R.id.infoLink);
+        //Making the info links clickable
+        TextView link = (TextView) findViewById(R.id.infoLink0);
+        link.setMovementMethod(LinkMovementMethod.getInstance());
+        link = (TextView) findViewById(R.id.infoLink1);
+        link.setMovementMethod(LinkMovementMethod.getInstance());
+        link = (TextView) findViewById(R.id.infoLink2);
+        link.setMovementMethod(LinkMovementMethod.getInstance());
+        link = (TextView) findViewById(R.id.infoLink3);
         link.setMovementMethod(LinkMovementMethod.getInstance());
 
-        // Youtube webview
-        browser = (WebView)findViewById(R.id.webviewYoutubeVid);
+        // Youtube webviews
+        browser = (WebView)findViewById(R.id.webViewYoutube0);
         browser.setWebViewClient(new MyBrowser());
 
         browser.getSettings().setLoadsImagesAutomatically(true);
@@ -37,10 +41,31 @@ public class InformationViewActivity extends QuickMenu {
 //        browser.loadUrl(vidUrl);
 
         //testing loading html instead of url
-//        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"640\" height=\"385\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
-        String embedVid ="<html><body>Youtube video .. <br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+//        String embedVid ="<html><body>Youtube video<br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"640\" height=\"385\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+        String embedVid ="<html><body>Youtube video<br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
 
         browser.loadData(embedVid,"text/html","utf-8");
+
+        browser = (WebView)findViewById(R.id.webViewYoutube1);
+        browser.setWebViewClient(new MyBrowser());
+        browser.getSettings().setLoadsImagesAutomatically(true);
+        browser.getSettings().setJavaScriptEnabled(true);
+        embedVid ="<html><body>Youtube video<br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+        browser.loadData(embedVid, mimeType, encoding);
+
+        browser = (WebView)findViewById(R.id.webViewYoutube2);
+        browser.setWebViewClient(new MyBrowser());
+        browser.getSettings().setLoadsImagesAutomatically(true);
+        browser.getSettings().setJavaScriptEnabled(true);
+        embedVid ="<html><body>Youtube video<br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+        browser.loadData(embedVid, mimeType, encoding);
+
+        browser = (WebView)findViewById(R.id.webViewYoutube3);
+        browser.setWebViewClient(new MyBrowser());
+        browser.getSettings().setLoadsImagesAutomatically(true);
+        browser.getSettings().setJavaScriptEnabled(true);
+        embedVid ="<html><body>Youtube video<br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/7NdtXe4LWeg\" frameborder=\"0\"></body></html>";
+        browser.loadData(embedVid, mimeType, encoding);
     }
 
     //embedded browser

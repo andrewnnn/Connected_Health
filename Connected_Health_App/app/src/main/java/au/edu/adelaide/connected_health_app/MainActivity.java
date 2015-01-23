@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
 
         // Set Grails IP address and port
         HelperSingleton hs = HelperSingleton.getInstance();
-        hs.setIpAddress("129.127.250.78");
+        hs.setIpAddress("122.49.159.197");
         hs.setPort("8080");
         hs.setPatientId(3);
 

@@ -39,21 +39,130 @@
                 android:autoText="false"
                 android:id="@+id/infoHeading"/>
 
-            <!--Resource links-->
-            <TextView
-                android:id="@+id/infoLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/infoHeading"
-                android:layout_marginTop="20dp"
-                android:text="@string/info_link"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <WebView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/webviewYoutubeVid"
-                android:layout_below="@+id/infoLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/webViewYoutube0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/webViewYoutube1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/webViewYoutube2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/webViewYoutube3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <TextView
+                            android:id="@+id/infoLink0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_link0" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <TextView
+                            android:id="@+id/infoLink1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_link1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <TextView
+                            android:id="@+id/infoLink2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_link2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <TextView
+                            android:id="@+id/infoLink3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_link3" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
