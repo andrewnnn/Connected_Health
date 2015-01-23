@@ -159,4 +159,9 @@ public class QuestionViewActivity extends QuickMenu {
             startActivity(intent);
         }
     }
+
+    public void goBack(View view) {
+        Intent intent = new Intent(this, PatientSingleton.getInstance().getBackToPreviewsClass());
+        startActivity(intent);
+    }
 }

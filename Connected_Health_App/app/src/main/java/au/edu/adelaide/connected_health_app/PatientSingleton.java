@@ -1,5 +1,7 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.ClipData;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -149,6 +151,21 @@ public class PatientSingleton {
 
     public ItemType getCurrentItemType() {
         return mItemType;
+    }
+
+    public Class getBackToPreviewsClass() {
+        switch (mItemType) {
+            case journalEntry:
+                return JournalViewActivity.class;
+            case measurement:
+                return MeasurementViewActivity.class;
+            case medicalNote:
+                return MedicalNotesViewActivity.class;
+            case questionnaire:
+                return QuestionnaireViewActivity.class;
+            default:
+                return MainActivity.class;
+        }
     }
 
     public JSONArray getCurrentArray() {

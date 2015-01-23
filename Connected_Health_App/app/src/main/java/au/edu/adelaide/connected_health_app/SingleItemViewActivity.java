@@ -91,4 +91,8 @@ public class SingleItemViewActivity extends QuickMenu {
         }
     }
 
+    public void goBack(View view) {
+        Intent intent = new Intent(this, PatientSingleton.getInstance().getBackToPreviewsClass());
+        startActivity(intent);
+    }
 }
