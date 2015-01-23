@@ -62,6 +62,7 @@ class QuestionnaireController {
             JSONObject questionnaireObject = new JSONObject()
             questionnaireObject.put("id", it.id)
             questionnaireObject.put("name", it.name)
+            questionnaireObject.put("description", it.description)
 
             // make a JSON object for each question
             ArrayList<JSONObject> questionsToSend = new ArrayList<JSONObject>()
