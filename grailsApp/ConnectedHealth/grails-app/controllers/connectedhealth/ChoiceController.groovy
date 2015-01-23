@@ -24,7 +24,7 @@ class ChoiceController {
         Question question = Question.findById(params.questionID)
         Choice choice = new Choice(content: params.content, question: question)
         choice.save(true)
-        redirect(uri: "/questionnaires/${questionnaire.id}/questions/${question.id}/choices/${choice.id}/show")
+        redirect(uri: "/questionnaires/${questionnaire.id}/questions/${question.id}/show")
     }
 
     def editView() {
@@ -39,10 +39,16 @@ class ChoiceController {
         Question question = Question.findById(params.questionID)
         Choice choice = Choice.findById(params.choiceID)
         choice.content = params.content
+        choice.save(flush: true)
         redirect(uri: "/questionnaires/${questionnaire.id}/questions/${question.id}/choices/${choice.id}/show")
     }
 
     def removeChoice() {
+        Questionnaire questionnaire = Questionnaire.findById(params.questionnaireID)
+        Question question = Question.findById(params.questionID)
+        Choice choice = Choice.findById(params.choiceID)
+        choice.delete(flush: true)
+        redirect(uri: "/questionnaires/${questionnaire.id}/questions/${question.id}/show")
     }
 
 }

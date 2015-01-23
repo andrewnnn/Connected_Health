@@ -41,7 +41,7 @@
     </ol>
 
     <fieldset class="buttons">
-        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show">Back to ${questionnaire.name}</a>
+        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show">Back to Questionnaire View</a>
     </fieldset>
 </div>
 
