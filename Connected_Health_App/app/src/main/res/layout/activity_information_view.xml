@@ -115,6 +115,7 @@
 
                         <TextView
                             android:id="@+id/infoLink0"
+                            android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -123,12 +124,12 @@
                         <ImageView
                             android:id="@+id/infoImage0"
                             android:layout_below="@id/infoLink0"
-                            android:layout_width="300dp"
-                            android:layout_height="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true"
                             android:onClick="openBrowser"
-                            android:src="@drawable/measurement_icon_512"
+                            android:src="@drawable/minda_logo"
                             android:scaleType="fitXY"
                             android:tag="@string/info_link0_href" />
                     </RelativeLayout>
@@ -141,6 +142,7 @@
 
                         <TextView
                             android:id="@+id/infoLink1"
+                            android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -149,12 +151,12 @@
                         <ImageView
                             android:id="@+id/infoImage1"
                             android:layout_below="@id/infoLink1"
-                            android:layout_width="300dp"
-                            android:layout_height="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true"
                             android:onClick="openBrowser"
-                            android:src="@drawable/questionnaire_icon_512"
+                            android:src="@drawable/dirc_logo"
                             android:scaleType="fitXY"
                             android:tag="@string/info_link1_href" />
                     </RelativeLayout>
@@ -167,6 +169,7 @@
 
                         <TextView
                             android:id="@+id/infoLink2"
+                            android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -175,12 +178,12 @@
                         <ImageView
                             android:id="@+id/infoImage2"
                             android:layout_below="@id/infoLink2"
-                            android:layout_width="300dp"
-                            android:layout_height="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true"
                             android:onClick="openBrowser"
-                            android:src="@drawable/questionnaire_icon_512"
+                            android:src="@drawable/carersupport_logo"
                             android:scaleType="fitXY"
                             android:tag="@string/info_link1_href" />
                     </RelativeLayout>
@@ -193,6 +196,7 @@
 
                         <TextView
                             android:id="@+id/infoLink3"
+                            android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -201,12 +205,12 @@
                         <ImageView
                             android:id="@+id/infoImage3"
                             android:layout_below="@id/infoLink3"
-                            android:layout_width="300dp"
-                            android:layout_height="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true"
                             android:onClick="openBrowser"
-                            android:src="@drawable/questionnaire_icon_512"
+                            android:src="@drawable/nds_logo"
                             android:scaleType="fitXY"
                             android:tag="@string/info_link1_href" />
                     </RelativeLayout>

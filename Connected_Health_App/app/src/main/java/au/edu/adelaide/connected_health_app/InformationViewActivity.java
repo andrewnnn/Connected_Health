@@ -69,7 +69,7 @@ public class InformationViewActivity extends QuickMenu {
     }
 
     private String getEmbedVidHtml(String youtubeVideoId) {
-        return "<html><body>Youtube video<br> <iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/" + youtubeVideoId + "\" frameborder=\"0\"></body></html>";
+        return "<html><body><iframe class=\"youtube-player\" type=\"text/html\" width=\"300\" height=\"300\" src=\"http://www.youtube.com/embed/" + youtubeVideoId + "\" frameborder=\"0\"></body></html>";
     }
 
     //embedded browser
