@@ -9,7 +9,7 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="/ConnectedHealth/">Home</a></li>
-        <li><a href="/ConnectedHealth/questionnaire/create" class="create">New Questionnaire</a></li>
+        <li><a href="/ConnectedHealth/questionnaires/create" class="create">New Questionnaire</a></li>
     </ul>
 </div>
 <div id="list-questionnaire" class="content scaffold-list" role="main">

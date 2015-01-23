@@ -25,7 +25,7 @@ class QuestionnaireController {
 
     def createQuestionnaire() {
         Questionnaire questionnaire = new Questionnaire(name: params.name, description: params.description)
-        questionnaire.save()
+        questionnaire.save(true)
         redirect(uri:"/questionnaires/${questionnaire.id}/show")
     }
 
