@@ -29,6 +29,9 @@
         </li>
     </ol>
 
+    <fieldset class="buttons">
+        <a href="/ConnectedHealth/patients/${patient.id}/journal">View all Journals</a>
+    </fieldset>
 </div>
 
 </body>
