@@ -51,12 +51,18 @@ public class QuestionnaireViewActivity extends QuickMenu {
 
             // for each preview, set background colour to match home panel and set preview text
             for (i = 0; i < questionnairesForPreviews.size(); i++){
-                String name = questionnairesForPreviews.get(i).getString("name");
+                JSONObject questionnaire = questionnairesForPreviews.get(i);
+                String name = questionnaire.getString("name");
+                String description = questionnaire.getString("description");
+                StringBuilder preview = new StringBuilder();
+                preview.append(name);
+                preview.append("\n\n");
+                preview.append(description);
 
                 int resID = getResources().getIdentifier("preview_text" + i,
                         "id", getPackageName());
                 TextView previewText = (TextView) findViewById(resID);
-                previewText.setText(name);
+                previewText.setText(preview.toString());
 
                 resID = getResources().getIdentifier("preview" + i,
                         "id", getPackageName());

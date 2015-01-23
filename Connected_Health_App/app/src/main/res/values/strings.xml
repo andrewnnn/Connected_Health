@@ -11,10 +11,17 @@
 
     <!-- Info Panel Related -->
     <string name="info_title">Information</string>
-    <string name="info_link"><a href="https://www.mindainc.com.au/">Minda Website</a></string>
+    <string name="info_link0"><a href="https://www.mindainc.com.au/">Minda Website</a></string>
+    <string name="info_link0_href">https://www.mindainc.com.au/</string>
+    <string name="info_link1"><a href="http://www.dircsa.org.au/">Disability Information and Resource Centre</a></string>
+    <string name="info_link1_href">http://www.dircsa.org.au/</string>
+    <string name="info_link2"><a href="http://www.carersupport.org.au/">Carer Support</a></string>
+    <string name="info_link2_href">http://www.carersupport.org.au/</string>
+    <string name="info_link3"><a href="http://www.nds.org.au/">National Disability Services</a></string>
+    <string name="info_link3_href">http://www.nds.org.au/</string>
 
     <!-- Profile Panel Related -->
-=                                    <string name="profile_first_name">John</string>
+    <string name="profile_first_name">John</string>
     <string name="profile_last_name">Smith</string>
     <string name="profile_address">123 Example St Fakeville</string>
     <string name="profile_number">63428756</string>

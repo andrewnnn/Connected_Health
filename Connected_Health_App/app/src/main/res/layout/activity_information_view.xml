@@ -39,21 +39,184 @@
                 android:autoText="false"
                 android:id="@+id/infoHeading"/>
 
-            <!--Resource links-->
-            <TextView
-                android:id="@+id/infoLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/infoHeading"
-                android:layout_marginTop="20dp"
-                android:text="@string/info_link"/>
+            <!-- Youtube videos -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <WebView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/webviewYoutubeVid"
-                android:layout_below="@+id/infoLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/webViewYoutube0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/webViewYoutube1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/webViewYoutube2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/webViewYoutube3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <!-- Links -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <TextView
+                            android:id="@+id/infoLink0"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_link0" />
+
+                        <ImageView
+                            android:id="@+id/infoImage0"
+                            android:layout_below="@id/infoLink0"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:onClick="openBrowser"
+                            android:src="@drawable/minda_logo"
+                            android:scaleType="fitXY"
+                            android:tag="@string/info_link0_href" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <TextView
+                            android:id="@+id/infoLink1"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_link1" />
+
+                        <ImageView
+                            android:id="@+id/infoImage1"
+                            android:layout_below="@id/infoLink1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:onClick="openBrowser"
+                            android:src="@drawable/dirc_logo"
+                            android:scaleType="fitXY"
+                            android:tag="@string/info_link1_href" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <TextView
+                            android:id="@+id/infoLink2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_link2" />
+
+                        <ImageView
+                            android:id="@+id/infoImage2"
+                            android:layout_below="@id/infoLink2"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:onClick="openBrowser"
+                            android:src="@drawable/carersupport_logo"
+                            android:scaleType="fitXY"
+                            android:tag="@string/info_link1_href" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.25">
+
+                        <TextView
+                            android:id="@+id/infoLink3"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_link3" />
+
+                        <ImageView
+                            android:id="@+id/infoImage3"
+                            android:layout_below="@id/infoLink3"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:onClick="openBrowser"
+                            android:src="@drawable/nds_logo"
+                            android:scaleType="fitXY"
+                            android:tag="@string/info_link1_href" />
+                    </RelativeLayout>
+               </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
