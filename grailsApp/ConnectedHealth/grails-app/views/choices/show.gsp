@@ -18,8 +18,8 @@
 
 <ol class="property-list question">
     <li class="fieldcontain">
-        <span id="question-label" class="property-label">Question</span>
-        <span class="property-value" aria-labelledby="question-label"><a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/show"}">${question.content}</a></span>
+        <span id="question-label" class="property-label">Choice</span>
+        <span class="property-value" aria-labelledby="question-label"><p>${choice.content}</p></span>
     </li>
 </ol>
 
