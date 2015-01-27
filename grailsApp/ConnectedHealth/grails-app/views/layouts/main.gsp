@@ -17,7 +17,12 @@
     <g:layoutHead/>
 </head>
 <body>
-<div id="grailsLogo" role="banner"><a href="http://localhost:8080/ConnectedHealth/"><h2>Connected Health</h2></a></div>
+    <div id="grailsLogo" role="banner" onclick="window.location = '/ConnectedHealth'"><h2>Connected Health</h2>
+        <div id="loginPanel">
+            <p>Login as Admin <a href="/ConnectedHealth">Log out</a></p>
+
+        </div>
+    </div>
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

@@ -12,20 +12,19 @@
     <h1>Journal ID ${journalentry.id}</h1>
     <ol class="property-list">
         <li class="fieldcontain">
-            <span class="property-label">Content</span>
-            <span class="property-value">${journalentry.content}</span>
-        </li>
-        <li class="fieldcontain">
-            <span class="property-label">Belongs to Patient Name</span>
+            <span class="property-label">Patient</span>
             <span class="property-value"><g:link controller="${"Patient"}" action="showView" params="[patientID: patient.id]">${patient.firstName + " " + patient.lastName}</g:link></span>
         </li>
         <li class="fieldcontain">
-            <span class="property-label">Created At</span>
+            <span class="property-label">Created</span>
             <span class="property-value">${ViewHelpers.formatDate(journalentry.created)}</span>
         </li>
         <li class="fieldcontain">
-            <span class="property-label">Last Modified At</span>
+            <span class="property-label">Updated</span>
             <span class="property-value">${ViewHelpers.formatDate(journalentry.updated)}</span>
+        </li>
+        <li class="fieldcontain" style="border:2px dotted lightpink;border-radius: 10px ">
+            <p style="margin:10px">${journalentry.content}</p>
         </li>
     </ol>
 

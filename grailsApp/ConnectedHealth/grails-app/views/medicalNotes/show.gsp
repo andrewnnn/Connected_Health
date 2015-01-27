@@ -18,11 +18,6 @@
 
     <ol class="property-list medicalNote">
         <li class="fieldcontain">
-            <span id="content-label" class="property-label">Content</span>
-            <span class="property-value" aria-labelledby="content-label">${medicalNote.content}</span>
-        </li>
-
-        <li class="fieldcontain">
             <span id="created-label" class="property-label">Created</span>
             <span class="property-value" aria-labelledby="content-label">${ViewHelpers.formatDate(medicalNote.created)}</span>
         </li>
@@ -30,6 +25,10 @@
         <li class="fieldcontain">
             <span id="patient-label" class="property-label">Patient</span>
             <span class="property-value" aria-labelledby="patient-label"><a href="/ConnectedHealth/patients/${patient.id}/show">${patient.firstName + " " + patient.lastName}</a></span>
+        </li>
+
+        <li class="fieldcontain" style="border:2px dotted lightBlue;border-radius: 10px ">
+            <p style="margin:10px">${medicalNote.content}</p>
         </li>
     </ol>
 

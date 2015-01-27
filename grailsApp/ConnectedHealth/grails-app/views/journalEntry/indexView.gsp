@@ -17,7 +17,7 @@
                     ${it.created.toString().substring(0,16)}
                 </td>
                 <td>
-                    <span class="property-value"><g:link controller="${"JournalEntry"}" action="show" id="${it.id}">${it.content}</g:link></span>
+                    <span class="property-value"><g:link controller="${"JournalEntry"}" action="showView" params="[patientID: patient.id, journalEntryID:it.id]">${it.content}</g:link></span>
                 </td>
             </tr>
         </g:each>

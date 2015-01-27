@@ -21,7 +21,7 @@
         </li>
 
         <li class="fieldcontain">
-            <span class="property-label">Patient ID</span>
+            <span class="property-label">ID</span>
             <span class="property-value" aria-labelledby="content-label">${patient.id}</span>
         </li>
 
@@ -48,7 +48,9 @@
             <g:each in="${recentJournalEntries}">
                 <tr>
                     <td>
-                        ${ViewHelpers.formatDate(it.created)}
+                        <span class="property-label">
+                            ${ViewHelpers.formatDate(it.created)}
+                        </span>
                     </td>
                     <td>
                         <span class="property-value">
@@ -61,19 +63,22 @@
             </g:each>
             </tbody>
         </table>
-        <% if (journalEntriesCount > PREVIEW_COUNT) { %>
-            <g:link controller="${"JournalEntry"}" action="indexView" params="[patientID: patient.id]">
-                View all journal entries (<%= journalEntriesCount %>)
-            </g:link>
-        <% } %>
-
+        <div style="margin-left: 2%">
+            <% if (journalEntriesCount > PREVIEW_COUNT) { %>
+                <g:link controller="${"JournalEntry"}" action="indexView" params="[patientID: patient.id]">
+                    View all journal entries (<%= journalEntriesCount %>)
+                </g:link>
+            <% } %>
+        </div>
         <h1>Recent medical notes</h1>
         <table>
             <tbody>
             <g:each in="${recentMedicalNotes}">
                 <tr>
                     <td>
-                        ${ViewHelpers.formatDate(it.created)}
+                        <span class="property-label">
+                            ${ViewHelpers.formatDate(it.created)}
+                        </span>
                     </td>
                     <td>
                         <span class="property-value">
@@ -86,12 +91,14 @@
             </g:each>
             </tbody>
         </table>
-        <% if (medicalNotesCount > PREVIEW_COUNT) { %>
-            <g:link controller="${"MedicalNote"}" action="indexView" params="[patientID: patient.id]">
-                View all medical notes (<%= medicalNotesCount %>)
-            </g:link>
-            <br /><br />
-        <% } %>
+        <div style="margin-left: 2%">
+            <% if (medicalNotesCount > PREVIEW_COUNT) { %>
+                <g:link controller="${"MedicalNote"}" action="indexView" params="[patientID: patient.id]">
+                    View all medical notes (<%= medicalNotesCount %>)
+                </g:link>
+                <br /><br />
+            <% } %>
+        </div>
         <div class="nav">
             <ul>
                 <li>

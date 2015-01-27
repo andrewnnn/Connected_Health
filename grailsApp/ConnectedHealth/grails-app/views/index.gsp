@@ -5,13 +5,35 @@
 		<title>Welcome to Connected Health</title>
 	</head>
 	<body>
-        <div>
-                <g:form name="a" url="[action:'indexView',controller:'Patient']" style="font-size:50pt;height: 100px; left:20%; margin:1%;  position: relative">
-                    <input type="submit" value="Patient Index" style="height:100%;width:60%;font-size:50pt;color: darkgreen; background-color: lawngreen" />
-                </g:form>
-                <g:form name="b" url="[action:'indexView',controller:'Questionnaire']" style="font-size:50pt;height: 100px; left:20%; margin:1%;  position: relative">
-                    <input type="submit" value="Questionnaire" style="height:100%;width:60%;font-size:50pt; color: darkgreen; background-color: lawngreen" />
-                </g:form>
+        <div id = "sectionBox">
+            <div class="sectionButton sectionButtonR" onclick="window.location='/ConnectedHealth/patients'">
+                <div>
+                    <h1>Patients</h1>
+                    <div class="imageInSectionButtons">
+                        <g:img width="200" src="ProfileIcon.png"/>
+                    </div>
+                    <p>
+                        Patient Profiles<br/>
+                        Medical Notes<br/>
+                        Journal Entries<br/>
+                        Measurements<br/>
+                    </p>
+                </div>
+            </div>
+
+            <div class="sectionButton sectionButtonB" onclick="window.location='/ConnectedHealth/questionnaires'">
+                <div>
+                    <h1>Questionnaires</h1>
+                    <div class="imageInSectionButtons">
+                        <g:img width="200" src="QuestionnaireIcon.png"/>
+                    </div>
+                    <p>
+                        Create<br/>
+                        Assign<br/>
+                        Manage<br/>
+                    </p>
+                </div>
+            </div>
         </div>
 	</body>
 </html>

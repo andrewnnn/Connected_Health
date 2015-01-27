@@ -11,12 +11,12 @@ h1, h2, h3, h4, h5, h6 {
 /* BASE LAYOUT */
 
 html {
-	background-color: #ddd;
-	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
-	background-image: linear-gradient(top, #aaa, #ddd);
+	background-color: #FFFFFF;
+	background-image: -moz-linear-gradient(center top, #EEEEEE, #EEEEEE);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(1, #EEEEEE));
+	background-image: linear-gradient(top, #EEEEEE, #EEEEEE);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	height: 100%;
 	/* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
 	-webkit-box-sizing: border-box;
@@ -37,18 +37,24 @@ html * {
 }
 
 body {
-	background: #ffffff;
+	background: #FFFFFF;
 	color: #333333;
 	margin: 0 auto;
 	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-	   -moz-box-shadow: 0 0 0.3em #255b17;
-	-webkit-box-shadow: 0 0 0.3em #255b17;
-	        box-shadow: 0 0 0.3em #255b17;
+	   -moz-box-shadow: 0 0 0.3em #000000;
+	-webkit-box-shadow: 0 0 0.3em #000000;
+	        box-shadow: 0 0 0.3em #000000;
 }
 
 #grailsLogo {
-	background-color: #abbf78;
+	background-color: #DCBA98;
+}
+
+
+#grailsLogo:hover {
+    background-color: #FEDCBA;
+    cursor: pointer;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -65,7 +71,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+
 }
 
 a:hover, a:active {
@@ -73,7 +79,7 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #FFFFFF;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
@@ -89,10 +95,15 @@ img {
 
 /* GENERAL */
 
-#grailsLogo a {
-	display: inline-block;
-	margin: 1em;
-}
+#grailsLogo h2 {
+     display: inline-block;
+     left: 27%;
+     margin:15px;
+     position: relative;
+     color: #FFFFFF;
+     font-size: 35pt;
+ }
+
 
 .content {
 }
@@ -108,8 +119,8 @@ img {
 }
 
 .footer {
-	background: #abbf78;
-	color: #000;
+	background: #DCBA98;
+	color: #FEDCBA;
 	clear: both;
 	font-size: 0.8em;
 	margin-top: 1.5em;
@@ -227,7 +238,7 @@ fieldset,
 .fieldcontain .property-label {
 	color: #666666;
 	text-align: right;
-	width: 25%;
+	width: 15%;
 }
 
 .fieldcontain .property-label {
@@ -236,7 +247,7 @@ fieldset,
 
 .fieldcontain .property-value {
 	display: block;
-	margin-left: 27%;
+	margin-left: 17%;
 }
 
 label {
@@ -593,4 +604,76 @@ th:hover, tr:hover {
 a.skip {
 	position: absolute;
 	left: -9999px;
+}
+
+/* login panel */
+#loginPanel{
+    float: right;
+    border-radius: 5px;
+    background-color: lightgreen;
+    width: auto;
+    height: auto;
+    position: relative;
+    text-align: center;
+    top:40px;
+}
+
+#loginPanel p{
+    margin: 10px;
+    color: green;
+}
+
+
+/* index */
+
+#sectionBox{
+    height: 500px;
+}
+
+.sectionButton{
+    color: yellow;
+    border-radius: 5mm;
+    height: 100%;
+    width: 47%;
+    margin:1%;
+    position: relative
+}
+
+.sectionButtonR{
+    left:1%;
+    float: left;
+    background-color: red;
+}
+
+.sectionButtonR:hover{
+    background-color: #FF5555;
+    cursor: pointer;
+}
+
+.sectionButtonB{
+    right:1%;
+    float: right;
+    background-color: blue;
+}
+
+.sectionButtonB:hover{
+    background-color: #5555FF;
+    cursor: pointer;
+}
+
+.sectionButton h1{
+    text-align: center;
+    color: #ffff00;
+    font-size:45pt;
+}
+
+.sectionButton p{
+    text-align: center;
+    font-size:20pt;
+    left:200px;
+}
+
+.imageInSectionButtons{
+    text-align: center;
+    position: relative;
 }
