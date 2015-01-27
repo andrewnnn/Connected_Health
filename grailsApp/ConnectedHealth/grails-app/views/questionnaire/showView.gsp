@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="questionnaireSection">
 <div class="nav" role="navigation">
     <ul>
         <li><a href="/ConnectedHealth/questionnaires" class="list">Questionnaire List</a></li>
@@ -95,5 +96,6 @@
         </fieldset>
     </g:form>
 </div>
+    </div>
 </body>
 </html>

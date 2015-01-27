@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="patientSection">
 <g:form url="/ConnectedHealth/patients/${patient.id}/medicalnotes/${medicalNote.id}" method="DELETE">
     <fieldset class="buttons">
         <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${medicalNote.id}/edit" class="edit">Edit note</a>
@@ -36,6 +37,6 @@
         <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes">View all notes</a>
     </fieldset>
 </div>
-
+</div>
 </body>
 </html>

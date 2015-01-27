@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="patientSection">
 <div class="content scaffold-list" role="main">
 
     <h1>${patient.firstName + " " + patient.lastName}'s Journal Entries</h1>
@@ -28,5 +29,6 @@
         <a href="/ConnectedHealth/patients/${patient.id}/show">Back to patient profile</a>
     </fieldset>
 </div>
+    </div>
 </body>
 </html>

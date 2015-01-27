@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="patientSection">
     <fieldset class="buttons">
         <a href="/ConnectedHealth/patients/${patient.id}/show">Patient profile</a>
         <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes">Patient medical notes</a>
@@ -15,6 +16,7 @@
         <h1>Add medical note for ${patient.firstName + " " + patient.lastName}</h1>
 
         <g:render template="/medicalNotes/form" locals="${[patient: patient]}" />
+    </div>
     </div>
 </body>
 </html>

@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="patientSection">
     <g:form url="/ConnectedHealth/patients/${patient.id}" method="DELETE">
         <fieldset class="buttons">
             <a href="/ConnectedHealth/patients/${patient.id}/edit" class="edit">Edit patient profile</a>
@@ -13,9 +14,9 @@
         </fieldset>
     </g:form>
 <div class="content scaffold-list">
-    <h1>Patient</h1>
+    <h1>Patient Details</h1>
      <ol class="property-list medicalNote">
-        <li class="fieldcontain">
+        <li class="fieldcontain patientSection">
             <span class="property-label">Name</span>
             <span class="property-value" aria-labelledby="content-label">${patient.firstName + " " + patient.lastName}</span>
         </li>
@@ -48,9 +49,7 @@
             <g:each in="${recentJournalEntries}">
                 <tr>
                     <td>
-                        <span class="property-label">
                             ${ViewHelpers.formatDate(it.created)}
-                        </span>
                     </td>
                     <td>
                         <span class="property-value">
@@ -76,9 +75,7 @@
             <g:each in="${recentMedicalNotes}">
                 <tr>
                     <td>
-                        <span class="property-label">
                             ${ViewHelpers.formatDate(it.created)}
-                        </span>
                     </td>
                     <td>
                         <span class="property-value">
@@ -115,6 +112,6 @@
         </div>
 
     </div>
-
+</div>
 </body>
 </html>

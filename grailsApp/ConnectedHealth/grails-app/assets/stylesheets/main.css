@@ -79,10 +79,18 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #FFFFFF;
+	color: #000000;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
+}
+
+.patientSection h1,.patientSection .property-label{
+    color: red;
+}
+
+.questionnaireSection h1,.questionnaireSection .property-label{
+    color: blue;
 }
 
 ul {
@@ -236,7 +244,6 @@ fieldset,
 
 .fieldcontain label,
 .fieldcontain .property-label {
-	color: #666666;
 	text-align: right;
 	width: 15%;
 }

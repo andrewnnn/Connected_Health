@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="questionnaireSection">
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="/ConnectedHealth/">Home</a></li>
@@ -38,5 +39,6 @@
         </tbody>
     </table>
 </div>
+    </div>
 </body>
 </html>

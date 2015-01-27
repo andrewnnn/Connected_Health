@@ -8,6 +8,7 @@
 
 <body>
 
+<div class="patientSection">
 <div id="create-medicalNote" class="content scaffold-create" role="main">
     <h1>Create a new Profile</h1>
 
@@ -69,5 +70,6 @@
         </fieldset>
     </g:form>
 </div>
+    </div>
 </body>
 </html>

@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="patientSection">
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="/ConnectedHealth/">Home</a></li>
@@ -42,5 +43,6 @@
         <a href="/ConnectedHealth/patients/${patient.id}/show">Back to patient profile</a>
     </fieldset>
 </div>
+    </div>
 </body>
 </html>

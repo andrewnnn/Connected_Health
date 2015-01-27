@@ -7,6 +7,7 @@
 
 <body>
 
+<div class="patientSection">
 
 <div class="content scaffold-list" role="main">
     <h1>Journal ID ${journalentry.id}</h1>
@@ -32,6 +33,7 @@
         <a href="/ConnectedHealth/patients/${patient.id}/journal">View all Journals</a>
     </fieldset>
 </div>
-
+</div>
 </body>
+
 </html>

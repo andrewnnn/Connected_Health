@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="questionnaireSection">
 <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}" method="DELETE">
     <fieldset class="buttons">
         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/edit" class="edit">Edit question</a>
@@ -44,6 +45,6 @@
         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show">Back to Questionnaire View</a>
     </fieldset>
 </div>
-
+</div>
 </body>
 </html>

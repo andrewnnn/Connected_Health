@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div class="questionnaireSection">
 <fieldset class="buttons">
     <a href="/ConnectedHealth/questionnaires">Back to questionnaire list</a>
 </fieldset>
@@ -15,5 +16,6 @@
 
     <g:render template="/questionnaire/form" />
 </div>
+    </div>
 </body>
 </html>
