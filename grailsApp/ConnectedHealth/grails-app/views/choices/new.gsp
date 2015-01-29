@@ -7,16 +7,19 @@
 
 <body>
 <div class="questionnaireSection">
-<fieldset class="buttons">
-    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show">Back to ${questionnaire.name}</a>
-    <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}">View question</a>
-</fieldset>
-
-<div id="create-question" class="content scaffold-create" role="main">
-    <h1>Add choice</h1>
-
-    <g:render template="/choices/form" locals="${[questionnaire: questionnaire, question: question]}" />
-</div>
+    <div class="nav" role="navigation">
+        <fieldset class="buttons buttonsBlue">
+            <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show" class="list">Back to Questionnaire</a>
+            <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${question.id}/show"
+               class="list">View question</a>
+        </fieldset>
     </div>
+
+    <div id="create-question" class="content scaffold-create" role="main">
+        <h1>Add choice</h1>
+
+        <g:render template="/choices/form" locals="${[questionnaire: questionnaire, question: question]}"/>
+    </div>
+</div>
 </body>
 </html>

@@ -44,9 +44,9 @@
     </fieldset>
     <br/>
     <g:if test="${question != null}">
-        <input type="submit" name="update" class="save btn btn-danger bootButtons" value="Update" id="update">
+        <input type="submit" name="update" class="save btn btn-primary bootButtons" value="Update" id="update">
     </g:if>
     <g:else>
-        <input type="submit" name="create" class="save btn btn-danger bootButtons" value="Create" id="create">
+        <input type="submit" name="create" class="save btn btn-primary bootButtons" value="Create" id="create">
     </g:else>
 </g:form>

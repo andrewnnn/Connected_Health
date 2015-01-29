@@ -21,17 +21,15 @@
                 <g:textArea name="content" id="content" rows="5" cols="40"/>
             </g:else>
 
-        <g:hiddenField name="questionnaireID" value="${questionnaire.id}" />
-        <g:hiddenField name="questionID" value="${question.id}" />
+            <g:hiddenField name="questionnaireID" value="${questionnaire.id}"/>
+            <g:hiddenField name="questionID" value="${question.id}"/>
         </div>
     </fieldset>
-
-    <fieldset class="buttons">
-        <g:if test="${choice != null}">
-            <input type="submit" name="update" class="save" value="Update" id="update">
-        </g:if>
-        <g:else>
-            <input type="submit" name="create" class="save" value="Create" id="create">
-        </g:else>
-    </fieldset>
+    <br/>
+    <g:if test="${choice != null}">
+        <input type="submit" name="update" class="save btn btn-primary bootButtons" value="Update" id="update">
+    </g:if>
+    <g:else>
+        <input type="submit" name="create" class="save btn btn-primary bootButtons" value="Create" id="create">
+    </g:else>
 </g:form>

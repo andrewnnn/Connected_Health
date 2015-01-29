@@ -10,6 +10,12 @@
 
 <div class="patientSection">
 <div id="create-medicalNote" class="content scaffold-create" role="main">
+    <div class="nav" role="navigation">
+        <fieldset class="buttons buttonsRed">
+            <a href="/ConnectedHealth/patients" class="list">Back to patient list</a>
+        </fieldset>
+    </div>
+
     <h1>Create a new Profile</h1>
 
     <g:form url="/ConnectedHealth/patients/create" method="POST">
@@ -66,7 +72,6 @@
 
                 <input type="submit" name="create" class="save btn btn-danger bootButtons" value="Create" id="create">
 
-                <input type="button" onclick="window.location='/ConnectedHealth/patients'" class="save btn btn-default bootButtons" value="Cancel">
 
             </div>
         </fieldset>
