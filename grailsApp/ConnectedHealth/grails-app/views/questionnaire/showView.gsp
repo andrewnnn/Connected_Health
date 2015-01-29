@@ -8,10 +8,13 @@
 <body>
 <div class="questionnaireSection">
 <div class="nav" role="navigation">
-    <ul>
-        <li><a href="/ConnectedHealth/questionnaires" class="list">Questionnaire List</a></li>
-        <li><a href="/ConnectedHealth/questionnaires/create" class="create">New Questionnaire</a></li>
-    </ul>
+    <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}" method="DELETE">
+    <fieldset class="buttons buttonsBlue">
+        <a href="/ConnectedHealth/questionnaires" class="list">Questionnaire List</a>
+        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/edit" class="edit">Edit</a>
+        <input type="submit" value="Delete" class="delete" onclick="return confirm('${message(code: 'useDefault', default: 'Are you sure you want to delete this questionnaire?')}');"/>
+    </fieldset>
+    </g:form>
 </div>
 
 <div id="list-questionnaire" class="content scaffold-list" role="main">
@@ -89,12 +92,6 @@
         </tbody>
     </table>
 
-    <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}" method="DELETE">
-        <fieldset class="buttons">
-            <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/edit" class="edit" action="edit">Edit</a>
-            <input type="submit" value="Delete" class="delete" onclick="return confirm('${message(code: 'useDefault', default: 'Are you sure you want to delete this questionnaire?')}');"/>
-        </fieldset>
-    </g:form>
 </div>
     </div>
 </body>

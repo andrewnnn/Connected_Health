@@ -47,15 +47,6 @@ body {
 	        box-shadow: 0 0 0.3em #000000;
 }
 
-#grailsLogo {
-	background-color: #DCBA98;
-}
-
-
-#grailsLogo:hover {
-    background-color: #FEDCBA;
-    cursor: pointer;
-}
 
 /* replace with .no-boxshadow body if you have modernizr available */
 .ie6 body,
@@ -82,7 +73,6 @@ h1 {
 	color: #000000;
 	font-weight: normal;
 	font-size: 1.25em;
-	margin: 0.8em 0 0.3em 0;
 }
 
 .patientSection h1,.patientSection .property-label{
@@ -127,7 +117,7 @@ img {
 }
 
 .footer {
-	background: #DCBA98;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEDCBA), color-stop(1, #DCBA98));
 	color: #FEDCBA;
 	clear: both;
 	font-size: 0.8em;
@@ -153,14 +143,7 @@ img {
 
 /* NAVIGATION MENU */
 
-.nav {
-	background-color: #efefef;
-	padding: 0.5em 0.75em;
-	   -moz-box-shadow: 0 0 3px 1px #aaaaaa;
-	-webkit-box-shadow: 0 0 3px 1px #aaaaaa;
-	        box-shadow: 0 0 3px 1px #aaaaaa;
-	zoom: 1;
-}
+
 
 .nav ul {
 	overflow: hidden;
@@ -177,7 +160,7 @@ img {
 }
 
 .nav a {
-	color: #666666;
+	color: #FFFFFF;
 	display: block;
 	padding: 0.25em 0.7em;
 	text-decoration: none;
@@ -187,20 +170,7 @@ img {
 }
 
 .nav a:active, .nav a:visited {
-	color: #666666;
-}
-
-.nav a:focus, .nav a:hover {
-	background-color: #999999;
-	color: #ffffff;
-	outline: none;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
-}
-
-.no-borderradius .nav a:focus, .no-borderradius .nav a:hover {
-	background-color: transparent;
-	color: #444444;
-	text-decoration: underline;
+	color: #FFFFFF;
 }
 
 .nav a.home, .nav a.list, .nav a.create {
@@ -256,6 +226,8 @@ fieldset,
 	display: block;
 	margin-left: 17%;
 }
+
+
 
 label {
 	cursor: pointer;
@@ -540,7 +512,6 @@ th:hover, tr:hover {
 /* ACTION BUTTONS */
 
 .buttons {
-	background-color: #efefef;
 	overflow: hidden;
 	padding: 0.3em;
 	   -moz-box-shadow: 0 0 3px 1px #aaaaaa;
@@ -550,11 +521,20 @@ th:hover, tr:hover {
 	border: none;
 }
 
+.buttonsRed{
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF6666), color-stop(1, #FF4444));
+}
+
+.buttonsBlue{
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #51BFEB), color-stop(1, #4444FF));
+}
+
+
 .buttons input,
 .buttons a {
 	background-color: transparent;
 	border: 0;
-	color: #666666;
+	color: #FFFFFF;
 	cursor: pointer;
 	display: inline-block;
 	margin: 0 0.25em 0;
@@ -569,7 +549,6 @@ th:hover, tr:hover {
 
 .buttons input:hover, .buttons input:focus,
 .buttons a:hover, .buttons a:focus {
-	background-color: #999999;
 	color: #ffffff;
 	outline: none;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
@@ -581,7 +560,7 @@ th:hover, tr:hover {
 .no-borderradius .buttons input:hover, .no-borderradius .buttons input:focus,
 .no-borderradius .buttons a:hover, .no-borderradius .buttons a:focus {
 	background-color: transparent;
-	color: #444444;
+	color: #FFFFFF;
 	text-decoration: underline;
 }
 
@@ -652,8 +631,8 @@ a.skip {
 .sectionButtonR{
     left:1%;
     float: left;
-/*    background-color: red;*/
-    color: red;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF3333), color-stop(1, #FF8888));
+    color: yellow;
 }
 
 .sectionButtonR:hover{
@@ -665,7 +644,8 @@ a.skip {
 .sectionButtonB{
     right:1%;
     float: right;
-    color: blue;
+    color: yellow;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3333FF), color-stop(1, #8888FF));
 }
 
 .sectionButtonB:hover{
@@ -680,13 +660,13 @@ a.skip {
 }
 
 .sectionButtonR h1{
-    color: red;
+    color: yellow;
     text-align: center;
     font-size:45pt;
 }
 
 .sectionButtonB h1{
-    color: blue;
+    color: yellow;
     text-align: center;
     font-size:45pt;
 }
@@ -699,5 +679,10 @@ a.skip {
 
 .imageInSectionButtons{
     text-align: center;
+    position: relative;
+}
+
+.bootButtons{
+    left: 80px;
     position: relative;
 }

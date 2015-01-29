@@ -8,10 +8,9 @@
 <body>
 <div class="patientSection">
 <div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="/ConnectedHealth/">Home</a></li>
-        <li><a href="/ConnectedHealth/patients/create" class="create">Create new patient profile</a></li>
-    </ul>
+    <fieldset class="buttons buttonsRed">
+        <a href="/ConnectedHealth/patients/create" class="create">Create new patient profile</a>
+       </fieldset>
 </div>
 <div id="list-patient" class="content scaffold-list" role="main">
     <h1>Patients</h1>

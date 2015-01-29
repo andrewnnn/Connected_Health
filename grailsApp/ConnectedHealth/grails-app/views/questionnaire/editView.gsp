@@ -7,9 +7,11 @@
 
 <body>
 <div class="questionnaireSection">
-<fieldset class="buttons">
-    <a href="/ConnectedHealth/questionnaires">Back to questionnaire list</a>
-</fieldset>
+    <div class="nav" role="navigation">
+        <fieldset class="buttons buttonsBlue">
+            <a href="/ConnectedHealth/questionnaires" class="list">Questionnaire list</a>
+        </fieldset>
+    </div>
 
 <div id="create-question" class="content scaffold-create" role="main">
     <h1>Edit Questionnaire</h1>

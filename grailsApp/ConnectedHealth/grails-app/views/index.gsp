@@ -6,7 +6,7 @@
 	</head>
 	<body>
         <div id = "sectionBox">
-            <div class="sectionButton sectionButtonR well" onclick="window.location='/ConnectedHealth/patients'">
+            <div class="sectionButton sectionButtonR" onclick="window.location='/ConnectedHealth/patients'">
                 <div>
                     <h1>Patients</h1>
                     <div class="imageInSectionButtons">
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="sectionButton sectionButtonB well" onclick="window.location='/ConnectedHealth/questionnaires'">
+            <div class="sectionButton sectionButtonB" onclick="window.location='/ConnectedHealth/questionnaires'">
                 <div>
                     <h1>Questionnaires</h1>
                     <div class="imageInSectionButtons">

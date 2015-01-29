@@ -8,10 +8,13 @@
 <body>
 <div class="patientSection">
     <g:form url="/ConnectedHealth/patients/${patient.id}" method="DELETE">
-        <fieldset class="buttons">
-            <a href="/ConnectedHealth/patients/${patient.id}/edit" class="edit">Edit patient profile</a>
-            <input type="submit" value="Delete patient profile" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this patient profile?')}');"/>
-        </fieldset>
+        <div class="nav" role="navigation">
+            <fieldset class="buttons buttonsRed">
+                    <a href="/ConnectedHealth/patients/" class="list">Patient Index</a>
+                    <a href="/ConnectedHealth/patients/${patient.id}/edit" class="edit">Edit patient profile</a>
+                    <input type="submit" value="Delete patient profile" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this patient profile?')}');"/>
+            </fieldset>
+        </div>
     </g:form>
 <div class="content scaffold-list">
     <h1>Patient Details</h1>
@@ -99,9 +102,7 @@
         <div class="nav">
             <ul>
                 <li>
-                    <span class="property-value">
-                        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add new medical note</a>
-                    </span>
+                        <intput type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/medicalnotes/create'" class="create btn btn-danger bootButtons">Add new medical note</input>
                 </li>
                 <li>
                     <span class="property-value">

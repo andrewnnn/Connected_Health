@@ -64,10 +64,11 @@
 
             </div>
         </fieldset>
+        <br/>
 
-        <fieldset class="buttons">
-            <input type="submit" name="save" class="save" value="Save" id="create">
-        </fieldset>
+        <input type="submit" name="update" class="save btn btn-danger bootButtons" value="Update" id="update">
+
+        <input type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/show'" class="save btn btn-default bootButtons" value="Cancel">
     </g:form>
 </div>
     </div>

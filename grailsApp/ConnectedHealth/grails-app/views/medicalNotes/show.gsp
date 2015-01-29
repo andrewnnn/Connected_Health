@@ -8,7 +8,7 @@
 <body>
 <div class="patientSection">
 <g:form url="/ConnectedHealth/patients/${patient.id}/medicalnotes/${medicalNote.id}" method="DELETE">
-    <fieldset class="buttons">
+    <fieldset class="buttons buttonsRed">
         <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${medicalNote.id}/edit" class="edit">Edit note</a>
         <input type="submit" value="Delete note" class="delete" onclick="return confirm('${message(code: 'useDefault', default: 'Are you sure you want to delete this medical note?')}');"/>
     </fieldset>
@@ -33,9 +33,8 @@
         </li>
     </ol>
 
-    <fieldset class="buttons">
-        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes">View all notes</a>
-    </fieldset>
+    <input type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/medicalnotes'" class="btn btn-default bootButtons" value="View all notes">
+
 </div>
 </div>
 </body>

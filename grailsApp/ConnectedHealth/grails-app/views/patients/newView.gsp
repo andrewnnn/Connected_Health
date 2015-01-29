@@ -61,13 +61,16 @@
                 </label>
                 <g:textField name="phone" value="" id="phone" rows="5"  size="10"/>
 
+                <br/>
+                <br/>
+
+                <input type="submit" name="create" class="save btn btn-danger bootButtons" value="Create" id="create">
+
+                <input type="button" onclick="window.location='/ConnectedHealth/patients'" class="save btn btn-default bootButtons" value="Cancel">
 
             </div>
         </fieldset>
 
-        <fieldset class="buttons">
-            <input type="submit" name="create" class="save" value="Create" id="create">
-        </fieldset>
     </g:form>
 </div>
     </div>

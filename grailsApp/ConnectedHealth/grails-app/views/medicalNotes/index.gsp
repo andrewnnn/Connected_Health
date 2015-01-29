@@ -8,10 +8,9 @@
 <body>
 <div class="patientSection">
 <div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="/ConnectedHealth/">Home</a></li>
-        <li><a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add medical note</a></li>
-    </ul>
+    <fieldset class="buttons buttonsRed">
+        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add medical note</a>
+    </fieldset>
 </div>
 <div id="list-medicalNotes" class="content scaffold-list" role="main">
     <h1>Medical notes for ${patient.firstName + " " + patient.lastName}</h1>
@@ -39,9 +38,8 @@
         </tbody>
     </table>
 
-    <fieldset class="buttons">
-        <a href="/ConnectedHealth/patients/${patient.id}/show">Back to patient profile</a>
-    </fieldset>
+    <input type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/show'" class="save btn btn-default bootButtons" value="Back to patient profile">
+
 </div>
     </div>
 </body>

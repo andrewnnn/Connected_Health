@@ -25,9 +25,8 @@
         </tbody>
     </table>
 
-    <fieldset class="buttons">
-        <a href="/ConnectedHealth/patients/${patient.id}/show">Back to patient profile</a>
-    </fieldset>
+    <input type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/show'" class="btn btn-default bootButtons" value="Back to patient profile">
+
 </div>
     </div>
 </body>

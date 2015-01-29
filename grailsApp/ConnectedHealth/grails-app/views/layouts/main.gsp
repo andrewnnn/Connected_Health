@@ -17,14 +17,35 @@
     <g:layoutHead/>
 </head>
 <body>
-    <div id="grailsLogo" role="banner" onclick="window.location = '/ConnectedHealth'"><h2>Connected Health</h2>
-        <div id="loginPanel">
-            <p>Login as Admin <a href="/ConnectedHealth">Log out</a></p>
-
-        </div>
-    </div>
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+
+<nav class="navbar navbar-default navbar-fixed-top" style="background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #DCBA98), color-stop(1, #FEDCBA));">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">Connected Health</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/ConnectedHealth">Home</a></li>
+                <li><a href="/ConnectedHealth/patients">Patients</a></li>
+                <li><a href="/ConnectedHealth/questionnaires">Questionnaires</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://www.google.com">Sign In</a></li>
+                <li><a href="http://www.google.com">Explode</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
 </body>
 </html>

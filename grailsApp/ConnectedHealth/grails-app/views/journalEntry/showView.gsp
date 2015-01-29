@@ -29,9 +29,8 @@
         </li>
     </ol>
 
-    <fieldset class="buttons">
-        <a href="/ConnectedHealth/patients/${patient.id}/journal">View all Journals</a>
-    </fieldset>
+    <input type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/journal'" class="btn btn-default bootButtons" value="View all Journals">
+
 </div>
 </div>
 </body>
