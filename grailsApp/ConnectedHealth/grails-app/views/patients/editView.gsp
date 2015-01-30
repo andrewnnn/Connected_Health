@@ -16,7 +16,7 @@
         </fieldset>
     </div>
 
-    <h1>Edit Your Profile</h1>
+    <h1>Edit Profile</h1>
 
     <g:form url="/ConnectedHealth/patients/${patient.id}" method="PUT">
 

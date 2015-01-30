@@ -10,6 +10,7 @@
 <div class="nav" role="navigation">
     <fieldset class="buttons buttonsRed">
         <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add medical note</a>
+        <a href="/ConnectedHealth/patients/${patient.id}/show" class="list">Back to patient profile</a>
     </fieldset>
 </div>
 <div id="list-medicalNotes" class="content scaffold-list" role="main">
@@ -38,7 +39,6 @@
         </tbody>
     </table>
 
-    <input type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/show'" class="save btn btn-default bootButtons" value="Back to patient profile">
 
 </div>
     </div>

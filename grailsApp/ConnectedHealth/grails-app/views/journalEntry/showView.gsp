@@ -6,7 +6,12 @@
 </head>
 
 <body>
-
+<div class="nav" role="navigation">
+    <fieldset class="buttons buttonsRed">
+        <a href="/ConnectedHealth/patients/${patient.id}/journal" class="create">View all Journals</a>
+        <a href="/ConnectedHealth/patients/${patient.id}/show" class="list">Back to patient profile</a>
+    </fieldset>
+</div>
 <div class="patientSection">
 
 <div class="content scaffold-list" role="main">
@@ -28,8 +33,6 @@
             <p style="margin:10px">${journalentry.content}</p>
         </li>
     </ol>
-
-    <input type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/journal'" class="btn btn-default bootButtons" value="View all Journals">
 
 </div>
 </div>

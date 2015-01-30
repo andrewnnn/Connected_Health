@@ -10,6 +10,7 @@
     <div class="nav" role="navigation">
         <fieldset class="buttons buttonsBlue">
             <a href="/ConnectedHealth/questionnaires" class="list">Questionnaire list</a>
+            <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/show" class="list">Back to Questionnaire</a>
         </fieldset>
     </div>
 

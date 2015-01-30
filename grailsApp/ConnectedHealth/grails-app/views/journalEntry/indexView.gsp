@@ -6,6 +6,11 @@
 </head>
 
 <body>
+<div class="nav" role="navigation">
+    <fieldset class="buttons buttonsRed">
+        <a href="/ConnectedHealth/patients/${patient.id}/show" class="list">Back to patient profile</a>
+    </fieldset>
+</div>
 <div class="patientSection">
 <div class="content scaffold-list" role="main">
 
@@ -24,8 +29,6 @@
         </g:each>
         </tbody>
     </table>
-
-    <input type="button" onclick="window.location='/ConnectedHealth/patients/${patient.id}/show'" class="btn btn-default bootButtons" value="Back to patient profile">
 
 </div>
     </div>

@@ -613,14 +613,14 @@ a.skip {
 /* index */
 
 #sectionBox{
-    height: 500px;
+    height: 200px;
 }
 
 .sectionButton{
     border-radius: 5mm;
-    height: 100%;
-    width: 47%;
-    margin:1%;
+    height: 120%;
+    width: 38%;
+    margin:6%;
     position: relative;
 }
 
@@ -631,7 +631,7 @@ a.skip {
 .sectionButtonR{
     left:1%;
     float: left;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF3333), color-stop(1, #FF8888));
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF1111), color-stop(1, #FF6666));
     color: yellow;
 }
 
@@ -645,7 +645,7 @@ a.skip {
     right:1%;
     float: right;
     color: yellow;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3333FF), color-stop(1, #8888FF));
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #1111FF), color-stop(1, #6666FF));
 }
 
 .sectionButtonB:hover{
@@ -655,31 +655,36 @@ a.skip {
 }
 
 .sectionButton h1{
-    text-align: center;
-    font-size:45pt;
+    padding-top: 1%;
+    padding-left: 20%;
+    text-align: left;
+    font-size:30pt;
 }
 
 .sectionButtonR h1{
     color: yellow;
-    text-align: center;
-    font-size:45pt;
 }
 
 .sectionButtonB h1{
     color: yellow;
-    text-align: center;
-    font-size:45pt;
 }
 
-.sectionButton p{
-    text-align: center;
-    font-size:20pt;
-    left:200px;
+.sectionButton ul{
+    padding-left: 15%;
+    text-align: left;
+    font-size:15pt;
 }
 
 .imageInSectionButtons{
     text-align: center;
     position: relative;
+    float: left;
+    padding-top: 5%;
+    padding-left: 5%;
+}
+
+.imageInSectionButtonsPic{
+    width: 50px;
 }
 
 .bootButtons{

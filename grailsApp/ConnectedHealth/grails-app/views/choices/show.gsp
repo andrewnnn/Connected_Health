@@ -22,7 +22,7 @@
 <h1>${answerFormat}</h1>
 
 <div id="show-question" class="content scaffold-show" role="main">
-<h1>${choice.content}</h1>
+
 
 <ol class="property-list question">
     <li class="fieldcontain">
