@@ -52,6 +52,12 @@ public class MeasurementViewActivity extends QuickMenu {
                         "id", getPackageName());
                 RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
                 previewLayout.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+
+                // Set category icon according to panel
+                resID = getResources().getIdentifier("preview_text" + i,
+                        "id", getPackageName());
+                ImageView previewIcon = (ImageView) findViewById(resID);
+                previewText.setText(preview);
             }
 
             // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
