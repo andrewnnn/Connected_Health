@@ -92,7 +92,29 @@ public class SingleItemEditActivity extends QuickMenu {
         finish();
     }
 
+    // can use getItemType to update different models
     public void goToConfirmEdit(View view) {
+        JSONObject journalEntry = PatientSingleton.getInstance().getCurrentObject();
+        if (journalEntry == null) {
+/*
+            "/patients/$patientID/journal/json"(controller:"JournalEntry"){
+                action = [GET:"entries", POST:"newEntry"]
+            }
+ */
+        } else {
+            try {
+                int id = journalEntry.getInt("id");
+/*
+                "/patients/$patientID/journal/$journalEntryID/update/json"(controller:"JournalEntry"){
+                    action = [PUT:"updateEntry", DELETE:"removeEntry"]
+                }
+ */
+            } catch (JSONException je) {
+                System.out.println("Couldn't get JSON journal entry to update");
+            }
+        }
+
+        PatientSingleton.getInstance().getJournalEntries();     // update local journal entries after change TODO check that this works
         Intent intent = new Intent(this, SingleItemEditActivity.class);
         startActivity(intent);
     }
