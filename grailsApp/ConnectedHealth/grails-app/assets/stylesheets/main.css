@@ -117,7 +117,7 @@ img {
 }
 
 .footer {
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEDCBA), color-stop(1, #DCBA98));
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #666666), color-stop(1, #000000));
 	color: #FEDCBA;
 	clear: both;
 	font-size: 0.8em;
@@ -529,6 +529,10 @@ th:hover, tr:hover {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #51BFEB), color-stop(1, #4444FF));
 }
 
+.buttonsGreen{
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #449944), color-stop(1, #229922));
+}
+
 
 .buttons input,
 .buttons a {
@@ -592,17 +596,7 @@ a.skip {
 	left: -9999px;
 }
 
-/* login panel */
-#loginPanel{
-    float: right;
-    border-radius: 5px;
-    background-color: lightgreen;
-    width: auto;
-    height: auto;
-    position: relative;
-    text-align: center;
-    top:40px;
-}
+
 
 #loginPanel p{
     margin: 10px;
@@ -617,7 +611,6 @@ a.skip {
 }
 
 .sectionButton{
-    border-radius: 5mm;
     height: 120%;
     width: 38%;
     margin:6%;
@@ -690,4 +683,37 @@ a.skip {
 .bootButtons{
     left: 80px;
     position: relative;
+}
+
+/*login stuff*/
+.loginSection{
+    height: 300px;
+}
+
+.loginInputBox{
+    position: relative;
+    left: 30%;
+    top: 30%;
+    width:35%;
+}
+
+.leftBox{
+    position: relative;
+    float: left;
+    top:3px;
+}
+
+.rightBox{
+    position: relative;
+    float: right;
+}
+
+.loginButtons{
+    position: absolute;
+    top:95px;
+    left:60px;
+}
+
+.loginButton{
+    margin: 20px;
 }

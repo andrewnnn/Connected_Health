@@ -6,6 +6,11 @@
 </head>
 
 <body>
+<div class="nav" role="navigation">
+    <fieldset class="buttons buttonsGreen">
+        <a href="/ConnectedHealth/patients/${patient.id}/show" class="list">Back to patient profile</a>
+    </fieldset>
+</div>
 <div class="content scaffold-list" role="main">
     <h1>${patient.firstName + " " + patient.lastName}'s measurements</h1>
     <table>

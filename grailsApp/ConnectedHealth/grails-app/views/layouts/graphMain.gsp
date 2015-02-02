@@ -71,11 +71,14 @@
 
 </head>
 <body onload="loadChart()">
-<div id="grailsLogo" role="banner"><a href="http://localhost:8080/ConnectedHealth/"><h2>Connected Health</h2></a></div>
-<g:layoutBody/>
-<div>
-<h1>----------------------------------------------> Graph for Steps Measurements</h1>
-        <div id="ChartDiv" style="width:100%;height:500px;top:-50px;position: relative"></div>
+<div class="nav" role="navigation">
+    <fieldset class="buttons buttonsGreen">
+        <a href="" class="list">Back to Measurement List</a>
+        <a href="" class="list">Back to patient profile</a>
+    </fieldset>
+</div>
+<div style="margin-top:-50px">
+        <div id="ChartDiv" style="width:100%;height:500px;;position: relative"></div>
 </div>
     <div class="footer" role="contentinfo"></div>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/>
