@@ -121,7 +121,8 @@
                         android:text="Newer"
                         android:id="@+id/button"
                         android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true" />
+                        android:layout_centerHorizontal="true"
+                        android:drawableLeft="@drawable/previous_icon"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_weight="1"
@@ -143,7 +144,8 @@
                         android:text="Older"
                         android:id="@+id/button7"
                         android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true" />
+                        android:layout_centerHorizontal="true"
+                        android:drawableRight="@drawable/next_icon"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
