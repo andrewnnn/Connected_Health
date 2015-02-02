@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class JournalViewActivity extends QuickMenu {
+public class JournalViewActivity extends TextPreview {
 
     private final int patientID = 1;
     private ArrayList<JSONObject> journalEntriesForPreviews;
@@ -28,6 +28,9 @@ public class JournalViewActivity extends QuickMenu {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
+
+        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.journalEntry);
+        removeUnusedButtons();
 
         HelperSingleton.getInstance().updateJournalEntries(this);
 
@@ -165,7 +168,6 @@ public class JournalViewActivity extends QuickMenu {
 
 //        final RelativeLayout selectLayout = (RelativeLayout) findViewById(R.id.journal_select);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

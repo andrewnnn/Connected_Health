@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class QuestionnaireViewActivity extends QuickMenu {
+public class QuestionnaireViewActivity extends TextPreview {
 
     final int questionnaireId = 10;
     final String url = "http://129.127.210.69:9999/ConnectedHealth/questionnaire/get?IDorName=10";
@@ -35,6 +35,9 @@ public class QuestionnaireViewActivity extends QuickMenu {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
+
+        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.questionnaire);
+        removeUnusedButtons();
 
         HelperSingleton.getInstance().updateQuestionnaires(this);
 
