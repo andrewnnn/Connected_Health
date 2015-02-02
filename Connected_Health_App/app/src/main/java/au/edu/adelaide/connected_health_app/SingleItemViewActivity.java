@@ -100,8 +100,4 @@ public class SingleItemViewActivity extends QuickMenu {
         startActivity(intent);
     }
 
-    public void goToDeleteItem(View view) {
-        Intent intent = new Intent(this, SingleItemEditActivity.class);
-        startActivity(intent);
-    }
 }

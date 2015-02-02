@@ -88,16 +88,12 @@ public class SingleItemEditActivity extends QuickMenu {
         }
     }
 
-    public void goBack(View view) {
-        Intent intent = new Intent(this, PatientSingleton.getInstance().getBackToPreviewsClass());
+    public void goToCancelEdit(View view) {
+        finish();
+    }
+
+    public void goToConfirmEdit(View view) {
+        Intent intent = new Intent(this, SingleItemEditActivity.class);
         startActivity(intent);
-    }
-
-    public void goToEditItem(View view) {
-
-    }
-
-    public void goToDeleteItem(View view) {
-        System.out.println("GOING TO DELEEEEEEEEEET");
     }
 }
