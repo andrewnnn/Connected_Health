@@ -48,6 +48,15 @@
                     android:id="@+id/textView"
                     android:textIsSelectable="false"
                     android:textColor="#ffffffff" />
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:id="@+id/imageView5"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/user_profile_icon" />
+
             </RelativeLayout>
 
             <!--Journal Entries panel-->
@@ -69,6 +78,15 @@
                     android:layout_marginTop="46dp"
                     android:gravity="center_horizontal"
                     android:textColor="#ffffffff" />
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:id="@+id/imageView7"
+                    android:src="@drawable/journal_icon"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+
             </RelativeLayout>
 
             <!--Medical Notes panel-->
@@ -90,6 +108,14 @@
                     android:layout_marginTop="46dp"
                     android:gravity="center_horizontal"
                     android:textColor="#ffffffff" />
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:id="@+id/imageView6"
+                    android:src="@drawable/medical_note_icon"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
         </LinearLayout>
 
