@@ -19,12 +19,15 @@ public class TextPreview extends QuickMenu {
                 break;
             case measurement:
                 items = ps.getMeasurementTypes();
+                removeCreateButton();
                 break;
             case medicalNote:
                 items = ps.getMedicalNotes();
+                removeCreateButton();
                 break;
             case questionnaire:
                 items = ps.getQuestionnaires();
+                removeCreateButton();
                 break;
         }
 
@@ -52,6 +55,12 @@ public class TextPreview extends QuickMenu {
                 olderButton.setVisibility(View.INVISIBLE);
             }
         }
+    }
+
+    private void removeCreateButton() {
+        Button createButton = (Button) findViewById(R.id.new_button);
+        createButton.setClickable(false);
+        createButton.setVisibility(View.INVISIBLE);
     }
 
 }
