@@ -60,8 +60,8 @@
                         android:padding="5dp" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         android:id="@+id/icon0"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
@@ -86,8 +86,8 @@
                         android:padding="5dp" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         android:id="@+id/icon1"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
@@ -113,8 +113,8 @@
                         android:autoText="false" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         android:id="@+id/icon2"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />

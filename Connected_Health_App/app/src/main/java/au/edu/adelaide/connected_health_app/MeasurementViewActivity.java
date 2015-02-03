@@ -60,10 +60,10 @@ public class MeasurementViewActivity extends QuickMenu {
                 ImageView icon = (ImageView) findViewById(resID);
 
                 if (name.compareTo("Steps") == 0) {
-                    icon.setImageResource(R.drawable.steps_icon);
+                    icon.setImageResource(R.drawable.steps_icon_512);
                 }
                 if (name.compareTo("Weight") == 0) {
-                    icon.setImageResource(R.drawable.weight_icon);
+                    icon.setImageResource(R.drawable.weight_icon_512);
                 }
             }
 
