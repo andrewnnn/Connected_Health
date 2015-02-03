@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -23,7 +24,7 @@ public class QuestionViewActivity extends QuickMenu {
     final int ANSWER_FORMAT_CHECKBOX = 1;
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;
-    int questionIndex;
+    int itemIndex;
     JSONArray questionsJson;
 
     @Override
@@ -31,20 +32,22 @@ public class QuestionViewActivity extends QuickMenu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_single_object_view);
 
-        questionIndex = getIntent().getExtras().getInt("questionIndex");
+        itemIndex = getIntent().getExtras().getInt("itemIndex");
         RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
         TextView questionText = new TextView(this);
 
         try {
             JSONObject questionnaire = PatientSingleton.getInstance().getCurrentObject();
             questionsJson = questionnaire.getJSONArray("questions");
-            JSONObject currentQuestionJson = questionsJson.getJSONObject(questionIndex);
-
-            if (questionIndex == questionsJson.length() - 1) {
-                // TODO last question, submit answers
-            }
+            JSONObject currentQuestionJson = questionsJson.getJSONObject(itemIndex);
 
             questionText.setText(currentQuestionJson.getString("content"));
+
+            if (itemIndex == 0) {   // first item
+                Button previous = (Button) findViewById(R.id.button_previous);
+                previous.setClickable(false);
+                previous.setVisibility(View.INVISIBLE);
+            }
 
             questionText.setId(++viewId);
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams
@@ -144,19 +147,19 @@ public class QuestionViewActivity extends QuickMenu {
     }
 
     public void goToNextItem(View view) {
-        if (questionIndex == questionsJson.length() - 1) {
+        if (itemIndex == questionsJson.length() - 1) {
             // TODO submit
-        } else if (questionIndex < questionsJson.length() - 1) {
+        } else if (itemIndex < questionsJson.length() - 1) {
             Intent intent = new Intent(this, QuestionViewActivity.class);
-            intent.putExtra("questionIndex", questionIndex + 1);        // get previous question
+            intent.putExtra("itemIndex", itemIndex + 1);        // get previous question
             startActivity(intent);
         }
     }
 
     public void goToPreviousItem(View view) {
-        if (questionIndex > 0) {
+        if (itemIndex > 0) {
             Intent intent = new Intent(this, QuestionViewActivity.class);
-            intent.putExtra("questionIndex", questionIndex - 1);        // get previous question
+            intent.putExtra("itemIndex", itemIndex - 1);        // get previous question
             startActivity(intent);
         }
     }
