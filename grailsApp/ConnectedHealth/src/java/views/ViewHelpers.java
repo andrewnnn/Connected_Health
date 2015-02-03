@@ -22,7 +22,10 @@ public class ViewHelpers {
 
     public static String formatDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd/MM/yyyy HH:mm");
-        return sdf.format(date);
+        String temp = sdf.format(date);
+        String[] tempArray = temp.split(" ");
+        String result = tempArray[0];
+        return result;
     }
 
     public static String formatDate(Timestamp timestamp) {
@@ -36,4 +39,5 @@ public class ViewHelpers {
         }
         return string;
     }
+
 }

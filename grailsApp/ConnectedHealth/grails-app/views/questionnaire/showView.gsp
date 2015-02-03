@@ -44,14 +44,14 @@
         <tbody>
 
         <g:each in="${questionnaire.questions}">
-            <tr>
+                <tr style="border: solid blue 2px">
                 <td style="width: 10%">
                     <span class="property-value">
                         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/show" class="show">${it.content}</a>
                     </span>
 
                 </td>
-                <td>
+                <td style="border-left: solid blue 2px; border-right: solid blue 2px">
                     ${views.ViewHelpers.answerFormatString(it.answerFormat)}
                 </td>
                 <td style="width: 90%">

@@ -214,8 +214,8 @@ fieldset,
 
 .fieldcontain label,
 .fieldcontain .property-label {
-	text-align: right;
-	width: 15%;
+	text-align: left;
+	width: 11%;
 }
 
 .fieldcontain .property-label {
@@ -224,7 +224,7 @@ fieldset,
 
 .fieldcontain .property-value {
 	display: block;
-	margin-left: 17%;
+	margin-left: 13%;
 }
 
 
@@ -716,4 +716,10 @@ a.skip {
 
 .loginButton{
     margin: 20px;
+}
+
+.tablePaddings{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%
 }
