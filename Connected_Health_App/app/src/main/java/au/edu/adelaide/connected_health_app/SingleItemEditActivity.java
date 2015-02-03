@@ -141,7 +141,6 @@ public class SingleItemEditActivity extends QuickMenu {
         String patientId = HelperSingleton.getInstance().getPatientId() + "";
         String path = "patients/" + patientId + "/journal/json";
         String url = HelperSingleton.getInstance().getConstantUrl() + path;
-        System.out.println("TEH URL: " + url);
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -150,7 +149,6 @@ public class SingleItemEditActivity extends QuickMenu {
                 {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("GOT POST RESPONSE!!!");
                         System.out.println(response);
                     }
                 },
@@ -158,7 +156,6 @@ public class SingleItemEditActivity extends QuickMenu {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("GOT POST ERROR!!!");
                         System.out.println(error.toString());
                     }
                 }
@@ -193,7 +190,6 @@ public class SingleItemEditActivity extends QuickMenu {
                 {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("GOT PUT RESPONSE!!!");
                         System.out.println(response);
                     }
                 },
@@ -201,7 +197,6 @@ public class SingleItemEditActivity extends QuickMenu {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("GOT PUT ERROR!!!");
                         System.out.println(error.toString());
                     }
                 }

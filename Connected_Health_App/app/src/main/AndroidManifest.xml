@@ -109,6 +109,10 @@
             android:label="@string/title_activity_measurement_steps_view"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name=".SingleItemDeleteActivity"
+            android:label="@string/title_activity_single_item_delete" >
+        </activity>
     </application>
 
 </manifest>
