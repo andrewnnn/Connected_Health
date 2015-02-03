@@ -9,7 +9,7 @@
     <include layout="@layout/quick_menu_bar"
         android:id="@+id/quickMenuBar"/>
 
-<!--
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         android:layout_marginRight="11dp"
         android:layout_marginEnd="11dp"
         android:id="@+id/journal_select"></LinearLayout>
--->
+
 
 
 </RelativeLayout>

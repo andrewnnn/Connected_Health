@@ -58,6 +58,13 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:padding="5dp" />
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:id="@+id/icon0"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
                 </RelativeLayout>
                 <RelativeLayout
                     android:onClick="goToSingleItemView"
@@ -77,6 +84,13 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:padding="5dp" />
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:id="@+id/icon1"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
                 </RelativeLayout>
                 <RelativeLayout
                     android:onClick="goToSingleItemView"
@@ -97,9 +111,18 @@
                         android:layout_alignParentStart="true"
                         android:padding="5dp"
                         android:autoText="false" />
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:id="@+id/icon2"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+
                 </RelativeLayout>
             </LinearLayout>
 
+            <!--Bottom Buttons-->
             <LinearLayout
                 android:weightSum="4"
                 android:orientation="horizontal"

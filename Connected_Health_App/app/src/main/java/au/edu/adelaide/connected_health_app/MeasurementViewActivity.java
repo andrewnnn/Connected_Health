@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -52,6 +53,18 @@ public class MeasurementViewActivity extends QuickMenu {
                         "id", getPackageName());
                 RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
                 previewLayout.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+
+                // Set category icon according to panel
+                resID = getResources().getIdentifier("icon" + i,
+                        "id", getPackageName());
+                ImageView icon = (ImageView) findViewById(resID);
+
+                if (name.compareTo("Steps") == 0) {
+                    icon.setImageResource(R.drawable.steps_icon_512);
+                }
+                if (name.compareTo("Weight") == 0) {
+                    icon.setImageResource(R.drawable.weight_icon_512);
+                }
             }
 
             // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
