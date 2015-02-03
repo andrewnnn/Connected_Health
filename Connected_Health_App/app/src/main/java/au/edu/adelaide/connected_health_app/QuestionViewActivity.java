@@ -69,6 +69,7 @@ public class QuestionViewActivity extends QuickMenu {
                         } else {
                             checkBoxParams.addRule(RelativeLayout.BELOW, recentCheckBox.getId());
                         }
+                        currentCheckBox.setButtonDrawable(R.drawable.checkbox);
                         currentCheckBox.setId(++viewId);
                         currentCheckBox.setLayoutParams(checkBoxParams);
                         currentCheckBox.setPadding(10, 10, 10, 0);
