@@ -62,7 +62,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView0"
+                        android:id="@+id/icon0"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
                 </RelativeLayout>
@@ -88,7 +88,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView1"
+                        android:id="@+id/icon1"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
                 </RelativeLayout>
@@ -115,12 +115,14 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView2"
+                        android:id="@+id/icon2"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
+
                 </RelativeLayout>
             </LinearLayout>
 
+            <!--Bottom Buttons-->
             <LinearLayout
                 android:weightSum="4"
                 android:orientation="horizontal"
