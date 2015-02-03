@@ -28,6 +28,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true">
 
+            <!--Main Display-->
             <RelativeLayout
                 android:weightSum="3"
                 android:orientation="horizontal"
@@ -40,6 +41,7 @@
 
             </RelativeLayout>
 
+            <!--Buttons-->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_weight="0.15"
