@@ -97,6 +97,7 @@ public class SingleItemViewActivity extends QuickMenu {
 
     public void goToEditItem(View view) {
         Intent intent = new Intent(this, SingleItemEditActivity.class);
+        intent.putExtra("edit", true);
         startActivity(intent);
     }
 

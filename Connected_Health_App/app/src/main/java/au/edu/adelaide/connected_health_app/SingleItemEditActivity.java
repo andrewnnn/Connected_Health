@@ -2,19 +2,45 @@ package au.edu.adelaide.connected_health_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class SingleItemEditActivity extends QuickMenu {
 
     int itemIndex = -1;
+    int itemId = -1;
+    EditText content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +50,9 @@ public class SingleItemEditActivity extends QuickMenu {
         } else {
             setContentView(R.layout.activity_single_item_edit);
         }
+        content = (EditText) findViewById(R.id.editText);
 
         RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
-        EditText content = (EditText) findViewById(R.id.editText);
         try {
             JSONObject object = PatientSingleton.getInstance().getCurrentObject();
             content.setText(object.getString("content"));
@@ -94,28 +120,104 @@ public class SingleItemEditActivity extends QuickMenu {
 
     // can use getItemType to update different models
     public void goToConfirmEdit(View view) {
-        JSONObject journalEntry = PatientSingleton.getInstance().getCurrentObject();
-        if (journalEntry == null) {
-/*
-            "/patients/$patientID/journal/json"(controller:"JournalEntry"){
-                action = [GET:"entries", POST:"newEntry"]
-            }
- */
-        } else {
+        if (getIntent().getExtras().getBoolean("edit")) {       // edit existing item
             try {
-                int id = journalEntry.getInt("id");
-/*
-                "/patients/$patientID/journal/$journalEntryID/update/json"(controller:"JournalEntry"){
-                    action = [PUT:"updateEntry", DELETE:"removeEntry"]
-                }
- */
+                JSONObject journalEntry = PatientSingleton.getInstance().getCurrentObject();
+                itemId = journalEntry.getInt("ID");
+                httpPut();
             } catch (JSONException je) {
-                System.out.println("Couldn't get JSON journal entry to update");
+                System.out.println("Couldn't get journal entry ID to update");
             }
+        } else {        // create new item
+            httpPost();
         }
 
         PatientSingleton.getInstance().getJournalEntries();     // update local journal entries after change TODO check that this works
-        Intent intent = new Intent(this, SingleItemEditActivity.class);
+        Intent intent = new Intent(this, JournalViewActivity.class);
         startActivity(intent);
     }
+
+    public void httpPost() {
+        String patientId = HelperSingleton.getInstance().getPatientId() + "";
+        String path = "patients/" + patientId + "/journal/json";
+        String url = HelperSingleton.getInstance().getConstantUrl() + path;
+        System.out.println("TEH URL: " + url);
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("GOT POST RESPONSE!!!");
+                        System.out.println(response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("GOT POST ERROR!!!");
+                        System.out.println(error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("content", content.getText().toString());
+                params.put("patientID", HelperSingleton.getInstance().getPatientId() + "");
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
+    }
+
+    public void httpPut() {
+        String url = null;
+        try {
+            String patientId = HelperSingleton.getInstance().getPatientId() + "";
+            String path = "patients/" + patientId + "/journal/" + itemId + "/update/json?content=" + URLEncoder.encode(content.getText().toString(), "UTF-8");
+            url = HelperSingleton.getInstance().getConstantUrl() + path;
+        } catch (UnsupportedEncodingException e) {
+            System.out.println(e);
+        }
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest putRequest = new StringRequest(Request.Method.PUT, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("GOT PUT RESPONSE!!!");
+                        System.out.println(response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("GOT PUT ERROR!!!");
+                        System.out.println(error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("content", content.getText().toString());
+                params.put("patientID", HelperSingleton.getInstance().getPatientId() + "");
+                params.put("journalEntryID", itemId + "");
+
+                return params;
+            }
+        };
+        queue.add(putRequest);
+    }
+
 }
