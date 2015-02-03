@@ -115,7 +115,7 @@
 
                 <RelativeLayout
                     android:layout_weight="1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dip"
                     android:layout_height="match_parent">
 
                     <Button
@@ -129,16 +129,31 @@
                         android:drawableLeft="@drawable/previous_icon"/>
                 </RelativeLayout>
                 <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_width="0dip"
                     android:layout_height="match_parent"></RelativeLayout>
                 <RelativeLayout
                     android:layout_weight="1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:onClick="goToNewItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Create"
+                        android:id="@+id/new_button"
+                        android:drawableLeft="@drawable/new_icon"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="0.5"
+                    android:layout_width="0dip"
                     android:layout_height="match_parent"></RelativeLayout>
                 <RelativeLayout
                     android:layout_weight="1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dip"
                     android:layout_height="match_parent">
 
                     <Button

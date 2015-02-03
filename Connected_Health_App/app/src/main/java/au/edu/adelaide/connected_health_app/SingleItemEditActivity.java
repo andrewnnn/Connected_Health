@@ -55,7 +55,9 @@ public class SingleItemEditActivity extends QuickMenu {
         RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
         try {
             JSONObject object = PatientSingleton.getInstance().getCurrentObject();
-            content.setText(object.getString("content"));
+            if (getIntent().getExtras().getBoolean("edit")) {
+                content.setText(object.getString("content"));
+            }
 
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams
                     ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);

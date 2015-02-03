@@ -9,7 +9,7 @@ import org.json.JSONArray;
 
 public class TextPreview extends QuickMenu {
 
-    protected void removeUnusedButtons() {
+    protected void removeUnusedNavButtons() {
         PatientSingleton ps = PatientSingleton.getInstance();
         PatientSingleton.ItemType itemType = ps.getCurrentItemType();
         JSONArray items = null;
@@ -35,8 +35,6 @@ public class TextPreview extends QuickMenu {
         } else {
             pageNumber = 0;
         }
-
-        System.out.println("PAGE NUMBER IS " + pageNumber);
 
         if (pageNumber == 0) {   // first page
             Button newerButton = (Button) findViewById(R.id.left_nav_button);

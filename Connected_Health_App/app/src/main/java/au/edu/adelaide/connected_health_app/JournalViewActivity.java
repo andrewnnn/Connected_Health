@@ -1,7 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +29,7 @@ public class JournalViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.journalEntry);
-        removeUnusedButtons();
+        removeUnusedNavButtons();
 
         HelperSingleton.getInstance().updateJournalEntries(this);
 
@@ -228,6 +227,12 @@ public class JournalViewActivity extends TextPreview {
             intent.putExtra("pageNumber", pageNumber + 1);
             startActivity(intent);
         }
+    }
+
+    public void goToNewItem(View view) {
+        Intent intent = new Intent(this, SingleItemEditActivity.class);
+        intent.putExtra("edit", false);
+        startActivity(intent);
     }
 
 }

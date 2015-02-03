@@ -27,7 +27,7 @@ public class MeasurementViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.measurement);
-        removeUnusedButtons();
+        removeUnusedNavButtons();
 
         try {
             if (getIntent().hasExtra("pageNumber")) {

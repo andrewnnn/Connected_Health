@@ -1,7 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +37,7 @@ public class MedicalNotesViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.medicalNote);
-        removeUnusedButtons();
+        removeUnusedNavButtons();
 
         HelperSingleton.getInstance().updateMedicalNotes(this);
 

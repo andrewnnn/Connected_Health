@@ -37,7 +37,7 @@ public class QuestionnaireViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.questionnaire);
-        removeUnusedButtons();
+        removeUnusedNavButtons();
 
         HelperSingleton.getInstance().updateQuestionnaires(this);
 
