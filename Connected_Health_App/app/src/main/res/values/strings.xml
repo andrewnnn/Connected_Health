@@ -35,5 +35,7 @@
     <string name="title_activity_single_item_view">SingleItemViewActivity</string>
     <string name="title_activity_question_view">QuestionViewActivity</string>
     <string name="title_activity_measurement_steps_view">MeasurementStepsViewActivity</string>
+    <string name="title_activity_single_item_edit">SingleItemEditActivity</string>
+    <string name="title_activity_single_item_delete">SingleItemDeleteActivity</string>
 
 </resources>

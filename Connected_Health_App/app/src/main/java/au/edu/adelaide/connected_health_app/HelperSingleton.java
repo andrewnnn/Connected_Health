@@ -21,6 +21,7 @@ public class HelperSingleton {
 
     private boolean serverIsAvailable = false;
     private boolean serverResponse = false;
+    public boolean staticDataIsSet = false;
 
     private HelperSingleton() {}
 

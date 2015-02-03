@@ -1,7 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +22,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class MedicalNotesViewActivity extends QuickMenu {
+public class MedicalNotesViewActivity extends TextPreview {
 
     private final int patientID = 1;
     private ArrayList<JSONObject> medicalNotesForPreviews;
@@ -36,6 +35,9 @@ public class MedicalNotesViewActivity extends QuickMenu {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
+
+        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.medicalNote);
+        removeUnusedNavButtons();
 
         HelperSingleton.getInstance().updateMedicalNotes(this);
 

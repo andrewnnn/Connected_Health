@@ -1,7 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -95,4 +94,16 @@ public class SingleItemViewActivity extends QuickMenu {
         Intent intent = new Intent(this, PatientSingleton.getInstance().getBackToPreviewsClass());
         startActivity(intent);
     }
+
+    public void goToEditItem(View view) {
+        Intent intent = new Intent(this, SingleItemEditActivity.class);
+        intent.putExtra("edit", true);
+        startActivity(intent);
+    }
+
+    public void goToDeleteItem(View view) {
+        Intent intent = new Intent(this, SingleItemDeleteActivity.class);
+        startActivity(intent);
+    }
+
 }

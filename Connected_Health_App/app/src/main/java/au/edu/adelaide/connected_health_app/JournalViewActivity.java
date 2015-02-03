@@ -1,7 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +14,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class JournalViewActivity extends QuickMenu {
+public class JournalViewActivity extends TextPreview {
 
     private final int patientID = 1;
     private ArrayList<JSONObject> journalEntriesForPreviews;
@@ -28,6 +27,9 @@ public class JournalViewActivity extends QuickMenu {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
+
+        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.journalEntry);
+        removeUnusedNavButtons();
 
         HelperSingleton.getInstance().updateJournalEntries(this);
 
@@ -166,7 +168,6 @@ public class JournalViewActivity extends QuickMenu {
 //        final RelativeLayout selectLayout = (RelativeLayout) findViewById(R.id.journal_select);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -226,6 +227,12 @@ public class JournalViewActivity extends QuickMenu {
             intent.putExtra("pageNumber", pageNumber + 1);
             startActivity(intent);
         }
+    }
+
+    public void goToNewItem(View view) {
+        Intent intent = new Intent(this, SingleItemEditActivity.class);
+        intent.putExtra("edit", false);
+        startActivity(intent);
     }
 
 }

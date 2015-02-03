@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -67,42 +67,51 @@
         <activity
             android:name=".ProfilePanelsActivity"
             android:label="@string/title_activity_profile_panels"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".JournalEntriesActivity"
             android:label="@string/title_activity_journal_entries"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".JournalViewActivity"
             android:label="@string/title_activity_journal_view"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".MedicalNotesViewActivity"
             android:label="@string/title_activity_medical_notes_view"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".MedicalNoteSingleViewActivity"
             android:label="@string/title_activity_medical_note_single_view"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".SingleItemViewActivity"
             android:label="@string/title_activity_single_item_view"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".SingleItemEditActivity"
+            android:label="@string/title_activity_single_item_edit"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".QuestionViewActivity"
             android:label="@string/title_activity_question_view"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".MeasurementStepsViewActivity"
             android:label="@string/title_activity_measurement_steps_view"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".SingleItemDeleteActivity"
+            android:label="@string/title_activity_single_item_delete" >
         </activity>
     </application>
 
