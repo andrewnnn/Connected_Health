@@ -15,7 +15,7 @@
 <div id="list-questionnaire" class="content scaffold-list" role="main">
     <h1>Questionnaire List</h1>
 
-    <table>
+    <table  class="table table-bordered tablePaddings" style="width: 90%">
         <thead>
         <tr>
             <th>Name</th>

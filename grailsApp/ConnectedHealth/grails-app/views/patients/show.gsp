@@ -49,7 +49,7 @@
         </ol>
 
         <br/>
-        <div style="margin-left: 2%">
+        <div style="margin-left: 5%">
             <g:link uri="/patients/${patient.id}/measurements">
                 View Measurements for this Patient
             </g:link>
@@ -57,14 +57,14 @@
         <br/>
 
         <h1>Recent journal entries</h1>
-        <table>
+        <table class="table table-bordered tablePaddings" style="width: 90%">
             <tbody>
             <g:each in="${recentJournalEntries}">
                 <tr>
-                    <td>
+                    <td style="width: 25%">
                         ${ViewHelpers.formatDate(it.created)}
                     </td>
-                    <td>
+                    <td style="width: 75%">
                         <span class="property-value">
                             <a href="/ConnectedHealth/patients/${patient.id}/journal/${it.id}">
                                 ${ViewHelpers.previewString(it.content)}
@@ -76,7 +76,7 @@
             </tbody>
         </table>
 
-        <div style="margin-left: 2%">
+        <div style="margin-left: 5%">
             <% if (journalEntriesCount > PREVIEW_COUNT) { %>
             <g:link controller="${"JournalEntry"}" action="indexView" params="[patientID: patient.id]">
                 View all journal entries (<%=journalEntriesCount%>)
@@ -85,14 +85,18 @@
         </div>
 
         <h1>Recent medical notes</h1>
-        <table>
+
+        <input type="button" value="Add new medical note" onclick="window.location='/ConnectedHealth/patients/${patient.id}/medicalnotes/create'" class="create btn btn-danger" style="left: 5%; position: relative" />
+
+        <br/><br/>
+        <table class="table table-bordered tablePaddings" style="width: 90%">
             <tbody>
             <g:each in="${recentMedicalNotes}">
                 <tr>
-                    <td>
+                    <td style="width: 25%">
                         ${ViewHelpers.formatDate(it.created)}
                     </td>
-                    <td>
+                    <td style="width: 75%">
                         <span class="property-value">
                             <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/${it.id}/show">
                                 ${ViewHelpers.previewString(it.content)}
@@ -104,28 +108,14 @@
             </tbody>
         </table>
 
-        <div style="margin-left: 2%">
+
+        <div style="margin-left: 5%">
             <% if (medicalNotesCount > PREVIEW_COUNT) { %>
             <g:link controller="${"MedicalNote"}" action="indexView" params="[patientID: patient.id]">
                 View all medical notes (<%=medicalNotesCount%>)
             </g:link>
             <br/><br/>
             <% } %>
-        </div>
-
-        <div class="nav">
-            <ul>
-                <li>
-                    <intput type="button"
-                            onclick="window.location = '/ConnectedHealth/patients/${patient.id}/medicalnotes/create'"
-                            class="create btn btn-danger bootButtons">Add new medical note</input>
-                </li>
-                <li>
-                    <span class="property-value">
-                        <a href="/ConnectedHealth/patients">View patient list</a>
-                    </span>
-                </li>
-            </ul>
         </div>
 
     </div>

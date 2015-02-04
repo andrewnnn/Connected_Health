@@ -11,16 +11,16 @@
         <a href="/ConnectedHealth/patients/${patient.id}/show" class="list">Back to patient profile</a>
     </fieldset>
 </div>
-<div class="content scaffold-list" role="main">
+<div class="content scaffold-list measurementSection" role="main">
     <h1>${patient.firstName + " " + patient.lastName}'s measurements</h1>
-    <table>
+    <table class="tablePaddings">
         <tr>
-            <th>
+            <th style="width: 25%">
                 Type
             </th>
             <th>
                 Description
-            </th>
+            </th style="width: 75%">
         </tr>
         <tbody>
             <g:each in="${measurementTypes}">

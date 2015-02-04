@@ -30,10 +30,10 @@
         </li>
     </ol>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/create" class="create">Add question</a>
+    <input type="button" value="Add question" onclick="window.location='/ConnectedHealth/questionnaires/${questionnaire.id}/questions/create'" class="create btn btn-primary" style="left: 5%; position: relative" />
     <br /><br />
 
-    <table style="table-layout: fixed">
+    <table style="table-layout: fixed; width: 90%" class="table table-bordered tablePaddings">
         <thead>
         <tr>
             <th>Question</th>
@@ -44,14 +44,14 @@
         <tbody>
 
         <g:each in="${questionnaire.questions}">
-                <tr style="border: solid blue 2px">
+                <tr>
                 <td style="width: 10%">
                     <span class="property-value">
                         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/show" class="show">${it.content}</a>
                     </span>
 
                 </td>
-                <td style="border-left: solid blue 2px; border-right: solid blue 2px">
+                <td>
                     ${views.ViewHelpers.answerFormatString(it.answerFormat)}
                 </td>
                 <td style="width: 90%">

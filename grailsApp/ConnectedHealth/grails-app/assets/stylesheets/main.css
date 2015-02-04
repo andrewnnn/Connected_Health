@@ -83,6 +83,10 @@ h1 {
     color: blue;
 }
 
+.measurementSection h1,.measurementSection .property-label{
+    color: darkgreen;
+}
+
 ul {
 	padding: 0;
 }
@@ -212,10 +216,14 @@ fieldset,
 	margin-top: 1em;
 }
 
+.fieldcontain label{
+    margin-left: 5%;
+}
+
 .fieldcontain label,
 .fieldcontain .property-label {
 	text-align: left;
-	width: 11%;
+	width: 15%;
 }
 
 .fieldcontain .property-label {
@@ -224,7 +232,7 @@ fieldset,
 
 .fieldcontain .property-value {
 	display: block;
-	margin-left: 13%;
+	margin-left: 17%;
 }
 
 

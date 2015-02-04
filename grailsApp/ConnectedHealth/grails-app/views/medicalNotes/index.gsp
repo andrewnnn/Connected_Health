@@ -16,10 +16,10 @@
 <div id="list-medicalNotes" class="content scaffold-list" role="main">
     <h1>Medical notes for ${patient.firstName + " " + patient.lastName}</h1>
 
-    <table>
+    <table  class="table table-bordered tablePaddings" style="width: 90%">
         <thead>
         <tr>
-            <th>Note</th>
+            <th style="width: 75%">Note</th>
             <th>Date created</th>
         </tr>
         </thead>

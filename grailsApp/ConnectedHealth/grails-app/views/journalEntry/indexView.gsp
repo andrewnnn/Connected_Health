@@ -15,11 +15,11 @@
 <div class="content scaffold-list" role="main">
 
     <h1>${patient.firstName + " " + patient.lastName}'s Journal Entries</h1>
-    <table>
+    <table class="table table-bordered tablePaddings" style="width: 90%">
         <tbody>
         <g:each in="${JournalEntries}">
             <tr>
-                <td>
+                <td style="width: 25%">
                     ${it.created.toString().substring(0,16)}
                 </td>
                 <td>
