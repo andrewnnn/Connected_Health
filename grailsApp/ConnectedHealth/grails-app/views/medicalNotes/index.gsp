@@ -6,19 +6,20 @@
 </head>
 
 <body>
+<div class="patientSection">
 <div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="/ConnectedHealth/">Home</a></li>
-        <li><a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add medical note</a></li>
-    </ul>
+    <fieldset class="buttons buttonsRed">
+        <a href="/ConnectedHealth/patients/${patient.id}/medicalnotes/create" class="create">Add medical note</a>
+        <a href="/ConnectedHealth/patients/${patient.id}/show" class="list">Back to patient profile</a>
+    </fieldset>
 </div>
 <div id="list-medicalNotes" class="content scaffold-list" role="main">
     <h1>Medical notes for ${patient.firstName + " " + patient.lastName}</h1>
 
-    <table>
+    <table  class="table table-bordered tablePaddings" style="width: 90%">
         <thead>
         <tr>
-            <th>Note</th>
+            <th style="width: 75%">Note</th>
             <th>Date created</th>
         </tr>
         </thead>
@@ -38,9 +39,8 @@
         </tbody>
     </table>
 
-    <fieldset class="buttons">
-        <a href="/ConnectedHealth/patients/${patient.id}/show">Back to patient profile</a>
-    </fieldset>
+
 </div>
+    </div>
 </body>
 </html>

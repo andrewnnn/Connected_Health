@@ -6,16 +6,16 @@
 </head>
 
 <body>
+<div class="patientSection">
 <div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="/ConnectedHealth/">Home</a></li>
-        <li><a href="/ConnectedHealth/patients/create" class="create">Create new patient profile</a></li>
-    </ul>
+    <fieldset class="buttons buttonsRed">
+        <a href="/ConnectedHealth/patients/create" class="create">Create new patient profile</a>
+       </fieldset>
 </div>
-<div id="list-patient" class="content scaffold-list" role="main">
-    <h1>Patients</h1>
+<div id="list-patient" class="content scaffold-list tablePaddings" role="main">
+    <h1 style="margin-left:0px">Patients</h1>
 
-    <table>
+    <table >
         <thead>
         <tr>
             <th>Name</th>
@@ -48,5 +48,6 @@
         </tbody>
     </table>
 </div>
+ </div>
 </body>
 </html>

@@ -11,12 +11,12 @@ h1, h2, h3, h4, h5, h6 {
 /* BASE LAYOUT */
 
 html {
-	background-color: #ddd;
-	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
-	background-image: linear-gradient(top, #aaa, #ddd);
+	background-color: #FFFFFF;
+	background-image: -moz-linear-gradient(center top, #EEEEEE, #EEEEEE);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(1, #EEEEEE));
+	background-image: linear-gradient(top, #EEEEEE, #EEEEEE);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	height: 100%;
 	/* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
 	-webkit-box-sizing: border-box;
@@ -37,19 +37,16 @@ html * {
 }
 
 body {
-	background: #ffffff;
+	background: #FFFFFF;
 	color: #333333;
 	margin: 0 auto;
 	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-	   -moz-box-shadow: 0 0 0.3em #255b17;
-	-webkit-box-shadow: 0 0 0.3em #255b17;
-	        box-shadow: 0 0 0.3em #255b17;
+	   -moz-box-shadow: 0 0 0.3em #000000;
+	-webkit-box-shadow: 0 0 0.3em #000000;
+	        box-shadow: 0 0 0.3em #000000;
 }
 
-#grailsLogo {
-	background-color: #abbf78;
-}
 
 /* replace with .no-boxshadow body if you have modernizr available */
 .ie6 body,
@@ -65,7 +62,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+
 }
 
 a:hover, a:active {
@@ -73,10 +70,21 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #000000;
 	font-weight: normal;
 	font-size: 1.25em;
-	margin: 0.8em 0 0.3em 0;
+}
+
+.patientSection h1,.patientSection .property-label{
+    color: red;
+}
+
+.questionnaireSection h1,.questionnaireSection .property-label{
+    color: blue;
+}
+
+.measurementSection h1,.measurementSection .property-label{
+    color: darkgreen;
 }
 
 ul {
@@ -89,10 +97,15 @@ img {
 
 /* GENERAL */
 
-#grailsLogo a {
-	display: inline-block;
-	margin: 1em;
-}
+#grailsLogo h2 {
+     display: inline-block;
+     left: 27%;
+     margin:15px;
+     position: relative;
+     color: #FFFFFF;
+     font-size: 35pt;
+ }
+
 
 .content {
 }
@@ -108,8 +121,8 @@ img {
 }
 
 .footer {
-	background: #abbf78;
-	color: #000;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #666666), color-stop(1, #000000));
+	color: #FEDCBA;
 	clear: both;
 	font-size: 0.8em;
 	margin-top: 1.5em;
@@ -134,14 +147,7 @@ img {
 
 /* NAVIGATION MENU */
 
-.nav {
-	background-color: #efefef;
-	padding: 0.5em 0.75em;
-	   -moz-box-shadow: 0 0 3px 1px #aaaaaa;
-	-webkit-box-shadow: 0 0 3px 1px #aaaaaa;
-	        box-shadow: 0 0 3px 1px #aaaaaa;
-	zoom: 1;
-}
+
 
 .nav ul {
 	overflow: hidden;
@@ -158,7 +164,7 @@ img {
 }
 
 .nav a {
-	color: #666666;
+	color: #FFFFFF;
 	display: block;
 	padding: 0.25em 0.7em;
 	text-decoration: none;
@@ -168,20 +174,7 @@ img {
 }
 
 .nav a:active, .nav a:visited {
-	color: #666666;
-}
-
-.nav a:focus, .nav a:hover {
-	background-color: #999999;
-	color: #ffffff;
-	outline: none;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
-}
-
-.no-borderradius .nav a:focus, .no-borderradius .nav a:hover {
-	background-color: transparent;
-	color: #444444;
-	text-decoration: underline;
+	color: #FFFFFF;
 }
 
 .nav a.home, .nav a.list, .nav a.create {
@@ -223,11 +216,14 @@ fieldset,
 	margin-top: 1em;
 }
 
+.fieldcontain label{
+    margin-left: 5%;
+}
+
 .fieldcontain label,
 .fieldcontain .property-label {
-	color: #666666;
-	text-align: right;
-	width: 25%;
+	text-align: left;
+	width: 15%;
 }
 
 .fieldcontain .property-label {
@@ -236,8 +232,10 @@ fieldset,
 
 .fieldcontain .property-value {
 	display: block;
-	margin-left: 27%;
+	margin-left: 17%;
 }
+
+
 
 label {
 	cursor: pointer;
@@ -522,7 +520,6 @@ th:hover, tr:hover {
 /* ACTION BUTTONS */
 
 .buttons {
-	background-color: #efefef;
 	overflow: hidden;
 	padding: 0.3em;
 	   -moz-box-shadow: 0 0 3px 1px #aaaaaa;
@@ -532,11 +529,24 @@ th:hover, tr:hover {
 	border: none;
 }
 
+.buttonsRed{
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF6666), color-stop(1, #FF4444));
+}
+
+.buttonsBlue{
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #51BFEB), color-stop(1, #4444FF));
+}
+
+.buttonsGreen{
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #449944), color-stop(1, #229922));
+}
+
+
 .buttons input,
 .buttons a {
 	background-color: transparent;
 	border: 0;
-	color: #666666;
+	color: #FFFFFF;
 	cursor: pointer;
 	display: inline-block;
 	margin: 0 0.25em 0;
@@ -551,7 +561,6 @@ th:hover, tr:hover {
 
 .buttons input:hover, .buttons input:focus,
 .buttons a:hover, .buttons a:focus {
-	background-color: #999999;
 	color: #ffffff;
 	outline: none;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
@@ -563,7 +572,7 @@ th:hover, tr:hover {
 .no-borderradius .buttons input:hover, .no-borderradius .buttons input:focus,
 .no-borderradius .buttons a:hover, .no-borderradius .buttons a:focus {
 	background-color: transparent;
-	color: #444444;
+	color: #FFFFFF;
 	text-decoration: underline;
 }
 
@@ -593,4 +602,132 @@ th:hover, tr:hover {
 a.skip {
 	position: absolute;
 	left: -9999px;
+}
+
+
+
+#loginPanel p{
+    margin: 10px;
+    color: green;
+}
+
+
+/* index */
+
+#sectionBox{
+    height: 200px;
+}
+
+.sectionButton{
+    height: 120%;
+    width: 38%;
+    margin:6%;
+    position: relative;
+}
+
+.sectionButton:hover{
+    cursor: pointer;
+}
+
+.sectionButtonR{
+    left:1%;
+    float: left;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF1111), color-stop(1, #FF6666));
+    color: yellow;
+}
+
+.sectionButtonR:hover{
+    -moz-box-shadow: 0 0 5px red;
+    -webkit-box-shadow: 0 0 5px red;
+    box-shadow: 0px 0px 5px red;
+}
+
+.sectionButtonB{
+    right:1%;
+    float: right;
+    color: yellow;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #1111FF), color-stop(1, #6666FF));
+}
+
+.sectionButtonB:hover{
+    -moz-box-shadow: 0 0 5px blue;
+    -webkit-box-shadow: 0 0 5px blue;
+    box-shadow: 0px 0px 5px blue;
+}
+
+.sectionButton h1{
+    padding-top: 1%;
+    padding-left: 20%;
+    text-align: left;
+    font-size:30pt;
+}
+
+.sectionButtonR h1{
+    color: yellow;
+}
+
+.sectionButtonB h1{
+    color: yellow;
+}
+
+.sectionButton ul{
+    padding-left: 15%;
+    text-align: left;
+    font-size:15pt;
+}
+
+.imageInSectionButtons{
+    text-align: center;
+    position: relative;
+    float: left;
+    padding-top: 5%;
+    padding-left: 5%;
+}
+
+.imageInSectionButtonsPic{
+    width: 50px;
+}
+
+.bootButtons{
+    left: 80px;
+    position: relative;
+}
+
+/*login stuff*/
+.loginSection{
+    height: 300px;
+}
+
+.loginInputBox{
+    position: relative;
+    left: 30%;
+    top: 30%;
+    width:35%;
+}
+
+.leftBox{
+    position: relative;
+    float: left;
+    top:3px;
+}
+
+.rightBox{
+    position: relative;
+    float: right;
+}
+
+.loginButtons{
+    position: absolute;
+    top:95px;
+    left:60px;
+}
+
+.loginButton{
+    margin: 20px;
+}
+
+.tablePaddings{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%
 }

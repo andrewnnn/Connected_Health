@@ -6,11 +6,15 @@
 </head>
 
 <body>
+<div class="questionnaireSection">
 <div class="nav" role="navigation">
-    <ul>
-        <li><a href="/ConnectedHealth/questionnaires" class="list">Questionnaire List</a></li>
-        <li><a href="/ConnectedHealth/questionnaires/create" class="create">New Questionnaire</a></li>
-    </ul>
+    <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}" method="DELETE">
+    <fieldset class="buttons buttonsBlue">
+        <a href="/ConnectedHealth/questionnaires" class="list">Questionnaire List</a>
+        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/edit" class="edit">Edit</a>
+        <input type="submit" value="Delete" class="delete" onclick="return confirm('${message(code: 'useDefault', default: 'Are you sure you want to delete this questionnaire?')}');"/>
+    </fieldset>
+    </g:form>
 </div>
 
 <div id="list-questionnaire" class="content scaffold-list" role="main">
@@ -26,10 +30,10 @@
         </li>
     </ol>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/create" class="create">Add question</a>
+    <input type="button" value="Add question" onclick="window.location='/ConnectedHealth/questionnaires/${questionnaire.id}/questions/create'" class="create btn btn-primary" style="left: 5%; position: relative" />
     <br /><br />
 
-    <table style="table-layout: fixed">
+    <table style="table-layout: fixed; width: 90%" class="table table-bordered tablePaddings">
         <thead>
         <tr>
             <th>Question</th>
@@ -40,21 +44,12 @@
         <tbody>
 
         <g:each in="${questionnaire.questions}">
-            <tr>
+                <tr>
                 <td style="width: 10%">
                     <span class="property-value">
                         <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/show" class="show">${it.content}</a>
                     </span>
-                    <br />
-                    <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/" method="DELETE">
-                        <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/edit" class="edit">Edit</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="submit" value="Delete" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this question?')}');"/>
-                        <% if (it.answerFormat == 0 || it.answerFormat == 1) { %>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${it.id}/choices/create" class="create">Add&nbsp;choice</a>
-                        <% } %>
-                    </g:form>
+
                 </td>
                 <td>
                     ${views.ViewHelpers.answerFormatString(it.answerFormat)}
@@ -71,12 +66,7 @@
                                     <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/show" class="show">${it.content}</a>
                                 </span>
 
-                                <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/" method="DELETE">
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/questions/${questionId}/choices/${it.id}/edit" class="edit">Edit</a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="submit" value="Delete" class="delete" onclick="return confirm('${message(code: 'use.default', default: 'Are you sure you want to delete this choice?')}');"/>
-                                </g:form>
+
                             </li>
                         </g:each>
                         </ol>
@@ -88,12 +78,7 @@
         </tbody>
     </table>
 
-    <g:form url="/ConnectedHealth/questionnaires/${questionnaire.id}" method="DELETE">
-        <fieldset class="buttons">
-            <a href="/ConnectedHealth/questionnaires/${questionnaire.id}/edit" class="edit" action="edit">Edit</a>
-            <input type="submit" value="Delete" class="delete" onclick="return confirm('${message(code: 'useDefault', default: 'Are you sure you want to delete this questionnaire?')}');"/>
-        </fieldset>
-    </g:form>
 </div>
+    </div>
 </body>
 </html>

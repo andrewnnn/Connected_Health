@@ -24,12 +24,12 @@
         <g:hiddenField name="patientID" value="${patient.id}" />
     </fieldset>
 
-    <fieldset class="buttons">
+        <br/>
         <g:if test="${medicalNote != null}">
-            <input type="submit" name="update" class="save" value="Update" id="update">
+            <input type="submit" name="update" class="save btn btn-danger bootButtons" value="Update" id="update">
         </g:if>
         <g:else>
-            <input type="submit" name="create" class="save" value="Create" id="create">
+            <input type="submit" name="create" class="save btn btn-danger bootButtons" value="Create" id="create">
         </g:else>
-    </fieldset>
+
 </g:form>

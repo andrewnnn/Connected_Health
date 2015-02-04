@@ -6,16 +6,16 @@
 </head>
 
 <body>
+<div class="questionnaireSection">
 <div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="/ConnectedHealth/">Home</a></li>
-        <li><a href="/ConnectedHealth/questionnaires/create" class="create">New Questionnaire</a></li>
-    </ul>
+    <fieldset class="buttons buttonsBlue">
+        <a href="/ConnectedHealth/questionnaires/create" class="create">New Questionnaire</a>
+    </fieldset>
 </div>
 <div id="list-questionnaire" class="content scaffold-list" role="main">
     <h1>Questionnaire List</h1>
 
-    <table>
+    <table  class="table table-bordered tablePaddings" style="width: 90%">
         <thead>
         <tr>
             <th>Name</th>
@@ -38,5 +38,6 @@
         </tbody>
     </table>
 </div>
+    </div>
 </body>
 </html>
