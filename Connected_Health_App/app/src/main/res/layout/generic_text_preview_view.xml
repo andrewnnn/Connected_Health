@@ -32,10 +32,11 @@
             android:background="@android:color/white"
             android:id="@+id/main_layout">
 
+            <!--Main Display-->
             <LinearLayout
                 android:weightSum="3"
                 android:orientation="horizontal"
-                android:layout_weight="0.8"
+                android:layout_weight="0.85"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -125,12 +126,13 @@
 
                 </RelativeLayout>
             </LinearLayout>
+            <!--End of Main Display-->
 
             <!--Bottom Buttons-->
             <LinearLayout
                 android:weightSum="4"
                 android:orientation="horizontal"
-                android:layout_weight="0.2"
+                android:layout_weight="0.15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -190,6 +192,7 @@
                         android:drawableRight="@drawable/next_icon"/>
                 </RelativeLayout>
             </LinearLayout>
+            <!--End of Buttons-->
         </LinearLayout>
         <!--End Content-->
     </RelativeLayout>
