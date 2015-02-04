@@ -148,7 +148,8 @@ public class QuestionViewActivity extends QuickMenu {
 
     public void goToNextItem(View view) {
         if (itemIndex == questionsJson.length() - 1) {
-            // TODO submit
+            Intent intent = new Intent(this, QuestionnaireCompleteViewActivity.class);      // ask user to submit
+            startActivity(intent);
         } else if (itemIndex < questionsJson.length() - 1) {
             Intent intent = new Intent(this, QuestionViewActivity.class);
             intent.putExtra("itemIndex", itemIndex + 1);        // get previous question
