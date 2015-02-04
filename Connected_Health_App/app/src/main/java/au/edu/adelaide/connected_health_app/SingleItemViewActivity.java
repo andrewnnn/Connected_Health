@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import org.json.JSONObject;
 public class SingleItemViewActivity extends QuickMenu {
 
     int itemIndex = -1;
+    PatientSingleton ps = PatientSingleton.getInstance();
+    JSONArray currentArray = ps.getCurrentArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,18 @@ public class SingleItemViewActivity extends QuickMenu {
             main_layout.addView(content);
         } catch (JSONException je) {
             System.out.println("Couldn't get current JSON object to display in single item view.");
+        }
+
+        if (itemIndex == 0) {   // first item
+            Button previous = (Button) findViewById(R.id.button_previous);
+            previous.setClickable(false);
+            previous.setVisibility(View.INVISIBLE);
+        }
+
+        if (itemIndex == currentArray.length() - 1) {       // last item
+            Button next = (Button) findViewById(R.id.button_next);
+            next.setClickable(false);
+            next.setVisibility(View.INVISIBLE);
         }
    }
 
@@ -67,8 +82,6 @@ public class SingleItemViewActivity extends QuickMenu {
     }
 
     public void goToNextItem(View view) throws JSONException {
-        PatientSingleton ps = PatientSingleton.getInstance();
-        JSONArray currentArray = ps.getCurrentArray();
         if (itemIndex < currentArray.length() - 1) {
             Intent intent = new Intent(this, SingleItemViewActivity.class);
             itemIndex++;
@@ -79,8 +92,6 @@ public class SingleItemViewActivity extends QuickMenu {
     }
 
     public void goToPreviousItem(View view) throws JSONException {
-        PatientSingleton ps = PatientSingleton.getInstance();
-        JSONArray currentArray = ps.getCurrentArray();
         if (itemIndex > 0) {
             Intent intent = new Intent(this, SingleItemViewActivity.class);
             itemIndex--;

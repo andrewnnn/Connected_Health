@@ -113,6 +113,10 @@
             android:name=".SingleItemDeleteActivity"
             android:label="@string/title_activity_single_item_delete" >
         </activity>
+        <activity
+            android:name=".QuestionnaireCompleteViewActivity"
+            android:label="@string/title_activity_questionnaire_complete_view" >
+        </activity>
     </application>
 
 </manifest>
