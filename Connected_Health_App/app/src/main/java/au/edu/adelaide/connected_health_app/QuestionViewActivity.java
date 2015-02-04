@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -81,28 +82,38 @@ public class QuestionViewActivity extends QuickMenu {
                         main_layout.addView(currentCheckBox);
                         recentCheckBox = currentCheckBox;
                     }
+
+                    questionText.append("\n (Choose any number of answers)");
                     break;
 
                 case ANSWER_FORMAT_RADIOBUTTON:
                     RadioButton recentRadioButton = null;
+                    RadioGroup radioGroup = new RadioGroup(this);
+                    RelativeLayout.LayoutParams radioGroupParams = new RelativeLayout.LayoutParams
+                            ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    radioGroupParams.addRule(RelativeLayout.BELOW, questionText.getId());
+                    radioGroup.setLayoutParams(radioGroupParams);
+
                     for (int i = 0; i < choicesJson.length(); i++) {
                         JSONObject currentChoiceJson = choicesJson.getJSONObject(i);
                         RadioButton currentRadioButton = new RadioButton(this);
                         RelativeLayout.LayoutParams radioButtonParams = new RelativeLayout.LayoutParams
                                 ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-                        if (i == 0) {       // put first option below question
-                            radioButtonParams.addRule(RelativeLayout.BELOW, questionText.getId());
-                        } else {
+                        if (i > 0) {       // put subsequent options below previous option
                             radioButtonParams.addRule(RelativeLayout.BELOW, recentRadioButton.getId());
                         }
+                        currentRadioButton.setButtonDrawable(R.drawable.checkbox);
                         currentRadioButton.setId(++viewId);
                         currentRadioButton.setLayoutParams(radioButtonParams);
                         currentRadioButton.setPadding(10, 10, 10, 0);
                         currentRadioButton.setText(currentChoiceJson.getString("content"));
                         currentRadioButton.setTextSize((float) 25);
-                        main_layout.addView(currentRadioButton);
+                        radioGroup.addView(currentRadioButton);
                         recentRadioButton = currentRadioButton;
                     }
+                    main_layout.addView(radioGroup);
+
+                    questionText.append("\n (Choose one answer)");
                     break;
 
                 case ANSWER_FORMAT_TEXT:
@@ -148,7 +159,7 @@ public class QuestionViewActivity extends QuickMenu {
 
     public void goToNextItem(View view) {
         if (itemIndex == questionsJson.length() - 1) {
-            Intent intent = new Intent(this, QuestionnaireCompleteViewActivity.class);      // ask user to submit
+            Intent intent = new Intent(this, QuestionnaireCompleteViewActivity.class);      //
             startActivity(intent);
         } else if (itemIndex < questionsJson.length() - 1) {
             Intent intent = new Intent(this, QuestionViewActivity.class);
