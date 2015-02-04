@@ -13,7 +13,7 @@
 </div>
 <div class="content scaffold-list measurementSection" role="main">
     <h1>${patient.firstName + " " + patient.lastName}'s measurements</h1>
-    <table class="tablePaddings">
+    <table class="table table-bordered tablePaddings" style="width: 90%">
         <tr>
             <th style="width: 25%">
                 Type
