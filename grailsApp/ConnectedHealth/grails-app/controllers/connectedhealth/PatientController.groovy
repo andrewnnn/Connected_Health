@@ -5,6 +5,9 @@ import org.json.JSONObject
 
 class PatientController {
 
+    final int PREVIEW_CHARS = 100
+    final int PREVIEW_COUNT = 3
+
     def scaffold = Patient
 
     def indexView() {
@@ -14,14 +17,27 @@ class PatientController {
     }
 
     def showView() {
-        final int PREVIEW_CHARS = 100
-        final int PREVIEW_COUNT = 3
-
         Patient patient = Patient.findById(params.patientID)
-        Set<JournalEntry> recentJournalEntries = JournalEntry.findAllByPatient(patient, [max: PREVIEW_COUNT])
-        int journalEntriesCount = patient.journalEntries.size()
-        Set<MedicalNote> recentMedicalNotes = MedicalNote.findAllByPatient(patient, [max: PREVIEW_COUNT])
-        int medicalNotesCount = patient.medicalNotes.size()
+
+        ArrayList<JournalEntry> allJournalEntries = patient.journalEntries
+        ArrayList<JournalEntry> recentJournalEntries = new ArrayList<JournalEntry>()
+        for (int i = 0; i < PREVIEW_COUNT; i++) {
+            if (i == allJournalEntries.size()) {
+                break;
+            }
+            recentJournalEntries.add(allJournalEntries.get(i))
+        }
+        int journalEntriesCount = allJournalEntries.size()
+
+        ArrayList<MedicalNote> allMedicalNotes = patient.medicalNotes
+        ArrayList<MedicalNote> recentMedicalNotes = new ArrayList<MedicalNote>()
+        for (int i = 0; i < PREVIEW_COUNT; i++) {
+            if (i == allMedicalNotes.size()) {
+                break;
+            }
+            recentMedicalNotes.add(allMedicalNotes.get(i))
+        }
+        int medicalNotesCount = allMedicalNotes.size()
 
         render(view: "/patients/show", model:
                 [patient: patient,
