@@ -15,7 +15,7 @@
 <div id="list-patient" class="content scaffold-list tablePaddings" role="main">
     <h1 style="margin-left:0px">Patients</h1>
 
-    <table >
+    <table class="table table-bordered">
         <thead>
         <tr>
             <th>Name</th>
