@@ -153,7 +153,7 @@ public class TextPreview extends QuickMenu {
     }
 
     public void goToNewItem(View view) {
-        Intent intent = new Intent(this, getSingleItemClass());
+        Intent intent = new Intent(this, SingleItemEditActivity.class);
         intent.putExtra("edit", false);
         startActivity(intent);
     }
