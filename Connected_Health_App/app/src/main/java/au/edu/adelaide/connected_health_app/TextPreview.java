@@ -107,21 +107,25 @@ public class TextPreview extends QuickMenu {
     }
 
     public void goToSingleItemView(View view) {
+        int itemPageOffset = -1;
         switch(view.getId()) {
             case R.id.preview0:
             case R.id.test0:
+                itemPageOffset = 0;
                 PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(0));
                 break;
             case R.id.preview1:
+                itemPageOffset = 1;
                 PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(1));
                 break;
             case R.id.preview2:
+                itemPageOffset = 2;
                 PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(2));
                 break;
         }
 
         Intent intent = new Intent(this, getSingleItemClass());
-        intent.putExtra("itemIndex",0);     //what is that TODO
+        intent.putExtra("itemIndex", pageNumber*textPreviewsPerPage + itemPageOffset);
         startActivity(intent);
     }
 
