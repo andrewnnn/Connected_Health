@@ -56,6 +56,7 @@
             android:id="@+id/nav_layout0">
 
             <Button
+            style="@style/NavButton"
             android:onClick="goToPreviousItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,6 +74,7 @@
             android:id="@+id/nav_layout1" >
 
             <Button
+            style="@style/NavButton"
             android:onClick="goToEditItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,6 +92,7 @@
             android:id="@+id/nav_layout_back" >
 
             <Button
+            style="@style/NavButton"
             android:onClick="goBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -107,6 +110,7 @@
             android:id="@+id/nav_layout2" >
 
             <Button
+            style="@style/NavButton"
             android:onClick="goToDeleteItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,6 +128,7 @@
             android:id="@+id/nav_layout3">
 
             <Button
+            style="@style/NavButton"
             android:onClick="goToNextItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

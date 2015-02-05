@@ -95,6 +95,7 @@
                     android:id="@+id/nav_layout0">
 
                     <Button
+                        style="@style/NavButton"
                         android:onClick="goBackToQuestions"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -120,6 +121,7 @@
                     android:id="@+id/nav_layout3">
 
                     <Button
+                        style="@style/NavButton"
                         android:onClick="goToSubmit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
