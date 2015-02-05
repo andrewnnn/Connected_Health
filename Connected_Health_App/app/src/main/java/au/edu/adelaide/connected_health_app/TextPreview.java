@@ -175,6 +175,8 @@ public class TextPreview extends QuickMenu {
 
     private Class getSingleItemClass() {
         switch (itemType) {
+            case measurement:
+                return MeasurementStepsViewActivity.class;
             case questionnaire:
                 return QuestionViewActivity.class;
             default:

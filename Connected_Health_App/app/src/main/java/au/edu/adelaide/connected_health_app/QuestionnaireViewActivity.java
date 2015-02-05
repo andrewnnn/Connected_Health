@@ -27,33 +27,20 @@ public class QuestionnaireViewActivity extends TextPreview {
     final int ANSWER_FORMAT_CHECKBOX = 1;
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;      // get unique ID for views
-    private ArrayList<JSONObject> questionnairesForPreviews;
-    private int pageNumber = -1;
-    private final int textPreviewsPerPage = HelperSingleton.getInstance().getTextPreviewsPerPage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
 
-        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.questionnaire);
-        removeUnusedNavButtons();
-
-        HelperSingleton.getInstance().updateQuestionnaires(this);
+        textPreviewSetup(PatientSingleton.ItemType.questionnaire);
 
         try {
-            if (getIntent().hasExtra("pageNumber")) {
-                pageNumber = getIntent().getExtras().getInt("pageNumber");
-                questionnairesForPreviews = PatientSingleton.getInstance().getQuestionnaires(pageNumber * textPreviewsPerPage, pageNumber * textPreviewsPerPage + 2);
-            } else {
-                questionnairesForPreviews = PatientSingleton.getInstance().getQuestionnaires(0,2);
-                pageNumber = 0;
-            }
             int i;
 
             // for each preview, set background colour to match home panel and set preview text
-            for (i = 0; i < questionnairesForPreviews.size(); i++){
-                JSONObject questionnaire = questionnairesForPreviews.get(i);
+            for (i = 0; i < itemsForPreviews.size(); i++){
+                JSONObject questionnaire = itemsForPreviews.get(i);
                 String name = questionnaire.getString("name");
                 String description = questionnaire.getString("description");
                 StringBuilder preview = new StringBuilder();
@@ -205,41 +192,6 @@ public class QuestionnaireViewActivity extends TextPreview {
     public void goToMainView(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
-
-    public void goToSingleItemView(View view) {
-        switch(view.getId()) {
-            case R.id.preview0:
-                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(0));
-                break;
-            case R.id.preview1:
-                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(1));
-                break;
-            case R.id.preview2:
-                PatientSingleton.getInstance().setCurrentObject(questionnairesForPreviews.get(2));
-                break;
-        }
-
-        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.questionnaire);
-        Intent intent = new Intent(this, QuestionViewActivity.class);
-        intent.putExtra("itemIndex",0);
-        startActivity(intent);
-    }
-
-    public void goToPreviousPage(View view) {
-        if (pageNumber > 0) {
-            Intent intent = new Intent(this, QuestionnaireViewActivity.class);
-            intent.putExtra("pageNumber", pageNumber - 1);
-            startActivity(intent);
-        }
-    }
-
-    public void goToNextPage(View view) {
-        if ((pageNumber+1)*textPreviewsPerPage <= PatientSingleton.getInstance().getQuestionnaires().length() - 1) {
-            Intent intent = new Intent(this, QuestionnaireViewActivity.class);
-            intent.putExtra("pageNumber", pageNumber + 1);
-            startActivity(intent);
-        }
     }
 
     private void generateQuestionnaire(String jsonString) throws JSONException {
