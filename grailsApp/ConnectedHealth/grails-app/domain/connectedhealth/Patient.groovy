@@ -8,7 +8,7 @@ class Patient {
     String lastName;
     String phone;
 
-    static hasMany = [journalEntries: JournalEntry, medicalNotes: MedicalNote, measurementTypes: MeasurementType]
+    static hasMany = [journalEntries: JournalEntry, medicalNotes: MedicalNote, measurementTypes: MeasurementType, submissions: Submission]
 
     static constraints = {
     }
