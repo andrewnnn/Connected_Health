@@ -3,6 +3,7 @@ package au.edu.adelaide.connected_health_app;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -57,6 +58,11 @@ public class MeasurementViewActivity extends TextPreview {
                 RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
                 previewLayout.setOnClickListener(null);
                 previewLayout.setBackgroundColor(0x00000000);       // transparent background
+                resID = getResources().getIdentifier("preview_contents" + i,
+                        "id", getPackageName());
+                RelativeLayout previewContents = (RelativeLayout) findViewById(resID);
+                previewContents.setOnClickListener(null);
+                previewContents.setVisibility(View.INVISIBLE);       // transparent background
             }
         } catch (JSONException je) {
             System.out.println("getting measurement types failed");

@@ -32,7 +32,7 @@
                     android:src="@drawable/journal_icon_512"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/icon0" />
+                    android:id="@+id/icon1" />
 
                 <TextView
                     android:layout_weight="200"
@@ -41,11 +41,10 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="40dp"
-                    android:text="Mon, 12 Jan 2015, 4:33 PM"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:id="@+id/preview_heading_text0"/>
+                    android:id="@+id/preview_heading_text1"/>
 
             </LinearLayout>
 
@@ -71,12 +70,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="40dp"
-                    android:text="Lorem ipsum text text text text text text text text text text text text text "
+                    android:textSize="35dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:id="@+id/preview_text0"></TextView>
+                    android:id="@+id/preview_text1"></TextView>
             </LinearLayout>
 
         </LinearLayout>

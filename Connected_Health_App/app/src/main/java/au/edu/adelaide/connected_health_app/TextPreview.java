@@ -117,15 +117,17 @@ public class TextPreview extends QuickMenu {
         int itemPageOffset = -1;
         switch(view.getId()) {
             case R.id.preview0:
-            case R.id.test0:
+            case R.id.preview_contents0:
                 itemPageOffset = 0;
                 PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(0));
                 break;
             case R.id.preview1:
+            case R.id.preview_contents1:
                 itemPageOffset = 1;
                 PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(1));
                 break;
             case R.id.preview2:
+            case R.id.preview_contents2:
                 itemPageOffset = 2;
                 PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(2));
                 break;
