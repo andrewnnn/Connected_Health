@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="au.edu.adelaide.connected_health_app.SingleItemViewActivity"
-    android:orientation="vertical"
-    android:id="@+id/">
+    android:orientation="vertical">
 
     <!--Quick Menu Bar-->
     <include layout="@layout/quick_menu_bar"

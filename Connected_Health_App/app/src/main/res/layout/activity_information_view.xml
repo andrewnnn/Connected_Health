@@ -37,7 +37,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:autoText="false"
-                android:id="@+id/infoHeading"/>
+                android:id="@+id/infoHeading"
+                android:textSize="40dp" />
 
             <!-- Youtube videos -->
             <LinearLayout
