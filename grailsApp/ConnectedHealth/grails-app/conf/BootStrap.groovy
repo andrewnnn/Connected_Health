@@ -5,6 +5,8 @@ import connectedhealth.MedicalNote
 import connectedhealth.Patient
 import connectedhealth.Question
 import connectedhealth.Questionnaire
+import connectedhealth.SingleSelectionAnswer
+import connectedhealth.Submission
 import org.joda.time.DateTime
 
 class BootStrap {
@@ -142,6 +144,17 @@ class BootStrap {
         new Choice(content: "Walking", question: q2q2).save()
         new Choice(content: "Writing", question: q2q2).save()
 
+        // try submission
+        Submission s = new Submission(patient: p1, questionnaire: questionnaire1)
+        s.save()
+        Choice c1 = new Choice(content: "Yes forSubmission", question: q1q1)
+        c1.save()
+        SingleSelectionAnswer ssa = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
+        ssa.save()
+        SingleSelectionAnswer ssa2 = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
+        ssa2.save()
+        SingleSelectionAnswer ssa3 = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
+        ssa3.save()
     }
     def destroy = {
     }

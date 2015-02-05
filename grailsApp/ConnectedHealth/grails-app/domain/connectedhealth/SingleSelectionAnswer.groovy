@@ -2,8 +2,10 @@ package connectedhealth
 
 class SingleSelectionAnswer {
 
+    Choice choice
+    Question question
+
     static belongsTo = [submission: Submission]
-    static hasOne = [choice: Choice, question: Question]
 
     static constraints = {
     }
