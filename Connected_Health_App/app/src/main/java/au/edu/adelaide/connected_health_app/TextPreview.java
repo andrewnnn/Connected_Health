@@ -3,6 +3,9 @@ package au.edu.adelaide.connected_health_app;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -184,5 +187,109 @@ public class TextPreview extends QuickMenu {
             default:
                 return SingleItemViewActivity.class;
         }
+    }
+
+//    public void setPreviewContent(int iconId, int tintColour, String heading, String content, int borderColour) {
+    public void setPreviewContent() {
+
+        try {
+            // for each preview, set background colour to match home panel and set preview text
+            int i;
+            for (i = 0; i < itemsForPreviews.size(); i++){
+                String headingText = null;
+                String contentText = null;
+                switch (itemType) {
+                    case journalEntry:
+                        headingText = itemsForPreviews.get(i).getString("created");
+                        contentText = itemsForPreviews.get(i).getString("content");
+                        break;
+                    case medicalNote:
+                        headingText = itemsForPreviews.get(i).getString("created");
+                        contentText = itemsForPreviews.get(i).getString("content");
+                        break;
+                    case measurement:
+                        headingText = itemsForPreviews.get(i).getString("name");
+                        contentText = itemsForPreviews.get(i).getString("description");
+                        break;
+                    case questionnaire:
+                        headingText = itemsForPreviews.get(i).getString("name");
+                        contentText = itemsForPreviews.get(i).getString("description");
+                        break;
+                }
+
+                int resID = getResources().getIdentifier("preview_heading_text" + i,
+                        "id", getPackageName());
+                TextView previewText = (TextView) findViewById(resID);
+                previewText.setText(headingText);
+
+                resID = getResources().getIdentifier("preview_text" + i,
+                        "id", getPackageName());
+                previewText = (TextView) findViewById(resID);
+                previewText.setText(contentText);
+
+                int borderColour = -1;
+                switch (itemType) {
+                    case journalEntry:
+                        break;
+                    case medicalNote:
+                        break;
+                    case measurement:
+                        borderColour = getResources().getColor(android.R.color.holo_green_light);
+                        break;
+                    case questionnaire:
+                        borderColour = getResources().getColor(android.R.color.holo_blue_light);
+                        break;
+                }
+
+                resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setBackgroundColor(borderColour);
+
+                // Set category icon according to panel
+                resID = getResources().getIdentifier("icon" + i,
+                        "id", getPackageName());
+                ImageView icon = (ImageView) findViewById(resID);
+                switch (itemType) {
+                    case journalEntry:
+                        icon.setImageResource(R.drawable.journal_icon_512);
+                        break;
+                    case medicalNote:
+                        icon.setImageResource(R.drawable.medical_note_icon_512);
+                        break;
+                    case measurement:
+                        if (itemType == PatientSingleton.ItemType.measurement) {
+                            if (headingText.compareTo("Steps") == 0) {
+                                icon.setImageResource(R.drawable.steps_icon_512);
+                            }
+                            if (headingText.compareTo("Weight") == 0) {
+                                icon.setImageResource(R.drawable.weight_icon_512);
+                            }
+                        }
+                        break;
+                    case questionnaire:
+                        icon.setImageResource(R.drawable.questionnaire_icon_512);
+                        break;
+                }
+
+            }
+
+            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
+            for (; i < textPreviewsPerPage; i++) {
+                int resID = getResources().getIdentifier("preview" + i,
+                        "id", getPackageName());
+                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
+                previewLayout.setOnClickListener(null);
+                previewLayout.setVisibility(View.INVISIBLE);
+                resID = getResources().getIdentifier("preview_contents" + i,
+                        "id", getPackageName());
+                RelativeLayout previewContents = (RelativeLayout) findViewById(resID);
+                previewContents.setOnClickListener(null);
+                previewContents.setVisibility(View.INVISIBLE);
+            }
+        } catch (JSONException je) {
+            System.out.println("getting measurement types failed");
+        }
+
     }
 }

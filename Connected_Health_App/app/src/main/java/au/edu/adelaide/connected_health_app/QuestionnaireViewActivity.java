@@ -26,7 +26,7 @@ public class QuestionnaireViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         textPreviewSetup(PatientSingleton.ItemType.questionnaire);
-
+/*
         try {
             int i;
 
@@ -67,6 +67,9 @@ public class QuestionnaireViewActivity extends TextPreview {
         } catch (JSONException je) {
             System.out.println("getting questionnaires failed");
         }
+*/
+
+        setPreviewContent();
     }
 
 
