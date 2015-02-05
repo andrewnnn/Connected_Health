@@ -17,37 +17,23 @@ import java.util.ArrayList;
 public class JournalViewActivity extends TextPreview {
 
     private final int patientID = 1;
-    private ArrayList<JSONObject> journalEntriesForPreviews;
     private final String journalEntriesUrl = "http://192.168.1.5:9999/ConnectedHealth/patient/" + patientID + "/journal";
     private final String staticJournalEntriesJson = "[{\"content\":\"I am a rich man, I have many houses\",\"updated\":\"2015-01-09 15:45:12.177\",\"created\":\"2015-01-09 15:45:12.177\",\"ID\":14},{\"content\":\"and many cars!!!\",\"updated\":\"2015-01-09 15:45:12.178\",\"created\":\"2015-01-09 15:45:12.178\",\"ID\":15},{\"content\":\"and many banks!!!\",\"updated\":\"2015-01-09 15:45:12.181\",\"created\":\"2015-01-09 15:45:12.181\",\"ID\":16},{\"content\":\"and many boats!!!\",\"updated\":\"2015-01-09 15:45:12.183\",\"created\":\"2015-01-09 15:45:12.183\",\"ID\":17},{\"content\":\"and many many many many dogs!!!\",\"updated\":\"2015-01-09 15:45:12.185\",\"created\":\"2015-01-09 15:45:12.185\",\"ID\":18}]";
-    private int pageNumber = -1;
-    private final int textPreviewsPerPage = HelperSingleton.getInstance().getTextPreviewsPerPage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_text_preview_view);
 
-        PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.journalEntry);
         textPreviewSetup(PatientSingleton.ItemType.journalEntry);
-//        removeUnusedNavButtons();
-
-        HelperSingleton.getInstance().updateJournalEntries(this);
 
         try {
-            if (getIntent().hasExtra("pageNumber")) {
-                pageNumber = getIntent().getExtras().getInt("pageNumber");
-                journalEntriesForPreviews = PatientSingleton.getInstance().getJournalEntries(pageNumber*textPreviewsPerPage,pageNumber*textPreviewsPerPage + 2);
-            } else {
-                journalEntriesForPreviews = PatientSingleton.getInstance().getJournalEntries(0,2);
-                pageNumber = 0;
-            }
             int i;
 
             // for each preview, set background colour to match home panel and set preview text
-            for (i = 0; i < journalEntriesForPreviews.size(); i++){
-                String created = journalEntriesForPreviews.get(i).getString("created");
-                String content = journalEntriesForPreviews.get(i).getString("content");
+            for (i = 0; i < itemsForPreviews.size(); i++){
+                String created = itemsForPreviews.get(i).getString("created");
+                String content = itemsForPreviews.get(i).getString("content");
                 String preview = created + "\n\n" + content;
 
                 int resID = getResources().getIdentifier("preview_text" + i,
@@ -196,20 +182,20 @@ public class JournalViewActivity extends TextPreview {
         int itemPageOffset = -1;
         switch(view.getId()) {
             case R.id.preview0:
-                PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(0));
+                PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(0));
                 itemPageOffset = 0;
                 break;
             case R.id.test0:
                 System.out.println("GOT test0!!!!!!!");
-                PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(0));
+                PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(0));
                 itemPageOffset = 0;
                 break;
             case R.id.preview1:
-                PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(1));
+                PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(1));
                 itemPageOffset = 1;
                 break;
             case R.id.preview2:
-                PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(2));
+                PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(2));
                 itemPageOffset = 2;
                 break;
         }
