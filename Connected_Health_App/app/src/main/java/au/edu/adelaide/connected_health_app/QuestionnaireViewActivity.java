@@ -26,50 +26,6 @@ public class QuestionnaireViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         textPreviewSetup(PatientSingleton.ItemType.questionnaire);
-/*
-        try {
-            int i;
-
-            // for each preview, set background colour to match home panel and set preview text
-            for (i = 0; i < itemsForPreviews.size(); i++){
-                JSONObject questionnaire = itemsForPreviews.get(i);
-                String name = questionnaire.getString("name");
-                String description = questionnaire.getString("description");
-                StringBuilder preview = new StringBuilder();
-                preview.append(name);
-                preview.append("\n\n");
-                preview.append(description);
-
-                int resID = getResources().getIdentifier("preview_text" + i,
-                        "id", getPackageName());
-                TextView previewText = (TextView) findViewById(resID);
-                previewText.setText(preview.toString());
-
-                resID = getResources().getIdentifier("preview" + i,
-                        "id", getPackageName());
-                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
-                previewLayout.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-            }
-
-            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
-            for (; i < textPreviewsPerPage; i++) {
-                int resID = getResources().getIdentifier("preview" + i,
-                        "id", getPackageName());
-                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
-                previewLayout.setOnClickListener(null);
-                previewLayout.setBackgroundColor(0x00000000);       // transparent background
-                resID = getResources().getIdentifier("preview_contents" + i,
-                        "id", getPackageName());
-                RelativeLayout previewContents = (RelativeLayout) findViewById(resID);
-                previewContents.setOnClickListener(null);
-                previewContents.setVisibility(View.INVISIBLE);       // transparent background
-            }
-        } catch (JSONException je) {
-            System.out.println("getting questionnaires failed");
-        }
-*/
-
-        setPreviewContent();
     }
 
 

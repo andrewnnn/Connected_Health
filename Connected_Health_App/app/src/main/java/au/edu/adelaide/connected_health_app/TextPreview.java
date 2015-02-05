@@ -108,6 +108,8 @@ public class TextPreview extends QuickMenu {
             default:
                 removeCreateButton();
         }
+
+        setPreviewContent();
     }
 
     private void removeCreateButton() {
@@ -191,7 +193,6 @@ public class TextPreview extends QuickMenu {
 
 //    public void setPreviewContent(int iconId, int tintColour, String heading, String content, int borderColour) {
     public void setPreviewContent() {
-
         try {
             // for each preview, set background colour to match home panel and set preview text
             int i;
@@ -230,8 +231,8 @@ public class TextPreview extends QuickMenu {
                 int borderColour = -1;
                 switch (itemType) {
                     case journalEntry:
-                        break;
                     case medicalNote:
+                        borderColour = getResources().getColor(android.R.color.holo_red_light);
                         break;
                     case measurement:
                         borderColour = getResources().getColor(android.R.color.holo_green_light);
@@ -290,6 +291,5 @@ public class TextPreview extends QuickMenu {
         } catch (JSONException je) {
             System.out.println("getting measurement types failed");
         }
-
     }
 }

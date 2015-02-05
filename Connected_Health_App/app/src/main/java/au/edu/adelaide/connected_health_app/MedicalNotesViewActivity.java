@@ -18,39 +18,6 @@ public class MedicalNotesViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         textPreviewSetup(PatientSingleton.ItemType.medicalNote);
-
-        try {
-            int i;
-
-            // for each preview, set background colour to match home panel and set preview text
-            for (i = 0; i < itemsForPreviews.size(); i++) {
-                String created = itemsForPreviews.get(i).getString("created");
-                String content = itemsForPreviews.get(i).getString("content");
-                String preview = created + "\n\n" + content;
-
-                int resID = getResources().getIdentifier("preview_text" + i,
-                        "id", getPackageName());
-                TextView previewText = (TextView) findViewById(resID);
-                previewText.setText(preview);
-            }
-
-            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
-            for (; i < textPreviewsPerPage; i++) {
-                int resID = getResources().getIdentifier("preview" + i,
-                        "id", getPackageName());
-                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
-                previewLayout.setOnClickListener(null);
-                previewLayout.setBackgroundColor(0x00000000);       // transparent background
-                resID = getResources().getIdentifier("preview_contents" + i,
-                        "id", getPackageName());
-                RelativeLayout previewContents = (RelativeLayout) findViewById(resID);
-                previewContents.setOnClickListener(null);
-                previewContents.setVisibility(View.INVISIBLE);       // transparent background
-            }
-        } catch (JSONException je) {
-            System.out.println("getting medical notes failed");
-        }
-
     }
 
 

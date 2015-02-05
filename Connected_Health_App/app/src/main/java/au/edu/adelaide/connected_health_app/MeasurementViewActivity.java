@@ -19,54 +19,6 @@ public class MeasurementViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         textPreviewSetup(PatientSingleton.ItemType.measurement);
-
-        try {
-            // for each preview, set background colour to match home panel and set preview text
-            int i;
-            for (i = 0; i < itemsForPreviews.size(); i++){
-                String name = itemsForPreviews.get(i).getString("name");
-                String description = itemsForPreviews.get(i).getString("description");
-                String preview = name + "\n\n" + description;
-
-                int resID = getResources().getIdentifier("preview_text" + i,
-                        "id", getPackageName());
-                TextView previewText = (TextView) findViewById(resID);
-                previewText.setText(preview);
-
-                resID = getResources().getIdentifier("preview" + i,
-                        "id", getPackageName());
-                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
-                previewLayout.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-
-                // Set category icon according to panel
-                resID = getResources().getIdentifier("icon" + i,
-                        "id", getPackageName());
-                ImageView icon = (ImageView) findViewById(resID);
-
-                if (name.compareTo("Steps") == 0) {
-                    icon.setImageResource(R.drawable.steps_icon_512);
-                }
-                if (name.compareTo("Weight") == 0) {
-                    icon.setImageResource(R.drawable.weight_icon_512);
-                }
-            }
-
-            // if there are less preview items than preview spaces, remove colour/click listener for unused preview panels
-            for (; i < textPreviewsPerPage; i++) {
-                int resID = getResources().getIdentifier("preview" + i,
-                        "id", getPackageName());
-                RelativeLayout previewLayout = (RelativeLayout) findViewById(resID);
-                previewLayout.setOnClickListener(null);
-                previewLayout.setBackgroundColor(0x00000000);       // transparent background
-                resID = getResources().getIdentifier("preview_contents" + i,
-                        "id", getPackageName());
-                RelativeLayout previewContents = (RelativeLayout) findViewById(resID);
-                previewContents.setOnClickListener(null);
-                previewContents.setVisibility(View.INVISIBLE);       // transparent background
-            }
-        } catch (JSONException je) {
-            System.out.println("getting measurement types failed");
-        }
     }
 
 
