@@ -1,0 +1,84 @@
+<RelativeLayout
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:nestedScrollingEnabled="false"
+    android:onClick="goToSingleItemView"
+    android:layout_margin="5dp"
+    android:background="@android:color/transparent">
+
+    <!--Content-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+        <!-- Section Container -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="10">
+
+                <ImageView
+                    android:layout_weight="1"
+                    android:src="@drawable/journal_icon_512"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/icon1" />
+
+                <TextView
+                    android:layout_weight="200"
+                    android:layout_gravity="center|top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/preview_heading_text1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/stripe"
+                android:background="@android:color/black"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.5">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="35"
+                android:padding="4dp"
+                android:paddingLeft="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/preview_text1"></TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
 
         // Set Grails IP address and port
         HelperSingleton hs = HelperSingleton.getInstance();
-        hs.setIpAddress("129.127.251.235");
+        hs.setIpAddress("129.127.250.207");
         hs.setPort("8080");
         hs.setPatientId(3);
 
@@ -90,12 +90,6 @@ public class MainActivity extends ActionBarActivity {
     /** Called when the user clicks the Measurement View button */
     public void goToMeasurementView(View view) {
         Intent intent = new Intent(this, MeasurementViewActivity.class);
-        startActivity(intent);
-    }
-
-    /** Called when the user clicks the Home View button */
-    public void goToMainView(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

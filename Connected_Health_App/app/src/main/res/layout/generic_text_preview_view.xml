@@ -38,7 +38,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="0.85"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dip"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="1dp">
 
@@ -51,6 +51,9 @@
                     android:id="@+id/preview0"
                     android:layout_margin="5dp">
 
+                    <include layout="@layout/generic_text_icon_preview0"
+                        android:id="@+id/preview_contents0" />
+                <!--
                     <TextView
                         android:textColor="@android:color/white"
                         android:layout_width="wrap_content"
@@ -68,6 +71,7 @@
                         android:id="@+id/icon0"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
+-->
                 </RelativeLayout>
                 <RelativeLayout
                     android:onClick="goToSingleItemView"
@@ -78,23 +82,27 @@
                     android:id="@+id/preview1"
                     android:layout_margin="5dp">
 
-                    <TextView
-                        android:textColor="@android:color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:id="@+id/preview_text1"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:padding="5dp" />
+                    <include layout="@layout/generic_text_icon_preview1"
+                        android:id="@+id/preview_contents1" />
+<!--
+                                        <TextView
+                                            android:textColor="@android:color/white"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textAppearance="?android:attr/textAppearanceLarge"
+                                            android:id="@+id/preview_text1"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_alignParentLeft="true"
+                                            android:layout_alignParentStart="true"
+                                            android:padding="5dp" />
 
-                    <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:id="@+id/icon1"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true" />
+                                        <ImageView
+                                            android:layout_width="200dp"
+                                            android:layout_height="200dp"
+                                            android:id="@+id/icon1"
+                                            android:layout_centerVertical="true"
+                                            android:layout_centerHorizontal="true" />
+                    -->
                 </RelativeLayout>
                 <RelativeLayout
                     android:onClick="goToSingleItemView"
@@ -105,6 +113,9 @@
                     android:id="@+id/preview2"
                     android:layout_margin="5dp">
 
+                    <include layout="@layout/generic_text_icon_preview2"
+                        android:id="@+id/preview_contents2" />
+<!--
                     <TextView
                         android:textColor="@android:color/white"
                         android:layout_width="wrap_content"
@@ -123,7 +134,7 @@
                         android:id="@+id/icon2"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
-
+-->
                 </RelativeLayout>
             </LinearLayout>
             <!--End of Main Display-->
@@ -134,7 +145,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="0.15"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dip"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="1dp">
 
