@@ -2,6 +2,7 @@ package connectedhealth
 
 import org.json.JSONArray
 import org.json.JSONObject
+import views.ViewHelpers
 
 class PatientController {
 
@@ -18,7 +19,6 @@ class PatientController {
 
     def showView() {
         Patient patient = Patient.findById(params.patientID)
-
         ArrayList<JournalEntry> allJournalEntries = patient.journalEntries
         ArrayList<JournalEntry> recentJournalEntries = new ArrayList<JournalEntry>()
         for (int i = 0; i < PREVIEW_COUNT; i++) {

@@ -2,6 +2,7 @@ package connectedhealth
 
 import org.json.JSONArray
 import org.json.JSONObject
+import views.ViewHelpers
 
 class MedicalNoteController {
 
@@ -84,7 +85,7 @@ class MedicalNoteController {
         for (int i = 0; i < patientMedicalNotes.size(); i++) {
             JSONObject medicalNote = new JSONObject()
             medicalNote.put("ID", patientMedicalNotes[i].getId())
-            medicalNote.put("created", patientMedicalNotes[i].getCreated())
+            medicalNote.put("created", ViewHelpers.formatDateShort(patientMedicalNotes[i].getCreated()))
             medicalNote.put("content", patientMedicalNotes[i].getContent())
             medicalNotesToSend.add(medicalNote)
         }

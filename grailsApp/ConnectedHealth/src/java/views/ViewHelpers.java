@@ -22,9 +22,13 @@ public class ViewHelpers {
 
     public static String formatDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd/MM/yyyy HH:mm");
-        String temp = sdf.format(date);
-        String[] tempArray = temp.split(" ");
-        String result = tempArray[0];
+        String result = sdf.format(date);
+        return result;
+    }
+
+    public static String formatDateShort(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM, HH:mm a");
+        String result = sdf.format(date);
         return result;
     }
 

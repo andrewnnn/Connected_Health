@@ -2,6 +2,7 @@ package connectedhealth
 
 import org.json.JSONArray
 import org.json.JSONObject
+import views.ViewHelpers
 
 class JournalEntryController {
 
@@ -53,8 +54,8 @@ class JournalEntryController {
             JSONObject journalEntry = new JSONObject()
             journalEntry.put("ID", patientJournalEntries[i].getId())
             journalEntry.put("content", patientJournalEntries[i].getContent())
-            journalEntry.put("created", patientJournalEntries[i].getCreated())
-            journalEntry.put("updated", patientJournalEntries[i].getUpdated())
+            journalEntry.put("created", ViewHelpers.formatDateShort(patientJournalEntries[i].getCreated()))
+            journalEntry.put("updated", ViewHelpers.formatDateShort(patientJournalEntries[i].getUpdated()))
             JournalEntriesToSend.add(journalEntry)
         }
 
