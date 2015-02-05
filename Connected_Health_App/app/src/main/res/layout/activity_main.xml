@@ -100,7 +100,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:onClick="goToProfilePanels"
-        android:background="@android:color/holo_red_light">
+        android:background="#C90000">
 
         <!--Panel label-->
         <TextView
@@ -145,7 +145,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:onClick="goToMeasurementView"
-        android:background="@android:color/holo_green_light">
+        android:background="#007000">
 
         <!--Panel label-->
         <TextView

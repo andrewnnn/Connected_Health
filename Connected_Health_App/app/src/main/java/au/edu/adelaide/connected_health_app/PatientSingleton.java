@@ -1,13 +1,11 @@
 package au.edu.adelaide.connected_health_app;
 
-import android.content.ClipData;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadPoolExecutor;
+
 
 public class PatientSingleton {
     private static PatientSingleton mInstance = null;
