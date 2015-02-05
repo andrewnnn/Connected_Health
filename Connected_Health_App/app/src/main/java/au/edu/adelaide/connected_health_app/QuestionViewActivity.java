@@ -34,28 +34,20 @@ public class QuestionViewActivity extends QuickMenu {
 
         itemIndex = getIntent().getExtras().getInt("itemIndex");
         RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
-        TextView questionText = new TextView(this);
+        TextView heading = (TextView) findViewById(R.id.heading_text);
 
         try {
             JSONObject questionnaire = PatientSingleton.getInstance().getCurrentObject();
             questionsJson = questionnaire.getJSONArray("questions");
             JSONObject currentQuestionJson = questionsJson.getJSONObject(itemIndex);
 
-            questionText.setText(currentQuestionJson.getString("content"));
+            heading.setText(currentQuestionJson.getString("content"));
 
             if (itemIndex == 0) {   // first item
                 Button previous = (Button) findViewById(R.id.button_previous);
                 previous.setClickable(false);
                 previous.setVisibility(View.INVISIBLE);
             }
-
-            questionText.setId(++viewId);
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams
-                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-            questionText.setLayoutParams(params);
-            questionText.setPadding(10, 10, 10, 0);
-            questionText.setTextSize((float) 35);
-            main_layout.addView(questionText);
 
             JSONArray choicesJson = currentQuestionJson.getJSONArray("choices");
 
@@ -68,7 +60,7 @@ public class QuestionViewActivity extends QuickMenu {
                         RelativeLayout.LayoutParams checkBoxParams = new RelativeLayout.LayoutParams
                                 ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
                         if (i == 0) {       // put first option below question
-                            checkBoxParams.addRule(RelativeLayout.BELOW, questionText.getId());
+                            checkBoxParams.addRule(RelativeLayout.BELOW, heading.getId());
                         } else {
                             checkBoxParams.addRule(RelativeLayout.BELOW, recentCheckBox.getId());
                         }
@@ -82,7 +74,7 @@ public class QuestionViewActivity extends QuickMenu {
                         recentCheckBox = currentCheckBox;
                     }
 
-                    questionText.append("\n (Choose any number of answers)");
+                    heading.append("\n (Choose any number of answers)");
                     break;
 
                 case ANSWER_FORMAT_RADIOBUTTON:
@@ -90,7 +82,7 @@ public class QuestionViewActivity extends QuickMenu {
                     RadioGroup radioGroup = new RadioGroup(this);
                     RelativeLayout.LayoutParams radioGroupParams = new RelativeLayout.LayoutParams
                             ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    radioGroupParams.addRule(RelativeLayout.BELOW, questionText.getId());
+                    radioGroupParams.addRule(RelativeLayout.BELOW, heading.getId());
                     radioGroup.setLayoutParams(radioGroupParams);
 
                     for (int i = 0; i < choicesJson.length(); i++) {
@@ -112,14 +104,14 @@ public class QuestionViewActivity extends QuickMenu {
                     }
                     main_layout.addView(radioGroup);
 
-                    questionText.append("\n (Choose one answer)");
+                    heading.append("\n (Choose one answer)");
                     break;
 
                 case ANSWER_FORMAT_TEXT:
                     EditText currentEditText = new EditText(this);
                     RelativeLayout.LayoutParams editTextParams = new RelativeLayout.LayoutParams
                             ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    editTextParams.addRule(RelativeLayout.BELOW, questionText.getId());
+                    editTextParams.addRule(RelativeLayout.BELOW, heading.getId());
                     currentEditText.setId(++viewId);
                     currentEditText.setLayoutParams(editTextParams);
                     currentEditText.setPadding(10, 10, 10, 0);

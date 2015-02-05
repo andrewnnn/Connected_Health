@@ -8,6 +8,7 @@
     <string name="title_activity_information_view">Information View</string>
     <string name="title_activity_questionnaire_view">Questionnaire View</string>
     <string name="title_activity_profile_view">Profile View</string>
+    <string name="nav_button_text_size">40dp</string>
 
     <!-- Info Panel Related -->
     <string name="info_title">Information</string>

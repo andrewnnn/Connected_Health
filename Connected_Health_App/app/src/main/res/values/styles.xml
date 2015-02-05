@@ -5,4 +5,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="NavButton">
+        <item name="android:textSize">40dp</item>
+    </style>
+
+    <style name="SingleItemContent">
+        <item name="android:background">@android:color/background_light</item>
+        <item name="android:padding">@dimen/small_margin</item>
+    </style>
 </resources>

@@ -29,13 +29,13 @@
             android:layout_centerHorizontal="true">
 
             <RelativeLayout
+                style="@style/SingleItemContent"
                 android:weightSum="3"
                 android:orientation="horizontal"
                 android:layout_weight="0.85"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@android:color/background_light"
                 android:id="@+id/main_layout">
 
                 <EditText
@@ -62,6 +62,7 @@
                     android:id="@+id/nav_layout0">
 
                     <Button
+                        style="@style/NavButton"
                         android:onClick="goToConfirmEdit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -87,6 +88,7 @@
                     android:id="@+id/nav_layout3">
 
                     <Button
+                        style="@style/NavButton"
                         android:onClick="goToCancelEdit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

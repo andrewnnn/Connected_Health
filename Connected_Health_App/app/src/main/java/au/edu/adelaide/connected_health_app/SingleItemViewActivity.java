@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -29,18 +28,12 @@ public class SingleItemViewActivity extends QuickMenu {
         }
         itemIndex = getIntent().getExtras().getInt("itemIndex");
 
-        RelativeLayout main_layout = (RelativeLayout) findViewById(R.id.main_layout);
-        TextView content = new TextView(this);
+        TextView heading = (TextView) findViewById(R.id.heading_text);
+        TextView content = (TextView) findViewById(R.id.content_text);
         try {
             JSONObject object = PatientSingleton.getInstance().getCurrentObject();
-            content.setText(object.getString("created") + "\n" + object.getString("content"));
-
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams
-                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
-            content.setLayoutParams(params);
-            content.setPadding(10, 10, 10, 0);
-            content.setTextSize((float) 20);
-            main_layout.addView(content);
+            heading.setText(object.getString("created"));
+            content.setText(object.getString("content"));
         } catch (JSONException je) {
             System.out.println("Couldn't get current JSON object to display in single item view.");
         }

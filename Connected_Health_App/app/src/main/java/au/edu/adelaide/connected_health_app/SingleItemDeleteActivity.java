@@ -33,7 +33,7 @@ public class SingleItemDeleteActivity extends QuickMenu {
             setContentView(R.layout.activity_single_item_delete);
         }
 
-        TextView content = (TextView) findViewById(R.id.content);
+        TextView content = (TextView) findViewById(R.id.content_text);
         try {
             content.setText(PatientSingleton.getInstance().getCurrentObject().getString("content"));
         } catch (JSONException je) {

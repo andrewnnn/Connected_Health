@@ -30,15 +30,30 @@
 
             <!--Main Display-->
             <RelativeLayout
+                style="@style/SingleItemContent"
                 android:weightSum="3"
                 android:orientation="horizontal"
                 android:layout_weight="0.85"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@android:color/background_light"
                 android:id="@+id/main_layout">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="50dp"
+                    android:id="@+id/heading_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_below="@id/heading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="40dp"
+                    android:id="@+id/content_text" />
             </RelativeLayout>
 
             <!--Buttons-->
@@ -56,6 +71,7 @@
             android:id="@+id/nav_layout0">
 
             <Button
+            style="@style/NavButton"
             android:onClick="goToPreviousItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,6 +89,7 @@
             android:id="@+id/nav_layout1" >
 
             <Button
+            style="@style/NavButton"
             android:onClick="goToEditItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,6 +107,7 @@
             android:id="@+id/nav_layout_back" >
 
             <Button
+            style="@style/NavButton"
             android:onClick="goBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -107,6 +125,7 @@
             android:id="@+id/nav_layout2" >
 
             <Button
+            style="@style/NavButton"
             android:onClick="goToDeleteItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,6 +143,7 @@
             android:id="@+id/nav_layout3">
 
             <Button
+            style="@style/NavButton"
             android:onClick="goToNextItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
