@@ -29,7 +29,8 @@ public class JournalViewActivity extends TextPreview {
         setContentView(R.layout.generic_text_preview_view);
 
         PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.journalEntry);
-        removeUnusedNavButtons();
+        textPreviewSetup(PatientSingleton.ItemType.journalEntry);
+//        removeUnusedNavButtons();
 
         HelperSingleton.getInstance().updateJournalEntries(this);
 
@@ -191,9 +192,15 @@ public class JournalViewActivity extends TextPreview {
     }
 
     public void goToSingleItemView(View view) {
+        System.out.println("GOT onClick!!!!!!");
         int itemPageOffset = -1;
         switch(view.getId()) {
             case R.id.preview0:
+                PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(0));
+                itemPageOffset = 0;
+                break;
+            case R.id.test0:
+                System.out.println("GOT test0!!!!!!!");
                 PatientSingleton.getInstance().setCurrentObject(journalEntriesForPreviews.get(0));
                 itemPageOffset = 0;
                 break;
@@ -207,6 +214,7 @@ public class JournalViewActivity extends TextPreview {
                 break;
         }
 
+        System.out.println("Le current OBJ: " + PatientSingleton.getInstance().getCurrentObject().toString());
         PatientSingleton.getInstance().setCurrentItemType(PatientSingleton.ItemType.journalEntry);
         Intent intent = new Intent(this, SingleItemViewActivity.class);
         intent.putExtra("itemIndex",pageNumber*textPreviewsPerPage + itemPageOffset);
