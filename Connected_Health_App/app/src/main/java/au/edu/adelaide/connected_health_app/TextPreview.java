@@ -80,7 +80,6 @@ public class TextPreview extends QuickMenu {
 
     protected void removeUnusedNavButtons() {
         PatientSingleton ps = PatientSingleton.getInstance();
-        PatientSingleton.ItemType itemType = ps.getCurrentItemType();
 
         if (pageNumber == 0) {   // first page
             Button newerButton = (Button) findViewById(R.id.left_nav_button);
@@ -97,6 +96,14 @@ public class TextPreview extends QuickMenu {
                 olderButton.setOnClickListener(null);
                 olderButton.setVisibility(View.INVISIBLE);
             }
+        }
+
+        // remove create button unless we are viewing journal
+        switch (itemType) {
+            case journalEntry:
+                break;
+            default:
+                removeCreateButton();
         }
     }
 
