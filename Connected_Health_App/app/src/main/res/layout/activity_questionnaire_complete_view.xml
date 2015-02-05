@@ -30,13 +30,13 @@
             android:layout_centerHorizontal="true">
 
             <RelativeLayout
+                style="@style/SingleItemContent"
                 android:weightSum="3"
                 android:orientation="horizontal"
                 android:layout_weight="0.85"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@android:color/background_light"
                 android:id="@+id/main_layout">
 
                 <TextView
