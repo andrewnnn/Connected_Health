@@ -3,11 +3,6 @@ package au.edu.adelaide.connected_health_app;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import org.json.JSONException;
 
 
 public class MedicalNotesViewActivity extends TextPreview {

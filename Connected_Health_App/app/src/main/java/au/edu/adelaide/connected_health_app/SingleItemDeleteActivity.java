@@ -16,13 +16,12 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class SingleItemDeleteActivity extends QuickMenu {
 
-    int itemIndex = -1;
     int itemId = -1;
 
     @Override
