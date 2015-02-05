@@ -128,12 +128,20 @@ public class TextPreview extends QuickMenu {
                 break;
             case R.id.preview1:
             case R.id.preview_contents1:
-                itemPageOffset = 1;
+                if (itemType == PatientSingleton.ItemType.questionnaire) {
+                    itemPageOffset = 0;
+                } else {
+                    itemPageOffset = 1;
+                }
                 PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(1));
                 break;
             case R.id.preview2:
             case R.id.preview_contents2:
-                itemPageOffset = 2;
+                if (itemType == PatientSingleton.ItemType.questionnaire) {
+                    itemPageOffset = 0;
+                } else {
+                    itemPageOffset = 2;
+                }
                 PatientSingleton.getInstance().setCurrentObject(itemsForPreviews.get(2));
                 break;
         }
