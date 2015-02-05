@@ -14,7 +14,9 @@ class WithingsApiController {
 
     def stepsView() {
 
-        render(view: "/withingsApi/stepsView")
+        Patient patient = Patient.findById(params.patientID)
+        render(view: "/withingsApi/stepsView", model:
+                [patient: patient])
     }
 
     def activitymeasurements() {

@@ -7,7 +7,7 @@
     <% FORM_METHOD = "POST" %>
 </g:else>
 
-<% answerFormatValues = [0,1,2] %>
+<% answerFormatValues = [0, 1, 2] %>
 <% answerFormatNames = ["Multiple choice - single selection", "Multiple choice - multiple selection", "Text"] %>
 
 <g:form url="${FORM_URL}" method="${FORM_METHOD}">
@@ -24,30 +24,29 @@
                 <g:textArea name="content" id="content" rows="5" cols="40"/>
             </g:else>
 
-            <br />
-            <br />
+            <br/>
+            <br/>
 
             <label for="answerFormat">
                 Answer Format
                 <span class="required-indicator">*</span>
             </label>
             <g:if test="${question != null}">
-                <g:select name="answerFormat" from="${answerFormatNames}" keys="${answerFormatValues}" value="${question.answerFormat}"/>
+                <g:select name="answerFormat" from="${answerFormatNames}" keys="${answerFormatValues}"
+                          value="${question.answerFormat}"/>
             </g:if>
             <g:else>
-                <g:select name="answerFormat" from="${answerFormatNames}" keys="${answerFormatValues}" />
+                <g:select name="answerFormat" from="${answerFormatNames}" keys="${answerFormatValues}"/>
             </g:else>
 
-        <g:hiddenField name="questionnaireID" value="${questionnaire.id}" />
+            <g:hiddenField name="questionnaireID" value="${questionnaire.id}"/>
         </div>
     </fieldset>
-
-    <fieldset class="buttons">
-        <g:if test="${question != null}">
-            <input type="submit" name="update" class="save" value="Update" id="update">
-        </g:if>
-        <g:else>
-            <input type="submit" name="create" class="save" value="Create" id="create">
-        </g:else>
-    </fieldset>
+    <br/>
+    <g:if test="${question != null}">
+        <input type="submit" name="update" class="save btn btn-primary bootButtons" value="Update" id="update">
+    </g:if>
+    <g:else>
+        <input type="submit" name="create" class="save btn btn-primary bootButtons" value="Create" id="create">
+    </g:else>
 </g:form>

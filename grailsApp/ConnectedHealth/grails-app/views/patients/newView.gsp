@@ -8,7 +8,14 @@
 
 <body>
 
+<div class="patientSection">
 <div id="create-medicalNote" class="content scaffold-create" role="main">
+    <div class="nav" role="navigation">
+        <fieldset class="buttons buttonsRed">
+            <a href="/ConnectedHealth/patients" class="list">Back to patient list</a>
+        </fieldset>
+    </div>
+
     <h1>Create a new Profile</h1>
 
     <g:form url="/ConnectedHealth/patients/create" method="POST">
@@ -60,14 +67,17 @@
                 </label>
                 <g:textField name="phone" value="" id="phone" rows="5"  size="10"/>
 
+                <br/>
+                <br/>
+
+                <input type="submit" name="create" class="save btn btn-danger bootButtons" value="Create" id="create">
+
 
             </div>
         </fieldset>
 
-        <fieldset class="buttons">
-            <input type="submit" name="create" class="save" value="Create" id="create">
-        </fieldset>
     </g:form>
 </div>
+    </div>
 </body>
 </html>
