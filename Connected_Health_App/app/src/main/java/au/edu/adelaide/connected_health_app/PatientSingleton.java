@@ -178,8 +178,15 @@ public class PatientSingleton {
         mQuestionnaireId = questionnaire.getInt("id");
     }
 
+    public int getCurrentQuestionnaireId() {
+        return mQuestionnaireId;
+    }
+
     public void addQuestionnaireAnswer(JSONObject answer, int index) {
         mAnswers.add(index, answer);
     }
 
+    public ArrayList<JSONObject> getQuestionnaireAnswers() {
+        return mAnswers;
+    }
 }

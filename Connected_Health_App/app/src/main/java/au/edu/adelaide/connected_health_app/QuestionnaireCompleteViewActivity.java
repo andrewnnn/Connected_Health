@@ -6,10 +6,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class QuestionnaireCompleteViewActivity extends QuickMenu {
+
+    JSONObject submissionJson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +60,52 @@ public class QuestionnaireCompleteViewActivity extends QuickMenu {
 
     public void goToSubmit(View view) {
         // build JSON submission from each JSON answer
-        JSONObject submission = new JSONObject();
+        JSONArray answers = new JSONArray(PatientSingleton.getInstance().getQuestionnaireAnswers());
 
+        try {
+            submissionJson.put("answers", answers);
+            submissionJson.put("questionnaireId", PatientSingleton.getInstance().getCurrentQuestionnaireId());
+        } catch (JSONException je) {
+            System.out.println(je);
+        }
 
         Intent intent = new Intent(this, QuestionnaireViewActivity.class);
         startActivity(intent);
     }
+
+    public void httpPost() {
+        String patientId = HelperSingleton.getInstance().getPatientId() + "";
+        String path = "patients/" + patientId + "/submissions/json";
+        String url = HelperSingleton.getInstance().getConstantUrl() + path;
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println(error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("submission", submissionJson.toString());
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
+    }
+
 }
