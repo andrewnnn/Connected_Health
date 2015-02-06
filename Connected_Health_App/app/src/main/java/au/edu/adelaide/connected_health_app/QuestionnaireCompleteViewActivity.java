@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class QuestionnaireCompleteViewActivity extends QuickMenu {
 
-    JSONObject submissionJson;
+    JSONObject submissionJson = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,10 @@ public class QuestionnaireCompleteViewActivity extends QuickMenu {
         } catch (JSONException je) {
             System.out.println(je);
         }
+
+        System.out.println("===================================");
+        System.out.println(submissionJson.toString());
+        System.out.println("===================================");
 
         Intent intent = new Intent(this, QuestionnaireViewActivity.class);
         startActivity(intent);

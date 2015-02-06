@@ -186,7 +186,7 @@ public class QuestionViewActivity extends QuickMenu {
                             choiceIds.put(choicesJson.getJSONObject(i).getInt("id"));       // add id of selected choice
                         }
                     }
-                    answer.put("choices", choiceIds);
+                    answer.put("choiceIds", choiceIds);
                     break;
                 case ANSWER_FORMAT_TEXT:
                     answer.put("answer", choiceViewIds.get(0));     // there is only an EditText view, no choices
