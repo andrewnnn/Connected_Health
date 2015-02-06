@@ -17,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class QuestionViewActivity extends QuickMenu {
 
@@ -24,6 +26,7 @@ public class QuestionViewActivity extends QuickMenu {
     final int ANSWER_FORMAT_CHECKBOX = 1;
     final int ANSWER_FORMAT_TEXT = 2;
     static int viewId = 1;
+    ArrayList<Integer> choiceViewIds = new ArrayList<Integer>();
     int itemIndex;
     JSONArray questionsJson;
 
@@ -66,6 +69,7 @@ public class QuestionViewActivity extends QuickMenu {
                         }
                         currentCheckBox.setButtonDrawable(R.drawable.checkbox);
                         currentCheckBox.setId(++viewId);
+                        choiceViewIds.add(currentCheckBox.getId());
                         currentCheckBox.setLayoutParams(checkBoxParams);
                         currentCheckBox.setPadding(10, 10, 10, 0);
                         currentCheckBox.setText(currentChoiceJson.getString("content"));
@@ -95,6 +99,7 @@ public class QuestionViewActivity extends QuickMenu {
                         }
                         currentRadioButton.setButtonDrawable(R.drawable.checkbox);
                         currentRadioButton.setId(++viewId);
+                        choiceViewIds.add(currentRadioButton.getId());
                         currentRadioButton.setLayoutParams(radioButtonParams);
                         currentRadioButton.setPadding(10, 10, 10, 0);
                         currentRadioButton.setText(currentChoiceJson.getString("content"));
@@ -113,6 +118,7 @@ public class QuestionViewActivity extends QuickMenu {
                             ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
                     editTextParams.addRule(RelativeLayout.BELOW, heading.getId());
                     currentEditText.setId(++viewId);
+                    choiceViewIds.add(currentEditText.getId());
                     currentEditText.setLayoutParams(editTextParams);
                     currentEditText.setPadding(10, 10, 10, 0);
                     currentEditText.setTextSize((float) 25);
@@ -163,15 +169,27 @@ public class QuestionViewActivity extends QuickMenu {
             switch(answerFormat) {
                 case ANSWER_FORMAT_RADIOBUTTON:
                     choicesJson = currentQuestionJson.getJSONArray("choices");
-                    answer.put("choice", -1);
+                    for (int i = 0; i < choiceViewIds.size(); i++) {
+                        RadioButton radioButton = (RadioButton) findViewById(choiceViewIds.get(i));
+                        if (radioButton.isChecked()) {
+                            answer.put("choiceId", choicesJson.getJSONObject(i).getInt("id"));
+                            break;
+                        }
+                    }
                     break;
                 case ANSWER_FORMAT_CHECKBOX:
                     choicesJson = currentQuestionJson.getJSONArray("choices");
                     JSONArray choiceIds = new JSONArray();
+                    for (int i = 0; i < choiceViewIds.size(); i++) {
+                        CheckBox checkBox = (CheckBox) findViewById(choiceViewIds.get(i));
+                        if (checkBox.isChecked()) {
+                            choiceIds.put(choicesJson.getJSONObject(i).getInt("id"));       // add id of selected choice
+                        }
+                    }
                     answer.put("choices", choiceIds);
                     break;
                 case ANSWER_FORMAT_TEXT:
-                    answer.put("answer", "testString");
+                    answer.put("answer", choiceViewIds.get(0));     // there is only an EditText view, no choices
             }
         } catch (JSONException je) {
             System.out.println(je);
