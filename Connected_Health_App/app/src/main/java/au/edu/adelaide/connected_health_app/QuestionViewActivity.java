@@ -160,12 +160,12 @@ public class QuestionViewActivity extends QuickMenu {
         int answerFormat;
         try {
             currentQuestionJson = questionsJson.getJSONObject(itemIndex);
+            answer.put("questionId", currentQuestionJson.getInt("id"));
             answerFormat = currentQuestionJson.getInt("answerFormat");
             answer.put("answerFormat", answerFormat);
 
             JSONArray choicesJson;
 
-            // TODO get actual answer values
             switch(answerFormat) {
                 case ANSWER_FORMAT_RADIOBUTTON:
                     choicesJson = currentQuestionJson.getJSONArray("choices");
