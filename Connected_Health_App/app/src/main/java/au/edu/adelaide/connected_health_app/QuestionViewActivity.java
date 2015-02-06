@@ -189,7 +189,7 @@ public class QuestionViewActivity extends QuickMenu {
                     answer.put("choiceIds", choiceIds);
                     break;
                 case ANSWER_FORMAT_TEXT:
-                    answer.put("answer", choiceViewIds.get(0));     // there is only an EditText view, no choices
+                    answer.put("answer", ((EditText) findViewById(choiceViewIds.get(0))).getText());     // there is only an EditText view, no choices
             }
         } catch (JSONException je) {
             System.out.println(je);
