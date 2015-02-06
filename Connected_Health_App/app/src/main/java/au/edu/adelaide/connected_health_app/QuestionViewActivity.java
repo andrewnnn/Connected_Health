@@ -149,6 +149,35 @@ public class QuestionViewActivity extends QuickMenu {
     }
 
     public void goToNextItem(View view) {
+        JSONObject answer = new JSONObject();
+        JSONObject currentQuestionJson = null;
+        int answerFormat;
+        try {
+            currentQuestionJson = questionsJson.getJSONObject(itemIndex);
+            answerFormat = currentQuestionJson.getInt("answerFormat");
+            answer.put("answerFormat", answerFormat);
+
+            JSONArray choicesJson;
+
+            // TODO get actual answer values
+            switch(answerFormat) {
+                case ANSWER_FORMAT_RADIOBUTTON:
+                    choicesJson = currentQuestionJson.getJSONArray("choices");
+                    answer.put("choice", -1);
+                    break;
+                case ANSWER_FORMAT_CHECKBOX:
+                    choicesJson = currentQuestionJson.getJSONArray("choices");
+                    JSONArray choiceIds = new JSONArray();
+                    answer.put("choices", choiceIds);
+                    break;
+                case ANSWER_FORMAT_TEXT:
+                    answer.put("answer", "testString");
+            }
+        } catch (JSONException je) {
+            System.out.println(je);
+        }
+        PatientSingleton.getInstance().addQuestionnaireAnswer(answer, itemIndex);
+
         if (itemIndex == questionsJson.length() - 1) {
             Intent intent = new Intent(this, QuestionnaireCompleteViewActivity.class);      //
             startActivity(intent);

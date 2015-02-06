@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import org.json.JSONObject;
+
 
 public class QuestionnaireCompleteViewActivity extends QuickMenu {
 
@@ -43,6 +45,10 @@ public class QuestionnaireCompleteViewActivity extends QuickMenu {
     }
 
     public void goToSubmit(View view) {
+        // build JSON submission from each JSON answer
+        JSONObject submission = new JSONObject();
+
+
         Intent intent = new Intent(this, QuestionnaireViewActivity.class);
         startActivity(intent);
     }
