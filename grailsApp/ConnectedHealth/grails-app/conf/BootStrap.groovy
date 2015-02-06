@@ -145,12 +145,12 @@ class BootStrap {
         new Choice(content: "Writing", question: q2q2).save()
 
         // try submission
-        Submission s = new Submission(patient: p1, questionnaire: questionnaire1)
-        s.save()
+        Submission s = new Submission(created: (new Date()), patient: p1, questionnaire: questionnaire1)
+        s.save(flush: true)
         Choice c1 = new Choice(content: "Yes forSubmission", question: q1q1)
-        c1.save()
+        c1.save(flush: true)
         SingleSelectionAnswer ssa = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
-        ssa.save()
+        ssa.save(flush: true)
         SingleSelectionAnswer ssa2 = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
         ssa2.save()
         SingleSelectionAnswer ssa3 = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
