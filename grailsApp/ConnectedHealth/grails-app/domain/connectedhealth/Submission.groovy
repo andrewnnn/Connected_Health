@@ -4,8 +4,10 @@ class Submission {
 
     Date created
 
-    static belongsTo = [patient: Patient, questionnaire: Questionnaire]
-    static hasMany = [singleSelectionAnswer: SingleSelectionAnswer, multipleSelectionAnswer: MultipleSelectionAnswer, textAnswer: TextAnswer]
+//    Patient patient
+//    Questionnaire questionnaire
+//    static belongsTo = [patient: Patient, questionnaire: Questionnaire]
+    static hasMany = [singleSelectionAnswers: SingleSelectionAnswer, multipleSelectionAnswers: MultipleSelectionAnswer, textAnswers: TextAnswer]
 
     static constraints = {
     }

@@ -104,7 +104,7 @@ class BootStrap {
 
         Question q1q1 = new Question(content: "Do you feel tired today?", answerFormat: 0, questionnaire: questionnaire1)
         q1q1.save()
-        new Choice(content: "Yes", question: q1q1).save()
+        Choice c1 = new Choice(content: "Yes", question: q1q1).save()
         new Choice(content: "A bit", question: q1q1).save()
         new Choice(content: "No", question: q1q1).save()
 
@@ -145,16 +145,14 @@ class BootStrap {
         new Choice(content: "Writing", question: q2q2).save()
 
         // try submission
-        Submission s = new Submission(created: (new Date()), patient: p1, questionnaire: questionnaire1)
-        s.save(flush: true)
-        Choice c1 = new Choice(content: "Yes forSubmission", question: q1q1)
-        c1.save(flush: true)
+/*        Submission s = new Submission(created: (new Date()), patient: p1, questionnaire: questionnaire1)
+        s.save()
         SingleSelectionAnswer ssa = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
-        ssa.save(flush: true)
+        ssa.save()
         SingleSelectionAnswer ssa2 = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
         ssa2.save()
         SingleSelectionAnswer ssa3 = new SingleSelectionAnswer(submission: s, choice: c1, question: q1q1)
-        ssa3.save()
+        ssa3.save()*/
     }
     def destroy = {
     }

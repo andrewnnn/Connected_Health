@@ -197,7 +197,7 @@ public class QuestionViewActivity extends QuickMenu {
         PatientSingleton.getInstance().addQuestionnaireAnswer(answer, itemIndex);
 
         if (itemIndex == questionsJson.length() - 1) {
-            Intent intent = new Intent(this, QuestionnaireCompleteViewActivity.class);      //
+            Intent intent = new Intent(this, QuestionnaireCompleteViewActivity.class);
             startActivity(intent);
         } else if (itemIndex < questionsJson.length() - 1) {
             Intent intent = new Intent(this, QuestionViewActivity.class);
