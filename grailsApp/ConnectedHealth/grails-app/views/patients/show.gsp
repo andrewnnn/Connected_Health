@@ -53,6 +53,10 @@
             <g:link uri="/patients/${patient.id}/measurements">
                 View Measurements for this Patient
             </g:link>
+            <br />
+            <g:link uri="/patients/${patient.id}/submissions">
+                View Questionnaire Submissions for this Patient
+            </g:link>
         </div>
         <br/>
 

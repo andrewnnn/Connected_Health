@@ -11,6 +11,57 @@ class SubmissionController {
 
     def scaffold = Submission
 
+    def index() {
+        if (params.patientID == null) {
+            response.status = 404
+            render "Patient ID is required"
+            return
+        }
+
+        Patient p = Patient.findById(params.patientID)
+        if (p == null) {
+            response.status = 404
+            render "Patient with this ID does not exist"
+            return
+        }
+
+        Set<Submission> submissions = Submission.findAllByPatient(p)
+
+        render(view: "/submission/indexView", model:
+                [patient: p, submissions: submissions])
+    }
+
+    def show() {
+        if (params.patientID == null) {
+            response.status = 404
+            render "Patient ID is required"
+            return
+        }
+
+        Patient p = Patient.findById(params.patientID)
+        if (p == null) {
+            response.status = 404
+            render "Patient with this ID does not exist"
+            return
+        }
+
+        if (params.submissionID == null) {
+            response.status = 404
+            render "Submission ID is required"
+            return
+        }
+
+        Submission s = Submission.findById(params.submissionID)
+        if (s == null) {
+            response.status = 404
+            render "Submission with this ID does not exist"
+            return
+        }
+
+        render(view: "/submission/showView", model:
+                [patient: p, submission: s])
+    }
+
     def createSubmission() {
         if (params.patientID == null) {
             response.status = 404
@@ -26,6 +77,7 @@ class SubmissionController {
         }
 
         String jsonString = params.get("submission")
+        println("JSONString " + jsonString)
 //        JSONObject submissionJson = new JSONObject("{\"answers\":[{\"answer\":\"My text answer.\",\"answerFormat\":2,\"questionId\":51},{\"choiceId\":56,\"answerFormat\":0,\"questionId\":30},{\"choiceIds\":[31,32,33],\"answerFormat\":1,\"questionId\":43}],\"questionnaireId\":29}")
         JSONObject submissionJson = new JSONObject(jsonString)
         Submission submission = new Submission(created: new Date())
@@ -57,7 +109,7 @@ class SubmissionController {
                     JSONArray choiceIds = answer.getJSONArray("choiceIds")
 
                     for (int j = 0; j < choiceIds.length(); j++) {
-                        multipleSelectionAnswer.addToChoice(Choice.findById(choiceIds.getInt(j)))
+                        multipleSelectionAnswer.addToChoices(Choice.findById(choiceIds.getInt(j)))
                     }
                     multipleSelectionAnswer.save(flush: true)
                     submission.addToMultipleSelectionAnswers(multipleSelectionAnswer)

@@ -5,7 +5,7 @@ class MultipleSelectionAnswer {
     Question question
 
     static belongsTo = [submission: Submission]
-    static hasMany = [choice: Choice]
+    static hasMany = [choices: Choice]
 
     static constraints = {
     }
