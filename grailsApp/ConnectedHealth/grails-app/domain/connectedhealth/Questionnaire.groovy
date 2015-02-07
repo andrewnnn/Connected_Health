@@ -5,7 +5,7 @@ class Questionnaire {
     String description
     String name
 
-    static hasMany = [questions: Question, submissions: Submission]
+    static hasMany = [questions: Question]
 
     static constraints = {
 

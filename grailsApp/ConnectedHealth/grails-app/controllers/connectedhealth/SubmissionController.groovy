@@ -25,12 +25,14 @@ class SubmissionController {
             return
         }
 
-        Submission submission = new Submission(created: new Date())
-        submission.save(flush:true)
-
         String jsonString = params.get("submission")
-        JSONObject submissionJson = new JSONObject("{\"answers\":[{\"answer\":\"My text answer.\",\"answerFormat\":2,\"questionId\":51},{\"choiceId\":56,\"answerFormat\":0,\"questionId\":30},{\"choiceIds\":[31,32,33],\"answerFormat\":1,\"questionId\":43}],\"questionnaireId\":19}")
+//        JSONObject submissionJson = new JSONObject("{\"answers\":[{\"answer\":\"My text answer.\",\"answerFormat\":2,\"questionId\":51},{\"choiceId\":56,\"answerFormat\":0,\"questionId\":30},{\"choiceIds\":[31,32,33],\"answerFormat\":1,\"questionId\":43}],\"questionnaireId\":29}")
+        JSONObject submissionJson = new JSONObject(jsonString)
+        Submission submission = new Submission(created: new Date())
         Questionnaire questionnaire = Questionnaire.findById(submissionJson.getInt("questionnaireId"))
+        submission.setPatient(p)
+        submission.setQuestionnaire(questionnaire)
+        submission.save(flush: true)
 
         Choice choice
         Question question
