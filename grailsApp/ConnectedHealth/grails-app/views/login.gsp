@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="mainSignIn"/>
     <title>Welcome to Connected Health</title>
 </head>
 
@@ -23,7 +23,7 @@
         </div>
 
         <div class="loginButtons">
-            <input type="button" class="loginButton btn btn-danger" value="Login"
+            <input type="button" class="loginButton btn btn-danger" value="Sign In"
                    onclick="window.location = '/ConnectedHealth'">
             <input type="button" class="loginButton btn btn-danger" value="Cancel"
                    onclick="window.location = '/ConnectedHealth'">

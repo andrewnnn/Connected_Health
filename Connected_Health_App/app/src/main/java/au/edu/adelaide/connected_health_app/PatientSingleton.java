@@ -21,6 +21,9 @@ public class PatientSingleton {
     private JSONArray jCurrentArray;
     private JSONObject jCurrentObject;
 
+    private ArrayList<JSONObject> mAnswers;
+    private int mQuestionnaireId;
+
     private PatientSingleton(){
         jQuestionnaires = new JSONArray();
         mItemType = ItemType.defaultItemType;
@@ -168,5 +171,22 @@ public class PatientSingleton {
 
     public JSONArray getCurrentArray() {
         return jCurrentArray;
+    }
+
+    public void setCurrentQuestionnaire(JSONObject questionnaire) throws JSONException{
+        mAnswers = new ArrayList<JSONObject>(questionnaire.getJSONArray("questions").length());
+        mQuestionnaireId = questionnaire.getInt("id");
+    }
+
+    public int getCurrentQuestionnaireId() {
+        return mQuestionnaireId;
+    }
+
+    public void addQuestionnaireAnswer(JSONObject answer, int index) {
+        mAnswers.add(index, answer);
+    }
+
+    public ArrayList<JSONObject> getQuestionnaireAnswers() {
+        return mAnswers;
     }
 }

@@ -146,6 +146,14 @@ public class TextPreview extends QuickMenu {
                 break;
         }
 
+        if (itemType == PatientSingleton.ItemType.questionnaire) {
+            try {
+                PatientSingleton.getInstance().setCurrentQuestionnaire(PatientSingleton.getInstance().getCurrentObject());
+            } catch (JSONException je) {
+                System.out.println(je);
+            }
+        }
+
         Intent intent = new Intent(this, getSingleItemClass());
         intent.putExtra("itemIndex", pageNumber*textPreviewsPerPage + itemPageOffset);
         startActivity(intent);

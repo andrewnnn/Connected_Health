@@ -109,5 +109,11 @@ class UrlMappings {
         //
         "/login"(controller:"Auth", action:"login")
 
+        //Submission
+        "/patients/$patientID/submissions"(controller:"Submission",action:"index")
+        "/patients/$patientID/submissions/$submissionID/show"(controller:"Submission",action:"show")
+        "/patients/$patientID/submissions/json"(controller:"Submission") {
+            action = [POST:"createSubmission"]
+        }
     }
 }
