@@ -40,7 +40,7 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/ConnectedHealth/login" style="color: white">Signed in as Dr Jimmy</a></li>
+                <li><a href="/ConnectedHealth/login" style="color: white">Sign In</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

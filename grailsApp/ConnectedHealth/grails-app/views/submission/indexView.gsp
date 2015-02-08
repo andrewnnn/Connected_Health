@@ -13,7 +13,7 @@
     </fieldset>
 </div>
 <div id="list-questionnaire" class="content scaffold-list" role="main">
-    <h1>Questionnaire Submission List</h1>
+    <h1>${patient.firstName + " " + patient.lastName}'s Questionnaire Submissions</h1>
 
     <table  class="table table-bordered tablePaddings" style="width: 90%">
         <thead>

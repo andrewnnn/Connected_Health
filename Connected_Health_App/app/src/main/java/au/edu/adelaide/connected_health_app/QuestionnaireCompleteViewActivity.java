@@ -69,6 +69,8 @@ public class QuestionnaireCompleteViewActivity extends QuickMenu {
             System.out.println(je);
         }
 
+        httpPost();
+
         System.out.println("===================================");
         System.out.println(submissionJson.toString());
         System.out.println("===================================");
