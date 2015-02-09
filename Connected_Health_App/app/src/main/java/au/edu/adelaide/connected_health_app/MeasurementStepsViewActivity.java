@@ -74,9 +74,9 @@ public class MeasurementStepsViewActivity extends QuickMenu {
             "\t\n" +
             "</html>";
 
-    String constantStepsData = "var max = 81;\n" +
-            "var min = 51;\n" +
-            "var data=[{\"date\":\"2014-12-11\",\"steps\":66},{\"date\":\"2014-12-12\",\"steps\":66}];";
+    String constantStepsData = "var max = 2000;\n" +
+            "var min = 200;\n" +
+            "var data=[{\"date\":\"Mon\",\"steps\":1800},{\"date\":\"Tue\",\"steps\":1760},{\"date\":\"Wed\",\"steps\":1740},{\"date\":\"Thu\",\"steps\":1750},{\"date\":\"Fri\",\"steps\":1810},{\"date\":\"Sat\",\"steps\":1920},{\"date\":\"Sun\",\"steps\":200}];";
 
     String singleReadingPageA = "<!DOCTYPE html>\n" +
             "<html>\n" +
@@ -97,7 +97,10 @@ public class MeasurementStepsViewActivity extends QuickMenu {
 
         webView = (WebView) findViewById(R.id.webviewGraphTest);        // graph of steps
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadData(firstPart + constantStepsData + secondPart, "text/html", "UTF-8");
 
+
+/*
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -129,6 +132,8 @@ public class MeasurementStepsViewActivity extends QuickMenu {
         });
         // Add the request to the RequestQueue for asynchronous handling.
         queue.add(stringRequest);
+
+*/
 
     }
 
