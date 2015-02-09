@@ -1,5 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,6 +30,7 @@ public class SingleItemEditActivity extends QuickMenu {
     int itemIndex = -1;
     int itemId = -1;
     EditText content;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +122,7 @@ public class SingleItemEditActivity extends QuickMenu {
             }
         } else {        // create new item
             httpPost();
+System.out.println("httppost");
         }
 
         Intent intent = new Intent(this, JournalEntryCompleteViewActivity.class);
@@ -138,6 +141,7 @@ public class SingleItemEditActivity extends QuickMenu {
                 {
                     @Override
                     public void onResponse(String response) {
+                        HelperSingleton.getInstance().updateJournalEntries(context);
                         System.out.println(response);
                     }
                 },
@@ -179,6 +183,7 @@ public class SingleItemEditActivity extends QuickMenu {
                 {
                     @Override
                     public void onResponse(String response) {
+                        HelperSingleton.getInstance().updateJournalEntries(context);
                         System.out.println(response);
                     }
                 },

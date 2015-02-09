@@ -83,6 +83,7 @@ public class SingleItemDeleteActivity extends QuickMenu {
                 {
                     @Override
                     public void onResponse(String response) {
+                        HelperSingleton.getInstance().updateJournalEntries(context);
                         System.out.println(response);
                     }
                 },
