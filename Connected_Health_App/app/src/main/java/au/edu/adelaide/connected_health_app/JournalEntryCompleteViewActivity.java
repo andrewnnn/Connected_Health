@@ -25,10 +25,10 @@ public class JournalEntryCompleteViewActivity extends QuickMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        HelperSingleton.getInstance().updateJournalEntries(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal_entry_complete_view);
-
-        HelperSingleton.getInstance().updateJournalEntries(this);
     }
 
 
@@ -55,6 +55,8 @@ public class JournalEntryCompleteViewActivity extends QuickMenu {
     }
 
     public void goToJournal(View view) {
+        HelperSingleton.getInstance().updateJournalEntries(this);
+
         Intent intent = new Intent(this, JournalViewActivity.class);
         startActivity(intent);
     }
