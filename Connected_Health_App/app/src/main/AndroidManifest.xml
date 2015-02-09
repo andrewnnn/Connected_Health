@@ -117,6 +117,10 @@
             android:name=".QuestionnaireCompleteViewActivity"
             android:label="@string/title_activity_questionnaire_complete_view" >
         </activity>
+        <activity
+            android:name=".JournalEntryCompleteViewActivity"
+            android:label="@string/title_activity_journal_entry_complete_view" >
+        </activity>
     </application>
 
 </manifest>

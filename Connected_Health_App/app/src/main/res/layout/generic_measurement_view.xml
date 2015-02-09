@@ -50,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Measurement date: 7 Mar, 17:13\n\nYour blood pressure is outside the limits that were set for you by your doctor.\nImportant:\n\nBetween 1pm and 8pm Monday - Friday the blood pressure readings will be monitored by a registered nurse who will phone you with instructions.If you have entered the blood pressure reading outside of these times, please review the information guide."
+                android:text="Measurement date: 7 Mar, 17:13\n\nYour steps count is below the value that was set for you by your doctor.\nImportant:\n\nBetween 1pm and 8pm Monday - Friday the steps counts readings will be monitored by a registered nurse who will phone you with instructions.If you have entered the steps reading outside of these times, please review the information guide."
                 android:id="@+id/textView4"
                 android:textColor="#0000BB"
                 android:background="#BBEEFF"

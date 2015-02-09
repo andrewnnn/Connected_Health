@@ -1,0 +1,115 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="au.edu.adelaide.connected_health_app.JournalEntryCompleteViewActivity"
+    android:orientation="vertical">
+
+    <!--Quick Menu Bar-->
+    <include layout="@layout/quick_menu_bar"
+        android:id="@+id/quickMenuBar"/>
+
+
+    <!--Padding-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:background="@android:color/darker_gray">
+
+        <!--Content-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                style="@style/SingleItemContent"
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_weight="0.85"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/main_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Your journal entry has been saved!"
+                    android:textSize="50dp"
+                    android:id="@+id/headingText"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageView9"
+                    android:layout_toEndOf="@+id/imageView9"
+                    android:layout_marginTop="94dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/content"
+                    android:layout_below="@+id/headingText"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="You can view it with your other journal entries."
+                    android:id="@+id/messageText"
+                    android:layout_below="@+id/content"
+                    android:layout_toRightOf="@+id/imageView9"
+                    android:layout_toEndOf="@+id/imageView9"
+                    android:textSize="30dp" />
+
+                <ImageView
+                    android:tint="@android:color/holo_red_light"
+                    android:layout_width="400px"
+                    android:layout_height="400px"
+                    android:id="@+id/imageView9"
+                    android:src="@drawable/confirm_icon_512"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="0.15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" >
+
+                <RelativeLayout
+                    android:layout_weight="0.25"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/nav_layout3">
+
+                    <Button
+                        style="@style/NavButton"
+                        android:onClick="goToJournal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="View Journal Entries"
+                        android:id="@+id/button_cancel"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:drawableLeft="@drawable/confirm_icon"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--End of Content-->
+
+    </RelativeLayout>
+
+</LinearLayout>
