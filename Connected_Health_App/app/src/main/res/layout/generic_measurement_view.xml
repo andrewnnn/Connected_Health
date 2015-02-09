@@ -50,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Measurement date: 7 Mar, 17:13\n\nYour steps count is below the value that was set for you by your doctor.\nImportant:\n\nBetween 1pm and 8pm Monday - Friday the steps counts readings will be monitored by a registered nurse who will phone you with instructions.If you have entered the steps reading outside of these times, please review the information guide."
+                android:text="Measurement date: 7 Mar, 17:13\n\nYour steps count is below the daily average for your age group.\nImportant:\n\nA registered nurse will arrange an tele-checkup shortly. And it is recommended that you try and increase your activity levels and reach 2000 steps as a goal."
                 android:id="@+id/textView4"
                 android:textColor="#0000BB"
                 android:background="#BBEEFF"
