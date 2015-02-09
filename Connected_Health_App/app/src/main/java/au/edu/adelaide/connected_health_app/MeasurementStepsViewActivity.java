@@ -75,8 +75,8 @@ public class MeasurementStepsViewActivity extends QuickMenu {
             "</html>";
 
     String constantStepsData = "var max = 2000;\n" +
-            "var min = 200;\n" +
-            "var data=[{\"date\":\"Mon\",\"steps\":1800},{\"date\":\"Tue\",\"steps\":1760},{\"date\":\"Wed\",\"steps\":1740},{\"date\":\"Thu\",\"steps\":1750},{\"date\":\"Fri\",\"steps\":1810},{\"date\":\"Sat\",\"steps\":1920},{\"date\":\"Sun\",\"steps\":200}];";
+            "var min = 1000;\n" +
+            "var data=[{\"date\":\"Mon\",\"steps\":1800},{\"date\":\"Tue\",\"steps\":1760},{\"date\":\"Wed\",\"steps\":1740},{\"date\":\"Thu\",\"steps\":1750},{\"date\":\"Fri\",\"steps\":1810},{\"date\":\"Sat\",\"steps\":1920},{\"date\":\"Sun\",\"steps\":1000}];";
 
     String singleReadingPageA = "<!DOCTYPE html>\n" +
             "<html>\n" +
