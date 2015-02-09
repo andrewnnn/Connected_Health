@@ -50,12 +50,13 @@
         var titleString = "Date Steps";
 
         var data = [
-            { "Date": "Jan", "Steps": 1800 },
-            { "Date": "Feb", "Steps": 1760 },
-            { "Date": "Mar", "Steps": 1740 },
-            { "Date": "Apr", "Steps": 1750 },
-            { "Date": "May", "Steps": 1810 },
-            { "Date": "Jun", "Steps": 1920 }
+            { "Date": "Mon", "Steps": 1800 },
+            { "Date": "Tue", "Steps": 1760 },
+            { "Date": "Wed", "Steps": 1740 },
+            { "Date": "Thu", "Steps": 1750 },
+            { "Date": "Fri", "Steps": 1810 },
+            { "Date": "Sat", "Steps": 1920 },
+            { "Date": "Sun", "Steps": 2010 }
         ];
     </script>
     <link rel="stylesheet" type="text/css" href="http://www.jchartfx.com/libs/v7/current/styles/Attributes/jchartfx.attributes.whitespace.css" />
