@@ -39,5 +39,6 @@
     <string name="title_activity_single_item_edit">SingleItemEditActivity</string>
     <string name="title_activity_single_item_delete">SingleItemDeleteActivity</string>
     <string name="title_activity_questionnaire_complete_view">QuestionnaireCompleteViewActivity</string>
+    <string name="title_activity_journal_entry_complete_view">JournalEntryCompleteViewActivity</string>
 
 </resources>

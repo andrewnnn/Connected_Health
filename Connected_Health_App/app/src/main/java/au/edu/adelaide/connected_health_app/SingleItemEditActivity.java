@@ -122,8 +122,7 @@ public class SingleItemEditActivity extends QuickMenu {
             httpPost();
         }
 
-        PatientSingleton.getInstance().getJournalEntries();     // update local journal entries after change TODO check that this works
-        Intent intent = new Intent(this, JournalViewActivity.class);
+        Intent intent = new Intent(this, JournalEntryCompleteViewActivity.class);
         startActivity(intent);
     }
 
