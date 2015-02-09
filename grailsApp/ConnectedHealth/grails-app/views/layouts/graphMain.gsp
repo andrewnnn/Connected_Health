@@ -56,7 +56,7 @@
             { "Date": "Thu", "Steps": 1750 },
             { "Date": "Fri", "Steps": 1810 },
             { "Date": "Sat", "Steps": 1920 },
-            { "Date": "Sun", "Steps": 2010 }
+            { "Date": "Sun", "Steps": 200 }
         ];
     </script>
     <link rel="stylesheet" type="text/css" href="http://www.jchartfx.com/libs/v7/current/styles/Attributes/jchartfx.attributes.whitespace.css" />
