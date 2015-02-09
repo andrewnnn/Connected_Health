@@ -1,5 +1,6 @@
 package au.edu.adelaide.connected_health_app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 public class SingleItemDeleteActivity extends QuickMenu {
 
+    Context context = this;
     int itemId = -1;
 
     @Override
