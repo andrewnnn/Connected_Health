@@ -11,6 +11,9 @@ public class ProfilePanelsActivity extends QuickMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        hs.updateJournalEntries(this);
+        hs.updateMedicalNotes(this);
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_panels);
     }
