@@ -45,7 +45,7 @@
 
         var max = 2000;
 
-        var min = 1600;
+        var min = 1000;
 
         var titleString = "Date Steps";
 
@@ -56,7 +56,7 @@
             { "Date": "Thu", "Steps": 1750 },
             { "Date": "Fri", "Steps": 1810 },
             { "Date": "Sat", "Steps": 1920 },
-            { "Date": "Sun", "Steps": 200 }
+            { "Date": "Sun", "Steps": 1000 }
         ];
     </script>
     <link rel="stylesheet" type="text/css" href="http://www.jchartfx.com/libs/v7/current/styles/Attributes/jchartfx.attributes.whitespace.css" />
