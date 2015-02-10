@@ -50,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Measurement date: 7 Mar, 17:13\n\nYour steps count is below the daily average for your age group.\n\nImportant:\nA registered nurse will arrange an checkup over the phone shortly. It is recommended that you try to increase your activity levels and reach 2000 steps as a goal."
+                android:text="Measurement date: 7 Mar, 17:13\n\nYour steps count is below the daily average for your age group.\n\nImportant:\nA registered nurse will arrange a checkup over the phone shortly. It is recommended that you try to increase your activity levels and reach 2000 steps as a goal."
                 android:id="@+id/textView4"
                 android:textColor="#0000BB"
                 android:background="#BBEEFF"
