@@ -15,8 +15,12 @@
 <div class="patientSection">
 
 <div class="content scaffold-list" role="main">
-    <h1>Journal ID ${journalentry.id}</h1>
+    <h1>Journal Entry</h1>
     <ol class="property-list">
+        <li class="fieldcontain">
+            <span class="property-label">ID</span>
+            <span class="property-value">${journalentry.id}</span>
+        </li>
         <li class="fieldcontain">
             <span class="property-label">Patient</span>
             <span class="property-value"><g:link controller="${"Patient"}" action="showView" params="[patientID: patient.id]">${patient.firstName + " " + patient.lastName}</g:link></span>
